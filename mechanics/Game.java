@@ -14,18 +14,14 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
-<<<<<<< HEAD
 import org.newdawn.slick.geom.Rectangle;
 import physics.MovingObject;
-=======
->>>>>>> 67e270d496c665c206e353f293dcda02cd7ceea5
 
 import physics.Vector2D;
 
 import world.Level;
 import world.LevelManager;
 import world.LevelObject;
-import world.ObjectAppearance;
 
 /**
  *
@@ -82,12 +78,11 @@ public class Game extends BasicGame {
 			g.setBackground(Color.gray);
 		}
                 
-<<<<<<< HEAD
                 
                 double ballX = this.ball.getPosition().getX();
                 double ballY = this.ball.getPosition().getY();
                 
-                testObject = new LevelObject(10, 10, 100, 100, ObjectAppearance.STANDARD_BLOCK);
+                testObject = new LevelObject(10, 10, 100, 100);
                 
                 new Image("media/ball3.png").draw((float) ballX, (float) ballY);
                 Rectangle rect = new Rectangle((float) testObject.getUpperLeft().getX(), (float) testObject.getUpperLeft().getY(), (float) testObject.getXSize(), (float) testObject.getXSize());
@@ -99,7 +94,6 @@ public class Game extends BasicGame {
                     //        objectPosition > this.ball.getPosition().getX() - container.getWidth() / 2) {
                     //}
                 }*/
-=======
 //                new ModelWrapper(this.ball).display();
 //
 //                for (LevelObject currentObject : objects) {
@@ -109,7 +103,6 @@ public class Game extends BasicGame {
 //                    }
 //
 //                }
->>>>>>> 67e270d496c665c206e353f293dcda02cd7ceea5
 	}
 	
 	private void handleInput(Input input) {
