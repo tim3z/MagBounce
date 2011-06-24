@@ -19,10 +19,10 @@ public class Ball extends MovingObject {
 	}
 	
 	public boolean isPositive() {
-		return (this.magnetState == 1);
+		return (this.magnetState >= 1);
 	}
 	
 	public boolean isNegative() {
-		return (this.magnetState == -1);
+		return (this.magnetState <= -1);
 	}
 }
