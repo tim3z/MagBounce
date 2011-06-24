@@ -14,6 +14,11 @@ public class MovingObject {
     private Vector2D position;
     private Vector2D speed; // which this object had moving into the position it now has
 
+    public MovingObject() {
+        this(new Vector2D(0, 0));
+        //throw new Error("DO FUCKING NOT USE THIS");
+    }
+
     /**
      * Create an instance
      * @param position

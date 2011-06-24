@@ -13,6 +13,8 @@ public class Game {
     private long oldTime;
     private long difTime;
 
+    private Ball ball;
+
     public Game() {
         // load Stuff
     }
@@ -34,7 +36,7 @@ public class Game {
     }
 
     private void move(long time) {
-        
+        physics.Physics.move(ball, time);
     }
 
 }
