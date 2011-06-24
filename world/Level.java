@@ -39,23 +39,46 @@ public class Level {
 		this.levelObjects = new ArrayList<LevelObject>();
 		
 		try {
-			// first line contains size information (width,height)
+			// lines beginning with '#' are ignored
+			
+			// first non-comment line contains size information (width,height)
 			line = fileReader.readLine();
+			while (line.charAt(0) == '#') {
+				line = fileReader.readLine();
+			}
 			levelSizeInfo = line.split(",");
 			this.xSize = Long.parseLong(levelSizeInfo[0]);
 			this.ySize = Long.parseLong(levelSizeInfo[1]);
 			
 			line = fileReader.readLine();
 			while (line != null) {
+				if (line.charAt(0) == '#') {
+					line = fileReader.readLine();
+					continue;
+				}
+				
 				// subsequent lines contain object info (llx,lly,urx,ury,type)
 				objectInfo = line.split(",");
-				this.levelObjects.add(new LevelObject(
-						Long.parseLong(objectInfo[0]),
-						Long.parseLong(objectInfo[1]),
-						Long.parseLong(objectInfo[2]),
-						Long.parseLong(objectInfo[3]),
-						Type.valueOf(objectInfo[4])
-					));
+				if (objectInfo.length == 5) {
+					this.levelObjects.add(new LevelObject(
+							Long.parseLong(objectInfo[0]),
+							Long.parseLong(objectInfo[1]),
+							Long.parseLong(objectInfo[2]),
+							Long.parseLong(objectInfo[3]),
+							Type.valueOf(objectInfo[4])
+						));
+				} else if (objectInfo.length == 6) {
+					this.levelObjects.add(new LevelObject(
+							Long.parseLong(objectInfo[0]),
+							Long.parseLong(objectInfo[1]),
+							Long.parseLong(objectInfo[2]),
+							Long.parseLong(objectInfo[3]),
+							Integer.parseInt(objectInfo[5]),
+							Type.valueOf(objectInfo[4])
+						));
+				} else {
+					throw new Exception("Invalid number of object properties.");
+				}	
 				
 				line = fileReader.readLine();
 			}
