@@ -21,12 +21,16 @@ public abstract class Physics {
         direction.addToThis(gravity.multiply(time));
         //direction.addToThis(World.getAccelerationAt(object.getPosition()).multiply(time));
 
-        detectCollisions(level, object, direction);
+        Collision collision = detectCollisions(level, object, direction);
+        if (collision != null) {
+            collision.move(object);
+        } else {
+            object.move(direction.multiply(time));
+        }
 
-        object.move(direction.multiply(time));
     }
 
-    private static Vector2D detectCollisions(Level level, MovingObject object, Vector2D direction) {
+    private static Collision detectCollisions(Level level, MovingObject object, Vector2D direction) {
         List<LevelObject> objects = level.getObjects();
         int radius = object.getCollisionRadius();
 
@@ -93,7 +97,10 @@ public abstract class Physics {
 
         }
 
-        return wall;
+        if (wall != null) {
+            return new Collision(wall, object.getPosition().add(direction.multiply(a)), direction, a);
+        }
+        return null;
     }
 
 }
