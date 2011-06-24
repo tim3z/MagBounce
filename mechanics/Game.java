@@ -14,11 +14,13 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+<<<<<<< HEAD
 import org.newdawn.slick.geom.Rectangle;
 import physics.MovingObject;
+=======
+>>>>>>> 67e270d496c665c206e353f293dcda02cd7ceea5
 
 import physics.Vector2D;
-import viewWrapper.ModelWrapper;
 
 import world.Level;
 import world.LevelManager;
@@ -61,13 +63,13 @@ public class Game extends BasicGame {
 
 	@Override
 	public void update(GameContainer container, int delta) throws SlickException {
-		long diffTime = System.currentTimeMillis() - oldTime;
+            long diffTime = System.currentTimeMillis() - oldTime;
         
-		this.handleInput(container.getInput());
+            this.handleInput(container.getInput());
 		
-		physics.Physics.move(this.getLevel(), ball, diffTime);
+            physics.Physics.move(this.getLevel(), ball, diffTime);
 
-        oldTime += diffTime;
+            oldTime += diffTime;
 	}
 
 	@Override
@@ -80,6 +82,7 @@ public class Game extends BasicGame {
 			g.setBackground(Color.gray);
 		}
                 
+<<<<<<< HEAD
                 
                 double ballX = this.ball.getPosition().getX();
                 double ballY = this.ball.getPosition().getY();
@@ -96,6 +99,17 @@ public class Game extends BasicGame {
                     //        objectPosition > this.ball.getPosition().getX() - container.getWidth() / 2) {
                     //}
                 }*/
+=======
+//                new ModelWrapper(this.ball).display();
+//
+//                for (LevelObject currentObject : objects) {
+//                    long objectPosition = currentObject.getLlx();
+//                    if (objectPosition <= this.ball.getPosition().getX() + container.getWidth() / 2 ||
+//                            objectPosition > this.ball.getPosition().getX() - container.getWidth() / 2) {
+//                    }
+//
+//                }
+>>>>>>> 67e270d496c665c206e353f293dcda02cd7ceea5
 	}
 	
 	private void handleInput(Input input) {

@@ -16,7 +16,6 @@ public class LevelObject implements Comparable<LevelObject> {
 	private long urx; // upper right corner x coordinate
 	private long ury; // upper right corner y coordinate
 	private int strength; // magnet strength (see physics)
-	private ObjectAppearance type; // type determining the appearance of the object
 	
 	/**
 	 * Constructs a new LevelObject with the given properties.
@@ -27,7 +26,7 @@ public class LevelObject implements Comparable<LevelObject> {
 	 * @param ury y coordinate of the upper right corner
 	 * @param type {@link ObjectAppearance} of the object (determines looks)
 	 */
-	public LevelObject(long llx, long lly, long urx, long ury, ObjectAppearance type) {
+	public LevelObject(long llx, long lly, long urx, long ury) {
 		if (llx >= urx || lly >= ury) {
 			throw new IllegalArgumentException("Upper right corner is not above and right of lower left corner.");
 		}
@@ -37,7 +36,6 @@ public class LevelObject implements Comparable<LevelObject> {
 		this.urx = urx;
 		this.ury = ury;
 		this.strength = DEFAULT_STRENGTH;
-		this.type =  type;
 	}
 	
 	/**
@@ -50,7 +48,7 @@ public class LevelObject implements Comparable<LevelObject> {
 	 * @param strength Magnet strength
 	 * @param type {@link ObjectAppearance} of the object (determines looks)
 	 */
-	public LevelObject(long llx, long lly, long urx, long ury, int strength, ObjectAppearance type) {
+	public LevelObject(long llx, long lly, long urx, long ury, int strength) {
 		if (llx >= urx || lly >= ury) {
 			throw new IllegalArgumentException("Upper right corner is not above and right of lower left corner.");
 		}
@@ -60,7 +58,6 @@ public class LevelObject implements Comparable<LevelObject> {
 		this.urx = urx;
 		this.ury = ury;
 		this.strength = strength;
-		this.type =  type;
 	}
 	
 	/**
@@ -119,9 +116,6 @@ public class LevelObject implements Comparable<LevelObject> {
 		return this.strength;
 	}
         
-        public ObjectAppearance getObjectAppearance() {
-            return this.type;
-        }
 	
 	/**
 	 * @return Whether this object is a positive magnet
