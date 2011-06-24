@@ -118,6 +118,10 @@ public class LevelObject implements Comparable<LevelObject> {
 	public int getStrength() {
 		return this.strength;
 	}
+        
+        public ObjectAppearance getObjectAppearance() {
+            return this.type;
+        }
 	
 	/**
 	 * @return Whether this object is a positive magnet

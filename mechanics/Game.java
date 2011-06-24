@@ -4,6 +4,7 @@
 
 package mechanics;
 
+import java.util.List;
 import org.lwjgl.input.Keyboard;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
@@ -12,10 +13,14 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import physics.MovingObject;
 
 import physics.Vector2D;
+import viewWrapper.ModelWrapper;
 
 import world.Level;
+import world.LevelManager;
+import world.LevelObject;
 
 /**
  *
@@ -23,15 +28,16 @@ import world.Level;
  */
 public class Game extends BasicGame {
 
-    private long oldTime;
-
-    private Ball ball;
-    
     private static final char CHANGE_POSITIVE = Keyboard.KEY_P;
     private static final char CHANGE_NEGATIVE = Keyboard.KEY_M;
 
-    private Level level;
-
+    private long            oldTime;
+    
+    private Ball            ball;
+    private Level           level;
+    private LevelManager    levelManager;
+    List<LevelObject>       objects;
+   
     public Game() {
         super("Mobos");
     }
@@ -44,6 +50,9 @@ public class Game extends BasicGame {
 	public void init(GameContainer container) throws SlickException {
 		ball = new Ball();
 		ball.setSpeed(new Vector2D(0.0, 0.0));
+                levelManager = new LevelManager("data");
+                level = levelManager.getLevel(0);
+                objects = level.getObjects();
 	}
 
 	@Override
@@ -66,6 +75,16 @@ public class Game extends BasicGame {
 		} else {
 			g.setBackground(Color.gray);
 		}
+                
+                new ModelWrapper(this.ball).display();
+                
+                for (LevelObject currentObject : objects) {
+                    long objectPosition = currentObject.getLlx();
+                    if (objectPosition <= this.ball.getPosition().getX() + container.getWidth() / 2 ||
+                            objectPosition > this.ball.getPosition().getX() - container.getWidth() / 2) {
+                    }
+                    
+                }
 	}
 	
 	private void handleInput(Input input) {

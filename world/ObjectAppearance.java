@@ -10,5 +10,5 @@ enum ObjectAppearance {
 	/**
 	 * Standard block
 	 */
-	STANDARD_BLOCK
+	STANDARD_BLOCK, BALL
 }
