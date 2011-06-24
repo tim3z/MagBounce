@@ -13,9 +13,12 @@ public abstract class Physics {
 
     public static void move(MovingObject object, long time) {
         Vector2D direction = object.getSpeed();
-        direction.addToThis(gravity);
-        direction.addToThis(World.getAccelerationAt(object.getPosition()));
-        object.move(direction);
+        direction.addToThis(gravity.multiply(time));
+        //direction.addToThis(World.getAccelerationAt(object.getPosition()).multiply(time));
+
+
+
+        object.move(direction.multiply(time));
     }
 
 }
