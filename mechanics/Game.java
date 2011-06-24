@@ -11,8 +11,10 @@ import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.geom.Rectangle;
 import physics.MovingObject;
 
 import physics.Vector2D;
@@ -21,6 +23,7 @@ import viewWrapper.ModelWrapper;
 import world.Level;
 import world.LevelManager;
 import world.LevelObject;
+import world.ObjectAppearance;
 
 /**
  *
@@ -37,6 +40,7 @@ public class Game extends BasicGame {
     private Level           level;
     private LevelManager    levelManager;
     List<LevelObject>       objects;
+    private LevelObject     testObject;
    
     public Game() {
         super("Mobos");
@@ -48,11 +52,11 @@ public class Game extends BasicGame {
 
 	@Override
 	public void init(GameContainer container) throws SlickException {
-		ball = new Ball();
+		ball = new Ball(new Vector2D(100.0, 100.0), 10);
 		ball.setSpeed(new Vector2D(0.0, 0.0));
-                levelManager = new LevelManager("data");
-                level = levelManager.getLevel(0);
-                objects = level.getObjects();
+                //levelManager = new LevelManager("data");
+                //level = levelManager.getLevel(0);
+                //objects = level.getObjects();
 	}
 
 	@Override
@@ -61,7 +65,7 @@ public class Game extends BasicGame {
         
 		this.handleInput(container.getInput());
 		
-		//physics.Physics.move(this.getLevel(), ball, diffTime);
+		physics.Physics.move(this.getLevel(), ball, diffTime);
 
         oldTime += diffTime;
 	}
@@ -76,15 +80,22 @@ public class Game extends BasicGame {
 			g.setBackground(Color.gray);
 		}
                 
-                new ModelWrapper(this.ball).display();
                 
-                for (LevelObject currentObject : objects) {
-                    long objectPosition = currentObject.getLlx();
-                    if (objectPosition <= this.ball.getPosition().getX() + container.getWidth() / 2 ||
-                            objectPosition > this.ball.getPosition().getX() - container.getWidth() / 2) {
-                    }
+                double ballX = this.ball.getPosition().getX();
+                double ballY = this.ball.getPosition().getY();
+                
+                testObject = new LevelObject(10, 10, 100, 100, ObjectAppearance.STANDARD_BLOCK);
+                
+                new Image("media/ball3.png").draw((float) ballX, (float) ballY);
+                Rectangle rect = new Rectangle((float) testObject.getUpperLeft().getX(), (float) testObject.getUpperLeft().getY(), (float) testObject.getXSize(), (float) testObject.getXSize());
+                g.fill(rect);
                     
-                }
+               /* for (LevelObject currentObject : objects) {
+                    long objectPosition = currentObject.getLlx();
+                    //if (objectPosition <= this.ball.getPosition().getX() + container.getWidth() / 2 ||
+                    //        objectPosition > this.ball.getPosition().getX() - container.getWidth() / 2) {
+                    //}
+                }*/
 	}
 	
 	private void handleInput(Input input) {

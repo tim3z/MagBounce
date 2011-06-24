@@ -6,7 +6,7 @@ package world;
 /**
  * The appearances of a {@link LevelObject}.
  */
-enum ObjectAppearance {
+public enum ObjectAppearance {
 	/**
 	 * Standard block
 	 */

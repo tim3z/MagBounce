@@ -5,6 +5,7 @@
 package mechanics;
 
 import physics.MovingObject;
+import physics.Vector2D;
 
 /**
  *
@@ -13,6 +14,10 @@ import physics.MovingObject;
 public class Ball extends MovingObject {
 	private int magnetState = 0;
 	
+        public Ball(Vector2D pos, int radius) {
+            super(pos, radius);
+        }
+        
 	public void setMagnetState(int state) {
 		assert state == 0 || state == 1 || state == -1;
 		this.magnetState = state;
