@@ -1,5 +1,5 @@
 /*
- * A Vector to represant movements, positions or lirections, just like in school :-D
+ * A Vector to represent movements, positions or directions, just like in school :-D
  */
 
 package physics;

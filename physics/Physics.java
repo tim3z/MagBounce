@@ -100,6 +100,7 @@ public abstract class Physics {
         if (wall != null) {
             return new Collision(wall, object.getPosition().add(direction.multiply(a)), direction, a);
         }
+        
         return null;
     }
 

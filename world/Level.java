@@ -65,7 +65,7 @@ public class Level {
 							Long.parseLong(objectInfo[1]),
 							Long.parseLong(objectInfo[2]),
 							Long.parseLong(objectInfo[3]),
-							Type.valueOf(objectInfo[4])
+							ObjectAppearance.valueOf(objectInfo[4])
 						));
 				} else if (objectInfo.length == 6) {
 					this.levelObjects.add(new LevelObject(
@@ -74,7 +74,7 @@ public class Level {
 							Long.parseLong(objectInfo[2]),
 							Long.parseLong(objectInfo[3]),
 							Integer.parseInt(objectInfo[5]),
-							Type.valueOf(objectInfo[4])
+							ObjectAppearance.valueOf(objectInfo[4])
 						));
 				} else {
 					throw new Exception("Invalid number of object properties.");
