@@ -60,11 +60,7 @@ public class Game extends BasicGame {
 	@Override
 	public void render(GameContainer container, Graphics g) throws SlickException {
 		if (this.ball.isPositive()) {
-			if (this.ball.isNegative()) {
-				g.setBackground(Color.gray);
-			} else {
-				g.setBackground(Color.red);
-			}
+			g.setBackground(Color.red);
 		} else if (this.ball.isNegative()) {
 			g.setBackground(Color.blue);
 		} else {
