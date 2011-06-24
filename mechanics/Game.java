@@ -4,6 +4,8 @@
 
 package mechanics;
 
+import world.Level;
+
 /**
  *
  * @author S.D.Eagle
@@ -14,6 +16,8 @@ public class Game {
     private long difTime;
 
     private Ball ball;
+
+    private Level level;
 
     public Game() {
         // load Stuff
@@ -39,4 +43,7 @@ public class Game {
         physics.Physics.move(ball, time);
     }
 
+    public Level getLevel() {
+        return level;
+    }
 }
