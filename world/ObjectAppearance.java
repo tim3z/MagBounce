@@ -4,9 +4,9 @@
 package world;
 
 /**
- * Represents the type of a {@link LevelObject}.
+ * The appearances of a {@link LevelObject}.
  */
-enum Type {
+enum ObjectAppearance {
 	/**
 	 * Standard block
 	 */
