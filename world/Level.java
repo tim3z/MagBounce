@@ -59,22 +59,20 @@ public class Level {
 				
 				// subsequent lines contain object info (llx,lly,urx,ury,type)
 				objectInfo = line.split(",");
-				if (objectInfo.length == 5) {
+				if (objectInfo.length == 4) {
 					this.levelObjects.add(new LevelObject(
 							Long.parseLong(objectInfo[0]),
 							Long.parseLong(objectInfo[1]),
 							Long.parseLong(objectInfo[2]),
-							Long.parseLong(objectInfo[3]),
-							ObjectAppearance.valueOf(objectInfo[4])
+							Long.parseLong(objectInfo[3])
 						));
-				} else if (objectInfo.length == 6) {
+				} else if (objectInfo.length == 5) {
 					this.levelObjects.add(new LevelObject(
 							Long.parseLong(objectInfo[0]),
 							Long.parseLong(objectInfo[1]),
 							Long.parseLong(objectInfo[2]),
 							Long.parseLong(objectInfo[3]),
-							Integer.parseInt(objectInfo[5]),
-							ObjectAppearance.valueOf(objectInfo[4])
+							Integer.parseInt(objectInfo[4])
 						));
 				} else {
 					throw new Exception("Invalid number of object properties.");

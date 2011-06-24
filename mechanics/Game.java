@@ -13,10 +13,8 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
-import physics.MovingObject;
 
 import physics.Vector2D;
-import viewWrapper.ModelWrapper;
 
 import world.Level;
 import world.LevelManager;
@@ -57,13 +55,13 @@ public class Game extends BasicGame {
 
 	@Override
 	public void update(GameContainer container, int delta) throws SlickException {
-		long diffTime = System.currentTimeMillis() - oldTime;
+            long diffTime = System.currentTimeMillis() - oldTime;
         
-		this.handleInput(container.getInput());
+            this.handleInput(container.getInput());
 		
-		//physics.Physics.move(this.getLevel(), ball, diffTime);
+            physics.Physics.move(this.getLevel(), ball, diffTime);
 
-        oldTime += diffTime;
+            oldTime += diffTime;
 	}
 
 	@Override
@@ -76,15 +74,15 @@ public class Game extends BasicGame {
 			g.setBackground(Color.gray);
 		}
                 
-                new ModelWrapper(this.ball).display();
-                
-                for (LevelObject currentObject : objects) {
-                    long objectPosition = currentObject.getLlx();
-                    if (objectPosition <= this.ball.getPosition().getX() + container.getWidth() / 2 ||
-                            objectPosition > this.ball.getPosition().getX() - container.getWidth() / 2) {
-                    }
-                    
-                }
+//                new ModelWrapper(this.ball).display();
+//
+//                for (LevelObject currentObject : objects) {
+//                    long objectPosition = currentObject.getLlx();
+//                    if (objectPosition <= this.ball.getPosition().getX() + container.getWidth() / 2 ||
+//                            objectPosition > this.ball.getPosition().getX() - container.getWidth() / 2) {
+//                    }
+//
+//                }
 	}
 	
 	private void handleInput(Input input) {
