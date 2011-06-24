@@ -61,14 +61,14 @@ public class LevelObject implements Comparable<LevelObject> {
 	 * @return x size of the block
 	 */
 	public long getXSize() {
-		return this.urx - this.llx;
+		return this.getUrx() - this.getLlx();
 	}
 	
 	/**
 	 * @return y size of the block
 	 */
 	public long getYSize() {
-		return this.ury - this.lly;
+		return this.getUry() - this.getLly();
 	}
 	
 	/**
@@ -84,6 +84,34 @@ public class LevelObject implements Comparable<LevelObject> {
 			throw new NullPointerException();
 		}
 		
-		return Long.signum(this.llx - object.llx); // conversion to int might produce overflows (?)
+		return Long.signum(this.getLlx() - object.getLlx()); // conversion to int might produce overflows (?)
 	}
+
+    /**
+     * @return the llx
+     */
+    public long getLlx() {
+        return llx;
+    }
+
+    /**
+     * @return the lly
+     */
+    public long getLly() {
+        return lly;
+    }
+
+    /**
+     * @return the urx
+     */
+    public long getUrx() {
+        return urx;
+    }
+
+    /**
+     * @return the ury
+     */
+    public long getUry() {
+        return ury;
+    }
 }
