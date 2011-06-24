@@ -5,6 +5,7 @@
 package physics;
 
 import java.util.List;
+import mechanics.Ball;
 import world.Level;
 import world.LevelObject;
 
@@ -16,18 +17,39 @@ public abstract class Physics {
 
     private static Vector2D gravity = new Vector2D(0, -10);
 
-    public static void move(Level level, MovingObject object, long time) {
+    public static void move(Level level, Ball object, long time) {
         Vector2D direction = object.getSpeed();
         direction.addToThis(gravity.multiply(time));
-        //direction.addToThis(World.getAccelerationAt(object.getPosition()).multiply(time));
+
+        int a = object.getMagnetState();
+        if (a != 0) {
+            Vector2D magnetism = getAccelerationAt(level, object.getPosition()).multiply(time);
+            if (a < 0) {
+                magnetism.multiply(-1);
+            }
+            direction.addToThis(magnetism);
+        }
+
+        direction = direction.multiply(time);
 
         Collision collision = detectCollisions(level, object, direction);
         if (collision != null) {
             collision.move(object);
         } else {
-            object.move(direction.multiply(time));
+            object.move(direction);
         }
 
+    }
+
+    public static Vector2D getAccelerationAt(Level level, Vector2D position) {
+        Vector2D force = new Vector2D(0, 0);
+
+        for (LevelObject levelObject : level.getObjects()) {
+            Vector2D connection = levelObject.getMiddle().multiply(-1).add(position);
+            force.add(connection.normalize().multiply(levelObject.getStrength()).multiply(1/(Math.pow(connection.norm(), 2))));
+        }
+
+        return force;
     }
 
     private static Collision detectCollisions(Level level, MovingObject object, Vector2D direction) {

@@ -17,6 +17,10 @@ public class Ball extends MovingObject {
 		assert state == 0 || state == 1 || state == -1;
 		this.magnetState = state;
 	}
+
+        public int getMagnetState() {
+            return magnetState;
+        }
 	
 	public boolean isPositive() {
 		return (this.magnetState >= 1);
