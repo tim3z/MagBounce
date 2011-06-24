@@ -31,12 +31,13 @@ public abstract class Physics {
         Vector2D wall;
 
         for (LevelObject levelObject : objects) {
-            if () {
+            /*if () {
 
-            }
+            }*/
         }
 
-        return wall;
+        // return wall;
+        return null;
     }
 
 }
