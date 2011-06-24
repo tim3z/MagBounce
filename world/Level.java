@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -39,7 +40,7 @@ public class Level {
 		this.levelObjects = new ArrayList<LevelObject>();
 		
 		try {
-			// first line contains size information
+			// first line contains size information (width,height)
 			line = fileReader.readLine();
 			levelSizeInfo = line.split(",");
 			this.xSize = Long.parseLong(levelSizeInfo[0]);
@@ -47,6 +48,7 @@ public class Level {
 			
 			line = fileReader.readLine();
 			while (line != null) {
+				// subsequent lines contain object info (llx,lly,urx,ury,type)
 				objectInfo = line.split(",");
 				this.levelObjects.add(new LevelObject(
 						Long.parseLong(objectInfo[0]),
@@ -61,5 +63,8 @@ public class Level {
 		} catch (Exception e) { // Catch them all!
 			throw new IllegalArgumentException("The given file is no valid level file.", e);
 		}
+		
+		// Sorting by position might help in-game performance
+		Collections.sort(this.levelObjects);
 	}
 }

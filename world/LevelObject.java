@@ -9,7 +9,7 @@ import java.lang.reflect.Constructor;
  * @author moritz
  *
  */
-public class LevelObject {
+public class LevelObject implements Comparable<LevelObject> {
 	private long llx; // lower left corner x coordinate
 	private long lly; // lower left corner y coordinate
 	private long urx; // upper right corner x coordinate
@@ -45,5 +45,14 @@ public class LevelObject {
 	 */
 	public long getYSize() {
 		return this.ury - this.lly;
+	}
+
+	@Override
+	public int compareTo(LevelObject object) {
+		if (object == null) {
+			throw new NullPointerException();
+		}
+		
+		return (int) (this.llx - object.llx);
 	}
 }
