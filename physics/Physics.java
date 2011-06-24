@@ -30,18 +30,22 @@ public abstract class Physics {
         List<LevelObject> objects = level.getObjects();
         int radius = object.getCollisionRadius();
 
-        Vector2D newPosition = object.getPosition().add(direction);
         Vector2D collisionPoint;
-        Vector2D wall;
+        Vector2D wall = null;
         double a = 1;
         double tmpA;
 
+        long Llx;
+        long Lly;
+        long Urx;
+        long Ury;
+
         for (LevelObject levelObject : objects) {
 
-            long Llx = levelObject.getLlx() - radius;
-            long Lly = levelObject.getLly() - radius;
-            long Urx = levelObject.getUrx() + radius;
-            long Ury = levelObject.getUry() + radius;
+            Llx = levelObject.getLlx() - radius;
+            Lly = levelObject.getLly() - radius;
+            Urx = levelObject.getUrx() + radius;
+            Ury = levelObject.getUry() + radius;
 
             tmpA = (Llx - object.getPosition().getX()) / direction.getX();
 
