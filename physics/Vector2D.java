@@ -46,6 +46,10 @@ public class Vector2D {
         return new Vector2D(factor * x, factor * y);
     }
 
+    public double distanceTo(Vector2D other) {
+        return add(other.multiply(-1)).norm();
+    }
+
 
     /**
      * Return this Vector reflected at the wall with the given normal
@@ -58,6 +62,23 @@ public class Vector2D {
         Vector2D normalized = multiply(1 / scale);
 
         return wallNormal.multiply(-2 * normalized.SKP(wallNormal)).add(normalized).multiply(scale);
+    }
+    
+    /**
+     * Return this Vector reflected at the given "wall"
+     * @param wall
+     * @return
+     */
+    public Vector2D reflectAt(Vector2D wall) {
+        return reflectAtNormal(wall.rotate90Deg());
+    }
+
+    /**
+     * Returns this Vector rotated by 90 degrees
+     * @return
+     */
+    public Vector2D rotate90Deg() {
+        return new Vector2D(-y, x);
     }
 
     /**

@@ -13,9 +13,10 @@ public class MovingObject {
 
     private Vector2D position;
     private Vector2D speed; // which this object had moving into the position it now has
+    private int collisionRadius;
 
     public MovingObject() {
-        this(new Vector2D(0, 0));
+        this(new Vector2D(0, 0), 1);
         //throw new Error("DO FUCKING NOT USE THIS");
     }
 
@@ -23,8 +24,9 @@ public class MovingObject {
      * Create an instance
      * @param position
      */
-    public MovingObject(Vector2D position) {
+    public MovingObject(Vector2D position, int radius) {
         this.position = position;
+        this.collisionRadius = radius;
     }
 
     /**
@@ -62,6 +64,13 @@ public class MovingObject {
      */
     public void setSpeed(Vector2D speed) {
         this.speed = speed;
+    }
+
+    /**
+     * @return the collisionRadius
+     */
+    public int getCollisionRadius() {
+        return collisionRadius;
     }
 
 }
