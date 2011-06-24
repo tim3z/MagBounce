@@ -1,11 +1,10 @@
 /**
- * 
+ * @author moritz
  */
 package world;
 
 /**
- * @author moritz
- *
+ * Represents the type of a {@link LevelObject}.
  */
 enum Type {
 	/**

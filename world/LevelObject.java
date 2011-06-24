@@ -1,13 +1,10 @@
 /**
- * 
+ * @author moritz
  */
 package world;
 
-import java.lang.reflect.Constructor;
-
 /**
- * @author moritz
- *
+ * A rectangular object in a {@link Level}.
  */
 public class LevelObject implements Comparable<LevelObject> {
 	private long llx; // lower left corner x coordinate
@@ -53,6 +50,6 @@ public class LevelObject implements Comparable<LevelObject> {
 			throw new NullPointerException();
 		}
 		
-		return (int) (this.llx - object.llx);
+		return Long.signum(this.llx - object.llx); // conversion to int might produce overflows (?)
 	}
 }

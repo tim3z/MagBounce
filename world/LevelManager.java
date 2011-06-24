@@ -1,5 +1,5 @@
 /**
- * 
+ * @author moritz
  */
 package world;
 
@@ -8,19 +8,18 @@ import java.io.FileFilter;
 import java.util.Arrays;
 
 /**
- * @author moritz
- *
+ * Reads the level data and creates {@link Level}s
  */
 public final class LevelManager {
 	
-	private static Level[] levels = null;
+	private Level[] levels = null;
 	
 	/**
 	 * Loads level data and initializes the levels.
 	 * 
 	 * @param sourceDir Level data directory
 	 */
-	public static void loadLevels(String sourceDir) {
+	public LevelManager(String sourceDir) {
 		// Scans SOURCE_DIR for files ending with ".level"
 		File directory = new File(sourceDir);
 		if (!directory.isDirectory()) {
@@ -36,24 +35,39 @@ public final class LevelManager {
 		};
 		
 		File[] files = directory.listFiles(filter);
-		levels = new Level[files.length];
-		if (levels.length == 0) {
+		this.levels = new Level[files.length];
+		if (this.levels.length == 0) {
 			throw new IllegalStateException("No level files found.");
 		}
-		Arrays.sort(levels); // get levels in the right order
+		Arrays.sort(this.levels); // get levels in the right order
 		
 		for (int i = 0; i < files.length; i++) {
-			levels[i] = new Level(files[i]);
+			this.levels[i] = new Level(files[i]);
 		}
 	}
 	
-	public static Level getLevel(int id) {
-		if (levels == null) {
+	/**
+	 * @param id Level number
+	 * @return The level with the specified number
+	 */
+	public Level getLevel(int id) {
+		if (this.levels == null) {
 			throw new IllegalStateException("No levels loaded yet.");
-		} else if (id < 0 || id >= levels.length) {
+		} else if (id < 0 || id >= this.levels.length) {
 			throw new IllegalArgumentException("Illegal level ID.");
 		}
 		
-		return levels[id];
+		return this.levels[id];
+	}
+	
+	/**
+	 * @return Number of Levels
+	 */
+	public int levelCount() {
+		if (this.levels == null) {
+			throw new IllegalStateException("No levels loaded yet.");
+		}
+		
+		return this.levels.length;
 	}
 }

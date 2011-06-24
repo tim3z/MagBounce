@@ -1,5 +1,5 @@
 /**
- * 
+ * @author moritz
  */
 package world;
 
@@ -12,8 +12,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * @author moritz
- *
+ * A game level containing several {@link LevelObject}s.
  */
 public class Level {
 	private List<LevelObject> levelObjects;
@@ -66,5 +65,26 @@ public class Level {
 		
 		// Sorting by position might help in-game performance
 		Collections.sort(this.levelObjects);
+	}
+	
+	/**
+	 * @return Width of the level
+	 */
+	public long getXSize() {
+		return this.xSize;
+	}
+	
+	/**
+	 * @return Height of the level
+	 */
+	public long getYSize() {
+		return this.ySize;
+	}
+	
+	/**
+	 * @return List of all objects in this level, sorted by occurrence.
+	 */
+	public List<LevelObject> getObjects() {
+		return this.levelObjects;
 	}
 }
