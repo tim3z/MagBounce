@@ -32,6 +32,11 @@ public class Vector2D {
         return new Vector2D(x + other.x, y + other.y);
     }
 
+    public void addToThis(Vector2D other) {
+        x += other.x;
+        y += other.y;
+    }
+
     /**
      * Return this * factor
      * @param factor
@@ -39,6 +44,10 @@ public class Vector2D {
      */
     public Vector2D multiply(long factor) {
         return new Vector2D(factor * x, factor * y);
+    }
+
+    public Vector2D reflectAt(Vector2D wall) {
+        
     }
 
 

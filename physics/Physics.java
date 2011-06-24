@@ -9,8 +9,13 @@ package physics;
  */
 public abstract class Physics {
 
-    public static void move() {
-        
+    private static Vector2D gravity = new Vector2D(0, -10);
+
+    public static void move(MovingObject object, long time) {
+        Vector2D direction = object.getSpeed();
+        direction.addToThis(gravity);
+        direction.addToThis(World.getAccelerationAt(object.getPosition()));
+        object.move(direction);
     }
 
 }
