@@ -4,6 +4,8 @@
 
 package mechanics;
 
+import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
 import physics.MovingObject;
 import physics.Vector2D;
 
@@ -13,9 +15,19 @@ import physics.Vector2D;
  */
 public class Ball extends MovingObject {
 	private int magnetState = 0;
+        private Image image;
 	
         public Ball(Vector2D pos, int radius) {
             super(pos, radius);
+            try {
+                image = new Image("media/ball3.png");
+            } catch (SlickException e) {
+                throw new RuntimeException("Corrupted Game Data");
+            }
+        }
+
+        public Image getImage() {
+            return image;
         }
         
 	public void setMagnetState(int state) {

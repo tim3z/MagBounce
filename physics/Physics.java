@@ -15,7 +15,7 @@ import world.LevelObject;
  */
 public abstract class Physics {
 
-    private static Vector2D gravity = new Vector2D(0, -10);
+    private static Vector2D gravity = new Vector2D(0, -0.001);
 
     public static void move(Level level, Ball object, long time) {
         Vector2D direction = object.getSpeed();

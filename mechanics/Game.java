@@ -18,6 +18,7 @@ import org.newdawn.slick.geom.Rectangle;
 import physics.MovingObject;
 
 import physics.Vector2D;
+import sun.java2d.loops.FillRect;
 
 import world.Level;
 import world.LevelManager;
@@ -52,9 +53,9 @@ public class Game extends BasicGame {
 	public void init(GameContainer container) throws SlickException {
 		ball = new Ball(new Vector2D(100.0, 100.0), 10);
 		ball.setSpeed(new Vector2D(0.0, 0.0));
-                //levelManager = new LevelManager("data");
-                //level = levelManager.getLevel(0);
-                //objects = level.getObjects();
+                levelManager = new LevelManager("data");
+                level = levelManager.getLevel(4);
+                objects = level.getObjects();
 	}
 
 	@Override
@@ -77,32 +78,14 @@ public class Game extends BasicGame {
 		} else {
 			g.setBackground(Color.gray);
 		}
-                
-                
-                double ballX = this.ball.getPosition().getX();
-                double ballY = this.ball.getPosition().getY();
-                
-                testObject = new LevelObject(10, 10, 100, 100);
-                
-                new Image("media/ball3.png").draw((float) ballX, (float) ballY);
-                Rectangle rect = new Rectangle((float) testObject.getUpperLeft().getX(), (float) testObject.getUpperLeft().getY(), (float) testObject.getXSize(), (float) testObject.getXSize());
-                g.fill(rect);
-                    
-               /* for (LevelObject currentObject : objects) {
-                    long objectPosition = currentObject.getLlx();
-                    //if (objectPosition <= this.ball.getPosition().getX() + container.getWidth() / 2 ||
-                    //        objectPosition > this.ball.getPosition().getX() - container.getWidth() / 2) {
-                    //}
-                }*/
-//                new ModelWrapper(this.ball).display();
-//
-//                for (LevelObject currentObject : objects) {
-//                    long objectPosition = currentObject.getLlx();
-//                    if (objectPosition <= this.ball.getPosition().getX() + container.getWidth() / 2 ||
-//                            objectPosition > this.ball.getPosition().getX() - container.getWidth() / 2) {
-//                    }
-//
-//                }
+
+                ball.getImage().draw((float) ball.getPosition().getX(), 600f - (float) ball.getPosition().getY());
+
+                //g.fill(new Rectangle(0f, 500f, 1000f, 100f));
+
+                for (LevelObject object : objects) {
+                    g.fill(new Rectangle((float) object.getLlx(), (float) (600 - object.getLly()), (float) object.getXSize(), (float) object.getYSize()));
+                }
 	}
 	
 	private void handleInput(Input input) {
