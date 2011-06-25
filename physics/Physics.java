@@ -15,11 +15,12 @@ import world.LevelObject;
  */
 public abstract class Physics {
 
-    private static Vector2D gravity = new Vector2D(0, -0.001);
+    private static Vector2D gravity = new Vector2D(0, -0.01);
 
     public static void move(Level level, Ball object, long time) {
         Vector2D direction = object.getSpeed();
-        direction.addToThis(gravity.multiply(time));
+        Vector2D g = gravity.multiply(time);
+        direction = direction.multiply(time).add(gravity.multiply(time));
 
         int a = object.getMagnetState();
         if (a != 0) {
@@ -27,16 +28,16 @@ public abstract class Physics {
             if (a < 0) {
                 magnetism.multiply(-1);
             }
-            direction.addToThis(magnetism);
+            direction = direction.add(magnetism);
         }
 
         direction = direction.multiply(time);
 
         Collision collision = detectCollisions(level, object, direction);
         if (collision != null) {
-            collision.move(object);
+            collision.move(object, time);
         } else {
-            object.move(direction);
+            object.move(direction, time);
         }
 
     }

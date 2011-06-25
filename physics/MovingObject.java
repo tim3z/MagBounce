@@ -33,9 +33,9 @@ public class MovingObject {
      * Move this Object into the given direction
      * @param direction
      */
-    public void move(Vector2D direction) {
+    public void move(Vector2D direction, long time) {
         setPosition(getPosition().add(direction));
-        setSpeed(direction);
+        setSpeed(direction.multiply(1/time));
     }
 
     /**
