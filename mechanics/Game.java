@@ -52,21 +52,25 @@ public class Game extends BasicGame {
 	@Override
 	public void init(GameContainer container) throws SlickException {
                 
-		ball = new Ball(new Vector2D(100.0, 100.0), 10);
+		ball = new Ball(new Vector2D(150.0, 100.0), 30);
 		ball.setSpeed(new Vector2D(0.0, 0.0));
                 levelManager = new LevelManager("data");
-                level = levelManager.getLevel(4);
+                level = levelManager.getLevel(3);
                 objects = level.getObjects();
 	}
 
 	@Override
 	public void update(GameContainer container, int delta) throws SlickException {
             this.handleInput(container.getInput());
-            physics.Physics.move(this.getLevel(), ball, delta);
+		
+            physics.Physics.move(level, ball, delta);
+
+            System.out.println("X: " + ball.getPosition().getX() + " Y: " + ball.getPosition().getY());
 	}
 
 	@Override
 	public void render(GameContainer container, Graphics g) throws SlickException {
+
 		if (this.ball.isPositive()) {
 			g.setBackground(Color.red);
 		} else if (this.ball.isNegative()) {

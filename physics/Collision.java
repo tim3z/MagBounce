@@ -23,10 +23,10 @@ public final class Collision {
         setA(a);
     }
 
-    public void move(MovingObject object) {
+    public void move(MovingObject object, long time) {
         Vector2D newDirection = direction.reflectAt(wall);
         object.setPosition(collisionPoint.add(newDirection.multiply(1-a)));
-        object.setSpeed(newDirection);
+        object.setSpeed(newDirection.multiply(1/time));
     }
 
 

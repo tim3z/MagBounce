@@ -32,11 +32,6 @@ public class Vector2D {
         return new Vector2D(x + other.x, y + other.y);
     }
 
-    public void addToThis(Vector2D other) {
-        x += other.x;
-        y += other.y;
-    }
-
     /**
      * Return this * factor
      * @param factor
@@ -87,7 +82,7 @@ public class Vector2D {
      * @return
      */
     public double SKP(Vector2D other) {
-        return this.x * other.x + this.y + other.y;
+        return this.x * other.x + this.y * other.y;
     }
 
     /**
