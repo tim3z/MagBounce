@@ -30,9 +30,6 @@ import world.LevelObject;
 public class Game extends BasicGame {
 
 	Music sMusic;
-	/*Music sMusicHigh;
-    Music sMusicLow;
-    Music sMusicNormal;*/
 	Sound sDeath;
 	Sound sPlong;
 

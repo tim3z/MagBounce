@@ -55,64 +55,64 @@ public abstract class Physics {
 		List<LevelObject> objects = level.getObjects();
 		int radius = object.getCollisionRadius();
 
-		Vector2D collisionPoint;
+		//Vector2D collisionPoint;
 		Vector2D wall = null;
 		double a = 1;
 		double tmpA;
 
-		long Llx;
-		long Lly;
-		long Urx;
-		long Ury;
+		long llx;
+		long lly;
+		long urx;
+		long ury;
 
 		for (LevelObject levelObject : objects) {
 
-			Llx = levelObject.getLlx() - radius;
-			Lly = levelObject.getLly() - radius;
-			Urx = levelObject.getUrx() + radius;
-			Ury = levelObject.getUry() + radius;
+			llx = levelObject.getLlx() - radius;
+			lly = levelObject.getLly() - radius;
+			urx = levelObject.getUrx() + radius;
+			ury = levelObject.getUry() + radius;
 
-			tmpA = (Llx - object.getPosition().getX()) / direction.getX();
+			tmpA = (llx - object.getPosition().getX()) / direction.getX();
 
 			if (tmpA >= 0 && tmpA < a) {
 				Vector2D tmpCollPoint = object.getPosition().add(direction.multiply(a));
-				if (tmpCollPoint.getY() <= Ury && tmpCollPoint.getY() >= Lly) {
+				if (tmpCollPoint.getY() <= ury && tmpCollPoint.getY() >= lly) {
 					a = tmpA;
 					wall = new Vector2D(0, 1);
-					collisionPoint = tmpCollPoint;
+					//collisionPoint = tmpCollPoint;
 				}
 			}
 
-			tmpA = (Urx - object.getPosition().getX()) / direction.getX();
+			tmpA = (urx - object.getPosition().getX()) / direction.getX();
 
 			if (tmpA >= 0 && tmpA < a) {
 				Vector2D tmpCollPoint = object.getPosition().add(direction.multiply(a));
-				if (tmpCollPoint.getY() <= Ury && tmpCollPoint.getY() >= Lly) {
+				if (tmpCollPoint.getY() <= ury && tmpCollPoint.getY() >= lly) {
 					a = tmpA;
 					wall = new Vector2D(0, 1);
-					collisionPoint = tmpCollPoint;
+					//collisionPoint = tmpCollPoint;
 				}
 			}
 
-			tmpA = (Lly - object.getPosition().getY()) / direction.getY();
+			tmpA = (lly - object.getPosition().getY()) / direction.getY();
 
 			if (tmpA >= 0 && tmpA < a) {
 				Vector2D tmpCollPoint = object.getPosition().add(direction.multiply(a));
-				if (tmpCollPoint.getX() <= Urx && tmpCollPoint.getX() >= Llx) {
+				if (tmpCollPoint.getX() <= urx && tmpCollPoint.getX() >= llx) {
 					a = tmpA;
 					wall = new Vector2D(1, 0);
-					collisionPoint = tmpCollPoint;
+					//collisionPoint = tmpCollPoint;
 				}
 			}
 
-			tmpA = (Ury - object.getPosition().getY()) / direction.getY();
+			tmpA = (ury - object.getPosition().getY()) / direction.getY();
 
 			if (tmpA >= 0 && tmpA < a) {
 				Vector2D tmpCollPoint = object.getPosition().add(direction.multiply(a));
-				if (tmpCollPoint.getX() <= Urx && tmpCollPoint.getX() >= Llx) {
+				if (tmpCollPoint.getX() <= urx && tmpCollPoint.getX() >= llx) {
 					a = tmpA;
 					wall = new Vector2D(1, 0);
-					collisionPoint = tmpCollPoint;
+					//collisionPoint = tmpCollPoint;
 				}
 			}
 
