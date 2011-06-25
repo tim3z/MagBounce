@@ -13,7 +13,7 @@ import world.LevelObject;
  * @author Eagle
  */
 public final class Physics {
-
+	private static double FRICTION_FACTOR = 0.99;
 	private static Vector2D gravity = new Vector2D(0, -0.001);
 	
 	private Physics() { }
@@ -170,7 +170,7 @@ public final class Physics {
 		if (wall != null) {
 			object.setPosition(object.getPosition().add(direction.multiply(a)));
 			detectCollisions(levelObjects, destinations, object, direction.reflectAt(wall).multiply(1.0-a));
-			object.setSpeed(object.getSpeed().multiply(0.98));
+			object.setSpeed(object.getSpeed().multiply(FRICTION_FACTOR));
 			
 			return CollisionState.COLLISION;
 		}
