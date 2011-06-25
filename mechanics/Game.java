@@ -29,7 +29,9 @@ import world.LevelObject;
  */
 public class Game extends BasicGame {
 
-    Music sMusic;
+    Music sMusicHigh;
+    Music sMusicLow;
+    Music sMusicNormal;
     Sound sDeath;
     Sound sPlong;
     
@@ -46,7 +48,10 @@ public class Game extends BasicGame {
         super("Mosod");
         
         try {
-            sMusic = new Music("media/R 22.wav");
+            Music sMusic = new Music("media/R 22.wav");
+            sMusicHigh = sMusic;
+            sMusicLow = sMusic;
+            sMusicNormal = sMusic;
             sDeath = new Sound("media/death.wav");
             sPlong = new Sound("media/plong.wav");
         } catch (SlickException e) {
@@ -62,7 +67,9 @@ public class Game extends BasicGame {
 	@Override
 	public void init(GameContainer container) throws SlickException {
             
-            sMusic.loop(1f, 1f);
+            sMusicHigh.loop(1.2f, 1f);
+            sMusicLow.loop(0.8f, 1f);
+            sMusicNormal.loop(1f, 1f);
             ball = new Ball(new Vector2D(100.0, 200.0), 30);
             camera = ball.getPosition().multiply(1); // deep copy :-D
             ball.setSpeed(new Vector2D(0.2, 0.0));
@@ -95,14 +102,17 @@ public class Game extends BasicGame {
             }
             
             if (ball.getMagnetState() > 0) {
-                sMusic.stop();
-                sMusic.loop(1f, 1f);
+                sMusicHigh.setVolume(0f);
+                sMusicLow.setVolume(1f);
+                sMusicNormal.setVolume(0f);                
             } else if (ball.getMagnetState() < 0) {
-                sMusic.stop();
-                sMusic.loop(1f, 0f);
+                sMusicHigh.setVolume(1f);
+                sMusicLow.setVolume(0f);
+                sMusicNormal.setVolume(0f);                
             } else {
-                sMusic.stop();
-                sMusic.loop(1f, 0.5f);
+                sMusicHigh.setVolume(0f);
+                sMusicLow.setVolume(0f);
+                sMusicNormal.setVolume(1f);
             }
 	}
 
