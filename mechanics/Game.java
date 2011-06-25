@@ -72,11 +72,11 @@ public class Game extends BasicGame {
             /*sMusicHigh.loop(1.2f, 1f);
             sMusicLow.loop(0.8f, 1f);
             sMusicNormal.loop(1f, 1f);*/
-            ball = new Ball(new Vector2D(100.0, 200.0), 30);
-            camera = ball.getPosition().multiply(1); // deep copy :-D
+            ball = new Ball(new Vector2D(100.0, 500.0), 30);
+            camera = ball.getPosition().deepCopy();
             ball.setSpeed(new Vector2D(0.2, 0.0));
             levelManager = new LevelManager("data");
-            level = levelManager.getLevel(5);
+            level = levelManager.getLevel(6);
             objects = level.getObjects();
 	}
 
@@ -84,11 +84,21 @@ public class Game extends BasicGame {
 	public void update(GameContainer container, int delta) throws SlickException {
         
             this.handleInput(container.getInput());
-		
+
+//            Vector2D oldPos = ball.getPosition().deepCopy();
+
             // returns boolean for collision sound
             if (physics.Physics.move(level, ball, delta)) {
                 sPlong.play(1f, 1f);
             }
+
+//            Vector2D camCon = camera.multiply(-1).add(new Vector2D(container.getWidth()/(-2), container.getHeight()/(-2))).add(ball.getPosition());
+//            Vector2D move = camera.add(oldPos.multiply(-1).add(ball.getPosition()));
+//
+//            if (camCon.norm() > Math.min(container.getWidth(), container.getHeight()) / 3
+//                && camCon.add(move).norm() > camCon.norm()) {
+//                camera = camera.add(move);
+//            }
             
             camera.setX(ball.getPosition().getX() - container.getWidth()/2);
             camera.setY(ball.getPosition().getY() - container.getHeight()/2);

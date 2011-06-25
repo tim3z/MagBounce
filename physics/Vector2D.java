@@ -23,6 +23,10 @@ public class Vector2D {
         this.y = y;
     }
 
+    public Vector2D deepCopy() {
+        return this.multiply(1);
+    }
+
     /**
      * Return this + other
      * @param other
