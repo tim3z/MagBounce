@@ -51,7 +51,7 @@ public class Game extends BasicGame {
 
 	@Override
 	public void init(GameContainer container) throws SlickException {
-		ball = new Ball(new Vector2D(0.0, 500.0), 30);
+		ball = new Ball(new Vector2D(0.0, 200.0), 30);
 		ball.setSpeed(new Vector2D(0.1, 0.0));
                 levelManager = new LevelManager("data");
                 level = levelManager.getLevel(1);
@@ -64,8 +64,6 @@ public class Game extends BasicGame {
             this.handleInput(container.getInput());
 		
             physics.Physics.move(level, ball, delta);
-
-            System.out.println("X: " + ball.getPosition().getX() + " Y: " + ball.getPosition().getY());
 	}
 
 	@Override
