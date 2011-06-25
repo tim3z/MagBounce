@@ -22,11 +22,12 @@ public final class Physics {
 	 * Moves the given {@link Ball} after the given time has passed.
 	 * 
 	 * @param levelObjects levelObjects to check for collision
+	 * @param destinations Destinations to check for
 	 * @param ball Ball to move
 	 * @param time Time that has passed since the last update
 	 * @return Whether a collision has occurred
 	 */
-	public static boolean move(List<LevelObject> levelObjects, Ball ball, long time) {
+	public static CollisionState move(List<LevelObject> levelObjects, List<LevelObject> destinations, Ball ball, long time) {
 		Vector2D speedVector = ball.getSpeed().add(gravity.multiply(time));
 
 		int a = ball.getMagnetState();
@@ -37,14 +38,18 @@ public final class Physics {
 			}
 			speedVector = speedVector.add(magnetism);
 		}
+		
+		if (detectCollisions(destinations, ball, speedVector.multiply(time)) != null) {
+			return CollisionState.COLLISION_WITH_DESTINATION;
+		}
 
 		Collision collision = detectCollisions(levelObjects, ball, speedVector.multiply(time));
 		if (collision != null) {
 			collision.move(ball, time);
-			return true;
+			return CollisionState.COLLISION;
 		} else {
 			ball.move(speedVector, time);
-			return false;
+			return CollisionState.NO_COLLISION;
 		}
 
 	}
@@ -68,10 +73,9 @@ public final class Physics {
 	 * @param direction Direction of the movement
 	 * @return Collision or <code>null</code> if none has occurred
 	 */
-	public static Collision detectCollisions(List<LevelObject> levelObjects, MovingObject object, Vector2D direction) {
+	private static Collision detectCollisions(List<LevelObject> levelObjects, MovingObject object, Vector2D direction) {
 		int radius = object.getCollisionRadius();
 
-		//Vector2D collisionPoint;
 		Vector2D wall = null;
 		double a = 1;
 		double tmpA;
