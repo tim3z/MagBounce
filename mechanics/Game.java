@@ -38,13 +38,16 @@ public class Game extends BasicGame {
 	Music sMusic;
 	Sound sDeath;
 	Sound sPlong;
-
-	private static final char CHANGE_POSITIVE = Keyboard.KEY_P;
-	private static final char CHANGE_NEGATIVE = Keyboard.KEY_M;
+        
+	private static final char KEY_POSITIVE = Keyboard.KEY_P;
+	private static final char KEY_NEGATIVE = Keyboard.KEY_M;
+	private static final char KEY_RESET = Keyboard.KEY_R;
+        
 	private static final Color BALL_POSITIVE = new Color(193, 0, 0, 150);
 	private static final Color BALL_NEGATIVE = new Color(0, 21, 142, 150);
         
         private Image backgroundImage;
+        
         private Image border2Round;
         private Image border1Round;
         private Image border4Round;
@@ -67,6 +70,9 @@ public class Game extends BasicGame {
 		return level;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.newdawn.slick.BasicGame#init(org.newdawn.slick.GameContainer)
+	 */
 	@Override
 	public void init(GameContainer container) throws SlickException {
             sMusic = new Music("media/R 22.wav");
@@ -131,9 +137,11 @@ public class Game extends BasicGame {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see org.newdawn.slick.Game#render(org.newdawn.slick.GameContainer, org.newdawn.slick.Graphics)
+	 */
 	@Override
 	public void render(GameContainer container, Graphics g) throws SlickException {
-
             backgroundImage.draw(0f, 0f);
             
             Image ballImage = ball.getImage();
@@ -194,16 +202,20 @@ public class Game extends BasicGame {
 	 * React to input
 	 */
 	private void handleInput(Input input) {
-		if (input.isKeyDown(CHANGE_POSITIVE)) {
-			if (input.isKeyDown(CHANGE_NEGATIVE)) {
+		if (input.isKeyDown(KEY_POSITIVE)) {
+			if (input.isKeyDown(KEY_NEGATIVE)) {
 				ball.setMagnetState(0);
 			} else {
 				ball.setMagnetState(1);
 			}
-		} else if (input.isKeyDown(CHANGE_NEGATIVE)) {
+		} else if (input.isKeyDown(KEY_NEGATIVE)) {
 			ball.setMagnetState(-1);
 		} else {
 			ball.setMagnetState(0);
+		}
+		
+		if (input.isKeyDown(KEY_RESET)) {
+			reset();
 		}
 	}
 	
