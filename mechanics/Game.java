@@ -83,7 +83,7 @@ public class Game extends BasicGame {
         
             this.handleInput(container.getInput());
 		
-            physics.Physics.move(level, ball, delta);
+            physics.Physics.move(level, ball, delta); // returns boolean for collision sound
             
             camera.setX(ball.getPosition().getX() - container.getWidth()/2);
             camera.setY(ball.getPosition().getY() - container.getHeight()/2);
@@ -120,19 +120,12 @@ public class Game extends BasicGame {
 	public void render(GameContainer container, Graphics g) throws SlickException {
 
 		if (this.ball.isPositive()) {
-			//g.setBackground(Color.red);
-                    ball.getImage().setColor(0, 255, 0, 0, 0);
-                    ball.getImage().setColor(1, 255, 0, 0, 0);
-//                    ball.getImage().setColor(2, 255, 0, 0, 0);
-//                    ball.getImage().setColor(3, 255, 0, 0, 0);
+                    g.setBackground(Color.red);
 		} else if (this.ball.isNegative()) {
-                    ball.getImage().setColor(1, 0, 0, 255, 0);
-			//g.setBackground(Color.blue);
+                    g.setBackground(Color.blue);
 		} else {
-                    ball.getImage().setColor(1, 0, 0, 0, 0);
+                    g.setBackground(Color.gray);
                 }
-
-                g.setBackground(Color.gray);
 
                 ball.getImage().draw((float) (ball.getPosition().getX() - camera.getX() - ball.getCollisionRadius()),
                                      (float) (container.getHeight() - ball.getPosition().getY() + camera.getY() - ball.getCollisionRadius()));

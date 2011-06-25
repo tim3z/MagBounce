@@ -17,7 +17,7 @@ public abstract class Physics {
 
     private static Vector2D gravity = new Vector2D(0, -0.001);
 
-    public static void move(Level level, Ball object, long time) {
+    public static boolean move(Level level, Ball object, long time) {
         Vector2D speedVector = object.getSpeed().add(gravity.multiply(time));
 
         int a = object.getMagnetState();
@@ -32,8 +32,10 @@ public abstract class Physics {
         Collision collision = detectCollisions(level, object, speedVector.multiply(time));
         if (collision != null) {
             collision.move(object, time);
+            return true;
         } else {
             object.move(speedVector, time);
+            return false;
         }
 
     }
