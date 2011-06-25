@@ -13,22 +13,28 @@ public class MovingObject {
 
     private Vector2D position;
     private Vector2D speed; // which this object had moving into the position it now has
+    private int collisionRadius;
+
+    public MovingObject() {
+        this(new Vector2D(0, 0), 1);
+    }
 
     /**
      * Create an instance
      * @param position
      */
-    public MovingObject(Vector2D position) {
+    public MovingObject(Vector2D position, int radius) {
         this.position = position;
+        this.collisionRadius = radius;
     }
 
     /**
      * Move this Object into the given direction
-     * @param direction
+     * @param speedVector
      */
-    public void move(Vector2D direction) {
-        setPosition(getPosition().add(direction));
-        setSpeed(direction);
+    public void move(Vector2D speedVector, long time) {
+        setPosition(getPosition().add(speedVector.multiply(time)));
+        setSpeed(speedVector);
     }
 
     /**
@@ -57,6 +63,13 @@ public class MovingObject {
      */
     public void setSpeed(Vector2D speed) {
         this.speed = speed;
+    }
+
+    /**
+     * @return the collisionRadius
+     */
+    public int getCollisionRadius() {
+        return collisionRadius;
     }
 
 }

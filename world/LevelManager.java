@@ -39,11 +39,13 @@ public final class LevelManager {
 		if (this.levels.length == 0) {
 			throw new IllegalStateException("No level files found.");
 		}
-		Arrays.sort(this.levels); // get levels in the right order
 		
+		Arrays.sort(files); // get levels in the right order
+
 		for (int i = 0; i < files.length; i++) {
 			this.levels[i] = new Level(files[i]);
 		}
+                
 	}
 	
 	/**
