@@ -46,7 +46,7 @@ public abstract class Physics {
 
         for (LevelObject levelObject : level.getObjects()) {
             Vector2D connection = levelObject.getMiddle().multiply(-1).add(position);
-            force.add(connection.normalize().multiply(levelObject.getStrength()).multiply(1/(Math.pow(connection.norm(), 2))));
+            force = force.add(connection.normalize().multiply(levelObject.getStrength()).multiply(1.0/(Math.pow(connection.norm(), 2))));
         }
 
         return force;
