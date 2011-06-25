@@ -76,7 +76,7 @@ public class Game extends BasicGame {
         
             this.handleInput(container.getInput());
 		
-            physics.Physics.move(level, ball, delta);
+            physics.Physics.move(level, ball, delta); // returns boolean for collision sound
             
             camera.setX(ball.getPosition().getX() - container.getWidth()/2);
             camera.setY(ball.getPosition().getY() - container.getHeight()/2);
