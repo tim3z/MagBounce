@@ -61,9 +61,11 @@ public class Game extends BasicGame {
 	private LevelManager    levelManager;
 	List<LevelObject>		destinations;
 	List<LevelObject>       objects;
-	private CollisionState	currentState;
 	private Vector2D        camera; // Nullpunkt: Halbe Containerhöhe, halbe Containerbreite
 
+	private int             currentLevel;
+	private CollisionState	currentState;
+	
 	public Game() {
 		super("Mosod");
 	}
@@ -90,16 +92,12 @@ public class Game extends BasicGame {
 		border4Round = new Image("media/border3.png");
 		borderNoRound = new Image("media/border2.png");
 		borderNot = new Image("media/border5.png");
+		
+		ball = new Ball(new Vector2D(0,0), 25);
 
 		levelManager = new LevelManager("data");
-		level = levelManager.getLevel(0);
-		destinations = new ArrayList<LevelObject>();
-		destinations.add(level.getDestination());
-		objects = level.getObjects();
-
-		ball = new Ball(level.getInitialBallPosition(), 25);
-		camera = ball.getPosition().deepCopy();
-		ball.setSpeed(level.getInitialBallSpeed());
+		currentLevel = 0;
+		switchToLevel(0);
 	}
 
 	/* (non-Javadoc)
@@ -116,13 +114,12 @@ public class Game extends BasicGame {
 			// Play sound on collision
 			sPlong.play(1f, 1f);
 		} else if (currentState == CollisionState.COLLISION_WITH_DESTINATION) {
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			if (currentLevel + 1 != levelManager.levelCount()) {
+				currentLevel = currentLevel + 1;
+				switchToLevel(currentLevel);
+			} else {
+				System.exit(0);
 			}
-			reset();
 			return;
 		}
 
@@ -229,6 +226,17 @@ public class Game extends BasicGame {
 
 	private void reset() {
 		ball.setPosition(level.getInitialBallPosition());
+		ball.setSpeed(level.getInitialBallSpeed());
+	}
+	
+	private void switchToLevel(int id) {
+		level = levelManager.getLevel(id);
+		destinations = new ArrayList<LevelObject>();
+		destinations.add(level.getDestination());
+		objects = level.getObjects();
+
+		ball.setPosition(level.getInitialBallPosition());
+		camera = ball.getPosition().deepCopy();
 		ball.setSpeed(level.getInitialBallSpeed());
 	}
 

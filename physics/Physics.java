@@ -94,7 +94,7 @@ public final class Physics {
 
 			tmpA = (llx - object.getPosition().getX()) / direction.getX();
 
-			if (tmpA >= 0 && tmpA < a) {
+			if (tmpA > 0 && tmpA < a) {
 				Vector2D tmpCollPoint = object.getPosition().add(direction.multiply(tmpA));
 				if (tmpCollPoint.getY() <= ury && tmpCollPoint.getY() >= lly) {
 					a = tmpA;
@@ -104,7 +104,7 @@ public final class Physics {
 
 			tmpA = (urx - object.getPosition().getX()) / direction.getX();
 
-			if (tmpA >= 0 && tmpA < a) {
+			if (tmpA > 0 && tmpA < a) {
 				Vector2D tmpCollPoint = object.getPosition().add(direction.multiply(tmpA));
 				if (tmpCollPoint.getY() <= ury && tmpCollPoint.getY() >= lly) {
 					a = tmpA;
@@ -114,7 +114,7 @@ public final class Physics {
 
 			tmpA = (lly - object.getPosition().getY()) / direction.getY();
 
-			if (tmpA >= 0 && tmpA < a) {
+			if (tmpA > 0 && tmpA < a) {
 				Vector2D tmpCollPoint = object.getPosition().add(direction.multiply(tmpA));
 				if (tmpCollPoint.getX() <= urx && tmpCollPoint.getX() >= llx) {
 					a = tmpA;
@@ -124,7 +124,7 @@ public final class Physics {
 
 			tmpA = (ury - object.getPosition().getY()) / direction.getY();
 
-			if (tmpA >= 0 && tmpA < a) {
+			if (tmpA > 0 && tmpA < a) {
 				Vector2D tmpCollPoint = object.getPosition().add(direction.multiply(tmpA));
 				if (tmpCollPoint.getX() <= urx && tmpCollPoint.getX() >= llx) {
 					a = tmpA;
