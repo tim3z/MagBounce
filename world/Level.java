@@ -11,14 +11,18 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import physics.Vector2D;
+
 /**
  * A game level containing several {@link LevelObject}s.
  */
 public class Level {
 	private List<LevelObject> levelObjects;
 	
-	private long xSize;
-	private long ySize;
+	private long width;
+	private long height;
+	private Vector2D initialBallPosition;
+	private Vector2D initialBallSpeed;
 	private LevelObject destination;
 	
 	public Level(File levelFile) {
@@ -29,6 +33,7 @@ public class Level {
 		BufferedReader fileReader;
 		String line;
 		String[] levelSizeInfo;
+		String[] startInfo;
 		String[] destinationInfo;
 		String[] objectInfo;
 		
@@ -49,10 +54,25 @@ public class Level {
 				line = fileReader.readLine();
 			}
 			levelSizeInfo = line.split(",");
-			this.xSize = Long.parseLong(levelSizeInfo[0]);
-			this.ySize = Long.parseLong(levelSizeInfo[1]);
+			this.width = Long.parseLong(levelSizeInfo[0]);
+			this.height = Long.parseLong(levelSizeInfo[1]);
 			
-			// second non-comment line contains the destination (llx,lly,urx,ury)
+			// second non-comment line contains initial position and speed (x,y,vx,vy)
+			line = fileReader.readLine();
+			while (line.charAt(0) == '#') {
+				line = fileReader.readLine();
+			}
+			startInfo = line.split(",");
+			this.initialBallPosition = new Vector2D(
+					Integer.parseInt(startInfo[0]),
+					Integer.parseInt(startInfo[1])
+				);
+			this.initialBallSpeed = new Vector2D(
+					Double.parseDouble(startInfo[2]),
+					Double.parseDouble(startInfo[3])
+				);
+			
+			// third non-comment line contains the destination (llx,lly,urx,ury)
 			line = fileReader.readLine();
 			while (line.charAt(0) == '#') {
 				line = fileReader.readLine();
@@ -66,6 +86,7 @@ public class Level {
 					// destination is non-magnetic
 				);
 			
+			// subsequent lines contain object info (llx,lly,urx,ury[,magnetism])
 			line = fileReader.readLine();
 			while (line != null) {
 				if (line.charAt(0) == '#') {
@@ -73,7 +94,6 @@ public class Level {
 					continue;
 				}
 				
-				// subsequent lines contain object info (llx,lly,urx,ury[,magnetism])
 				objectInfo = line.split(",");
 				if (objectInfo.length == 4) {
 					this.levelObjects.add(new LevelObject(
@@ -108,14 +128,28 @@ public class Level {
 	 * @return Width of the level
 	 */
 	public long getWidth() {
-		return this.xSize;
+		return this.width;
 	}
 	
 	/**
 	 * @return Height of the level
 	 */
 	public long getHeight() {
-		return this.ySize;
+		return this.height;
+	}
+	
+	/**
+	 * @return Initial ball position for this level
+	 */
+	public Vector2D getInitialBallPosition() {
+		return this.initialBallPosition;
+	}
+	
+	/**
+	 * @return Initial ball speed for this level
+	 */
+	public Vector2D getInitialBallSpeed() {
+		return this.initialBallSpeed;
 	}
 	
 	/**

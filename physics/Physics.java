@@ -54,7 +54,7 @@ public final class Physics {
 
 	}
 
-	private static Vector2D getAccelerationAt(List<LevelObject> levelObjects, Vector2D position) {
+	public static Vector2D getAccelerationAt(List<LevelObject> levelObjects, Vector2D position) {
 		Vector2D force = new Vector2D(0, 0);
 
 		for (LevelObject levelObject : levelObjects) {
