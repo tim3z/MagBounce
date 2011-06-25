@@ -46,6 +46,8 @@ public class Game extends BasicGame {
 	private static final Color BALL_POSITIVE = new Color(193, 0, 0, 150);
 	private static final Color BALL_NEGATIVE = new Color(0, 21, 142, 150);
         
+        private Image ballImage;
+        
         private Image backgroundImage;
         
         private Image border2Round;
@@ -81,6 +83,8 @@ public class Game extends BasicGame {
             sDeath = new Sound("media/death.wav");
             sPlong = new Sound("media/plong.wav");
             
+            ballImage = new Image("media/ball6.png");
+            
             backgroundImage = new Image("media/metal2.png");
             border2Round = new Image("media/border4-2.png");
             border1Round = new Image("media/border1.png");
@@ -92,7 +96,7 @@ public class Game extends BasicGame {
             camera = ball.getPosition().deepCopy();
             ball.setSpeed(new Vector2D(0.2, 0.0));
             levelManager = new LevelManager("data");
-            level = levelManager.getLevel(4);
+            level = levelManager.getLevel(2);
             destinations = new ArrayList<LevelObject>();
             destinations.add(level.getDestination());
             objects = level.getObjects();
@@ -144,8 +148,6 @@ public class Game extends BasicGame {
 	public void render(GameContainer container, Graphics g) throws SlickException {
             backgroundImage.draw(0f, 0f);
             
-            Image ballImage = ball.getImage();
-
             ballImage.draw((float) (ball.getPosition().getX() - camera.getX() - ball.getCollisionRadius()), 
                     (float) (container.getHeight() - ball.getPosition().getY() + camera.getY() - ball.getCollisionRadius()));
 
@@ -220,7 +222,7 @@ public class Game extends BasicGame {
 	}
 	
 	private void reset() {
-		ball.setPosition(new Vector2D(100.0, 700.0));
+		ball.setPosition(new Vector2D(100.0, 300.0));
 		ball.setSpeed(new Vector2D(0.2, 0.0));
 	}
 
