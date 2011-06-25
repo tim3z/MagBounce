@@ -88,11 +88,11 @@ public class Game extends BasicGame {
             borderNoRound = new Image("media/border2.png");
             borderNot = new Image("media/border5.png");
 
-            ball = new Ball(new Vector2D(100.0, 700.0), 25);
+            ball = new Ball(new Vector2D(100.0, 300.0), 25);
             camera = ball.getPosition().deepCopy();
             ball.setSpeed(new Vector2D(0.2, 0.0));
             levelManager = new LevelManager("data");
-            level = levelManager.getLevel(0);
+            level = levelManager.getLevel(4);
             destinations = new ArrayList<LevelObject>();
             destinations.add(level.getDestination());
             objects = level.getObjects();
