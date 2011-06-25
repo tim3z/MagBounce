@@ -76,7 +76,7 @@ public class Game extends BasicGame {
             camera = ball.getPosition().multiply(1); // deep copy :-D
             ball.setSpeed(new Vector2D(0.2, 0.0));
             levelManager = new LevelManager("data");
-            level = levelManager.getLevel(5);
+            level = levelManager.getLevel(8);
             objects = level.getObjects();
 	}
 
