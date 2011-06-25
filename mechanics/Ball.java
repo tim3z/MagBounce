@@ -20,7 +20,7 @@ public class Ball extends MovingObject {
         public Ball(Vector2D pos, int radius) {
             super(pos, radius);
             try {
-                image = new Image("media/ball3.png");
+                image = new Image("media/ball6.png");
             } catch (SlickException e) {
                 throw new RuntimeException("Corrupted Game Data");
             }

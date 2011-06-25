@@ -93,6 +93,17 @@ public class Game extends BasicGame {
             if (camera.getY() > level.getYSize() - container.getHeight()) {
                 camera.setY(level.getYSize() - container.getHeight());
             }
+            
+            if (ball.getMagnetState() > 0) {
+                sMusic.stop();
+                sMusic.loop(1f, 1f);
+            } else if (ball.getMagnetState() < 0) {
+                sMusic.stop();
+                sMusic.loop(1f, 0f);
+            } else {
+                sMusic.stop();
+                sMusic.loop(1f, 0.5f);
+            }
 	}
 
 	@Override
