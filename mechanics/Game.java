@@ -42,7 +42,7 @@ public class Game extends BasicGame {
 	private Level           level;
 	private LevelManager    levelManager;
 	List<LevelObject>       objects;
-	private Vector2D        camera;
+	private Vector2D        camera; // Nullpunkt: Halbe Containerhöhe, halbe Containerbreite
 
 	public Game() {
 		super("Mosod");
@@ -65,7 +65,7 @@ public class Game extends BasicGame {
 	public void init(GameContainer container) throws SlickException {
 
 		sMusic.loop(1f, 0.25f);
-		ball = new Ball(new Vector2D(100.0, 500.0), 30);
+		ball = new Ball(new Vector2D(100.0, 700.0), 25);
 		camera = ball.getPosition().deepCopy();
 		ball.setSpeed(new Vector2D(0.2, 0.0));
 		levelManager = new LevelManager("data");
@@ -80,8 +80,8 @@ public class Game extends BasicGame {
 
 		//Vector2D oldPos = ball.getPosition().deepCopy();
 
-		// returns boolean for collision sound
-		if (physics.Physics.move(level, ball, delta)) {
+		if (physics.Physics.move(level.getObjects(), ball, delta)) {
+			// Play sound on collision
 			sPlong.play(1f, 1f);
 		}
 
@@ -95,14 +95,14 @@ public class Game extends BasicGame {
 		if (camera.getX() < 0) {
 			camera.setX(0);
 		}
-		if (camera.getX() > level.getXSize() - container.getWidth()) {
-			camera.setX(level.getXSize() - container.getWidth());
+		if (camera.getX() > level.getWidth() - container.getWidth()) {
+			camera.setX(level.getWidth() - container.getWidth());
 		}
 		if (camera.getY() < 0) {
 			camera.setY(0);
 		}
-		if (camera.getY() > level.getYSize() - container.getHeight()) {
-			camera.setY(level.getYSize() - container.getHeight());
+		if (camera.getY() > level.getHeight() - container.getHeight()) {
+			camera.setY(level.getHeight() - container.getHeight());
 		}
 	}
 
@@ -122,10 +122,12 @@ public class Game extends BasicGame {
                     g.setColor(new Color(0, 0, 0, 0)); 
                 }
                 
-                Ellipse ballColorOverlay = new Ellipse((float) (ball.getPosition().getX() - camera.getX() - ball.getCollisionRadius()) + (ballImage.getHeight() / 2),
-                                     (float) (container.getHeight() - ball.getPosition().getY() + camera.getY() - ball.getCollisionRadius() + (ballImage.getWidth() / 2)),
-                        ballImage.getHeight() / 2, 
-                        ballImage.getWidth() / 2);
+                Ellipse ballColorOverlay = new Ellipse(
+                		(float) (ball.getPosition().getX() - camera.getX() - ball.getCollisionRadius()) + (ballImage.getHeight() / 2),
+                        (float) (container.getHeight() - ball.getPosition().getY() + camera.getY() - ball.getCollisionRadius() + (ballImage.getWidth() / 2)),
+                        ball.getCollisionRadius(), 
+                        ball.getCollisionRadius()
+                    );
                 
                 g.fill(ballColorOverlay);
 
