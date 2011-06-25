@@ -29,137 +29,113 @@ import world.LevelObject;
  */
 public class Game extends BasicGame {
 
-    Music sMusic;
-    /*Music sMusicHigh;
+	Music sMusic;
+	/*Music sMusicHigh;
     Music sMusicLow;
     Music sMusicNormal;*/
-    Sound sDeath;
-    Sound sPlong;
-    
-    private static final char CHANGE_POSITIVE = Keyboard.KEY_P;
-    private static final char CHANGE_NEGATIVE = Keyboard.KEY_M;
-    
-    private Ball            ball;
-    private Level           level;
-    private LevelManager    levelManager;
-    List<LevelObject>       objects;
-    private Vector2D        camera;
-   
-    public Game() {
-        super("Mosod");
-        
-        try {
-            sMusic = new Music("media/R 22.wav");
-            /*sMusicHigh = sMusic;
-            sMusicLow = sMusic;
-            sMusicNormal = sMusic;*/
-            sDeath = new Sound("media/death.wav");
-            sPlong = new Sound("media/plong.wav");
-        } catch (SlickException e) {
-            e.printStackTrace();
-        }
-        
-    }
+	Sound sDeath;
+	Sound sPlong;
 
-    public Level getLevel() {
-        return level;
-    }
+	private static final char CHANGE_POSITIVE = Keyboard.KEY_P;
+	private static final char CHANGE_NEGATIVE = Keyboard.KEY_M;
+
+	private Ball            ball;
+	private Level           level;
+	private LevelManager    levelManager;
+	List<LevelObject>       objects;
+	private Vector2D        camera;
+
+	public Game() {
+		super("Mosod");
+
+		try {
+			sMusic = new Music("media/R 22.wav");
+			sDeath = new Sound("media/death.wav");
+			sPlong = new Sound("media/plong.wav");
+		} catch (SlickException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	public Level getLevel() {
+		return level;
+	}
 
 	@Override
 	public void init(GameContainer container) throws SlickException {
-            
-            sMusic.loop(1f, 0.25f);
-            /*sMusicHigh.loop(1.2f, 1f);
-            sMusicLow.loop(0.8f, 1f);
-            sMusicNormal.loop(1f, 1f);*/
-            ball = new Ball(new Vector2D(100.0, 500.0), 30);
-            camera = ball.getPosition().deepCopy();
-            ball.setSpeed(new Vector2D(0.2, 0.0));
-            levelManager = new LevelManager("data");
-            level = levelManager.getLevel(6);
-            objects = level.getObjects();
+
+		sMusic.loop(1f, 0.25f);
+		ball = new Ball(new Vector2D(100.0, 500.0), 30);
+		camera = ball.getPosition().deepCopy();
+		ball.setSpeed(new Vector2D(0.2, 0.0));
+		levelManager = new LevelManager("data");
+		level = levelManager.getLevel(6);
+		objects = level.getObjects();
 	}
 
 	@Override
 	public void update(GameContainer container, int delta) throws SlickException {
-        
-            this.handleInput(container.getInput());
 
-//            Vector2D oldPos = ball.getPosition().deepCopy();
+		this.handleInput(container.getInput());
 
-            // returns boolean for collision sound
-            if (physics.Physics.move(level, ball, delta)) {
-                sPlong.play(1f, 1f);
-            }
+		//Vector2D oldPos = ball.getPosition().deepCopy();
 
-//            Vector2D camCon = camera.multiply(-1).add(new Vector2D(container.getWidth()/(-2), container.getHeight()/(-2))).add(ball.getPosition());
-//            Vector2D move = camera.add(oldPos.multiply(-1).add(ball.getPosition()));
-//
-//            if (camCon.norm() > Math.min(container.getWidth(), container.getHeight()) / 3
-//                && camCon.add(move).norm() > camCon.norm()) {
-//                camera = camera.add(move);
-//            }
-            
-            camera.setX(ball.getPosition().getX() - container.getWidth()/2);
-            camera.setY(ball.getPosition().getY() - container.getHeight()/2);
+		// returns boolean for collision sound
+		if (physics.Physics.move(level, ball, delta)) {
+			sPlong.play(1f, 1f);
+		}
 
-            if (camera.getX() < 0) {
-                camera.setX(0);
-            }
-            if (camera.getX() > level.getXSize() - container.getWidth()) {
-                camera.setX(level.getXSize() - container.getWidth());
-            }
-            if (camera.getY() < 0) {
-                camera.setY(0);
-            }
-            if (camera.getY() > level.getYSize() - container.getHeight()) {
-                camera.setY(level.getYSize() - container.getHeight());
-            }
-            
-            /*if (ball.getMagnetState() > 0) {
-                sMusicHigh.setVolume(0f);
-                sMusicLow.setVolume(1f);
-                sMusicNormal.setVolume(0f);                
-            } else if (ball.getMagnetState() < 0) {
-                sMusicHigh.setVolume(1f);
-                sMusicLow.setVolume(0f);
-                sMusicNormal.setVolume(0f);                
-            } else {
-                sMusicHigh.setVolume(0f);
-                sMusicLow.setVolume(0f);
-                sMusicNormal.setVolume(1f);
-            }*/
+		if (ball.getPosition().getX() - camera.getX() > container.getWidth() * 2 / 3) {
+			camera.setX(ball.getPosition().getX() - container.getWidth() * 2 / 3);
+		} else if (ball.getPosition().getX() - camera.getX() < container.getWidth() / 3) {
+			camera.setX(ball.getPosition().getX() - container.getWidth() / 3);
+		}
+		camera.setY(ball.getPosition().getY() - container.getHeight() / 2);
+
+		if (camera.getX() < 0) {
+			camera.setX(0);
+		}
+		if (camera.getX() > level.getXSize() - container.getWidth()) {
+			camera.setX(level.getXSize() - container.getWidth());
+		}
+		if (camera.getY() < 0) {
+			camera.setY(0);
+		}
+		if (camera.getY() > level.getYSize() - container.getHeight()) {
+			camera.setY(level.getYSize() - container.getHeight());
+		}
 	}
 
 	@Override
 	public void render(GameContainer container, Graphics g) throws SlickException {
 
 		if (this.ball.isPositive()) {
-                    g.setBackground(Color.red);
+			g.setBackground(Color.red);
 		} else if (this.ball.isNegative()) {
-                    g.setBackground(Color.blue);
+			g.setBackground(Color.blue);
 		} else {
-                    g.setBackground(Color.gray);
-                }
+			g.setBackground(Color.gray);
+		}
 
-                ball.getImage().draw((float) (ball.getPosition().getX() - camera.getX() - ball.getCollisionRadius()),
-                                     (float) (container.getHeight() - ball.getPosition().getY() + camera.getY() - ball.getCollisionRadius()));
+		ball.getImage().draw((float) (ball.getPosition().getX() - camera.getX() - ball.getCollisionRadius()),
+				(float) (container.getHeight() - ball.getPosition().getY() + camera.getY() - ball.getCollisionRadius()));
 
-                for (LevelObject object : objects) {
-                    g.setColor(Color.darkGray);
-                    if (object.isPositive()) {
-                        g.setColor(Color.red);
-                    } else if (object.isNegative()) {
-                        g.setColor(Color.blue);
-                    }
-                    Rectangle rect = new Rectangle((float) (object.getLlx() - camera.getX()),
-                                                   (float) (container.getHeight() - object.getLly() + camera.getY()),
-                                                   (float) object.getXSize(),
-                                                   -1 * (float) object.getYSize());
-                    g.fill(rect);
-                }
+		for (LevelObject object : objects) {
+			g.setColor(Color.darkGray);
+			if (object.isPositive()) {
+				g.setColor(Color.red);
+			} else if (object.isNegative()) {
+				g.setColor(Color.blue);
+			}
+			Rectangle rect = new Rectangle((float) (object.getLlx() - camera.getX()),
+					(float) (container.getHeight() - object.getLly() + camera.getY()),
+					(float) object.getXSize(),
+					-1 * (float) object.getYSize());
+			g.fill(rect);
+		}
 	}
-	
+
 	private void handleInput(Input input) {
 		if (input.isKeyDown(CHANGE_POSITIVE)) {
 			if (input.isKeyDown(CHANGE_NEGATIVE)) {
@@ -173,7 +149,7 @@ public class Game extends BasicGame {
 			ball.setMagnetState(0);
 		}
 	}
-	
+
 	public static void main(String[] args) throws SlickException {
 		AppGameContainer app = new AppGameContainer(new Game());
 		app.setDisplayMode(800, 600, false);

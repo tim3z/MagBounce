@@ -17,7 +17,6 @@ public class MovingObject {
 
     public MovingObject() {
         this(new Vector2D(0, 0), 1);
-        //throw new Error("DO FUCKING NOT USE THIS");
     }
 
     /**
