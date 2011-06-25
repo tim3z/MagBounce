@@ -50,11 +50,23 @@ public class Game extends BasicGame {
         
         private Image backgroundImage;
         
-        private Image border2Round;
-        private Image border1Round;
+        private Image border2TRound;
+        private Image border2BRound;
+        private Image border2LRound;
+        private Image border2RRound;
+        private Image border1TRRound;
+        private Image border1TLRound;
+        private Image border1BRRound;
+        private Image border1BLRound;
         private Image border4Round;
-        private Image borderNoRound;
-        private Image borderNot;
+        private Image borderTNoRound;
+        private Image borderBNoRound;
+        private Image borderLNoRound;
+        private Image borderRNoRound;
+        private Image borderNotT;
+        private Image borderNotB;
+        private Image borderNotL;
+        private Image borderNotR;
 
 	private Ball            ball;
 	private Level           level;
@@ -86,17 +98,29 @@ public class Game extends BasicGame {
             ballImage = new Image("media/ball6.png");
             
             backgroundImage = new Image("media/metal2.png");
-            border2Round = new Image("media/border4-2.png");
-            border1Round = new Image("media/border1.png");
-            border4Round = new Image("media/border3.png");
-            borderNoRound = new Image("media/border2.png");
-            borderNot = new Image("media/border5.png");
+            border2TRound = new Image("media/border2T.png");
+            border2BRound = new Image("media/border2B.png");
+            border2LRound = new Image("media/border2L.png");
+            border2RRound = new Image("media/border2R.png");
+            border1TRRound = new Image("media/border1TR.png");
+            border1TLRound = new Image("media/border1TL.png");
+            border1BRRound = new Image("media/border1BR.png");
+            border1BLRound = new Image("media/border1BL.png");
+            border4Round = new Image("media/border4.png");
+            borderTNoRound = new Image("media/borderNoT.png");
+            borderBNoRound = new Image("media/borderNoB.png");
+            borderLNoRound = new Image("media/borderNoL.png");
+            borderRNoRound = new Image("media/borderNoR.png");
+            borderNotT = new Image("media/borderNotT.png");
+            borderNotB = new Image("media/borderNotB.png");
+            borderNotL = new Image("media/borderNotL.png");
+            borderNotR = new Image("media/borderNotR.png");
 
             ball = new Ball(new Vector2D(100.0, 300.0), 25);
             camera = ball.getPosition().deepCopy();
             ball.setSpeed(new Vector2D(0.2, 0.0));
             levelManager = new LevelManager("data");
-            level = levelManager.getLevel(2);
+            level = levelManager.getLevel(3);
             destinations = new ArrayList<LevelObject>();
             destinations.add(level.getDestination());
             objects = level.getObjects();
@@ -169,24 +193,11 @@ public class Game extends BasicGame {
             g.fill(ballColorOverlay);
 
             for (LevelObject object : objects) {
-                g.setColor(Color.darkGray);
+                g.setColor(new Color(0, 0, 0, 0));
                 if (object.isPositive()) {
-                    g.setColor(new Color(193, 0, 0, 200));
+                    g.setColor(new Color(193, 0, 0, 127));
                 } else if (object.isNegative()) {
-                    g.setColor(new Color(0, 21, 142, 200));
-                }
-                
-                if (object.getXSize() <= 50 && object.getYSize() <= 50) {
-                    border4Round.draw(
-                            (float) (object.getLowerLeft().getX() - camera.getX()),
-                            (float) (container.getHeight() - object.getLowerLeft().getY() + camera.getY()) - border1Round.getHeight()
-                    );
-                } else if (object.getXSize() <= 50 && object.getYSize() >= 50) {
-                    
-                } else if (object.getXSize() >= 50 && object.getYSize() <= 50) {
-                    
-                } else if (object.getXSize() >= 50 && object.getYSize() >= 50) {
-                    
+                    g.setColor(new Color(0, 21, 142, 127));
                 }
                 
                 Rectangle rect = new Rectangle(
@@ -195,6 +206,29 @@ public class Game extends BasicGame {
                         (float) object.getXSize(),
                         -1 * (float) object.getYSize()
                 );
+                
+                /*
+                 * In case that both x and y are bigger 50 the first if is used which btw looks much prettier than the second.
+                 */
+                if (object.getXSize() > 50) {
+                    for (int i = 0; i * borderNotT.getHeight() < object.getYSize(); i++) {
+                        for (int j = 0; j * borderNotT.getWidth() < object.getXSize(); j++) {
+                            borderNotT.draw(
+                                (float) (object.getUpperLeft().getX() - camera.getX() + borderNotT.getWidth() * j),
+                                (float) (container.getHeight() - object.getLowerLeft().getY() + camera.getY() - borderNotT.getHeight() * (i + 1))
+                            );
+                        }
+                    }
+                } else if (object.getYSize() > 50) {
+                    for (int i = 0; i * borderNotR.getHeight() < object.getYSize(); i++) {
+                        for (int j = 0; j * borderNotR.getWidth() < object.getXSize(); j++) {
+                            borderNotR.draw(
+                                (float) (object.getUpperLeft().getX() - camera.getX() + borderNotR.getWidth() * j),
+                                (float) (container.getHeight() - object.getLowerLeft().getY() + camera.getY() - borderNotR.getHeight() * (i + 1))
+                            );
+                        }
+                    }
+                }
                 
                 g.fill(rect);
             }
