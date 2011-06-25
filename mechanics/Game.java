@@ -38,11 +38,11 @@ public class Game extends BasicGame {
 	Music sMusic;
 	Sound sDeath;
 	Sound sPlong;
-        
+
 	private static final char KEY_POSITIVE = Keyboard.KEY_P;
 	private static final char KEY_NEGATIVE = Keyboard.KEY_M;
 	private static final char KEY_RESET = Keyboard.KEY_R;
-        
+
 	private static final Color BALL_POSITIVE = new Color(193, 0, 0, 150);
 	private static final Color BALL_NEGATIVE = new Color(0, 21, 142, 150);
         
@@ -73,9 +73,11 @@ public class Game extends BasicGame {
 	private LevelManager    levelManager;
 	List<LevelObject>		destinations;
 	List<LevelObject>       objects;
-	private CollisionState	currentState;
 	private Vector2D        camera; // Nullpunkt: Halbe Containerhöhe, halbe Containerbreite
 
+	private int             currentLevel;
+	private CollisionState	currentState;
+	
 	public Game() {
 		super("Mosod");
 	}
@@ -115,15 +117,12 @@ public class Game extends BasicGame {
             borderNotB = new Image("media/borderNotB.png");
             borderNotL = new Image("media/borderNotL.png");
             borderNotR = new Image("media/borderNotR.png");
+		
+		ball = new Ball(new Vector2D(0,0), 25);
 
-            ball = new Ball(new Vector2D(100.0, 300.0), 25);
-            camera = ball.getPosition().deepCopy();
-            ball.setSpeed(new Vector2D(0.2, 0.0));
-            levelManager = new LevelManager("data");
-            level = levelManager.getLevel(3);
-            destinations = new ArrayList<LevelObject>();
-            destinations.add(level.getDestination());
-            objects = level.getObjects();
+		levelManager = new LevelManager("data");
+		currentLevel = 0;
+		switchToLevel(0);
 	}
 
 	/* (non-Javadoc)
@@ -133,14 +132,19 @@ public class Game extends BasicGame {
 	public void update(GameContainer container, int delta) throws SlickException {
 
 		this.handleInput(container.getInput());
-		
+
 		currentState = Physics.move(objects, destinations, ball, delta);
 
 		if (currentState == CollisionState.COLLISION) {
 			// Play sound on collision
 			sPlong.play(1f, 1f);
 		} else if (currentState == CollisionState.COLLISION_WITH_DESTINATION) {
-			reset();
+			if (currentLevel + 1 != levelManager.levelCount()) {
+				currentLevel = currentLevel + 1;
+				switchToLevel(currentLevel);
+			} else {
+				System.exit(0);
+			}
 			return;
 		}
 
@@ -249,15 +253,26 @@ public class Game extends BasicGame {
 		} else {
 			ball.setMagnetState(0);
 		}
-		
+
 		if (input.isKeyDown(KEY_RESET)) {
 			reset();
 		}
 	}
-	
+
 	private void reset() {
-		ball.setPosition(new Vector2D(100.0, 300.0));
-		ball.setSpeed(new Vector2D(0.2, 0.0));
+		ball.setPosition(level.getInitialBallPosition());
+		ball.setSpeed(level.getInitialBallSpeed());
+	}
+	
+	private void switchToLevel(int id) {
+		level = levelManager.getLevel(id);
+		destinations = new ArrayList<LevelObject>();
+		destinations.add(level.getDestination());
+		objects = level.getObjects();
+
+		ball.setPosition(level.getInitialBallPosition());
+		camera = ball.getPosition().deepCopy();
+		ball.setSpeed(level.getInitialBallSpeed());
 	}
 
 	public static void main(String[] args) throws SlickException {
