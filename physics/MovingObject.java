@@ -31,11 +31,11 @@ public class MovingObject {
 
     /**
      * Move this Object into the given direction
-     * @param direction
+     * @param speedVector
      */
-    public void move(Vector2D direction, long time) {
-        setPosition(getPosition().add(direction));
-        setSpeed(direction.multiply(1.0/((double) time)));
+    public void move(Vector2D speedVector, long time) {
+        setPosition(getPosition().add(speedVector.multiply(time)));
+        setSpeed(speedVector);
     }
 
     /**
