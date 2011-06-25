@@ -11,10 +11,12 @@ import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.Sound;
+import org.newdawn.slick.geom.Ellipse;
 import org.newdawn.slick.geom.Rectangle;
 
 import physics.Vector2D;
@@ -44,6 +46,8 @@ public class Game extends BasicGame {
     private LevelManager    levelManager;
     List<LevelObject>       objects;
     private Vector2D        camera;
+    private static final Color BACKGROUND_POSITIVE = new Color(163, 78, 76);
+    private static final Color BACKGROUND_NEGATIVE = new Color(98, 106, 173);           
    
     public Game() {
         super("Mosod");
@@ -76,7 +80,7 @@ public class Game extends BasicGame {
             camera = ball.getPosition().deepCopy();
             ball.setSpeed(new Vector2D(0.2, 0.0));
             levelManager = new LevelManager("data");
-            level = levelManager.getLevel(6);
+            level = levelManager.getLevel(7);
             objects = level.getObjects();
 	}
 
@@ -115,42 +119,37 @@ public class Game extends BasicGame {
             if (camera.getY() > level.getYSize() - container.getHeight()) {
                 camera.setY(level.getYSize() - container.getHeight());
             }
-            
-            /*if (ball.getMagnetState() > 0) {
-                sMusicHigh.setVolume(0f);
-                sMusicLow.setVolume(1f);
-                sMusicNormal.setVolume(0f);                
-            } else if (ball.getMagnetState() < 0) {
-                sMusicHigh.setVolume(1f);
-                sMusicLow.setVolume(0f);
-                sMusicNormal.setVolume(0f);                
-            } else {
-                sMusicHigh.setVolume(0f);
-                sMusicLow.setVolume(0f);
-                sMusicNormal.setVolume(1f);
-            }*/
 	}
 
 	@Override
 	public void render(GameContainer container, Graphics g) throws SlickException {
 
-		if (this.ball.isPositive()) {
-                    g.setBackground(Color.red);
-		} else if (this.ball.isNegative()) {
-                    g.setBackground(Color.blue);
-		} else {
-                    g.setBackground(Color.gray);
+                Image ballImage = ball.getImage();
+                
+                ballImage.draw((float) (ball.getPosition().getX() - camera.getX() - ball.getCollisionRadius()), 
+                        (float) (container.getHeight() - ball.getPosition().getY() + camera.getY() - ball.getCollisionRadius()));
+                
+                if (ball.getMagnetState() > 0) {
+                    g.setColor(new Color(193, 0, 0, 150));             
+                } else if (ball.getMagnetState() < 0) {
+                        g.setColor(new Color(0, 21, 142, 150));
+                } else {
+                    g.setColor(new Color(0, 0, 0, 0)); 
                 }
-
-                ball.getImage().draw((float) (ball.getPosition().getX() - camera.getX() - ball.getCollisionRadius()),
-                                     (float) (container.getHeight() - ball.getPosition().getY() + camera.getY() - ball.getCollisionRadius()));
+                
+                Ellipse ballColorOverlay = new Ellipse((float) (ball.getPosition().getX() - camera.getX() - ball.getCollisionRadius()) + (ballImage.getHeight() / 2),
+                                     (float) (container.getHeight() - ball.getPosition().getY() + camera.getY() - ball.getCollisionRadius() + (ballImage.getWidth() / 2)),
+                        ballImage.getHeight() / 2, 
+                        ballImage.getWidth() / 2);
+                
+                g.fill(ballColorOverlay);
 
                 for (LevelObject object : objects) {
                     g.setColor(Color.darkGray);
                     if (object.isPositive()) {
-                        g.setColor(Color.red);
+                        g.setColor(new Color(193, 0, 0, 200));
                     } else if (object.isNegative()) {
-                        g.setColor(Color.blue);
+                        g.setColor(new Color(0, 21, 142, 200));
                     }
                     Rectangle rect = new Rectangle((float) (object.getLlx() - camera.getX()),
                                                    (float) (container.getHeight() - object.getLly() + camera.getY()),
