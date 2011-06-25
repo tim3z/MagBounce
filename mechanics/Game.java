@@ -32,6 +32,7 @@ import world.LevelObject;
  *
  * @author S.D.Eagle
  * @author Guybrush
+ * @author Jonathan
  */
 public class Game extends BasicGame {
 
@@ -49,6 +50,8 @@ public class Game extends BasicGame {
         private Image ballImage;
         
         private Image backgroundImage;
+        
+        private Image destinationImage;
         
         //private Image border2TRound;
         //private Image border2BRound;
@@ -71,7 +74,7 @@ public class Game extends BasicGame {
 	private Ball            ball;
 	private Level           level;
 	private LevelManager    levelManager;
-	List<LevelObject>		destinations;
+	List<LevelObject>       destinations;
 	List<LevelObject>       objects;
 	private Vector2D        camera; // Nullpunkt: Halbe Containerhöhe, halbe Containerbreite
 
@@ -100,6 +103,9 @@ public class Game extends BasicGame {
             ballImage = new Image("media/ball6.png");
             
             backgroundImage = new Image("media/metal2.png");
+            
+            destinationImage = new Image("media/ziellatte1 - 2.png");
+            
             //border2TRound = new Image("media/border2T.png");
             //border2BRound = new Image("media/border2B.png");
             //border2LRound = new Image("media/border2L.png");
@@ -135,6 +141,8 @@ public class Game extends BasicGame {
 
 		currentState = Physics.move(objects, destinations, ball, delta);
 
+                Physics.getAccelerationAt(objects, ball.getPosition());
+                
 		if (currentState == CollisionState.COLLISION) {
 			// Play sound on collision
 			sPlong.play(1f, 1f);
@@ -195,6 +203,17 @@ public class Game extends BasicGame {
             );
 
             g.fill(ballColorOverlay);
+            
+            for (LevelObject destination : destinations) {
+                for (int i = 0; i * destinationImage.getHeight() < destination.getYSize(); i++) {
+                    for (int j = 0; j * destinationImage.getWidth() < destination.getXSize(); j++) {
+                        destinationImage.draw(
+                            (float) (destination.getUpperLeft().getX() - camera.getX() + destinationImage.getWidth() * j),
+                            (float) (container.getHeight() - destination.getLowerLeft().getY() + camera.getY() - destinationImage.getHeight() * (i + 1))
+                        );
+                    }
+                }
+            }
 
             for (LevelObject object : objects) {
                 g.setColor(new Color(0, 0, 0, 0));
