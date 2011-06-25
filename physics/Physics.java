@@ -24,7 +24,7 @@ public abstract class Physics {
         if (a != 0) {
             Vector2D magnetism = getAccelerationAt(level, object.getPosition()).multiply(time);
             if (a < 0) {
-                magnetism.multiply(-1);
+                magnetism = magnetism.multiply(-1);
             }
             speedVector = speedVector.add(magnetism);
         }

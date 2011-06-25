@@ -46,11 +46,11 @@ public class Game extends BasicGame {
 
 	@Override
 	public void init(GameContainer container) throws SlickException {
-		ball = new Ball(new Vector2D(400.0, 500.0), 30);
-                camera = ball.getPosition().multiply(1); // :-D
-		ball.setSpeed(new Vector2D(0.5, 0.0));
+		ball = new Ball(new Vector2D(100.0, 200.0), 30);
+                camera = ball.getPosition().multiply(1); // deep copy :-D
+		ball.setSpeed(new Vector2D(0.2, 0.0));
                 levelManager = new LevelManager("data");
-                level = levelManager.getLevel(6);
+                level = levelManager.getLevel(5);
                 objects = level.getObjects();
 	}
 
@@ -82,12 +82,19 @@ public class Game extends BasicGame {
 	public void render(GameContainer container, Graphics g) throws SlickException {
 
 		if (this.ball.isPositive()) {
-			g.setBackground(Color.red);
+			//g.setBackground(Color.red);
+                    ball.getImage().setColor(0, 255, 0, 0, 0);
+                    ball.getImage().setColor(1, 255, 0, 0, 0);
+//                    ball.getImage().setColor(2, 255, 0, 0, 0);
+//                    ball.getImage().setColor(3, 255, 0, 0, 0);
 		} else if (this.ball.isNegative()) {
-			g.setBackground(Color.blue);
+                    ball.getImage().setColor(1, 0, 0, 255, 0);
+			//g.setBackground(Color.blue);
 		} else {
-			g.setBackground(Color.gray);
-		}
+                    ball.getImage().setColor(1, 0, 0, 0, 0);
+                }
+
+                g.setBackground(Color.gray);
 
                 ball.getImage().draw((float) (ball.getPosition().getX() - camera.getX() - ball.getCollisionRadius()),
                                      (float) (container.getHeight() - ball.getPosition().getY() + camera.getY() - ball.getCollisionRadius()));
@@ -95,9 +102,9 @@ public class Game extends BasicGame {
                 for (LevelObject object : objects) {
                     g.setColor(Color.darkGray);
                     if (object.isPositive()) {
-                        g.setColor(Color.blue);
-                    } else if (object.isNegative()) {
                         g.setColor(Color.red);
+                    } else if (object.isNegative()) {
+                        g.setColor(Color.blue);
                     }
                     Rectangle rect = new Rectangle((float) (object.getLlx() - camera.getX()),
                                                    (float) (container.getHeight() - object.getLly() + camera.getY()),
