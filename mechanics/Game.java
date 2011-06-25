@@ -50,22 +50,22 @@ public class Game extends BasicGame {
         
         private Image backgroundImage;
         
-        private Image border2TRound;
-        private Image border2BRound;
-        private Image border2LRound;
-        private Image border2RRound;
-        private Image border1TRRound;
-        private Image border1TLRound;
-        private Image border1BRRound;
-        private Image border1BLRound;
-        private Image border4Round;
-        private Image borderTNoRound;
-        private Image borderBNoRound;
-        private Image borderLNoRound;
-        private Image borderRNoRound;
+        //private Image border2TRound;
+        //private Image border2BRound;
+        //private Image border2LRound;
+        //private Image border2RRound;
+        //private Image border1TRRound;
+        //private Image border1TLRound;
+        //private Image border1BRRound;
+        //private Image border1BLRound;
+        //private Image border4Round;
+        //private Image borderTNoRound;
+        //private Image borderBNoRound;
+        //private Image borderLNoRound;
+        //private Image borderRNoRound;
         private Image borderNotT;
-        private Image borderNotB;
-        private Image borderNotL;
+        //private Image borderNotB;
+        //private Image borderNotL;
         private Image borderNotR;
 
 	private Ball            ball;
@@ -100,22 +100,22 @@ public class Game extends BasicGame {
             ballImage = new Image("media/ball6.png");
             
             backgroundImage = new Image("media/metal2.png");
-            border2TRound = new Image("media/border2T.png");
-            border2BRound = new Image("media/border2B.png");
-            border2LRound = new Image("media/border2L.png");
-            border2RRound = new Image("media/border2R.png");
-            border1TRRound = new Image("media/border1TR.png");
-            border1TLRound = new Image("media/border1TL.png");
-            border1BRRound = new Image("media/border1BR.png");
-            border1BLRound = new Image("media/border1BL.png");
-            border4Round = new Image("media/border4.png");
-            borderTNoRound = new Image("media/borderNoT.png");
-            borderBNoRound = new Image("media/borderNoB.png");
-            borderLNoRound = new Image("media/borderNoL.png");
-            borderRNoRound = new Image("media/borderNoR.png");
+            //border2TRound = new Image("media/border2T.png");
+            //border2BRound = new Image("media/border2B.png");
+            //border2LRound = new Image("media/border2L.png");
+            //border2RRound = new Image("media/border2R.png");
+            //border1TRRound = new Image("media/border1TR.png");
+            //border1TLRound = new Image("media/border1TL.png");
+            //border1BRRound = new Image("media/border1BR.png");
+            //border1BLRound = new Image("media/border1BL.png");
+            //border4Round = new Image("media/border4.png");
+            //borderTNoRound = new Image("media/borderNoT.png");
+            //borderBNoRound = new Image("media/borderNoB.png");
+            //borderLNoRound = new Image("media/borderNoL.png");
+            //borderRNoRound = new Image("media/borderNoR.png");
             borderNotT = new Image("media/borderNotT.png");
-            borderNotB = new Image("media/borderNotB.png");
-            borderNotL = new Image("media/borderNotL.png");
+            //borderNotB = new Image("media/borderNotB.png");
+            //borderNotL = new Image("media/borderNotL.png");
             borderNotR = new Image("media/borderNotR.png");
 		
 		ball = new Ball(new Vector2D(0,0), 25);
