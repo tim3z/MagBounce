@@ -37,6 +37,15 @@ public class Game extends BasicGame {
 
 	private static final char CHANGE_POSITIVE = Keyboard.KEY_P;
 	private static final char CHANGE_NEGATIVE = Keyboard.KEY_M;
+	private static final Color BALL_POSITIVE = new Color(193, 0, 0, 150);
+	private static final Color BALL_NEGATIVE = new Color(0, 21, 142, 150);
+        
+        private Image backgroundImage;
+        private Image border2Round;
+        private Image border1Round;
+        private Image border4Round;
+        private Image borderNoRound;
+        private Image borderNot;
 
 	private Ball            ball;
 	private Level           level;
@@ -46,11 +55,11 @@ public class Game extends BasicGame {
 
 	public Game() {
 		super("Mosod");
-
+                
 		try {
 			sMusic = new Music("media/R 22.wav");
 			sDeath = new Sound("media/death.wav");
-			sPlong = new Sound("media/plong.wav");
+			sPlong = new Sound("media/plong2.wav");
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}
@@ -64,13 +73,24 @@ public class Game extends BasicGame {
 	@Override
 	public void init(GameContainer container) throws SlickException {
 
-		sMusic.loop(1f, 0.25f);
-		ball = new Ball(new Vector2D(100.0, 500.0), 30);
-		camera = ball.getPosition().deepCopy();
-		ball.setSpeed(new Vector2D(0.2, 0.0));
-		levelManager = new LevelManager("data");
-		level = levelManager.getLevel(6);
-		objects = level.getObjects();
+            try {
+                backgroundImage = new Image("media/metal2.png");
+                border2Round = new Image("media/border4-2.png");
+                border1Round = new Image("media/border1.png");
+                border4Round = new Image("media/border3.png");
+                borderNoRound = new Image("media/border2.png");
+                borderNot = new Image("media/border5.png");
+            } catch (SlickException e) {
+                e.printStackTrace();
+            }
+
+            sMusic.loop(1f, 0.25f);
+            ball = new Ball(new Vector2D(100.0, 500.0), 30);
+            camera = ball.getPosition().deepCopy();
+            ball.setSpeed(new Vector2D(0.2, 0.0));
+            levelManager = new LevelManager("data");
+            level = levelManager.getLevel(10);
+            objects = level.getObjects();
 	}
 
 	@Override
@@ -109,39 +129,60 @@ public class Game extends BasicGame {
 	@Override
 	public void render(GameContainer container, Graphics g) throws SlickException {
 
-                Image ballImage = ball.getImage();
-                
-                ballImage.draw((float) (ball.getPosition().getX() - camera.getX() - ball.getCollisionRadius()), 
-                        (float) (container.getHeight() - ball.getPosition().getY() + camera.getY() - ball.getCollisionRadius()));
-                
-                if (ball.getMagnetState() > 0) {
-                    g.setColor(new Color(193, 0, 0, 150));             
-                } else if (ball.getMagnetState() < 0) {
-                        g.setColor(new Color(0, 21, 142, 150));
-                } else {
-                    g.setColor(new Color(0, 0, 0, 0)); 
-                }
-                
-                Ellipse ballColorOverlay = new Ellipse((float) (ball.getPosition().getX() - camera.getX() - ball.getCollisionRadius()) + (ballImage.getHeight() / 2),
-                                     (float) (container.getHeight() - ball.getPosition().getY() + camera.getY() - ball.getCollisionRadius() + (ballImage.getWidth() / 2)),
-                        ballImage.getHeight() / 2, 
-                        ballImage.getWidth() / 2);
-                
-                g.fill(ballColorOverlay);
+            backgroundImage.draw(0f, 0f);
+            
+            Image ballImage = ball.getImage();
 
-                for (LevelObject object : objects) {
-                    g.setColor(Color.darkGray);
-                    if (object.isPositive()) {
-                        g.setColor(new Color(193, 0, 0, 200));
-                    } else if (object.isNegative()) {
-                        g.setColor(new Color(0, 21, 142, 200));
-                    }
-                    Rectangle rect = new Rectangle((float) (object.getLlx() - camera.getX()),
-                                                   (float) (container.getHeight() - object.getLly() + camera.getY()),
-                                                   (float) object.getXSize(),
-                                                   -1 * (float) object.getYSize());
-                    g.fill(rect);
+            ballImage.draw((float) (ball.getPosition().getX() - camera.getX() - ball.getCollisionRadius()), 
+                    (float) (container.getHeight() - ball.getPosition().getY() + camera.getY() - ball.getCollisionRadius()));
+
+            if (ball.getMagnetState() > 0) {
+                g.setColor(BALL_POSITIVE);             
+            } else if (ball.getMagnetState() < 0) {
+                g.setColor(BALL_NEGATIVE);
+            } else {
+                g.setColor(new Color(0, 0, 0, 0)); 
+            }
+
+            Ellipse ballColorOverlay = new Ellipse(
+                    (float) (ball.getPosition().getX() - camera.getX() - ball.getCollisionRadius()) + (ballImage.getHeight() / 2),
+                    (float) (container.getHeight() - ball.getPosition().getY() + camera.getY() - ball.getCollisionRadius() + (ballImage.getWidth() / 2)),
+                    ballImage.getHeight() / 2, 
+                    ballImage.getWidth() / 2
+            );
+
+            g.fill(ballColorOverlay);
+
+            for (LevelObject object : objects) {
+                g.setColor(Color.darkGray);
+                if (object.isPositive()) {
+                    g.setColor(new Color(193, 0, 0, 200));
+                } else if (object.isNegative()) {
+                    g.setColor(new Color(0, 21, 142, 200));
                 }
+                
+                if (object.getXSize() <= 50 && object.getYSize() <= 50) {
+                    border4Round.draw(
+                            (float) (object.getLowerLeft().getX() - camera.getX()),
+                            (float) (container.getHeight() - object.getLowerLeft().getY() + camera.getY()) - border1Round.getHeight()
+                    );
+                } else if (object.getXSize() <= 50 && object.getYSize() >= 50) {
+                    
+                } else if (object.getXSize() >= 50 && object.getYSize() <= 50) {
+                    
+                } else if (object.getXSize() >= 50 && object.getYSize() >= 50) {
+                    
+                }
+                
+                Rectangle rect = new Rectangle(
+                        (float) (object.getLlx() - camera.getX()),
+                        (float) (container.getHeight() - object.getLly() + camera.getY()),
+                        (float) object.getXSize(),
+                        -1 * (float) object.getYSize()
+                );
+                
+                g.fill(rect);
+            }
 	}
 
 	private void handleInput(Input input) {
