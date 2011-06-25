@@ -12,7 +12,9 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
+import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 import org.newdawn.slick.geom.Rectangle;
 
 import physics.Vector2D;
@@ -27,6 +29,10 @@ import world.LevelObject;
  */
 public class Game extends BasicGame {
 
+    Music sMusic;
+    Sound sDeath;
+    Sound sPlong;
+    
     private static final char CHANGE_POSITIVE = Keyboard.KEY_P;
     private static final char CHANGE_NEGATIVE = Keyboard.KEY_M;
     
@@ -37,7 +43,16 @@ public class Game extends BasicGame {
     private Vector2D        camera;
    
     public Game() {
-        super("Mobos");
+        super("Mosod");
+        
+        try {
+            sMusic = new Music("media/R 22.wav");
+            sDeath = new Sound("media/death.wav");
+            sPlong = new Sound("media/plong.wav");
+        } catch (SlickException e) {
+            e.printStackTrace();
+        }
+        
     }
 
     public Level getLevel() {
@@ -46,12 +61,14 @@ public class Game extends BasicGame {
 
 	@Override
 	public void init(GameContainer container) throws SlickException {
-		ball = new Ball(new Vector2D(100.0, 200.0), 30);
-                camera = ball.getPosition().multiply(1); // deep copy :-D
-		ball.setSpeed(new Vector2D(0.2, 0.0));
-                levelManager = new LevelManager("data");
-                level = levelManager.getLevel(5);
-                objects = level.getObjects();
+            
+            sMusic.loop(1f, 1f);
+            ball = new Ball(new Vector2D(100.0, 200.0), 30);
+            camera = ball.getPosition().multiply(1); // deep copy :-D
+            ball.setSpeed(new Vector2D(0.2, 0.0));
+            levelManager = new LevelManager("data");
+            level = levelManager.getLevel(5);
+            objects = level.getObjects();
 	}
 
 	@Override
