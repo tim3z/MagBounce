@@ -51,11 +51,16 @@ public class Game extends BasicGame {
 
 	@Override
 	public void init(GameContainer container) throws SlickException {
+<<<<<<< HEAD
                 
 		ball = new Ball(new Vector2D(150.0, 100.0), 30);
 		ball.setSpeed(new Vector2D(0.0, 0.0));
+=======
+		ball = new Ball(new Vector2D(0.0, 500.0), 30);
+		ball.setSpeed(new Vector2D(0.1, 0.0));
+>>>>>>> 267a77a6445f30ad8472f09c720b63ea0b18c785
                 levelManager = new LevelManager("data");
-                level = levelManager.getLevel(3);
+                level = levelManager.getLevel(1);
                 objects = level.getObjects();
 	}
 
@@ -81,9 +86,13 @@ public class Game extends BasicGame {
 
                 ball.getImage().draw((float) ball.getPosition().getX(), 600f - (float) ball.getPosition().getY());
 
-                //g.fill(new Rectangle(0f, 500f, 1000f, 100f));
-
                 for (LevelObject object : objects) {
+                    g.setColor(Color.darkGray);
+                    if (object.isPositive()) {
+                        g.setColor(Color.blue);
+                    } else if (object.isNegative()) {
+                        g.setColor(Color.red);
+                    }
                     g.fill(new Rectangle((float) object.getLlx(), (float) (600 - object.getLly()), (float) object.getXSize(), (float) object.getYSize()));
                 }
 	}

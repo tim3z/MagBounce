@@ -26,7 +26,7 @@ public final class Collision {
     public void move(MovingObject object, long time) {
         Vector2D newDirection = direction.reflectAt(wall);
         object.setPosition(collisionPoint.add(newDirection.multiply(1-a)));
-        object.setSpeed(newDirection.multiply(1/time));
+        object.setSpeed(newDirection.multiply(1.0/((double) time)));
     }
 
 
