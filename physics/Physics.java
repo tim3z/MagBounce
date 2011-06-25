@@ -18,8 +18,7 @@ public abstract class Physics {
     private static Vector2D gravity = new Vector2D(0, -0.001);
 
     public static void move(Level level, Ball object, long time) {
-        Vector2D direction = object.getSpeed();
-        direction = direction.add(gravity.multiply(time));
+        Vector2D speedVector = object.getSpeed().add(gravity.multiply(time));
 
         int a = object.getMagnetState();
         if (a != 0) {
@@ -27,16 +26,14 @@ public abstract class Physics {
             if (a < 0) {
                 magnetism.multiply(-1);
             }
-            direction = direction.add(magnetism);
+            speedVector = speedVector.add(magnetism);
         }
 
-        direction = direction.multiply(time);
-
-        Collision collision = detectCollisions(level, object, direction);
+        Collision collision = detectCollisions(level, object, speedVector.multiply(time));
         if (collision != null) {
             collision.move(object, time);
         } else {
-            object.move(direction, time);
+            object.move(speedVector, time);
         }
 
     }
