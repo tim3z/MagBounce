@@ -11,14 +11,11 @@ import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Rectangle;
-import physics.MovingObject;
 
 import physics.Vector2D;
-import sun.java2d.loops.FillRect;
 
 import world.Level;
 import world.LevelManager;
@@ -32,14 +29,12 @@ public class Game extends BasicGame {
 
     private static final char CHANGE_POSITIVE = Keyboard.KEY_P;
     private static final char CHANGE_NEGATIVE = Keyboard.KEY_M;
-
-    private long            oldTime;
     
     private Ball            ball;
     private Level           level;
     private LevelManager    levelManager;
     List<LevelObject>       objects;
-    private LevelObject     testObject;
+    private Vector2D        camera;
    
     public Game() {
         super("Mobos");
@@ -51,10 +46,11 @@ public class Game extends BasicGame {
 
 	@Override
 	public void init(GameContainer container) throws SlickException {
-		ball = new Ball(new Vector2D(0.0, 200.0), 30);
-		ball.setSpeed(new Vector2D(0.1, 0.0));
+		ball = new Ball(new Vector2D(400.0, 500.0), 30);
+                camera = ball.getPosition().multiply(1); // :-D
+		ball.setSpeed(new Vector2D(0.5, 0.0));
                 levelManager = new LevelManager("data");
-                level = levelManager.getLevel(1);
+                level = levelManager.getLevel(6);
                 objects = level.getObjects();
 	}
 
@@ -64,6 +60,22 @@ public class Game extends BasicGame {
             this.handleInput(container.getInput());
 		
             physics.Physics.move(level, ball, delta);
+            
+            camera.setX(ball.getPosition().getX() - container.getWidth()/2);
+            camera.setY(ball.getPosition().getY() - container.getHeight()/2);
+
+            if (camera.getX() < 0) {
+                camera.setX(0);
+            }
+            if (camera.getX() > level.getXSize() - container.getWidth()) {
+                camera.setX(level.getXSize() - container.getWidth());
+            }
+            if (camera.getY() < 0) {
+                camera.setY(0);
+            }
+            if (camera.getY() > level.getYSize() - container.getHeight()) {
+                camera.setY(level.getYSize() - container.getHeight());
+            }
 	}
 
 	@Override
@@ -77,7 +89,8 @@ public class Game extends BasicGame {
 			g.setBackground(Color.gray);
 		}
 
-                ball.getImage().draw((float) ball.getPosition().getX(), 600f - (float) ball.getPosition().getY());
+                ball.getImage().draw((float) (ball.getPosition().getX() - camera.getX() - ball.getCollisionRadius()),
+                                     (float) (container.getHeight() - ball.getPosition().getY() + camera.getY() - ball.getCollisionRadius()));
 
                 for (LevelObject object : objects) {
                     g.setColor(Color.darkGray);
@@ -86,7 +99,11 @@ public class Game extends BasicGame {
                     } else if (object.isNegative()) {
                         g.setColor(Color.red);
                     }
-                    g.fill(new Rectangle((float) object.getLlx(), (float) (600 - object.getLly()), (float) object.getXSize(), (float) object.getYSize()));
+                    Rectangle rect = new Rectangle((float) (object.getLlx() - camera.getX()),
+                                                   (float) (container.getHeight() - object.getLly() + camera.getY()),
+                                                   (float) object.getXSize(),
+                                                   -1 * (float) object.getYSize());
+                    g.fill(rect);
                 }
 	}
 	
