@@ -39,8 +39,9 @@ public class Game extends BasicGame {
 	Sound sDeath;
 	Sound sPlong;
 
-	private static final char CHANGE_POSITIVE = Keyboard.KEY_P;
-	private static final char CHANGE_NEGATIVE = Keyboard.KEY_M;
+	private static final char KEY_POSITIVE = Keyboard.KEY_P;
+	private static final char KEY_NEGATIVE = Keyboard.KEY_M;
+	private static final char KEY_RESET = Keyboard.KEY_R;
 
 	private Ball            ball;
 	private Level           level;
@@ -58,6 +59,9 @@ public class Game extends BasicGame {
 		return level;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.newdawn.slick.BasicGame#init(org.newdawn.slick.GameContainer)
+	 */
 	@Override
 	public void init(GameContainer container) throws SlickException {
 		try {
@@ -118,9 +122,11 @@ public class Game extends BasicGame {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see org.newdawn.slick.Game#render(org.newdawn.slick.GameContainer, org.newdawn.slick.Graphics)
+	 */
 	@Override
 	public void render(GameContainer container, Graphics g) throws SlickException {
-
 		Image ballImage = ball.getImage();
 
 		ballImage.draw((float) (ball.getPosition().getX() - camera.getX() - ball.getCollisionRadius()), 
@@ -162,16 +168,20 @@ public class Game extends BasicGame {
 	 * React to input
 	 */
 	private void handleInput(Input input) {
-		if (input.isKeyDown(CHANGE_POSITIVE)) {
-			if (input.isKeyDown(CHANGE_NEGATIVE)) {
+		if (input.isKeyDown(KEY_POSITIVE)) {
+			if (input.isKeyDown(KEY_NEGATIVE)) {
 				ball.setMagnetState(0);
 			} else {
 				ball.setMagnetState(1);
 			}
-		} else if (input.isKeyDown(CHANGE_NEGATIVE)) {
+		} else if (input.isKeyDown(KEY_NEGATIVE)) {
 			ball.setMagnetState(-1);
 		} else {
 			ball.setMagnetState(0);
+		}
+		
+		if (input.isKeyDown(KEY_RESET)) {
+			reset();
 		}
 	}
 	
