@@ -47,7 +47,7 @@ public class Game extends BasicGame {
 	private static final Color BALL_NEGATIVE = new Color(0, 21, 142, 150);
 
 	private Image backgroundImage;
-	
+
 	private Image ballImage;
 
 	private Image border2Round;
@@ -96,7 +96,7 @@ public class Game extends BasicGame {
 		destinations = new ArrayList<LevelObject>();
 		destinations.add(level.getDestination());
 		objects = level.getObjects();
-		
+
 		ball = new Ball(level.getInitialBallPosition(), 25);
 		camera = ball.getPosition().deepCopy();
 		ball.setSpeed(level.getInitialBallSpeed());
