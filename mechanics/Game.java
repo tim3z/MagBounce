@@ -29,9 +29,10 @@ import world.LevelObject;
  */
 public class Game extends BasicGame {
 
-    Music sMusicHigh;
+    Music sMusic;
+    /*Music sMusicHigh;
     Music sMusicLow;
-    Music sMusicNormal;
+    Music sMusicNormal;*/
     Sound sDeath;
     Sound sPlong;
     
@@ -48,10 +49,10 @@ public class Game extends BasicGame {
         super("Mosod");
         
         try {
-            Music sMusic = new Music("media/R 22.wav");
-            sMusicHigh = sMusic;
+            sMusic = new Music("media/R 22.wav");
+            /*sMusicHigh = sMusic;
             sMusicLow = sMusic;
-            sMusicNormal = sMusic;
+            sMusicNormal = sMusic;*/
             sDeath = new Sound("media/death.wav");
             sPlong = new Sound("media/plong.wav");
         } catch (SlickException e) {
@@ -67,9 +68,10 @@ public class Game extends BasicGame {
 	@Override
 	public void init(GameContainer container) throws SlickException {
             
-            sMusicHigh.loop(1.2f, 1f);
+            sMusic.loop(1f, 0.25f);
+            /*sMusicHigh.loop(1.2f, 1f);
             sMusicLow.loop(0.8f, 1f);
-            sMusicNormal.loop(1f, 1f);
+            sMusicNormal.loop(1f, 1f);*/
             ball = new Ball(new Vector2D(100.0, 200.0), 30);
             camera = ball.getPosition().multiply(1); // deep copy :-D
             ball.setSpeed(new Vector2D(0.2, 0.0));
@@ -83,7 +85,10 @@ public class Game extends BasicGame {
         
             this.handleInput(container.getInput());
 		
-            physics.Physics.move(level, ball, delta); // returns boolean for collision sound
+            // returns boolean for collision sound
+            if (physics.Physics.move(level, ball, delta)) {
+                sPlong.play(1f, 1f);
+            }
             
             camera.setX(ball.getPosition().getX() - container.getWidth()/2);
             camera.setY(ball.getPosition().getY() - container.getHeight()/2);
@@ -101,7 +106,7 @@ public class Game extends BasicGame {
                 camera.setY(level.getYSize() - container.getHeight());
             }
             
-            if (ball.getMagnetState() > 0) {
+            /*if (ball.getMagnetState() > 0) {
                 sMusicHigh.setVolume(0f);
                 sMusicLow.setVolume(1f);
                 sMusicNormal.setVolume(0f);                
@@ -113,7 +118,7 @@ public class Game extends BasicGame {
                 sMusicHigh.setVolume(0f);
                 sMusicLow.setVolume(0f);
                 sMusicNormal.setVolume(1f);
-            }
+            }*/
 	}
 
 	@Override
