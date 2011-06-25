@@ -35,7 +35,7 @@ public class MovingObject {
      */
     public void move(Vector2D direction, long time) {
         setPosition(getPosition().add(direction));
-        setSpeed(direction.multiply(1/time));
+        setSpeed(direction.multiply(1.0/((double) time)));
     }
 
     /**
