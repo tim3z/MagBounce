@@ -4,6 +4,7 @@
 
 package mechanics;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.lwjgl.input.Keyboard;
 import org.newdawn.slick.AppGameContainer;
@@ -19,6 +20,8 @@ import org.newdawn.slick.Sound;
 import org.newdawn.slick.geom.Ellipse;
 import org.newdawn.slick.geom.Rectangle;
 
+import physics.CollisionState;
+import physics.Physics;
 import physics.Vector2D;
 
 import world.Level;
@@ -28,6 +31,7 @@ import world.LevelObject;
 /**
  *
  * @author S.D.Eagle
+ * @author Guybrush
  */
 public class Game extends BasicGame {
 
@@ -50,20 +54,13 @@ public class Game extends BasicGame {
 	private Ball            ball;
 	private Level           level;
 	private LevelManager    levelManager;
+	List<LevelObject>		destinations;
 	List<LevelObject>       objects;
-	private Vector2D        camera;
+	private CollisionState	currentState;
+	private Vector2D        camera; // Nullpunkt: Halbe Containerhöhe, halbe Containerbreite
 
 	public Game() {
 		super("Mosod");
-                
-		try {
-			sMusic = new Music("media/R 22.wav");
-			sDeath = new Sound("media/death.wav");
-			sPlong = new Sound("media/plong2.wav");
-		} catch (SlickException e) {
-			e.printStackTrace();
-		}
-
 	}
 
 	public Level getLevel() {
@@ -72,37 +69,45 @@ public class Game extends BasicGame {
 
 	@Override
 	public void init(GameContainer container) throws SlickException {
-
-            try {
-                backgroundImage = new Image("media/metal2.png");
-                border2Round = new Image("media/border4-2.png");
-                border1Round = new Image("media/border1.png");
-                border4Round = new Image("media/border3.png");
-                borderNoRound = new Image("media/border2.png");
-                borderNot = new Image("media/border5.png");
-            } catch (SlickException e) {
-                e.printStackTrace();
-            }
-
+            sMusic = new Music("media/R 22.wav");
             sMusic.loop(1f, 0.25f);
-            ball = new Ball(new Vector2D(100.0, 500.0), 30);
+            
+            sDeath = new Sound("media/death.wav");
+            sPlong = new Sound("media/plong.wav");
+            
+            backgroundImage = new Image("media/metal2.png");
+            border2Round = new Image("media/border4-2.png");
+            border1Round = new Image("media/border1.png");
+            border4Round = new Image("media/border3.png");
+            borderNoRound = new Image("media/border2.png");
+            borderNot = new Image("media/border5.png");
+
+            ball = new Ball(new Vector2D(100.0, 700.0), 25);
             camera = ball.getPosition().deepCopy();
             ball.setSpeed(new Vector2D(0.2, 0.0));
             levelManager = new LevelManager("data");
-            level = levelManager.getLevel(10);
+            level = levelManager.getLevel(0);
+            destinations = new ArrayList<LevelObject>();
+            destinations.add(level.getDestination());
             objects = level.getObjects();
 	}
 
+	/* (non-Javadoc)
+	 * @see org.newdawn.slick.BasicGame#update(org.newdawn.slick.GameContainer, int)
+	 */
 	@Override
 	public void update(GameContainer container, int delta) throws SlickException {
 
 		this.handleInput(container.getInput());
+		
+		currentState = Physics.move(objects, destinations, ball, delta);
 
-		//Vector2D oldPos = ball.getPosition().deepCopy();
-
-		// returns boolean for collision sound
-		if (physics.Physics.move(level, ball, delta)) {
+		if (currentState == CollisionState.COLLISION) {
+			// Play sound on collision
 			sPlong.play(1f, 1f);
+		} else if (currentState == CollisionState.COLLISION_WITH_DESTINATION) {
+			reset();
+			return;
 		}
 
 		if (ball.getPosition().getX() - camera.getX() > container.getWidth() * 2 / 3) {
@@ -115,14 +120,14 @@ public class Game extends BasicGame {
 		if (camera.getX() < 0) {
 			camera.setX(0);
 		}
-		if (camera.getX() > level.getXSize() - container.getWidth()) {
-			camera.setX(level.getXSize() - container.getWidth());
+		if (camera.getX() > level.getWidth() - container.getWidth()) {
+			camera.setX(level.getWidth() - container.getWidth());
 		}
 		if (camera.getY() < 0) {
 			camera.setY(0);
 		}
-		if (camera.getY() > level.getYSize() - container.getHeight()) {
-			camera.setY(level.getYSize() - container.getHeight());
+		if (camera.getY() > level.getHeight() - container.getHeight()) {
+			camera.setY(level.getHeight() - container.getHeight());
 		}
 	}
 
@@ -185,6 +190,9 @@ public class Game extends BasicGame {
             }
 	}
 
+	/*
+	 * React to input
+	 */
 	private void handleInput(Input input) {
 		if (input.isKeyDown(CHANGE_POSITIVE)) {
 			if (input.isKeyDown(CHANGE_NEGATIVE)) {
@@ -197,6 +205,11 @@ public class Game extends BasicGame {
 		} else {
 			ball.setMagnetState(0);
 		}
+	}
+	
+	private void reset() {
+		ball.setPosition(new Vector2D(100.0, 700.0));
+		ball.setSpeed(new Vector2D(0.2, 0.0));
 	}
 
 	public static void main(String[] args) throws SlickException {

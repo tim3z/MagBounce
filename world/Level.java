@@ -19,6 +19,7 @@ public class Level {
 	
 	private long xSize;
 	private long ySize;
+	private LevelObject destination;
 	
 	public Level(File levelFile) {
 		if (levelFile == null) {
@@ -28,6 +29,7 @@ public class Level {
 		BufferedReader fileReader;
 		String line;
 		String[] levelSizeInfo;
+		String[] destinationInfo;
 		String[] objectInfo;
 		
 		try {
@@ -50,6 +52,20 @@ public class Level {
 			this.xSize = Long.parseLong(levelSizeInfo[0]);
 			this.ySize = Long.parseLong(levelSizeInfo[1]);
 			
+			// second non-comment line contains the destination (llx,lly,urx,ury)
+			line = fileReader.readLine();
+			while (line.charAt(0) == '#') {
+				line = fileReader.readLine();
+			}
+			destinationInfo = line.split(",");
+			this.destination = new LevelObject(
+					Long.parseLong(destinationInfo[0]),
+					Long.parseLong(destinationInfo[1]),
+					Long.parseLong(destinationInfo[2]),
+					Long.parseLong(destinationInfo[3])
+					// destination is non-magnetic
+				);
+			
 			line = fileReader.readLine();
 			while (line != null) {
 				if (line.charAt(0) == '#') {
@@ -57,7 +73,7 @@ public class Level {
 					continue;
 				}
 				
-				// subsequent lines contain object info (llx,lly,urx,ury,type)
+				// subsequent lines contain object info (llx,lly,urx,ury[,magnetism])
 				objectInfo = line.split(",");
 				if (objectInfo.length == 4) {
 					this.levelObjects.add(new LevelObject(
@@ -81,7 +97,7 @@ public class Level {
 				line = fileReader.readLine();
 			}
 		} catch (Exception e) { // Catch them all!
-			throw new IllegalArgumentException("The given file is no valid level file.", e);
+			throw new IllegalArgumentException("The given file " + levelFile.getName() + " is no valid level file.", e);
 		}
 		
 		// Sorting by position might help in-game performance
@@ -91,15 +107,22 @@ public class Level {
 	/**
 	 * @return Width of the level
 	 */
-	public long getXSize() {
+	public long getWidth() {
 		return this.xSize;
 	}
 	
 	/**
 	 * @return Height of the level
 	 */
-	public long getYSize() {
+	public long getHeight() {
 		return this.ySize;
+	}
+	
+	/**
+	 * @return The destination object
+	 */
+	public LevelObject getDestination() {
+		return this.destination;
 	}
 	
 	/**
