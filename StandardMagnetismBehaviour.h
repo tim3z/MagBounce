@@ -4,114 +4,46 @@
 #include "ForceBehaviour.h"
 
 #include <string>
+#include "Level.h"
 
 /**
   * class StandardMagnetismBehaviour
   * 
   */
 
-class StandardMagnetismBehaviour : virtual public ForceBehaviour
-{
-public:
-
-  // Constructors/Destructors
-  //  
-
-
-  /**
-   * Empty Constructor
-   */
-  StandardMagnetismBehaviour ( );
-
-  /**
-   * Empty Destructor
-   */
-  virtual ~StandardMagnetismBehaviour ( );
-
-  // Static Public attributes
-  //  
-
-  // Public attributes
-  //  
-
-
-  // Public attribute accessor methods
-  //  
-
-
-  // Public attribute accessor methods
-  //  
-
-
-protected:
-
-  // Static Protected attributes
-  //  
-
-  // Protected attributes
-  //  
-
-public:
-
-
-  // Protected attribute accessor methods
-  //  
-
-protected:
-
-public:
-
-
-  // Protected attribute accessor methods
-  //  
-
-protected:
-
-
+class StandardMagnetismBehaviour : virtual public ForceBehaviour {
+    
 private:
 
-  // Static Private attributes
-  //  
-
-  // Private attributes
-  //  
-
-  Level level;
+    Level level;
+  
 public:
 
+    /**
+     * Empty Constructor
+     */
+    StandardMagnetismBehaviour ();
 
-  // Private attribute accessor methods
-  //  
+    /**
+     * Empty Destructor
+     */
+    virtual ~StandardMagnetismBehaviour ();
 
-private:
+    /**
+     * Set the value of level
+     * @param new_var the new value of level
+     */
+    void setLevel (Level new_var) {
+        level = new_var;
+    }
 
-public:
-
-
-  // Private attribute accessor methods
-  //  
-
-
-  /**
-   * Set the value of level
-   * @param new_var the new value of level
-   */
-  void setLevel ( Level new_var )   {
-      level = new_var;
-  }
-
-  /**
-   * Get the value of level
-   * @return the value of level
-   */
-  Level getLevel ( )   {
-    return level;
-  }
-private:
-
-
-  void initAttributes ( ) ;
-
+    /**
+     * Get the value of level
+     * @return the value of level
+     */
+    Level getLevel () {
+        return level;
+    }
 };
 
 #endif // STANDARDMAGNETISMBEHAVIOUR_H

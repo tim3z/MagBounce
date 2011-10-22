@@ -3,24 +3,6 @@
 // Constructors/Destructors
 //  
 
-Running::Running ( ) {
-initAttributes();
-}
+Running::Running () {}
 
-Running::~Running ( ) { }
-
-//  
-// Methods
-//  
-
-
-// Accessor methods
-//  
-
-
-// Other methods
-//  
-
-void Running::initAttributes ( ) {
-}
-
+Running::~Running () {}

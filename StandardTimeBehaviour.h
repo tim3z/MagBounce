@@ -10,90 +10,19 @@
   * 
   */
 
-class StandardTimeBehaviour : virtual public TimeBehaviour
-{
+class StandardTimeBehaviour : virtual public TimeBehaviour {
 public:
+    
+    /**
+    * Empty Constructor
+    */
+    StandardTimeBehaviour ();
 
-  // Constructors/Destructors
-  //  
-
-
-  /**
-   * Empty Constructor
-   */
-  StandardTimeBehaviour ( );
-
-  /**
-   * Empty Destructor
-   */
-  virtual ~StandardTimeBehaviour ( );
-
-  // Static Public attributes
-  //  
-
-  // Public attributes
-  //  
-
-
-  // Public attribute accessor methods
-  //  
-
-
-  // Public attribute accessor methods
-  //  
-
-
-protected:
-
-  // Static Protected attributes
-  //  
-
-  // Protected attributes
-  //  
-
-public:
-
-
-  // Protected attribute accessor methods
-  //  
-
-protected:
-
-public:
-
-
-  // Protected attribute accessor methods
-  //  
-
-protected:
-
-
-private:
-
-  // Static Private attributes
-  //  
-
-  // Private attributes
-  //  
-
-public:
-
-
-  // Private attribute accessor methods
-  //  
-
-private:
-
-public:
-
-
-  // Private attribute accessor methods
-  //  
-
-private:
-
-
-
+    /**
+     * Empty Destructor
+     */
+    virtual ~StandardTimeBehaviour ();
+    
 };
 
 #endif // STANDARDTIMEBEHAVIOUR_H

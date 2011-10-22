@@ -3,21 +3,6 @@
 // Constructors/Destructors
 //  
 
-Pause::Pause ( ) {
-}
+Pause::Pause () {}
 
-Pause::~Pause ( ) { }
-
-//  
-// Methods
-//  
-
-
-// Accessor methods
-//  
-
-
-// Other methods
-//  
-
-
+Pause::~Pause () {}

@@ -5,7 +5,7 @@
 #include <string>
 
 /**
-  * class TimeBehaviour
+  * interface TimeBehaviour
   * 
   */
 
@@ -15,58 +15,8 @@ TimeBehaviour does not have any pure virtual methods, but its author
   Inherit from it instead and create only objects from the derived classes
 *****************************************************************************/
 
-class TimeBehaviour
-{
-public:
-
-
-  // Public attribute accessor methods
-  //  
-
-
-  // Public attribute accessor methods
-  //  
-
-
-protected:
-
-public:
-
-
-  // Protected attribute accessor methods
-  //  
-
-protected:
-
-public:
-
-
-  // Protected attribute accessor methods
-  //  
-
-protected:
-
-
-private:
-
-public:
-
-
-  // Private attribute accessor methods
-  //  
-
-private:
-
-public:
-
-
-  // Private attribute accessor methods
-  //  
-
-private:
-
-
-
+class TimeBehaviour {
+    
 };
 
 #endif // TIMEBEHAVIOUR_H

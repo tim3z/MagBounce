@@ -3,21 +3,6 @@
 // Constructors/Destructors
 //  
 
-Options::Options ( ) {
-}
+Options::Options () {}
 
-Options::~Options ( ) { }
-
-//  
-// Methods
-//  
-
-
-// Accessor methods
-//  
-
-
-// Other methods
-//  
-
-
+Options::~Options () {}

@@ -3,21 +3,6 @@
 // Constructors/Destructors
 //  
 
-StandardPhysics::StandardPhysics ( ) {
-}
+StandardPhysics::StandardPhysics () {}
 
-StandardPhysics::~StandardPhysics ( ) { }
-
-//  
-// Methods
-//  
-
-
-// Accessor methods
-//  
-
-
-// Other methods
-//  
-
-
+StandardPhysics::~StandardPhysics () {}

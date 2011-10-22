@@ -2,6 +2,8 @@
 #ifndef RUNNING_H
 #define RUNNING_H
 #include "GameState.h"
+#include "Level.h"
+#include "CollisionHandler.h"
 
 #include <string>
 
@@ -10,124 +12,60 @@
   * 
   */
 
-class Running : virtual public GameState
-{
-public:
-
-  // Constructors/Destructors
-  //  
-
-
-  /**
-   * Empty Constructor
-   */
-  Running ( );
-
-  /**
-   * Empty Destructor
-   */
-  virtual ~Running ( );
-
-  // Static Public attributes
-  //  
-
-  // Public attributes
-  //  
-
-
-  // Public attribute accessor methods
-  //  
-
-
-  // Public attribute accessor methods
-  //  
-
-
-protected:
-
-  // Static Protected attributes
-  //  
-
-  // Protected attributes
-  //  
-
-public:
-
-
-  // Protected attribute accessor methods
-  //  
-
-protected:
-
-public:
-
-
-  // Protected attribute accessor methods
-  //  
-
-protected:
-
+class Running : virtual public GameState {
 
 private:
 
-  // Static Private attributes
-  //  
-
-  // Private attributes
-  //  
-
-  Level level;
-  CollisionHandler collisionHandler;
+    Level level;
+    CollisionHandler collisionHandler;
+    
 public:
 
+    /**
+     * Empty Constructor
+     */
+    Running ();
 
-  // Private attribute accessor methods
-  //  
+    /**
+     * Empty Destructor
+     */
+    virtual ~Running ();
 
+    /**
+     * Set the value of level
+     * @param new_var the new value of level
+     */
+    void setLevel (Level new_var)   {
+        level = new_var;
+    }
+
+    /**
+     * Get the value of level
+     * @return the value of level
+     */
+    Level getLevel ( )   {
+        return level;
+    }
+
+    /**
+     * Set the value of collisionHandler
+     * @param new_var the new value of collisionHandler
+     */
+    void setCollisionHandler ( CollisionHandler new_var )   {
+        collisionHandler = new_var;
+    }
+
+    /**
+     * Get the value of collisionHandler
+     * @return the value of collisionHandler
+     */
+    CollisionHandler getCollisionHandler ( )   {
+        return collisionHandler;
+    }
+  
 private:
-
-public:
-
-
-  // Private attribute accessor methods
-  //  
-
-
-  /**
-   * Set the value of level
-   * @param new_var the new value of level
-   */
-  void setLevel ( Level new_var )   {
-      level = new_var;
-  }
-
-  /**
-   * Get the value of level
-   * @return the value of level
-   */
-  Level getLevel ( )   {
-    return level;
-  }
-
-  /**
-   * Set the value of collisionHandler
-   * @param new_var the new value of collisionHandler
-   */
-  void setCollisionHandler ( CollisionHandler new_var )   {
-      collisionHandler = new_var;
-  }
-
-  /**
-   * Get the value of collisionHandler
-   * @return the value of collisionHandler
-   */
-  CollisionHandler getCollisionHandler ( )   {
-    return collisionHandler;
-  }
-private:
-
-
-  void initAttributes ( ) ;
+    
+    void initAttributes ( ) ;
 
 };
 

@@ -3,21 +3,6 @@
 // Constructors/Destructors
 //  
 
-Level::Level ( ) {
-}
+Level::Level () {}
 
-Level::~Level ( ) { }
-
-//  
-// Methods
-//  
-
-
-// Accessor methods
-//  
-
-
-// Other methods
-//  
-
-
+Level::~Level () {}

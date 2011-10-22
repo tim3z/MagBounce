@@ -3,21 +3,6 @@
 // Constructors/Destructors
 //  
 
-StandardGravityBehaviour::StandardGravityBehaviour ( ) {
-}
+StandardGravityBehaviour::StandardGravityBehaviour () {}
 
-StandardGravityBehaviour::~StandardGravityBehaviour ( ) { }
-
-//  
-// Methods
-//  
-
-
-// Accessor methods
-//  
-
-
-// Other methods
-//  
-
-
+StandardGravityBehaviour::~StandardGravityBehaviour () {}

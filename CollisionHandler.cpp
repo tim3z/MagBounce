@@ -3,24 +3,6 @@
 // Constructors/Destructors
 //  
 
-CollisionHandler::CollisionHandler ( ) {
-initAttributes();
-}
+CollisionHandler::CollisionHandler () {}
 
-CollisionHandler::~CollisionHandler ( ) { }
-
-//  
-// Methods
-//  
-
-
-// Accessor methods
-//  
-
-
-// Other methods
-//  
-
-void CollisionHandler::initAttributes ( ) {
-}
-
+CollisionHandler::~CollisionHandler () {}

@@ -3,114 +3,40 @@
 #define LEVEL_H
 
 #include <string>
+#include "LevelObject.h"
+#include "Vector2D.h"
 
 /**
   * class Level
   * 
   */
 
-class Level
-{
+class Level {
 public:
+    
+    /**
+     * Empty Constructor
+     */
+    Level ();
 
-  // Constructors/Destructors
-  //  
+    /**
+     * Empty Destructor
+     */
+    virtual ~Level ();
 
-
-  /**
-   * Empty Constructor
-   */
-  Level ( );
-
-  /**
-   * Empty Destructor
-   */
-  virtual ~Level ( );
-
-  // Static Public attributes
-  //  
-
-  // Public attributes
-  //  
+    /**
+     * @return LevelObject
+     */
+    LevelObject getLevelObjects ();
 
 
-  // Public attribute accessor methods
-  //  
-
-
-  // Public attribute accessor methods
-  //  
-
-
-
-  /**
-   * @return LevelObject
-   */
-  LevelObject getLevelObjects ( )
-  {
-  }
-
-
-  /**
-   * @return LevelObject
-   * @param  position
-   * @param  radius
-   */
-  LevelObject getLevelObjectsAround (2dVector position, float radius )
-  {
-  }
-
-protected:
-
-  // Static Protected attributes
-  //  
-
-  // Protected attributes
-  //  
-
-public:
-
-
-  // Protected attribute accessor methods
-  //  
-
-protected:
-
-public:
-
-
-  // Protected attribute accessor methods
-  //  
-
-protected:
-
-
-private:
-
-  // Static Private attributes
-  //  
-
-  // Private attributes
-  //  
-
-public:
-
-
-  // Private attribute accessor methods
-  //  
-
-private:
-
-public:
-
-
-  // Private attribute accessor methods
-  //  
-
-private:
-
-
-
+    /**
+     * @return LevelObject
+     * @param  position
+     * @param  radius
+     */
+    LevelObject getLevelObjectsAround (Vector2D position, float radius);
+  
 };
 
 #endif // LEVEL_H

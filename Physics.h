@@ -3,9 +3,11 @@
 #define PHYSICS_H
 
 #include <string>
+#include "Vector2D.h"
+#include "PhysicsApplyableObject.h"
 
 /**
-  * class Physics
+  * interface Physics
   * 
   */
 
@@ -15,65 +17,14 @@ Physics does not have any pure virtual methods, but its author
   Inherit from it instead and create only objects from the derived classes
 *****************************************************************************/
 
-class Physics
-{
+class Physics {
 public:
 
-
-  // Public attribute accessor methods
-  //  
-
-
-  // Public attribute accessor methods
-  //  
-
-
-
-  /**
-   * @return 2dVector
-   * @param  Object
-   */
-  virtual 2dVector calculateMoveFor (PhysicsApplyableObject Object )
-  {
-  }
-
-protected:
-
-public:
-
-
-  // Protected attribute accessor methods
-  //  
-
-protected:
-
-public:
-
-
-  // Protected attribute accessor methods
-  //  
-
-protected:
-
-
-private:
-
-public:
-
-
-  // Private attribute accessor methods
-  //  
-
-private:
-
-public:
-
-
-  // Private attribute accessor methods
-  //  
-
-private:
-
+    /**
+    * @return Vector2D
+    * @param  Object
+    */
+    virtual Vector2D calculateMoveFor (PhysicsApplyableObject Object) = 0;
 
 
 };

@@ -3,24 +3,6 @@
 // Constructors/Destructors
 //  
 
-StandardMagnetismBehaviour::StandardMagnetismBehaviour ( ) {
-initAttributes();
-}
+StandardMagnetismBehaviour::StandardMagnetismBehaviour () {}
 
-StandardMagnetismBehaviour::~StandardMagnetismBehaviour ( ) { }
-
-//  
-// Methods
-//  
-
-
-// Accessor methods
-//  
-
-
-// Other methods
-//  
-
-void StandardMagnetismBehaviour::initAttributes ( ) {
-}
-
+StandardMagnetismBehaviour::~StandardMagnetismBehaviour () {}

@@ -10,90 +10,18 @@
   * 
   */
 
-class StandardGravityBehaviour : virtual public ForceBehaviour
-{
+class StandardGravityBehaviour : virtual public ForceBehaviour {
 public:
+    
+    /**
+     * Empty Constructor
+     */
+    StandardGravityBehaviour ();
 
-  // Constructors/Destructors
-  //  
-
-
-  /**
-   * Empty Constructor
-   */
-  StandardGravityBehaviour ( );
-
-  /**
-   * Empty Destructor
-   */
-  virtual ~StandardGravityBehaviour ( );
-
-  // Static Public attributes
-  //  
-
-  // Public attributes
-  //  
-
-
-  // Public attribute accessor methods
-  //  
-
-
-  // Public attribute accessor methods
-  //  
-
-
-protected:
-
-  // Static Protected attributes
-  //  
-
-  // Protected attributes
-  //  
-
-public:
-
-
-  // Protected attribute accessor methods
-  //  
-
-protected:
-
-public:
-
-
-  // Protected attribute accessor methods
-  //  
-
-protected:
-
-
-private:
-
-  // Static Private attributes
-  //  
-
-  // Private attributes
-  //  
-
-public:
-
-
-  // Private attribute accessor methods
-  //  
-
-private:
-
-public:
-
-
-  // Private attribute accessor methods
-  //  
-
-private:
-
-
-
+    /**
+     * Empty Destructor
+     */
+    virtual ~StandardGravityBehaviour ();
 };
 
 #endif // STANDARDGRAVITYBEHAVIOUR_H

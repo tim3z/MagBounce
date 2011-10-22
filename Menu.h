@@ -10,90 +10,19 @@
   * 
   */
 
-class Menu : virtual public State
-{
+class Menu : virtual public State {
 public:
 
-  // Constructors/Destructors
-  //  
+    /**
+     * Empty Constructor
+     */
+    Menu ();
 
-
-  /**
-   * Empty Constructor
-   */
-  Menu ( );
-
-  /**
-   * Empty Destructor
-   */
-  virtual ~Menu ( );
-
-  // Static Public attributes
-  //  
-
-  // Public attributes
-  //  
-
-
-  // Public attribute accessor methods
-  //  
-
-
-  // Public attribute accessor methods
-  //  
-
-
-protected:
-
-  // Static Protected attributes
-  //  
-
-  // Protected attributes
-  //  
-
-public:
-
-
-  // Protected attribute accessor methods
-  //  
-
-protected:
-
-public:
-
-
-  // Protected attribute accessor methods
-  //  
-
-protected:
-
-
-private:
-
-  // Static Private attributes
-  //  
-
-  // Private attributes
-  //  
-
-public:
-
-
-  // Private attribute accessor methods
-  //  
-
-private:
-
-public:
-
-
-  // Private attribute accessor methods
-  //  
-
-private:
-
-
-
+    /**
+     * Empty Destructor
+     */
+    virtual ~Menu ();
+    
 };
 
 #endif // MENU_H

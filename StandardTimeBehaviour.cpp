@@ -3,21 +3,6 @@
 // Constructors/Destructors
 //  
 
-StandardTimeBehaviour::StandardTimeBehaviour ( ) {
-}
+StandardTimeBehaviour::StandardTimeBehaviour () {}
 
-StandardTimeBehaviour::~StandardTimeBehaviour ( ) { }
-
-//  
-// Methods
-//  
-
-
-// Accessor methods
-//  
-
-
-// Other methods
-//  
-
-
+StandardTimeBehaviour::~StandardTimeBehaviour () {}
