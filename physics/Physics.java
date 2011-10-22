@@ -13,7 +13,7 @@ import world.LevelObject;
  * @author Eagle
  */
 public final class Physics {
-
+	private static double FRICTION_FACTOR = 0.99;
 	private static Vector2D gravity = new Vector2D(0, -0.001);
 	
 	private Physics() { }
@@ -38,19 +38,9 @@ public final class Physics {
 			}
 			speedVector = speedVector.add(magnetism);
 		}
-		
-		if (detectCollisions(destinations, ball, speedVector.multiply(time)) != null) {
-			return CollisionState.COLLISION_WITH_DESTINATION;
-		}
+		ball.setSpeed(speedVector);
 
-		Collision collision = detectCollisions(levelObjects, ball, speedVector.multiply(time));
-		if (collision != null) {
-			collision.move(ball, time);
-			return CollisionState.COLLISION;
-		} else {
-			ball.move(speedVector, time);
-			return CollisionState.NO_COLLISION;
-		}
+		return detectCollisions(levelObjects, destinations, ball, speedVector.multiply(time));
 
 	}
 
@@ -73,7 +63,7 @@ public final class Physics {
 	 * @param direction Direction of the movement
 	 * @return Collision or <code>null</code> if none has occurred
 	 */
-	private static Collision detectCollisions(List<LevelObject> levelObjects, MovingObject object, Vector2D direction) {
+	private static CollisionState detectCollisions(List<LevelObject> levelObjects, List<LevelObject> destinations, MovingObject object, Vector2D direction) {
 		int radius = object.getCollisionRadius();
 
 		Vector2D wall = null;
@@ -131,13 +121,62 @@ public final class Physics {
 					wall = new Vector2D(1, 0);
 				}
 			}
+		}
+		
+		for (LevelObject destination : destinations) {
 
+			llx = destination.getLlx() - radius;
+			lly = destination.getLly() - radius;
+			urx = destination.getUrx() + radius;
+			ury = destination.getUry() + radius;
+
+			tmpA = (llx - object.getPosition().getX()) / direction.getX();
+
+			if (tmpA > 0 && tmpA < a) {
+				Vector2D tmpCollPoint = object.getPosition().add(direction.multiply(tmpA));
+				if (tmpCollPoint.getY() <= ury && tmpCollPoint.getY() >= lly) {
+					return CollisionState.COLLISION_WITH_DESTINATION;
+				}
+			}
+
+			tmpA = (urx - object.getPosition().getX()) / direction.getX();
+
+			if (tmpA > 0 && tmpA < a) {
+				Vector2D tmpCollPoint = object.getPosition().add(direction.multiply(tmpA));
+				if (tmpCollPoint.getY() <= ury && tmpCollPoint.getY() >= lly) {
+					return CollisionState.COLLISION_WITH_DESTINATION;
+				}
+			}
+
+			tmpA = (lly - object.getPosition().getY()) / direction.getY();
+
+			if (tmpA > 0 && tmpA < a) {
+				Vector2D tmpCollPoint = object.getPosition().add(direction.multiply(tmpA));
+				if (tmpCollPoint.getX() <= urx && tmpCollPoint.getX() >= llx) {
+					return CollisionState.COLLISION_WITH_DESTINATION;
+				}
+			}
+
+			tmpA = (ury - object.getPosition().getY()) / direction.getY();
+
+			if (tmpA > 0 && tmpA < a) {
+				Vector2D tmpCollPoint = object.getPosition().add(direction.multiply(tmpA));
+				if (tmpCollPoint.getX() <= urx && tmpCollPoint.getX() >= llx) {
+					return CollisionState.COLLISION_WITH_DESTINATION;
+				}
+			}
 		}
 
 		if (wall != null) {
-			return new Collision(wall, object.getPosition().add(direction.multiply(a)), direction, a);
+			object.setPosition(object.getPosition().add(direction.multiply(a)));
+			detectCollisions(levelObjects, destinations, object, direction.reflectAt(wall).multiply(1.0-a));
+			object.setSpeed(object.getSpeed().multiply(FRICTION_FACTOR));
+			
+			return CollisionState.COLLISION;
 		}
 
-		return null;
+		object.setPosition(object.getPosition().add(direction));
+		object.setSpeed((direction.normalize()).multiply(object.getSpeed().norm()));
+		return CollisionState.NO_COLLISION;
 	}
 }

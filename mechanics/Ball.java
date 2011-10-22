@@ -4,8 +4,6 @@
 
 package mechanics;
 
-import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
 import physics.MovingObject;
 import physics.Vector2D;
 
