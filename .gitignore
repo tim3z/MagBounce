@@ -2,7 +2,9 @@
 Makefile
 
 # Object files, binaries, IDE data
+.cproject
 .dep.inc
+.project
 /build/*
 /dist/*
 /nbproject
