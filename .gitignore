@@ -1,5 +1,9 @@
-.dep.inc
+# ATM we let the IDEs auto-generate the Makefile
 Makefile
-/build
-/dist
+
+# Object files, binaries, IDE data
+.dep.inc
+/build/*
+/dist/*
 /nbproject
+*.o
