@@ -16,6 +16,14 @@ TimeBehaviour does not have any pure virtual methods, but its author
 *****************************************************************************/
 
 class TimeBehaviour {
+public:
+    
+    /**
+     * Returns a manipulated time value to calculate physics
+     * @param time the real time
+     * @return the time to calculate physics
+     */
+    virtual int manipulateTime(int time) = 0;
     
 };
 

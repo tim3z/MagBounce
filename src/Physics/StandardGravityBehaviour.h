@@ -12,7 +12,7 @@
 
 class StandardGravityBehaviour : virtual public ForceBehaviour {
 public:
-    
+
     /**
      * Empty Constructor
      */
@@ -22,6 +22,8 @@ public:
      * Empty Destructor
      */
     virtual ~StandardGravityBehaviour ();
+
+    Vector2D* getAccelerationAt(Vector2D &position);
 };
 
 #endif // STANDARDGRAVITYBEHAVIOUR_H

@@ -23,6 +23,8 @@ public:
      * Empty Destructor
      */
     virtual ~StandardMagnetismBehaviour ();
+    
+    Vector2D* getAccelerationAt(Vector2D &position);
 };
 
 #endif // STANDARDMAGNETISMBEHAVIOUR_H

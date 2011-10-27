@@ -23,6 +23,7 @@ public:
      */
     virtual ~StandardTimeBehaviour ();
     
+    int manipulateTime(int time);
 };
 
 #endif // STANDARDTIMEBEHAVIOUR_H

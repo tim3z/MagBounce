@@ -3,6 +3,11 @@
 // Constructors/Destructors
 //  
 
-StandardPhysics::StandardPhysics () {}
+StandardPhysics::StandardPhysics () {
+    gravityBehaviour = new StandardGravityBehaviour();
+    magnetismBehaviour = new StandardMagnetismBehaviour();
+    timeBehaviour = new StandardTimeBehaviour();
+}
 
-StandardPhysics::~StandardPhysics () {}
+StandardPhysics::~StandardPhysics () {
+}

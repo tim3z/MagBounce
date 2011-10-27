@@ -5,26 +5,28 @@
 #include <string>
 #include "Vector2D.h"
 #include "../Model/LevelObject.h"
+#include "PhysicsApplyableObject.h"
+#include "../Model/Level.h"
 
 /**
-  * interface Physics
+  * class Physics
   * 
   */
 
-/******************************* Abstract Class ****************************
-Physics does not have any pure virtual methods, but its author
-  defined it as an abstract class, so you should not use it directly.
-  Inherit from it instead and create only objects from the derived classes
-*****************************************************************************/
-
 class Physics {
+private:
+    
+    Level currentLevel;
+    
 public:
 
     /**
-    * @return Vector2D
-    * @param  Object
-    */
-    virtual Vector2D calculateMoveFor (LevelObject Object) = 0;
+     * Calculates for the given Object and the given Time a moving Vector
+     * @param Object the Object which might move
+     * @param the duration of the move
+     * @return Vector2D a pointer to the calculated move
+     */
+    Vector2D* calculateMoveFor (PhysicsApplyableObject &Object, int time);
 
     virtual ~Physics();
 };

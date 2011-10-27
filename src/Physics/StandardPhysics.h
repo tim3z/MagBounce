@@ -1,16 +1,19 @@
 
 #ifndef STANDARDPHYSICS_H
 #define STANDARDPHYSICS_H
-#include "Physics.h"
 
 #include <string>
+#include "PhysicalPorperties.h"
+#include "StandardGravityBehaviour.h"
+#include "StandardMagnetismBehaviour.h"
+#include "StandardTimeBehaviour.h"
 
 /**
   * class StandardPhysics
   * 
   */
 
-class StandardPhysics : virtual public Physics {
+class StandardPhysics : virtual public PhysicalPorperties {
 public:
 
     /**
