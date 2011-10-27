@@ -24,9 +24,9 @@ public:
     /**
      * Calculate the acceleration represanted as an Vector for this force at the given position
      * @param position a Vector2D represanting the position
-     * @param acceleration a vector to write the result into
+     * @return the calculated acceleration
      */
-    virtual void getAccelerationAt(Vector2D &position, Vector2D* acceleration) = 0;    
+    virtual Vector2D getAccelerationAt(const Vector2D &position) = 0;    
 };
 
 #endif // FORCEBEHAVIOUR_H

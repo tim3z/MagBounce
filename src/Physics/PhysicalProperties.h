@@ -22,6 +22,16 @@ public:
 
     virtual ~PhysicalProperties();
     
+    ForceBehaviour* getGravityBehaviour() {
+        return gravityBehaviour;
+    }
+    ForceBehaviour* getMagnetismBehaviour() {
+        return magnetismBehaviour;
+    }
+    TimeBehaviour* getTimeBehaviour() {
+        return timeBehaviour;
+    }
+    
 private:
 
 };

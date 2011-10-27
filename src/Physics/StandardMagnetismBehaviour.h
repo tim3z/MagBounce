@@ -24,7 +24,7 @@ public:
      */
     virtual ~StandardMagnetismBehaviour ();
     
-    void getAccelerationAt(Vector2D &position, Vector2D* acceleration);
+    Vector2D getAccelerationAt(const Vector2D &position);
 };
 
 #endif // STANDARDMAGNETISMBEHAVIOUR_H
