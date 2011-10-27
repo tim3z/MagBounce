@@ -15,6 +15,8 @@ GameState does not have any pure virtual methods, but its author
 *****************************************************************************/
 
 class GameState {
+public:
+	virtual ~GameState();
 };
 
 #endif // GAMESTATE_H

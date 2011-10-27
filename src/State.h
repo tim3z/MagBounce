@@ -16,6 +16,8 @@ State does not have any pure virtual methods, but its author
 *****************************************************************************/
 
 class State {
+public:
+	virtual ~State();
 };
 
 #endif // STATE_H

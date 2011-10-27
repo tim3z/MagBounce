@@ -34,4 +34,3 @@ int main(int argc, char** argv) {
 	al_destroy_display(display);
 	return 0;
 }
-//END_OF_MAIN();

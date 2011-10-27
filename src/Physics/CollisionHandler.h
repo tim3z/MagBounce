@@ -3,7 +3,6 @@
 #define COLLISIONHANDLER_H
 
 #include <string>
-#include "PhysicsApplyableObject.h"
 #include "Vector2D.h"
 #include "../Model/Level.h"
 
@@ -13,11 +12,6 @@
   */
 
 class CollisionHandler {
-    
-private: 
-
-    Level level;
-  
 public:
 
     /**
@@ -36,24 +30,7 @@ public:
     * @param  object
     * @param  move
     */
-    Vector2D checkForCollision (PhysicsApplyableObject object, Vector2D move);
-
-    /**
-    * Set the value of level
-    * @param new_var the new value of level
-    */
-    void setLevel (Level new_var)   {
-        level = new_var;
-    }
-
-    /**
-    * Get the value of level
-    * @return the value of level
-    */
-    Level getLevel ()   {
-        return level;
-    }
-
+    Vector2D checkForCollision (LevelObject object, Vector2D move);
 };
 
 #endif // COLLISIONHANDLER_H

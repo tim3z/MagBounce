@@ -4,7 +4,7 @@
 
 #include <string>
 #include "Vector2D.h"
-#include "PhysicsApplyableObject.h"
+#include "../Model/LevelObject.h"
 
 /**
   * interface Physics
@@ -24,9 +24,9 @@ public:
     * @return Vector2D
     * @param  Object
     */
-    virtual Vector2D calculateMoveFor (PhysicsApplyableObject Object) = 0;
+    virtual Vector2D calculateMoveFor (LevelObject Object) = 0;
 
-
+    virtual ~Physics();
 };
 
 #endif // PHYSICS_H

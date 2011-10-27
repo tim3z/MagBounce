@@ -16,7 +16,8 @@ ForceBehaviour does not have any pure virtual methods, but its author
 *****************************************************************************/
 
 class ForceBehaviour {
-
+public:
+	virtual ~ForceBehaviour();
 };
 
 #endif // FORCEBEHAVIOUR_H
