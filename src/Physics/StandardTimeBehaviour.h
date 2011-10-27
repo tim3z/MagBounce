@@ -1,9 +1,9 @@
 
 #ifndef STANDARDTIMEBEHAVIOUR_H
 #define STANDARDTIMEBEHAVIOUR_H
-#include "TimeBehaviour.h"
 
 #include <string>
+#include "TimeBehaviour.h"
 
 /**
   * class StandardTimeBehaviour
@@ -13,14 +13,7 @@
 class StandardTimeBehaviour : virtual public TimeBehaviour {
 public:
     
-    /**
-    * Empty Constructor
-    */
     StandardTimeBehaviour ();
-
-    /**
-     * Empty Destructor
-     */
     virtual ~StandardTimeBehaviour ();
     
     int manipulateTime(int time);

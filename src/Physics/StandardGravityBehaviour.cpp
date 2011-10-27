@@ -7,6 +7,6 @@ StandardGravityBehaviour::StandardGravityBehaviour () {}
 
 StandardGravityBehaviour::~StandardGravityBehaviour () {}
 
-Vector2D* StandardGravityBehaviour::getAccelerationAt(Vector2D& position) {
-    return new Vector2D();
+void StandardGravityBehaviour::getAccelerationAt(Vector2D& position, Vector2D* acceleration) {
+    
 }

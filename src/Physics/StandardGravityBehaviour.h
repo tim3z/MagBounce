@@ -23,7 +23,7 @@ public:
      */
     virtual ~StandardGravityBehaviour ();
 
-    Vector2D* getAccelerationAt(Vector2D &position);
+    void getAccelerationAt(Vector2D &position, Vector2D* acceleration);
 };
 
 #endif // STANDARDGRAVITYBEHAVIOUR_H

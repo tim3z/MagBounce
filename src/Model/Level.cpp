@@ -12,7 +12,7 @@ Level::~Level () {
     physics = NULL;
 }
 
-PhysicalPorperties* Level::getLevelPhysics() {
+PhysicalProperties* Level::getLevelPhysics() {
     return physics;
 }
 

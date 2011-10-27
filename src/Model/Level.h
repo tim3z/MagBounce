@@ -6,7 +6,7 @@
 #include <vector>
 #include "LevelObject.h"
 #include "../Physics/Vector2D.h"
-#include "../Physics/PhysicalPorperties.h"
+#include "../Physics/PhysicalProperties.h"
 #include "../Physics/PhysicsApplyableObject.h"
 #include "../Physics/StandardPhysics.h"
 
@@ -17,7 +17,7 @@
 
 class Level {
     
-    PhysicalPorperties* physics;
+    PhysicalProperties* physics;
     
 public:
     
@@ -55,7 +55,7 @@ public:
      * Returns the Physics Object of this Level
      * @return a pointer to this Levels Physics Object
      */
-    PhysicalPorperties* getLevelPhysics();
+    PhysicalProperties* getLevelPhysics();
   
 };
 

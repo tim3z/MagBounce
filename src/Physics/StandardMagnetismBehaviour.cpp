@@ -7,6 +7,6 @@ StandardMagnetismBehaviour::StandardMagnetismBehaviour () {}
 
 StandardMagnetismBehaviour::~StandardMagnetismBehaviour () {}
 
-Vector2D* StandardMagnetismBehaviour::getAccelerationAt(Vector2D& position) {
+void StandardMagnetismBehaviour::getAccelerationAt(Vector2D& position, Vector2D* acceleration) {
     
 }

@@ -18,6 +18,8 @@ TimeBehaviour does not have any pure virtual methods, but its author
 class TimeBehaviour {
 public:
     
+    virtual ~TimeBehaviour();
+    
     /**
      * Returns a manipulated time value to calculate physics
      * @param time the real time

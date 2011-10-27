@@ -3,7 +3,7 @@
 #define STANDARDPHYSICS_H
 
 #include <string>
-#include "PhysicalPorperties.h"
+#include "PhysicalProperties.h"
 #include "StandardGravityBehaviour.h"
 #include "StandardMagnetismBehaviour.h"
 #include "StandardTimeBehaviour.h"
@@ -13,17 +13,10 @@
   * 
   */
 
-class StandardPhysics : virtual public PhysicalPorperties {
+class StandardPhysics : virtual public PhysicalProperties {
 public:
-
-    /**
-     * Empty Constructor
-     */
+    
     StandardPhysics ();
-
-    /**
-     * Empty Destructor
-     */
     virtual ~StandardPhysics ();
 
 };
