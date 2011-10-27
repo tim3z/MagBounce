@@ -8,7 +8,7 @@
 #include "../Physics/Vector2D.h"
 #include "../Physics/PhysicalProperties.h"
 #include "../Physics/PhysicsApplyableObject.h"
-#include "../Physics/StandardPhysics.h"
+#include "../Physics/Standard/StandardPhysics.h"
 
 /**
   * class Level
@@ -41,7 +41,7 @@ public:
      * Return all Objects, which movements should be handled by the physics
      * @param a pointer to a vector to fill in the objects
      */
-    void getPhysicsApplyableObjects(std::vector<PhysicsApplyableObject>*);
+    void getPhysicsApplyableObjects(std::vector<PhysicsApplyableObject*>*);
 
 
     /**

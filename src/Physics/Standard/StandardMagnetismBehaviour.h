@@ -1,7 +1,7 @@
 
 #ifndef STANDARDMAGNETISMBEHAVIOUR_H
 #define STANDARDMAGNETISMBEHAVIOUR_H
-#include "ForceBehaviour.h"
+#include "../ForceBehaviour.h"
 
 #include <string>
 

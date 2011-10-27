@@ -18,13 +18,14 @@ public:
      * Return the momentum of this object
      * @return an Vector2D containing the movement
      */
-    virtual Vector2D getSpeed() = 0;
+    virtual Vector2D getSpeed() const = 0;
+    // why const at the end?? -> http://duramecho.com/ComputerInformation/WhyHowCppConst.html
     
     /**
      * Return the position of this Object
      * @return an Vector2D containing the position
      */
-    virtual Vector2D getPosition() = 0;
+    virtual Vector2D getPosition() const = 0;
     
 };
 

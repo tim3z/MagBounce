@@ -3,7 +3,7 @@
 #define STANDARDTIMEBEHAVIOUR_H
 
 #include <string>
-#include "TimeBehaviour.h"
+#include "../TimeBehaviour.h"
 
 /**
   * class StandardTimeBehaviour

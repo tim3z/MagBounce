@@ -10,7 +10,7 @@
   * 
   */
 
-class PlayerObject : public LevelObject, public PhysicsApplyableObject {
+class PlayerObject : public PhysicsApplyableObject, public LevelObject {
 public:
     
     /**

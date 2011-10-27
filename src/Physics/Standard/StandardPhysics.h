@@ -3,7 +3,7 @@
 #define STANDARDPHYSICS_H
 
 #include <string>
-#include "PhysicalProperties.h"
+#include "../PhysicalProperties.h"
 #include "StandardGravityBehaviour.h"
 #include "StandardMagnetismBehaviour.h"
 #include "StandardTimeBehaviour.h"
