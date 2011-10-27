@@ -2,8 +2,7 @@
 #ifndef PLAYEROBJECT_H
 #define PLAYEROBJECT_H
 #include "LevelObject.h"
-#include "PhysicsApplyableObject.h"
-
+#include "../Physics/PhysicsApplyableObject.h"
 #include <string>
 
 /**

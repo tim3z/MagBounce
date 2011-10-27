@@ -2,8 +2,8 @@
 #ifndef RUNNING_H
 #define RUNNING_H
 #include "GameState.h"
-#include "Level.h"
-#include "CollisionHandler.h"
+#include "Model/Level.h"
+#include "Physics/CollisionHandler.h"
 
 #include <string>
 
