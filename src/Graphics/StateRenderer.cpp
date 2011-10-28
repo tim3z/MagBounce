@@ -4,11 +4,11 @@
 
 void StateRenderer::renderObjects(std::vector<LevelObject>* levelObjects) {
     
-    LevelObject* currentLevelObject;
+    LevelObject currentLevelObject;
     Graphics* graphics = Graphics::getInstance();
     
     for (int i = 0; i < levelObjects->size(); i++) {
         currentLevelObject = levelObjects->at(i);
-        graphics->render(currentLevelObject->getRenderer()->getBitmap(), currentLevelObject->getPosition());
+        graphics->render(currentLevelObject.getRenderer()->getBitmap(), currentLevelObject.getPosition());
     }
 }

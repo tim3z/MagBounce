@@ -3,7 +3,6 @@
 #include "App.h"
 
 App::App() {
-    graphics = new Graphics();
     currentState = new State();
   
     //Do currentState stuff such as moving objects and rendering.
@@ -13,6 +12,5 @@ App::App() {
 }
 
 App::~App() {
-    graphics->~Graphics();
     currentState->~State();
 }
