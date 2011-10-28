@@ -1,8 +1,18 @@
+#include <cstdio>
+#include <allegro5/allegro.h>
 #include "App.h"
 
-// Constructors/Destructors
-//  
+App::App() {
+    graphics = new Graphics();
+    currentState = new State();
+  
+    //Do currentState stuff such as moving objects and rendering.
+//    while () {
+//        currentState
+//    }
+}
 
-App::App () {}
-
-App::~App () {}
+App::~App() {
+    graphics->~Graphics();
+    currentState->~State();
+}

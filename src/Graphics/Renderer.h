@@ -10,7 +10,7 @@
 
 #include <allegro5/allegro5.h>
 
-class TestRenderer {
+class Renderer {
     
 private:
     ALLEGRO_BITMAP *bitmap;
@@ -20,14 +20,14 @@ public:
     /**
      * Empty Constructor
      */
-    TestRenderer ();
+    Renderer ();
     
     ALLEGRO_BITMAP* getBitmap();
 
     /**
      * Empty Destructor
      */
-    virtual ~TestRenderer ();
+    virtual ~Renderer ();
 
 };
 

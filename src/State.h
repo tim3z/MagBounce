@@ -3,6 +3,7 @@
 #define STATE_H
 
 #include <string>
+#include "Graphics/StateRenderer.h"
 
 /**
   * interface State
@@ -16,6 +17,9 @@ State does not have any pure virtual methods, but its author
 *****************************************************************************/
 
 class State {
+protected:
+    StateRenderer* stateRenderer;
+    
 public:
 	virtual ~State();
 };

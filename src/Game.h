@@ -10,18 +10,18 @@
   * 
   */
 
-class InGame : virtual public State {
+class Game : virtual public State {
 public:
     
     /**
      * Empty Constructor
      */
-    InGame ();
+    Game ();
 
     /**
      * Empty Destructor
      */
-    virtual ~InGame ();
+    virtual ~Game ();
 
 };
 

@@ -4,6 +4,7 @@
 
 #include <string>
 #include "../Physics/Vector2D.h"
+#include "../Graphics/Renderer.h"
 
 /**
   * class LevelObject
@@ -15,6 +16,7 @@ class LevelObject {
 private:
     
     Vector2D position;
+    Renderer* renderer;
     
 public:
 
@@ -40,6 +42,16 @@ public:
      * @param position an Vector2D containing the position
      */
     void setPosition(const Vector2D &position);
+    
+    void setRenderer(Renderer* renderer);
+    
+    /**
+     * Returns this LevelObjects Renderer
+     * @return a Renderer
+     */
+    Renderer* getRenderer() {
+        return renderer;
+    }
     
     /**
      * Return the position of this Object
