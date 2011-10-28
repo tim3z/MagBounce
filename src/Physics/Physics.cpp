@@ -2,7 +2,19 @@
 
 Physics::~Physics() {}
 
-Vector2D Physics::calculateMoveFor (PhysicsApplyableObject &object, int time) {
+void Physics::move(int time) {
+    std::vector<PhysicsApplyableObject*> objects; // TODO warum macht objects(); es kaputt??
+    std::vector<Vector2D> movements;
+    currentLevel->getPhysicsApplyableObjects(&objects);
+    
+    for (int i = 0; i < objects.size(); i++) {
+        movements[i] = calculateMoveFor(*objects[i], time);
+    }
+    
+    // collision detection
+}
+
+Vector2D Physics::calculateMoveFor (const PhysicsApplyableObject &object, int time) {
     time = currentLevel->getLevelPhysics()->getTimeBehaviour()->manipulateTime(time);
     
     Vector2D speed(2);

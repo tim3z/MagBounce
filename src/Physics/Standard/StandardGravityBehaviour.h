@@ -1,7 +1,7 @@
 
 #ifndef STANDARDGRAVITYBEHAVIOUR_H
 #define STANDARDGRAVITYBEHAVIOUR_H
-#include "ForceBehaviour.h"
+#include "../ForceBehaviour.h"
 
 #include <string>
 

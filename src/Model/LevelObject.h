@@ -57,7 +57,7 @@ public:
      * Return the position of this Object
      * @return an Vector2D containing the position
      */
-    Vector2D getPosition() {
+    Vector2D getPosition() const {
         return position;
     }
   
