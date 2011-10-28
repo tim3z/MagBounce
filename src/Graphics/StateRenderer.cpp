@@ -11,4 +11,7 @@ void StateRenderer::renderObjects(std::vector<LevelObject>* levelObjects) {
         currentLevelObject = levelObjects->at(i);
         graphics->render(currentLevelObject.getRenderer()->getBitmap(), currentLevelObject.getPosition());
     }
+    
+    graphics->flipDisplay();
+    currentLevelObject.~LevelObject();
 }

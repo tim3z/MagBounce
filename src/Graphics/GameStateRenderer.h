@@ -8,7 +8,20 @@
 #ifndef GAMESTATERENDERER_H
 #define	GAMESTATERENDERER_H
 
+#include "StateRenderer.h"
 
+class GameStateRenderer : public StateRenderer {
+        
+    /**
+     * Empty Constructor
+     */
+    GameStateRenderer ();
+
+    /**
+     * Empty Destructor
+     */
+    virtual ~GameStateRenderer ();
+};
 
 #endif	/* GAMESTATERENDERER_H */
 

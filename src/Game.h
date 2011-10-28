@@ -17,6 +17,16 @@ public:
      * Empty Constructor
      */
     Game ();
+    
+    /**
+     * This method calls all methods to calculate the movement and moves all LevelObjects.
+     */
+    void processMovement();
+    
+    /**
+     * This Method uses the current StateRenderer to render all LevelObjects.
+     */
+    void render();
 
     /**
      * Empty Destructor
