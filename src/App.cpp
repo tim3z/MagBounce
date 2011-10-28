@@ -12,5 +12,5 @@ App::App() {
 }
 
 App::~App() {
-    currentState->~State();
+    delete currentState;
 }
