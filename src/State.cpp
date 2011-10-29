@@ -1,7 +1,8 @@
 #include "State.h"
 
-State::State(App* initApp) {
-    app = initApp;
+State::State(App* app, StateRenderer* stateRenderer) {
+    this->app = app;
+    this->stateRenderer = stateRenderer;
 }
 
 State::State() {

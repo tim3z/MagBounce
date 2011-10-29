@@ -3,6 +3,8 @@
 
 #include <string>
 
+class Game;
+
 /**
   * interface GameState
   * 

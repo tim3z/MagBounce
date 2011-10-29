@@ -5,6 +5,7 @@
 #include <string>
 #include "Graphics/Graphics.h"
 
+class State;
 
 /**
   * class App
@@ -18,6 +19,9 @@ private:
     Graphics *graphics;
     State *currentState;
     
+    App(const App&);
+    const App& operator=(const App&);
+
 public:
     
     /**

@@ -4,7 +4,8 @@
 
 #include <string>
 #include "Graphics/StateRenderer.h"
-#include "App.h"
+
+class App;
 
 /**
   * interface State
@@ -19,7 +20,7 @@ protected:
 public:
     
     State ();
-    State (App* initApp);
+    State (App* app, StateRenderer* stateRenderer);
     
     virtual ~State();
 };
