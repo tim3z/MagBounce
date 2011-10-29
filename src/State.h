@@ -4,7 +4,8 @@
 
 #include <string>
 #include "Graphics/StateRenderer.h"
-#include "App.h"
+
+class App;
 
 /**
   * interface State

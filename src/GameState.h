@@ -2,7 +2,8 @@
 #define GAMESTATE_H
 
 #include <string>
-#include "Game.h"
+
+class Game;
 
 /**
   * interface GameState
