@@ -10,7 +10,7 @@
   * 
   */
 
-class Pause : virtual public GameState {
+class Pause : public GameState {
 public:
     
     /**
