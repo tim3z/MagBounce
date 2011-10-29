@@ -2,7 +2,6 @@
 #ifndef LEVEL_H
 #define LEVEL_H
 
-#include <string>
 #include <vector>
 #include "RectangularLevelObject.h"
 #include "PlayerObject.h"
@@ -17,9 +16,11 @@
   */
 
 class Level {
+private:
     
     PhysicalProperties* physics;
     PlayerObject* ball;
+    std::vector<RectangularLevelObject*> levelObjects;
     
 public:
     
