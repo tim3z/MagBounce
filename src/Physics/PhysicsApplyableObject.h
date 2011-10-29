@@ -50,7 +50,7 @@ public:
      * Return the Collision Radius for this object
      * @return the collision radius
      */
-    virtual float getCollisionRadius() const = 0;
+    virtual int getCollisionRadius() const = 0;
     
 };
 

@@ -4,7 +4,7 @@
 
 #include <string>
 #include <vector>
-#include "LevelObject.h"
+#include "RectangularLevelObject.h"
 #include "PlayerObject.h"
 #include "../Physics/Vector2D.h"
 #include "../Physics/PhysicalProperties.h"
@@ -59,7 +59,7 @@ public:
      * @param  radius
      * @param a pointer to a vector to fill in the objects
      */
-    void getLevelObjectsAround (const Vector2D &position, float radius, std::vector<LevelObject*>*);
+    void getLevelObjectsAround (const Vector2D &position, float radius, std::vector<RectangularLevelObject*>*);
   
     /**
      * Returns the Physics Object of this Level

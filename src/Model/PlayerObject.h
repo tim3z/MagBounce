@@ -23,7 +23,7 @@ public:
      */
     virtual ~PlayerObject ();
     
-    float getCollisionRadius() const;
+    int getCollisionRadius() const;
     
     Vector2D getPosition() const {
         return LevelObject::getPosition();

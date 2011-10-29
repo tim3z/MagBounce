@@ -10,6 +10,7 @@
 
 #include "../Vector2D.h"
 #include "../../Model/LevelObject.h"
+#include "../PhysicsApplyableObject.h"
 
 class Collision {
 private:
@@ -17,29 +18,27 @@ private:
     Vector2D collisionPoint;
     Vector2D collisionNormal;
     float movementFraction; // How much of the original move to move til the collision
-    LevelObject* collisionObject1;
+    PhysicsApplyableObject* collisionObject1;
     LevelObject* collisionObject2;
     
     
 public:
     
     Collision();
-    Collision(const Collision& orig);
+    // AutoCopy will do fine, LevelObjects must be the same!
+//    Collision(const Collision& orig);
     virtual ~Collision();
     
     void setCollisionObject2(LevelObject *collisionObject2);
     LevelObject* getCollisionObject2() const;
-    void setCollisionObject1(LevelObject *collisionObject1);
-    LevelObject* getCollisionObject1() const;
+    void setCollisionObject1(PhysicsApplyableObject *collisionObject1);
+    PhysicsApplyableObject* getCollisionObject1() const;
     void setMovementFraction(float movementFraction);
     float getMovementFraction() const;
     void setCollisionNormal(Vector2D collisionNormal);
     Vector2D getCollisionNormal() const;
     void setCollisionPoint(Vector2D collisionPoint);
     Vector2D getCollisionPoint() const;
-    
-    
-private:
 
 };
 

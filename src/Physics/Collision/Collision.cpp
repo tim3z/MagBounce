@@ -10,8 +10,9 @@
 Collision::Collision() {
 }
 
-Collision::Collision(const Collision& orig) {
-}
+// AutoCopy will do fine, LevelObjects must be the same!
+//Collision::Collision(const Collision& orig) {
+//}
 
 Collision::~Collision() {
 }
@@ -24,11 +25,11 @@ LevelObject* Collision::getCollisionObject2() const {
     return collisionObject2;
 }
 
-void Collision::setCollisionObject1(LevelObject* collisionObject1) {
+void Collision::setCollisionObject1(PhysicsApplyableObject* collisionObject1) {
     this->collisionObject1 = collisionObject1;
 }
 
-LevelObject* Collision::getCollisionObject1() const {
+PhysicsApplyableObject* Collision::getCollisionObject1() const {
     return collisionObject1;
 }
 

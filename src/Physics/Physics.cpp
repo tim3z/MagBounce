@@ -42,7 +42,7 @@ void Physics::move(int time) {
         Vector2D move = calculateMoveFor(*playerObject, time);
 
         float radius = playerObject->getCollisionRadius() + norm_2(move);
-        std::vector<LevelObject*> levelObjects;
+        std::vector<RectangularLevelObject*> levelObjects;
         currentLevel->getLevelObjectsAround(playerObject->getPosition(), radius, &levelObjects);
 
         Collision* collision = CollisionHandler::checkForCollision(*playerObject, move, levelObjects);

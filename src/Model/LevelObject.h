@@ -15,8 +15,11 @@ class LevelObject {
     
 private:
     
-    Vector2D position;
     Renderer* renderer;
+    
+protected:
+    
+    Vector2D position;
     
 public:
 
