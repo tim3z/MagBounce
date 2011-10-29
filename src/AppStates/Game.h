@@ -3,7 +3,8 @@
 #define GAME_H
 #include "AppState.h"
 #include "../Graphics/GameStateRenderer.h"
-#include <string>
+#include "../Physics/Physics.h"
+#include "../Model/Level.h"
 
 class GameState;
 class Running;
@@ -16,11 +17,13 @@ class Pause;
 
 class Game : virtual public AppState {
 private:
-    GameStateRenderer* gameStateRenderer;
     GameState *currentState;
-    Running *running;
-    Pause *pause;
     bool exit;
+    
+    Level* currentLevel;
+    GameStateRenderer* gameStateRenderer;
+    Physics* physics;
+    
     
 public:
     
