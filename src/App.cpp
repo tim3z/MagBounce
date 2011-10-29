@@ -3,14 +3,7 @@
 #include "App.h"
 
 App::App() {
-    currentState = new State();
-  
-    //Do currentState stuff such as moving objects and rendering.
-//    while () {
-//        currentState
-//    }
 }
 
 App::~App() {
-    delete currentState;
 }

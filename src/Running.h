@@ -12,7 +12,7 @@
   * 
   */
 
-class Running : virtual public GameState {
+class Running : public GameState {
 
 private:
 
