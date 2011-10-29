@@ -17,6 +17,8 @@ public:
      * Empty Constructor
      */
     Pause ();
+    
+    void reactOnInput();
 
     /**
      * Empty Destructor

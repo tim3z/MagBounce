@@ -1,7 +1,7 @@
 
 #ifndef MENU_H
 #define MENU_H
-#include "State.h"
+#include "AppState.h"
 
 #include <string>
 
@@ -10,13 +10,15 @@
   * 
   */
 
-class Menu : virtual public State {
+class Menu : virtual public AppState {
 public:
 
     /**
      * Empty Constructor
      */
     Menu ();
+    
+    void execute();
 
     /**
      * Empty Destructor

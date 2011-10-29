@@ -2,6 +2,10 @@
 #include "Graphics.h"
 #include "Renderer.h"
 
+StateRenderer::StateRenderer() {
+    
+}
+
 void StateRenderer::renderObjects(std::vector<LevelObject>* levelObjects) {
     
     LevelObject currentLevelObject;
@@ -15,3 +19,5 @@ void StateRenderer::renderObjects(std::vector<LevelObject>* levelObjects) {
     graphics->flipDisplay();
     currentLevelObject.~LevelObject();
 }
+
+StateRenderer::~StateRenderer() {}

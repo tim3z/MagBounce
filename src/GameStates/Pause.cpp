@@ -5,4 +5,6 @@
 
 Pause::Pause () {}
 
+void Pause::reactOnInput() {}
+
 Pause::~Pause () {}

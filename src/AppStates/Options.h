@@ -1,7 +1,7 @@
 
 #ifndef OPTIONS_H
 #define OPTIONS_H
-#include "State.h"
+#include "AppState.h"
 
 #include <string>
 
@@ -10,7 +10,7 @@
   * 
   */
 
-class Options : virtual public State {
+class Options : virtual public AppState {
 public:
     
     /**
@@ -18,6 +18,8 @@ public:
      */
     Options ();
 
+    void execute();
+    
     /**
      * Empty Destructor
      */

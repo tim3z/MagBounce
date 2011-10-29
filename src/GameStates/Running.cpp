@@ -5,4 +5,6 @@
 
 Running::Running () {}
 
+void Running::reactOnInput() {}
+
 Running::~Running () {}

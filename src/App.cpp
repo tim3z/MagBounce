@@ -1,14 +1,20 @@
 #include <cstdio>
 #include <allegro5/allegro.h>
 #include "App.h"
+#include "Graphics/GameStateRenderer.h"
 
 App::App() {
-    currentState = new State();
-  
-    //Do currentState stuff such as moving objects and rendering.
-//    while () {
-//        currentState
-//    }
+    Graphics::getInstance();
+    GameStateRenderer* gameStateRenderer = new GameStateRenderer();
+    game = new Game(this, gameStateRenderer);
+    currentState = game;
+    this->setExit(false);
+}
+
+void App::fire() {
+    while (!exit) {
+        currentState->execute();
+    }
 }
 
 App::~App() {

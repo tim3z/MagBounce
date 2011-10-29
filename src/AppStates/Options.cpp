@@ -5,4 +5,6 @@
 
 Options::Options () {}
 
+void Options::execute() {}
+
 Options::~Options () {}
