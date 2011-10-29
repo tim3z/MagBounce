@@ -13,12 +13,9 @@
 
 class LevelObject {
     
-private:
-    
-    Renderer* renderer;
-    
 protected:
     
+    Renderer* renderer;
     Vector2D position;
     int magneticState;
     

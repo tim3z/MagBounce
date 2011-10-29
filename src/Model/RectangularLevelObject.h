@@ -10,6 +10,7 @@
 
 #include "LevelObject.h"
 #include "../Physics/Vector2D.h"
+#include "../Graphics/RectangularLevelObjectRenderer.h"
 
 class RectangularLevelObject : public LevelObject {
 private:

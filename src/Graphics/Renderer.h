@@ -12,19 +12,12 @@
 
 class Renderer {
     
-private:
+protected:
     ALLEGRO_BITMAP *bitmap;
     
 public:
-
-    /**
-     * Empty Constructor
-     */
-    Renderer ();
     
-    Renderer (float height, float width);
-    
-    ALLEGRO_BITMAP* getBitmap();
+    virtual ALLEGRO_BITMAP* getBitmap();
 
     /**
      * Empty Destructor

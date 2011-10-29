@@ -5,6 +5,7 @@
 
 LevelObject::LevelObject () {
     position = Vector2D(2);
+    renderer = NULL;
 }
 
 void LevelObject::setMagneticState(int magneticState) {
@@ -15,7 +16,12 @@ int LevelObject::getMagneticState() const {
     return magneticState;
 }
 
-LevelObject::~LevelObject () {}
+LevelObject::~LevelObject () {
+    if (!renderer == NULL) {
+        delete renderer;
+        renderer = NULL;
+    }
+}
 
 void LevelObject::setPosition(float x, float y) {
     position(0) = x;

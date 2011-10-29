@@ -32,6 +32,9 @@ public:
     void setPosition(const Vector2D &position) {
         LevelObject::setPosition(position);
     }
+    void setPosition(float x, float y) {
+        LevelObject::setPosition(x, y);
+    }
     
     void setMagneticState(int magneticState) {
         LevelObject::setMagneticState(magneticState);
