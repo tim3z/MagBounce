@@ -2,7 +2,6 @@
 #define GAMESTATE_H
 
 #include <string>
-#include "Game.h"
 
 /**
   * interface GameState
@@ -10,11 +9,14 @@
   */
 
 class GameState {
+    class Game;
+    
 private:
     Game *game;
     
 public:
     
+    GameState ();
     GameState (Game *initGame);
     
     virtual ~GameState();

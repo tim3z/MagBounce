@@ -4,7 +4,7 @@
 
 #include <string>
 #include "Graphics/Graphics.h"
-#include "State.h"
+
 
 /**
   * class App
@@ -12,6 +12,7 @@
   */
 
 class App {
+    class State;
     
 private:
     Graphics *graphics;
