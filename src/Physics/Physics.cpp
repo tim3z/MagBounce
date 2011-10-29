@@ -3,6 +3,10 @@
 
 using namespace boost::numeric::ublas;
 
+Physics::Physics(Level* level) {
+    currentLevel = level;
+}
+
 Physics::~Physics() {}
         
 //void Physics::move(int time) {

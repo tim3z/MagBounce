@@ -17,6 +17,8 @@ private:
     
 public:
     
+    PhysicsApplyableObject();
+    
     virtual ~PhysicsApplyableObject();
     
     /**

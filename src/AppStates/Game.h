@@ -2,11 +2,16 @@
 #ifndef GAME_H
 #define GAME_H
 #include "AppState.h"
-#include <string>
 #include "../Graphics/GameStateRenderer.h"
 #include "../GameStates/GameState.h"
 #include "../GameStates/Running.h"
 #include "../GameStates/Pause.h"
+#include "../Physics/Physics.h"
+#include "../Model/Level.h"
+
+class GameState;
+class Running;
+class Pause;
 
 /**
   * class Game
@@ -15,11 +20,13 @@
 
 class Game : virtual public AppState {
 private:
-    GameStateRenderer* gameStateRenderer;
     GameState *currentState;
-    Running *running;
-    Pause *pause;
     bool exit;
+    
+    Level* currentLevel;
+    GameStateRenderer* gameStateRenderer;
+    Physics* physics;
+    
     
 public:
     
