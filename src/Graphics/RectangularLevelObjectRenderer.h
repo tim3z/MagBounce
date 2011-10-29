@@ -8,11 +8,15 @@
 #ifndef RECTANGULARLEVELOBJECTRENDERER_H
 #define	RECTANGULARLEVELOBJECTRENDERER_H
 
-class RectangularLevelObjectRenderer {
+#include "Renderer.h"
+
+class RectangularLevelObjectRenderer : virtual public Renderer {
 public:
-    RectangularLevelObjectRenderer();
+    
+    RectangularLevelObjectRenderer(float height, float width);
     RectangularLevelObjectRenderer(const RectangularLevelObjectRenderer& orig);
     virtual ~RectangularLevelObjectRenderer();
+    
 private:
 
 };

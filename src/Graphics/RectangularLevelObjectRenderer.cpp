@@ -6,8 +6,13 @@
  */
 
 #include "RectangularLevelObjectRenderer.h"
+#include "Graphics.h"
 
-RectangularLevelObjectRenderer::RectangularLevelObjectRenderer() {
+RectangularLevelObjectRenderer::RectangularLevelObjectRenderer(float height, float width) {
+    //TODO: Bitmap loading routine
+    bitmap = al_create_bitmap(height, width);
+    al_set_target_bitmap(bitmap);
+    al_clear_to_color(al_map_rgb(255, 0, 0));
 }
 
 RectangularLevelObjectRenderer::RectangularLevelObjectRenderer(const RectangularLevelObjectRenderer& orig) {
@@ -15,4 +20,3 @@ RectangularLevelObjectRenderer::RectangularLevelObjectRenderer(const Rectangular
 
 RectangularLevelObjectRenderer::~RectangularLevelObjectRenderer() {
 }
-
