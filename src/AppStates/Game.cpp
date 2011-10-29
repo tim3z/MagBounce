@@ -12,6 +12,11 @@ Game::Game(App* app, GameStateRenderer* gameStateRenderer) : AppState(app, gameS
     currentState = running;
     currentLevel = new Level();
     physics = new Physics(currentLevel);
+    
+    currentLevel->addLevelObject(new RectangularLevelObject(0,380, 640,400));
+    currentLevel->addLevelObject(new RectangularLevelObject(0,0, 20,380));
+    currentLevel->addLevelObject(new RectangularLevelObject(620,0, 640,380));
+    currentLevel->getPlayerObject()->setPosition(100, 50);
 }
 
 Game::Game () {}

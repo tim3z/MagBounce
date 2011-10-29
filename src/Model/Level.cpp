@@ -14,6 +14,9 @@ Level::~Level () {
     physics = NULL;
     delete ball;
     ball = NULL;
+    for (int i = 0; i < levelObjects.size(); i++) {
+        delete levelObjects[i];
+    }
 }
 
 PhysicalProperties* Level::getLevelPhysics() {
