@@ -11,6 +11,9 @@
   */
 
 class PhysicsApplyableObject {
+private:
+    
+    Vector2D speed;
     
 public:
     
@@ -18,7 +21,9 @@ public:
      * Return the momentum of this object
      * @return an Vector2D containing the movement
      */
-    virtual Vector2D getSpeed() const = 0;
+    Vector2D getSpeed() const {
+        return speed;
+    }
     // why const at the end?? -> http://duramecho.com/ComputerInformation/WhyHowCppConst.html
     
     /**
@@ -26,6 +31,26 @@ public:
      * @return an Vector2D containing the position
      */
     virtual Vector2D getPosition() const = 0;
+    
+    /**
+     * Set the current speed for this object
+     * @param speed a vector represanting the speed
+     */
+    void setSpeed(const Vector2D &speed) {
+        this->speed = speed;
+    }
+    
+    /**
+     * Set the current position of this object
+     * @param position an Vector2D containing the position
+     */
+    virtual void setPosition(const Vector2D &position) = 0;
+    
+    /**
+     * Return the Collision Radius for this object
+     * @return the collision radius
+     */
+    virtual float getCollisionRadius() const = 0;
     
 };
 

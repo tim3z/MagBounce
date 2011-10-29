@@ -3,6 +3,7 @@
 #define PHYSICS_H
 
 #include <string>
+#include <boost/numeric/ublas/vector_expression.hpp>
 #include "Vector2D.h"
 #include "PhysicsApplyableObject.h"
 #include "../Model/Level.h"

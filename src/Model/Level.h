@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 #include "LevelObject.h"
+#include "PlayerObject.h"
 #include "../Physics/Vector2D.h"
 #include "../Physics/PhysicalProperties.h"
 #include "../Physics/PhysicsApplyableObject.h"
@@ -18,6 +19,7 @@
 class Level {
     
     PhysicalProperties* physics;
+    PlayerObject* ball;
     
 public:
     
@@ -35,7 +37,15 @@ public:
      * Get all LevelObjects which are in this Level
      * @param a pointer to a vector to fill in the objects
      */
-    void getLevelObjects(std::vector<LevelObject>*);
+    void getLevelObjects(std::vector<LevelObject*>*);
+    
+    /**
+     * Return the Player object
+     * @return a pointer to the player object
+     */
+    PlayerObject* getPlayerObject() {
+        return ball;
+    }
     
     /**
      * Return all Objects, which movements should be handled by the physics
@@ -49,7 +59,7 @@ public:
      * @param  radius
      * @param a pointer to a vector to fill in the objects
      */
-    void getLevelObjectsAround (Vector2D position, float radius, std::vector<LevelObject>*);
+    void getLevelObjectsAround (const Vector2D &position, float radius, std::vector<LevelObject*>*);
   
     /**
      * Returns the Physics Object of this Level

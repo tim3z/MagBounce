@@ -3,7 +3,7 @@
 #define RUNNING_H
 #include "GameState.h"
 #include "Model/Level.h"
-#include "Physics/CollisionHandler.h"
+#include "Physics/Collision/CollisionHandler.h"
 
 #include <string>
 

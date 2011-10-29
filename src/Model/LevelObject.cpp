@@ -14,7 +14,7 @@ void LevelObject::setPosition(float x, float y) {
     position(1) = y;
 }
 
-void LevelObject::setPosition(const Vector2D& pos) {
+void LevelObject::setPosition(const Vector2D &pos) {
     position = pos;
 }
 

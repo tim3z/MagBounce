@@ -10,7 +10,7 @@
   * 
   */
 
-class PlayerObject : public PhysicsApplyableObject, public LevelObject {
+class PlayerObject : public virtual PhysicsApplyableObject, public LevelObject  {
 public:
     
     /**
@@ -22,6 +22,16 @@ public:
      * Empty Destructor
      */
     virtual ~PlayerObject ();
+    
+    float getCollisionRadius() const;
+    
+    Vector2D getPosition() const {
+        return LevelObject::getPosition();
+    }
+    
+    void setPosition(const Vector2D &position) {
+        LevelObject::setPosition(position);
+    }
     
 };
 
