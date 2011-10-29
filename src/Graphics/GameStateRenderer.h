@@ -9,6 +9,8 @@
 #define	GAMESTATERENDERER_H
 
 #include "StateRenderer.h"
+#include <vector>
+#include "../Model/LevelObject.h"
 
 class GameStateRenderer : public StateRenderer {
         
@@ -18,6 +20,8 @@ public:
      */
     GameStateRenderer ();
 
+    void renderObjects(std::vector<LevelObject*>*);
+    
     /**
      * Empty Destructor
      */

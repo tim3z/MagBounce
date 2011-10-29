@@ -8,8 +8,6 @@
 #ifndef STATERENDERER_H
 #define	STATERENDERER_H
 
-#include <vector>
-#include "../Model/LevelObject.h"
 
 /**
   * class StateRenderer
@@ -24,8 +22,6 @@ public:
      * Empty Constructor
      */
     StateRenderer ();
-    
-    void renderObjects(std::vector<LevelObject>*);
 
     /**
      * Empty Destructor

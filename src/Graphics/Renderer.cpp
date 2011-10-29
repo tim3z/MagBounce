@@ -1,9 +1,9 @@
 #include "Renderer.h"
 #include "Graphics.h"
 
-Renderer::Renderer() {
+Renderer::Renderer(float height, float width) {
     //TODO: Bitmap loading routine
-    bitmap = al_create_bitmap(20, 20);
+    bitmap = al_create_bitmap(height, width);
     al_set_target_bitmap(bitmap);
     al_clear_to_color(al_map_rgb(255, 0, 255));
 }
