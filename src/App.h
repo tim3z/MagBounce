@@ -18,6 +18,7 @@ class App {
 private:
     Game *game;
     AppState *currentState;
+    bool exit;
     
     App(const App&);
     const App& operator=(const App&);
@@ -30,6 +31,10 @@ public:
     App ();
     
     void fire();
+    
+    void setExit(bool flag) {
+        exit = flag;
+    }
 
     /**
      * Empty Destructor

@@ -2,17 +2,19 @@
 #include <allegro5/allegro.h>
 #include "App.h"
 #include "Graphics/GameStateRenderer.h"
-#include "AppStates/AppStateExit.h"
 
 App::App() {
     Graphics::getInstance();
     GameStateRenderer* gameStateRenderer = new GameStateRenderer();
     game = new Game(this, gameStateRenderer);
     currentState = game;
+    this->setExit(false);
 }
 
-App::fire() {
-    currentState->execute();
+void App::fire() {
+    while (!exit) {
+        currentState->execute();
+    }
 }
 
 App::~App() {

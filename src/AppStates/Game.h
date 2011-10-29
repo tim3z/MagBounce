@@ -20,6 +20,7 @@ private:
     GameState *currentState;
     Running *running;
     Pause *pause;
+    bool exit;
     
 public:
     
@@ -29,6 +30,10 @@ public:
     Game ();
     
     void execute();
+    
+    void setExit(bool flag) {
+        exit = flag;
+    }
     
     Game (App* app, GameStateRenderer* gameStateRenderer);
 
