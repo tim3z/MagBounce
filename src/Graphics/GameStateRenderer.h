@@ -12,6 +12,7 @@
 
 class GameStateRenderer : public StateRenderer {
         
+public:
     /**
      * Empty Constructor
      */

@@ -3,7 +3,7 @@
 #define STATE_H
 
 #include <string>
-#include "Graphics/StateRenderer.h"
+#include "../Graphics/StateRenderer.h"
 
 class App;
 
@@ -12,17 +12,19 @@ class App;
   * 
   */
 
-class State {
+class AppState {
 protected:
     StateRenderer* stateRenderer;
     App* app;
     
 public:
     
-    State ();
-    State (App* app, StateRenderer* stateRenderer);
+    AppState ();
+    AppState (App* app, StateRenderer* stateRenderer);
     
-    virtual ~State();
+    virtual void execute() = 0;
+    
+    virtual ~AppState();
 };
 
 #endif // STATE_H

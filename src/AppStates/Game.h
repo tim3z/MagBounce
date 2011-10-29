@@ -1,8 +1,8 @@
 
-#ifndef INGAME_H
-#define INGAME_H
-#include "State.h"
-#include "Graphics/GameStateRenderer.h"
+#ifndef GAME_H
+#define GAME_H
+#include "AppState.h"
+#include "../Graphics/GameStateRenderer.h"
 #include <string>
 
 class GameState;
@@ -10,11 +10,11 @@ class Running;
 class Pause;
 
 /**
-  * class InGame
+  * class Game
   * 
   */
 
-class Game : public State {
+class Game : virtual public AppState {
 private:
     GameStateRenderer* gameStateRenderer;
     GameState *currentState;
@@ -28,6 +28,8 @@ public:
      */
     Game ();
     
+    void execute();
+    
     Game (App* app, GameStateRenderer* gameStateRenderer);
 
     /**
@@ -37,4 +39,4 @@ public:
 
 };
 
-#endif // INGAME_H
+#endif // GAME_H

@@ -22,7 +22,7 @@ int main(int argc, char** argv) {
             return -1;
     }
 
-    App magBounceApp();
+    App magBounceApp = new App();
 
     return 0;
 }

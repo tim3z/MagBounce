@@ -10,13 +10,15 @@
   * 
   */
 
-class Pause : public GameState {
+class Pause : virtual public GameState {
 public:
     
     /**
      * Empty Constructor
      */
     Pause ();
+    
+    void reactOnInput();
 
     /**
      * Empty Destructor

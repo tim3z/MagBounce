@@ -13,15 +13,17 @@ class Game;
 class GameState {
     class Game;
     
-private:
+protected:
     Game *game;
     
 public:
     
-    GameState ();
-    GameState (Game *initGame);
+    GameState();
+    GameState(Game *initGame);
     
     virtual ~GameState();
+    
+    virtual void reactOnInput() = 0; //TODO bekommt boolean key array als parameter!
 };
 
 #endif // GAMESTATE_H

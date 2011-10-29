@@ -5,4 +5,6 @@
 
 Menu::Menu () {}
 
+void Menu::execute() {}
+
 Menu::~Menu () {}

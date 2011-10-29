@@ -4,8 +4,9 @@
 
 #include <string>
 #include "Graphics/Graphics.h"
+#include "AppStates/AppState.h"
+#include "AppStates/Game.h"
 
-class State;
 
 /**
   * class App
@@ -13,11 +14,10 @@ class State;
   */
 
 class App {
-    class State;
     
 private:
-    Graphics *graphics;
-    State *currentState;
+    Game *game;
+    AppState *currentState;
     
     App(const App&);
     const App& operator=(const App&);
@@ -28,6 +28,8 @@ public:
      * Empty Constructor
      */
     App ();
+    
+    void fire();
 
     /**
      * Empty Destructor
