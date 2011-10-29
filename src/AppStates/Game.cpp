@@ -29,6 +29,10 @@ void Game::execute() {
         
         physics->move(passed);
         
+        std::vector<LevelObject*> objects;
+        currentLevel->getLevelObjects(&objects);
+        gameStateRenderer->renderObjects(&objects);
+        
         std::cout << passed << std::endl;
     }
 }

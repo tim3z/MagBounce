@@ -22,6 +22,8 @@ public:
      */
     Renderer ();
     
+    Renderer (float height, float width);
+    
     ALLEGRO_BITMAP* getBitmap();
 
     /**
