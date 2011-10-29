@@ -17,7 +17,7 @@ Graphics::Graphics () {
             fprintf(stderr, "failed to create display!\n");
     } else {
         //al_set_new_display_option(ALLEGRO_VSYNC, 2, ALLEGRO_SUGGEST);
-        //al_set_new_display_flags(ALLEGRO_FULLSCREEN);
+        al_set_new_display_flags(ALLEGRO_FULLSCREEN);
         al_set_target_bitmap(al_get_backbuffer(display));
         al_clear_to_color(al_map_rgb(0, 0, 0));
     }

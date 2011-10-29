@@ -1,18 +1,20 @@
 #include "Game.h"
-#include <stdio.h>
+#include "../Graphics/Graphics.h"
 
 // Constructors/Destructors
 //  
 
 Game::Game(App* app, GameStateRenderer* gameStateRenderer) : AppState(app, gameStateRenderer) {
     this->setExit(false);
+    Running* running = new Running(this);
+    currentState = running;
 }
 
 Game::Game () {}
 
 void Game::execute() {
     while (!exit) {
-        printf("It works!");
+        currentState->reactOnInput();
     }
 }
 

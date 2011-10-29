@@ -2,12 +2,11 @@
 #ifndef GAME_H
 #define GAME_H
 #include "AppState.h"
-#include "../Graphics/GameStateRenderer.h"
 #include <string>
-
-class GameState;
-class Running;
-class Pause;
+#include "../Graphics/GameStateRenderer.h"
+#include "../GameStates/GameState.h"
+#include "../GameStates/Running.h"
+#include "../GameStates/Pause.h"
 
 /**
   * class Game
@@ -29,13 +28,13 @@ public:
      */
     Game ();
     
+    Game (App* app, GameStateRenderer* gameStateRenderer);
+    
     void execute();
     
     void setExit(bool flag) {
         exit = flag;
     }
-    
-    Game (App* app, GameStateRenderer* gameStateRenderer);
 
     /**
      * Empty Destructor

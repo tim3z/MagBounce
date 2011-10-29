@@ -10,6 +10,14 @@
 RectangularLevelObject::RectangularLevelObject() {
 }
 
+RectangularLevelObject::RectangularLevelObject(float x1, float y1, float x2, float y2) : LevelObject() {
+    upperLeftCorner = Vector2D(2);
+    upperLeftCorner[0] = x1;
+    upperLeftCorner[1] = y1;
+    position[0] = x1 + (x1 - x2)/2;
+    position[1] = y1 + (y1 - y2)/2;
+}
+
 RectangularLevelObject::RectangularLevelObject(const RectangularLevelObject& orig) {
 }
 

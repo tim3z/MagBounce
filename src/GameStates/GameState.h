@@ -11,7 +11,6 @@ class Game;
   */
 
 class GameState {
-    class Game;
     
 protected:
     Game *game;
@@ -19,7 +18,7 @@ protected:
 public:
     
     GameState();
-    GameState(Game *initGame);
+    GameState(Game *game);
     
     virtual ~GameState();
     

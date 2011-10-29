@@ -18,6 +18,8 @@ public:
      */
     Pause ();
     
+    Pause (Game*);
+    
     void reactOnInput();
 
     /**

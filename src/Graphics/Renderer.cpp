@@ -13,5 +13,5 @@ ALLEGRO_BITMAP* Renderer::getBitmap() {
 }
 
 Renderer::~Renderer() {
-    
+    delete bitmap;
 }

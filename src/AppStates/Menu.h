@@ -18,6 +18,8 @@ public:
      */
     Menu ();
     
+    Menu (App*, StateRenderer*); //TODO MenuStateRenderer
+    
     void execute();
 
     /**

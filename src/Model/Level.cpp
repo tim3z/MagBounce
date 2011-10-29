@@ -37,3 +37,7 @@ void Level::getLevelObjects(std::vector<LevelObject*>* objects) {
         objects->push_back(levelObjects[i]);
     }
 }
+
+void Level::addLevelObject(RectangularLevelObject* object) {
+    levelObjects.push_back(object);
+}

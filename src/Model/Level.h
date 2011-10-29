@@ -40,6 +40,8 @@ public:
      */
     void getLevelObjects(std::vector<LevelObject*>*);
     
+    void addLevelObject(RectangularLevelObject*);
+    
     /**
      * Return the Player object
      * @return a pointer to the player object

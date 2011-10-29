@@ -18,6 +18,8 @@ public:
      * Empty Constructor
      */
     Running ();
+    
+    Running (Game*);
 
     void reactOnInput();
     

@@ -17,6 +17,8 @@ public:
      * Empty Constructor
      */
     Options ();
+    
+    Options (App*, StateRenderer*);//TODO OptionsStateRenderer
 
     void execute();
     
