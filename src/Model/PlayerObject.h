@@ -33,6 +33,14 @@ public:
         LevelObject::setPosition(position);
     }
     
+    void setMagneticState(int magneticState) {
+        LevelObject::setMagneticState(magneticState);
+    }
+    
+    int getMagneticState() const {
+        return LevelObject::getMagneticState();
+    }
+    
 };
 
 #endif // PLAYEROBJECT_H

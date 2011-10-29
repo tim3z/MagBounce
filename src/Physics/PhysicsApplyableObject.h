@@ -17,6 +17,8 @@ private:
     
 public:
     
+    virtual ~PhysicsApplyableObject();
+    
     /**
      * Return the momentum of this object
      * @return an Vector2D containing the movement
@@ -51,6 +53,9 @@ public:
      * @return the collision radius
      */
     virtual int getCollisionRadius() const = 0;
+    
+    virtual int getMagneticState() const = 0;
+    virtual void setMagneticState(int magneticState) = 0;
     
 };
 

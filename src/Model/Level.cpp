@@ -27,3 +27,7 @@ void Level::getPhysicsApplyableObjects(std::vector<PhysicsApplyableObject*>*) {
 void Level::getLevelObjectsAround(const Vector2D& position, float radius, std::vector<RectangularLevelObject*>*) {
     
 }
+
+void Level::getLevelObjects(std::vector<LevelObject*>*) {
+    
+}

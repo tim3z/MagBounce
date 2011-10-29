@@ -20,6 +20,7 @@ private:
 protected:
     
     Vector2D position;
+    int magneticState;
     
 public:
 
@@ -63,6 +64,10 @@ public:
     Vector2D getPosition() const {
         return position;
     }
+    
+    void setMagneticState(int magneticState);
+    
+    int getMagneticState() const;
   
 };
 

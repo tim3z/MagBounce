@@ -8,24 +8,25 @@
 #ifndef PHYSICALPROPERTIES_H
 #define	PHYSICALPROPERTIES_H
 
-#include "ForceBehaviour.h"
+#include "MagnetismBehaviour.h"
+#include "GravityBehaviour.h"
 #include "TimeBehaviour.h"
 
 class PhysicalProperties {
 protected:
     
-    ForceBehaviour* gravityBehaviour;
-    ForceBehaviour* magnetismBehaviour;
+    GravityBehaviour* gravityBehaviour;
+    MagnetismBehaviour* magnetismBehaviour;
     TimeBehaviour* timeBehaviour;
     
 public:
 
     virtual ~PhysicalProperties();
     
-    ForceBehaviour* getGravityBehaviour() {
+    GravityBehaviour* getGravityBehaviour() {
         return gravityBehaviour;
     }
-    ForceBehaviour* getMagnetismBehaviour() {
+    MagnetismBehaviour* getMagnetismBehaviour() {
         return magnetismBehaviour;
     }
     TimeBehaviour* getTimeBehaviour() {

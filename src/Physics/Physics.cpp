@@ -71,12 +71,15 @@ void Physics::move(int time) {
 }
 
 Vector2D Physics::calculateMoveFor (const PhysicsApplyableObject &object, int time) {
+    std::vector<LevelObject*> objects;
+    currentLevel->getLevelObjects(&objects);
+    
     time = currentLevel->getLevelPhysics()->getTimeBehaviour()->manipulateTime(time);
     
     Vector2D speed(2);
     speed += object.getSpeed();
-    speed += currentLevel->getLevelPhysics()->getGravityBehaviour()->getAccelerationAt(object.getPosition()) * time;
-    speed += currentLevel->getLevelPhysics()->getMagnetismBehaviour()->getAccelerationAt(object.getPosition()) * time;
+    speed += currentLevel->getLevelPhysics()->getGravityBehaviour()->getAccelerationAt() * time;
+    speed += currentLevel->getLevelPhysics()->getMagnetismBehaviour()->getAccelerationAt(object.getPosition(), objects) * time;
     
     return speed * time;
 }

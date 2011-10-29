@@ -1,16 +1,14 @@
 
 #ifndef STANDARDGRAVITYBEHAVIOUR_H
 #define STANDARDGRAVITYBEHAVIOUR_H
-#include "../ForceBehaviour.h"
-
-#include <string>
+#include "../GravityBehaviour.h"
 
 /**
   * class StandardGravityBehaviour
   * 
   */
 
-class StandardGravityBehaviour : virtual public ForceBehaviour {
+class StandardGravityBehaviour : virtual public GravityBehaviour {
 public:
 
     /**
@@ -23,7 +21,7 @@ public:
      */
     virtual ~StandardGravityBehaviour ();
 
-    Vector2D getAccelerationAt(const Vector2D &position);
+    Vector2D getAccelerationAt();
 };
 
 #endif // STANDARDGRAVITYBEHAVIOUR_H

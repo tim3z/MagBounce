@@ -1,7 +1,7 @@
 
 #ifndef STANDARDMAGNETISMBEHAVIOUR_H
 #define STANDARDMAGNETISMBEHAVIOUR_H
-#include "../ForceBehaviour.h"
+#include "../MagnetismBehaviour.h"
 
 #include <string>
 
@@ -10,7 +10,7 @@
   * 
   */
 
-class StandardMagnetismBehaviour : virtual public ForceBehaviour {
+class StandardMagnetismBehaviour : virtual public MagnetismBehaviour {
   
 public:
 
@@ -24,7 +24,7 @@ public:
      */
     virtual ~StandardMagnetismBehaviour ();
     
-    Vector2D getAccelerationAt(const Vector2D &position);
+    Vector2D getAccelerationAt(const Vector2D &position, const std::vector<LevelObject*> &objects);
 };
 
 #endif // STANDARDMAGNETISMBEHAVIOUR_H

@@ -7,6 +7,14 @@ LevelObject::LevelObject () {
     position = Vector2D(2);
 }
 
+void LevelObject::setMagneticState(int magneticState) {
+    this->magneticState = magneticState;
+}
+
+int LevelObject::getMagneticState() const {
+    return magneticState;
+}
+
 LevelObject::~LevelObject () {}
 
 void LevelObject::setPosition(float x, float y) {
