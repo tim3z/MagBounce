@@ -3,6 +3,8 @@
 #define APP_H
 
 #include <string>
+#include "Graphics/Graphics.h"
+#include "State.h"
 
 /**
   * class App
@@ -10,6 +12,11 @@
   */
 
 class App {
+    
+private:
+    Graphics *graphics;
+    State *currentState;
+    
 public:
     
     /**

@@ -17,3 +17,7 @@ void LevelObject::setPosition(float x, float y) {
 void LevelObject::setPosition(const Vector2D& pos) {
     position = pos;
 }
+
+void LevelObject::setRenderer(Renderer* rend) {
+    renderer = rend;
+}

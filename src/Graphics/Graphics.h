@@ -10,10 +10,11 @@
 
 #include <allegro5/allegro5.h>
 #include <cstdio>
+#include "../Physics/Vector2D.h"
 
 /**
   * class Graphics
-  * 
+  * Wraps Allegros graphic library for MagBounce usage.
   */
 
 class Graphics {
@@ -22,18 +23,43 @@ private:
     ALLEGRO_DISPLAY *display;
     
 public:
+    
+    /**
+     * Singleton method
+     * @return an instance of this Graphics
+     */
+    static Graphics* getInstance();
+    
+    /**
+     * Draws bitmaps at a given position on the screen (back buffer bitmap)
+     * @param ALLEGRO_BITMAP that will be drawn to the back buffer bitmap.
+     * @param Vector2D that contains the position of the drawn bitmap on the screen.
+     */
+    void render(ALLEGRO_BITMAP*, Vector2D);
+    
+    /**
+     * Implementation should call al_flip_display
+     */
+    void flipDisplay();
 
     /**
-     * Empty Constructor
+     * Should at least destroy the ALLEGRO_DISPLAY.
+     */
+    virtual ~Graphics ();
+    
+protected:
+    
+    /**
+     * Implementation should create ALLEGRO_DISPLAY and set possible flags and options.
      */
     Graphics ();
     
-    void render(ALLEGRO_BITMAP*);
-
+private:
+    
     /**
-     * Empty Destructor
+     * Thie Singleton of this class.
      */
-    virtual ~Graphics ();
+    static Graphics* graphicsInstance;
 
 };
 
