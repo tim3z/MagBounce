@@ -3,7 +3,7 @@
 #define PLAYEROBJECT_H
 #include "LevelObject.h"
 #include "../Physics/PhysicsApplyableObject.h"
-#include <string>
+#include "../Graphics/BallRenderer.h"
 
 /**
   * class PlayerObject

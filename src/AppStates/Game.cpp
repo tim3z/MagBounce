@@ -34,11 +34,11 @@ void Game::execute() {
         
         physics->move(passed);
         
+        std::cout << passed << "ms, x: " << currentLevel->getPlayerObject()->getPosition()[0] << " y: " << currentLevel->getPlayerObject()->getPosition()[1] << std::endl;
+        
         std::vector<LevelObject*> objects;
         currentLevel->getLevelObjects(&objects);
         gameStateRenderer->renderObjects(&objects);
-        
-        std::cout << passed << std::endl;
     }
 }
 

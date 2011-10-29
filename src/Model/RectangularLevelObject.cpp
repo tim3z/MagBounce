@@ -6,6 +6,7 @@
  */
 
 #include "RectangularLevelObject.h"
+#include <stdlib.h>
 
 RectangularLevelObject::RectangularLevelObject() {
 }
@@ -16,7 +17,7 @@ RectangularLevelObject::RectangularLevelObject(float x1, float y1, float x2, flo
     upperLeftCorner[1] = y1;
     position[0] = x1 + (x1 - x2)/2;
     position[1] = y1 + (y1 - y2)/2;
-    renderer = new RectangularLevelObjectRenderer(x1-x2, y1-y2);
+    renderer = new RectangularLevelObjectRenderer(abs(x1-x2), abs(y1-y2));
 }
 
 RectangularLevelObject::RectangularLevelObject(const RectangularLevelObject& orig) {

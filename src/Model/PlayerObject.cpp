@@ -3,7 +3,9 @@
 // Constructors/Destructors
 //  
 
-PlayerObject::PlayerObject () {}
+PlayerObject::PlayerObject () {
+    renderer = new BallRenderer(25.0f);
+}
 
 PlayerObject::~PlayerObject () {}
 
