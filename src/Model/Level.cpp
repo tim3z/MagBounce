@@ -14,7 +14,7 @@ Level::~Level () {
     physics = NULL;
     delete ball;
     ball = NULL;
-    for (int i = 0; i < levelObjects.size(); i++) {
+    for (unsigned int i = 0; i < levelObjects.size(); i++) {
         delete levelObjects[i];
     }
 }
@@ -28,7 +28,7 @@ void Level::getPhysicsApplyableObjects(std::vector<PhysicsApplyableObject*>* obj
 }
 
 void Level::getLevelObjectsAround(const Vector2D& position, float radius, std::vector<RectangularLevelObject*>* objects) {
-    for (int i = 0; i < levelObjects.size(); i++) {
+    for (unsigned int i = 0; i < levelObjects.size(); i++) {
         objects->push_back(levelObjects[i]);
         // TODO filter
     }
@@ -36,7 +36,7 @@ void Level::getLevelObjectsAround(const Vector2D& position, float radius, std::v
 
 void Level::getLevelObjects(std::vector<LevelObject*>* objects) {
     objects->push_back(ball);
-    for (int i = 0; i < levelObjects.size(); i++) {
+    for (unsigned int i = 0; i < levelObjects.size(); i++) {
         objects->push_back(levelObjects[i]);
     }
 }

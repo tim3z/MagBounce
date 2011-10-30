@@ -18,11 +18,11 @@ Collision* CollisionHandler::checkForCollision(PhysicsApplyableObject &object, c
     Vector2D begin = object.getPosition();
     Vector2D end = object.getPosition() + move;
     
-    for (int i = 0; i < objects.size(); i++) {
+    for (unsigned int i = 0; i < objects.size(); i++) {
         Vector2D ul = objects[i]->getUpperLeftCorner() - offset;
         Vector2D lr = objects[i]->getLowerRightCorner() + offset;
         
-        if (!(begin[1] > lr[1] && end[1] > lr[1] || begin[1] < ul[1] && end[1] < ul[1])) {
+        if (!((begin[1] > lr[1] && end[1] > lr[1]) || (begin[1] < ul[1] && end[1] < ul[1]))) {
             if (begin[0] < ul[0] && end[0] > ul[0]) {
                 float fraction = ul[0] - begin[0] / move[0];
                 if (collision->getMovementFraction() > fraction){
@@ -40,7 +40,7 @@ Collision* CollisionHandler::checkForCollision(PhysicsApplyableObject &object, c
                 }
             }
         }
-        if (!(begin[0] > lr[0] && end[0] > lr[0] || begin[0] < ul[0] && end[0] < ul[0])) {
+        if (!((begin[0] > lr[0] && end[0] > lr[0]) || (begin[0] < ul[0] && end[0] < ul[0]))) {
             if (begin[1] < ul[1] && end[1] > ul[1]) {
                 float fraction = ul[1] - begin[1] / move[1];
                 if (collision->getMovementFraction() > fraction){

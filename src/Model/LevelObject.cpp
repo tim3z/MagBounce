@@ -17,7 +17,7 @@ int LevelObject::getMagneticState() const {
 }
 
 LevelObject::~LevelObject () {
-    if (!renderer == NULL) {
+    if (renderer != NULL) {
         delete renderer;
         renderer = NULL;
     }
