@@ -12,7 +12,7 @@ CollisionHandler::~CollisionHandler () {}
 
 Collision* CollisionHandler::checkForCollision(PhysicsApplyableObject &object, const Vector2D &move, const std::vector<RectangularLevelObject*> &objects) {
     Collision* collision = new Collision();
-    collision->setMovementFraction(-1.0f);
+    collision->setMovementFraction(2.0f);
     collision->setCollisionObject1(&object);
     Vector2D offset = getOffsetVector(object.getCollisionRadius());
     Vector2D begin = object.getPosition();
@@ -41,6 +41,7 @@ Collision* CollisionHandler::checkForCollision(PhysicsApplyableObject &object, c
             }
         }
         if (!((begin[0] > lr[0] && end[0] > lr[0]) || (begin[0] < ul[0] && end[0] < ul[0]))) {
+            
             if (begin[1] < ul[1] && end[1] > ul[1]) {
                 float fraction = ul[1] - begin[1] / move[1];
                 if (collision->getMovementFraction() > fraction){
@@ -61,7 +62,7 @@ Collision* CollisionHandler::checkForCollision(PhysicsApplyableObject &object, c
         
     }
     
-    if (collision->getMovementFraction() == -1.0f) {
+    if (collision->getMovementFraction() == 2.0f) {
         collision = NULL;
     }
     return collision;

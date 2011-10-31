@@ -9,6 +9,7 @@ StandardGravityBehaviour::~StandardGravityBehaviour () {}
 
 Vector2D StandardGravityBehaviour::getAccelerationAt() {
     Vector2D gravity(2);
-    gravity(1) = 1.0f;
+    gravity[0] = 0.0f;
+    gravity[1] = 0.0005f;
     return gravity;
 }
