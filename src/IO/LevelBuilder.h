@@ -8,11 +8,11 @@
 #ifndef LEVELBUILDER_H_
 #define LEVELBUILDER_H_
 
-#include <queue>
+#include <list>
 #include <string>
 #include "../Model/Level.h"
 
-using std::queue; using std::string;
+using std::list; using std::string;
 
 class LevelBuilder {
 private:
@@ -21,9 +21,9 @@ private:
 	const LevelBuilder& operator=(const LevelBuilder &);
 	virtual ~LevelBuilder();
 
-	static queue<string>* getFileContents(const string& path);
+	static void parseFileContents(const string& path, list<string>& result);
 public:
-	static Level& build(const std::string& levelFile);
+	static Level* build(const std::string& levelFile);
 };
 
 #endif /* LEVELBUILDER_H_ */

@@ -21,13 +21,15 @@ private:
     PhysicalProperties* physics;
     PlayerObject* ball;
     std::vector<RectangularLevelObject*> levelObjects;
+    int width;
+    int height;
     
 public:
     
     /**
      * Empty Constructor
      */
-    Level ();
+    Level (int width, int height);
 
     /**
      * Empty Destructor

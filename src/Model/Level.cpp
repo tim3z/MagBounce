@@ -1,10 +1,13 @@
 #include "Level.h"
 #include "PlayerObject.h"
+#include <boost/foreach.hpp>
+
+#define foreach BOOST_FOREACH
 
 // Constructors/Destructors
 //  
 
-Level::Level () {
+Level::Level (int width, int height) : width(width), height(height) {
     physics = new StandardPhysics();
     ball = new PlayerObject();
 }
@@ -14,8 +17,8 @@ Level::~Level () {
     physics = NULL;
     delete ball;
     ball = NULL;
-    for (unsigned int i = 0; i < levelObjects.size(); i++) {
-        delete levelObjects[i];
+    foreach(LevelObject* levelObject, levelObjects) {
+    	delete levelObject;
     }
 }
 
