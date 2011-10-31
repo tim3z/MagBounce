@@ -25,6 +25,7 @@ void Game::execute() {
     int passed;
     timeval lastTime, currentTime;
     gettimeofday(&lastTime, 0);
+    
     while (!exit) {
         gettimeofday(&currentTime, 0);
         passed = (currentTime.tv_usec - lastTime.tv_usec) / 1000; // miliseconds

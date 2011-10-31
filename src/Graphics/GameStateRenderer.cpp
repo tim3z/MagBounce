@@ -17,7 +17,6 @@ void GameStateRenderer::renderObjects(std::vector<LevelObject*>* levelObjects) {
     }
     
     graphics->flipDisplay();
-    delete currentLevelObject;
 }
 
 GameStateRenderer::~GameStateRenderer() {}
