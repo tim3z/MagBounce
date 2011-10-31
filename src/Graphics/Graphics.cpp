@@ -30,6 +30,7 @@ void Graphics::render(ALLEGRO_BITMAP* bitmap, Vector2D drawPosition) {
 
 void Graphics::flipDisplay() {
     al_flip_display();
+    al_clear_to_color(al_map_rgb(0, 0, 0));
 }
 
 Graphics::~Graphics () {

@@ -1,5 +1,6 @@
 #include "Physics.h"
 #include "Collision/CollisionHandler.h"
+#include <stdio.h>
 
 using namespace boost::numeric::ublas;
 
@@ -42,7 +43,7 @@ Physics::~Physics() {}
 void Physics::move(int time) {
     PhysicsApplyableObject* playerObject = currentLevel->getPlayerObject();
     
-    while (time != 0) {
+    while (time > 0) {
         Vector2D move = calculateMoveFor(*playerObject, time);
 
         float radius = playerObject->getCollisionRadius() + norm_2(move);
@@ -80,10 +81,11 @@ Vector2D Physics::calculateMoveFor (const PhysicsApplyableObject &object, int ti
     
     time = currentLevel->getLevelPhysics()->getTimeBehaviour()->manipulateTime(time);
     
-    Vector2D speed(2);
+    Vector2D speed = zero_vector<float>(2);
     speed += object.getSpeed();
+    std::cout << "speed: x: " << speed[0] << " y: " << speed[1] << std::endl;
     speed += currentLevel->getLevelPhysics()->getGravityBehaviour()->getAccelerationAt() * time;
-    speed += currentLevel->getLevelPhysics()->getMagnetismBehaviour()->getAccelerationAt(object.getPosition(), objects) * time;
+    speed += currentLevel->getLevelPhysics()->getMagnetismBehaviour()->getAccelerationAt(object.getPosition(), objects) * object.getMagneticState() * time;
     
     return speed * time;
 }

@@ -15,8 +15,8 @@ RectangularLevelObject::RectangularLevelObject(float x1, float y1, float x2, flo
     upperLeftCorner = Vector2D(2);
     upperLeftCorner[0] = x1;
     upperLeftCorner[1] = y1;
-    position[0] = x1 + (x1 - x2)/2;
-    position[1] = y1 + (y1 - y2)/2;
+    position[0] = x1 + (x2 - x1)/2;
+    position[1] = y1 + (y2 - y1)/2;
     renderer = new RectangularLevelObjectRenderer(abs(x1-x2), abs(y1-y2));
 }
 
