@@ -12,6 +12,7 @@
 class GameState;
 class Running;
 class Pause;
+class EventHandler;
 
 /**
   * class Game
@@ -35,7 +36,7 @@ public:
      */
     Game ();
     
-    Game (App* app, GameStateRenderer* gameStateRenderer);
+    Game (App* app, GameStateRenderer* gameStateRenderer, EventHandler* eventHandler);
     
     void execute();
     

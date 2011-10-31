@@ -10,6 +10,8 @@
   * 
   */
 
+class EventHandler;
+
 class Pause : virtual public GameState {
 public:
     
@@ -18,7 +20,7 @@ public:
      */
     Pause ();
     
-    Pause (Game*);
+    Pause (Game*, EventHandler* eventHandler);
     
     void reactOnInput();
 

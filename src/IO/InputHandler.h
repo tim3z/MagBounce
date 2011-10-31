@@ -8,13 +8,18 @@
 #ifndef INPUTHANDLER_H
 #define	INPUTHANDLER_H
 
+#include "EventHandler.h"
+
 class InputHandler {
 public:
     InputHandler();
+    InputHandler(EventHandler* eventHandler);
+    virtual bool* getInput() = 0;
     InputHandler(const InputHandler& orig);
     virtual ~InputHandler();
-private:
-
+protected:
+    bool* keys;
+    EventHandler* eventHandler;
 };
 
 #endif	/* INPUTHANDLER_H */

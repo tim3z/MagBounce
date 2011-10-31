@@ -23,6 +23,10 @@ Graphics::Graphics () {
     }
 }
 
+ALLEGRO_DISPLAY* Graphics::getDisplay() {
+    return this->display;
+}
+
 void Graphics::render(ALLEGRO_BITMAP* bitmap, Vector2D drawPosition) {
     al_set_target_bitmap(al_get_backbuffer(display));
     al_draw_bitmap(bitmap, drawPosition[0], drawPosition[1], 0);
@@ -31,6 +35,10 @@ void Graphics::render(ALLEGRO_BITMAP* bitmap, Vector2D drawPosition) {
 void Graphics::flipDisplay() {
     al_flip_display();
     al_clear_to_color(al_map_rgb(0, 0, 0));
+}
+
+void Graphics::destroyDisplay() {
+    al_destroy_display(display);
 }
 
 Graphics::~Graphics () {

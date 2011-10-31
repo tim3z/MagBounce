@@ -4,6 +4,7 @@
 #include <string>
 
 class Game;
+class EventHandler;
 
 /**
   * interface GameState
@@ -14,11 +15,12 @@ class GameState {
     
 protected:
     Game *game;
+    EventHandler* eventHandler;
     
 public:
     
     GameState();
-    GameState(Game *game);
+    GameState(Game *game, EventHandler* eventHandler);
     
     virtual ~GameState();
     

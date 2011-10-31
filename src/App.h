@@ -6,6 +6,7 @@
 #include "Graphics/Graphics.h"
 #include "AppStates/AppState.h"
 #include "AppStates/Game.h"
+#include "IO/EventHandler.h"
 
 
 /**
@@ -17,6 +18,7 @@ class App {
     
 private:
     Game *game;
+    EventHandler *eventHandler;
     AppState *currentState;
     bool exit;
     

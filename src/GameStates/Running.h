@@ -10,6 +10,8 @@
   * 
   */
 
+class EventHandler;
+
 class Running : virtual public GameState {
     
 public:
@@ -19,7 +21,7 @@ public:
      */
     Running ();
     
-    Running (Game*);
+    Running (Game*, EventHandler* eventHandler);
 
     void reactOnInput();
     

@@ -3,7 +3,7 @@
 // Constructors/Destructors
 //  
 
-Menu::Menu (App* app, StateRenderer* stateRenderer) : AppState(app, stateRenderer) {} //TODO MenuStateRenderer!!
+Menu::Menu (App* app, StateRenderer* stateRenderer, EventHandler* eventHandler) : AppState(app, stateRenderer, eventHandler) {} //TODO MenuStateRenderer!!
 
 void Menu::execute() {}
 

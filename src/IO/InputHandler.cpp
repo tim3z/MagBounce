@@ -7,12 +7,15 @@
 
 #include "InputHandler.h"
 
-InputHandler::InputHandler() {
+InputHandler::InputHandler() {}
+
+InputHandler::InputHandler(EventHandler* eventHandler) {
+    this->eventHandler = eventHandler;
 }
 
-InputHandler::InputHandler(const InputHandler& orig) {
-}
+InputHandler::InputHandler(const InputHandler& orig) {}
 
 InputHandler::~InputHandler() {
+    delete eventHandler;
 }
 

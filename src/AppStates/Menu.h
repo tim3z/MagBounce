@@ -10,6 +10,8 @@
   * 
   */
 
+class EventHandler;
+
 class Menu : virtual public AppState {
 public:
 
@@ -18,7 +20,7 @@ public:
      */
     Menu ();
     
-    Menu (App*, StateRenderer*); //TODO MenuStateRenderer
+    Menu (App*, StateRenderer*, EventHandler* eventHandler); //TODO MenuStateRenderer
     
     void execute();
 

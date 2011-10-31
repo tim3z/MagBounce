@@ -10,6 +10,8 @@
   * 
   */
 
+class EventHandler;
+
 class Options : virtual public AppState {
 public:
     
@@ -18,7 +20,7 @@ public:
      */
     Options ();
     
-    Options (App*, StateRenderer*);//TODO OptionsStateRenderer
+    Options (App*, StateRenderer*, EventHandler* eventHandler);//TODO OptionsStateRenderer
 
     void execute();
     

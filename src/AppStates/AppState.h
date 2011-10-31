@@ -6,6 +6,7 @@
 #include "../Graphics/StateRenderer.h"
 
 class App;
+class EventHandler;
 
 /**
   * interface State
@@ -16,11 +17,12 @@ class AppState {
 protected:
     StateRenderer* stateRenderer;
     App* app;
+    EventHandler* eventHandler;
     
 public:
     
     AppState ();
-    AppState (App* app, StateRenderer* stateRenderer);
+    AppState (App* app, StateRenderer* stateRenderer, EventHandler* eventHandler);
     
     virtual void execute() = 0;
     

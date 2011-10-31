@@ -6,9 +6,9 @@
 // Constructors/Destructors
 //  
 
-Game::Game(App* app, GameStateRenderer* gameStateRenderer) : AppState(app, gameStateRenderer) {
+Game::Game(App* app, GameStateRenderer* gameStateRenderer, EventHandler* eventHandler) : AppState(app, gameStateRenderer, eventHandler) {
     this->setExit(false);
-    Running* running = new Running(this);
+    Running* running = new Running(this, this->eventHandler);
     currentState = running;
     currentLevel = new Level();
     physics = new Physics(currentLevel);

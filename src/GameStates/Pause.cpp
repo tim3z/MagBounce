@@ -3,7 +3,7 @@
 // Constructors/Destructors
 //  
 
-Pause::Pause (Game* game) : GameState(game) {}
+Pause::Pause (Game* game, EventHandler* eventHandler) : GameState(game, eventHandler) {}
 
 void Pause::reactOnInput() {}
 

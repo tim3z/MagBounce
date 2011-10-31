@@ -18,10 +18,6 @@
   */
 
 class Graphics {
-    
-private:
-    ALLEGRO_DISPLAY *display;
-    
 public:
     
     /**
@@ -29,6 +25,8 @@ public:
      * @return an instance of this Graphics
      */
     static Graphics* getInstance();
+    
+    ALLEGRO_DISPLAY* getDisplay();
     
     /**
      * Draws bitmaps at a given position on the screen (back buffer bitmap)
@@ -41,6 +39,8 @@ public:
      * Implementation should call al_flip_display
      */
     void flipDisplay();
+    
+    void destroyDisplay();
 
     /**
      * Should at least destroy the ALLEGRO_DISPLAY.
@@ -60,6 +60,8 @@ private:
      * Thie Singleton of this class.
      */
     static Graphics* graphicsInstance;
+    
+    ALLEGRO_DISPLAY *display;
 
 };
 
