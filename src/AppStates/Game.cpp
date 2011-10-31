@@ -10,7 +10,7 @@ Game::Game(App* app, GameStateRenderer* gameStateRenderer) : AppState(app, gameS
     this->setExit(false);
     Running* running = new Running(this);
     currentState = running;
-    currentLevel = new Level();
+    currentLevel = new Level(800, 600);
     physics = new Physics(currentLevel);
     
     currentLevel->addLevelObject(new RectangularLevelObject(0,380, 640,400));
