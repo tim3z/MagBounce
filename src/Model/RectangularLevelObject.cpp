@@ -31,10 +31,10 @@ Vector2D RectangularLevelObject::getUpperLeftCorner() const {
 }
 
 Vector2D RectangularLevelObject::getLowerRightCorner() const {
-    return upperLeftCorner + (position - upperLeftCorner) * 2;
+    return position + (position - upperLeftCorner);
 }
 
 Vector2D RectangularLevelObject::getRenderingPosition() const {
-    return this->getUpperLeftCorner();
+    return upperLeftCorner;
 }
 

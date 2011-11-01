@@ -14,9 +14,8 @@ int PlayerObject::getCollisionRadius() const {
 }
 
 Vector2D PlayerObject::getRenderingPosition() const {
-    Vector2D pos = position;
-    pos[0] -= 25.0f;
-    pos[1] -= 25.0f;
+    Vector2D pos(2);
+    pos[0] = position[0] - 25;
+    pos[1] = position[1] - 25;
     return pos;
 }
-
