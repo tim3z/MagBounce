@@ -65,6 +65,8 @@ public:
     void setMagneticState(int magneticState);
     
     int getMagneticState() const;
+    
+    virtual Vector2D getRenderingPosition() const = 0;
   
 };
 

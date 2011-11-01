@@ -44,6 +44,8 @@ public:
         return LevelObject::getMagneticState();
     }
     
+    Vector2D getRenderingPosition() const;
+    
 };
 
 #endif // PLAYEROBJECT_H

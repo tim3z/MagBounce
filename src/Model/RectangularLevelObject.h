@@ -36,6 +36,8 @@ public:
      */
     Vector2D getLowerRightCorner() const;
     
+    Vector2D getRenderingPosition() const;
+    
 private:
 
 };
