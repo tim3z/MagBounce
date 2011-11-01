@@ -24,16 +24,18 @@ Collision* CollisionHandler::checkForCollision(PhysicsApplyableObject &object, c
         
         if (!((begin[1] > lr[1] && end[1] > lr[1]) || (begin[1] < ul[1] && end[1] < ul[1]))) {
             if (begin[0] < ul[0] && end[0] > ul[0]) {
-                float fraction = ul[0] - begin[0] / move[0];
-                if (collision->getMovementFraction() > fraction){
+                float fraction = (ul[0] - begin[0]) / move[0];
+                if (collision->getMovementFraction() > fraction) {
+                    collision->setMovementFraction(fraction);
                     collision->setCollisionObject2(objects[i]);
                     collision->setCollisionPoint(begin + fraction * move);
                     collision->setCollisionNormal(-unit_vector<float>(2,0));
                 }
             }
             if (begin[0] > lr[0] && end[0] < lr[0]) {
-                float fraction = begin[0] - lr[0] / move[0];
-                if (collision->getMovementFraction() > fraction){
+                float fraction = (begin[0] - lr[0]) / move[0];
+                if (collision->getMovementFraction() > fraction) {
+                    collision->setMovementFraction(fraction);
                     collision->setCollisionObject2(objects[i]);
                     collision->setCollisionPoint(begin + fraction * move);
                     collision->setCollisionNormal(unit_vector<float>(2,0));
@@ -43,16 +45,18 @@ Collision* CollisionHandler::checkForCollision(PhysicsApplyableObject &object, c
         if (!((begin[0] > lr[0] && end[0] > lr[0]) || (begin[0] < ul[0] && end[0] < ul[0]))) {
             
             if (begin[1] < ul[1] && end[1] > ul[1]) {
-                float fraction = ul[1] - begin[1] / move[1];
-                if (collision->getMovementFraction() > fraction){
+                float fraction = (ul[1] - begin[1]) / move[1];
+                if (collision->getMovementFraction() > fraction) {
+                    collision->setMovementFraction(fraction);
                     collision->setCollisionObject2(objects[i]);
                     collision->setCollisionPoint(begin + fraction * move);
                     collision->setCollisionNormal(-unit_vector<float>(2,1));
                 }
             }
             if (begin[1] > lr[1] && end[1] < lr[1]) {
-                float fraction = begin[1] - lr[1] / move[1];
-                if (collision->getMovementFraction() > fraction){
+                float fraction = (begin[1] - lr[1]) / move[1];
+                if (collision->getMovementFraction() > fraction) {
+                    collision->setMovementFraction(fraction);
                     collision->setCollisionObject2(objects[i]);
                     collision->setCollisionPoint(begin + fraction * move);
                     collision->setCollisionNormal(unit_vector<float>(2,1));

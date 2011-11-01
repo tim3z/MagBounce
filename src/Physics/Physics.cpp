@@ -71,8 +71,6 @@ void Physics::move(int time) {
         time = time - movedTime;
     }
     
-    
-    // collision detection
 }
 
 Vector2D Physics::calculateMoveFor (const PhysicsApplyableObject &object, int time) {
