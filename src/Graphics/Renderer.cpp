@@ -1,6 +1,6 @@
 #include "Renderer.h"
 
-Renderer::Renderer() {
+Renderer::Renderer() : bitmap(0) {
 
 }
 

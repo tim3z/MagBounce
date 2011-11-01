@@ -14,14 +14,13 @@
 
 class RectangularLevelObject : public LevelObject {
 private:
-    
     Vector2D upperLeftCorner;
     
-public:
-    
-    RectangularLevelObject();
-    RectangularLevelObject(float x1, float y1, float x2, float y2);
     RectangularLevelObject(const RectangularLevelObject& orig);
+    const RectangularLevelObject& operator=(const RectangularLevelObject&);
+    
+public:
+    RectangularLevelObject(float x1, float y1, float x2, float y2);
     virtual ~RectangularLevelObject();
     
     /**

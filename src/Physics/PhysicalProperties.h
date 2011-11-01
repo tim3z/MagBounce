@@ -14,12 +14,12 @@
 
 class PhysicalProperties {
 protected:
-    
     GravityBehaviour* gravityBehaviour;
     MagnetismBehaviour* magnetismBehaviour;
     TimeBehaviour* timeBehaviour;
     
 public:
+    PhysicalProperties(GravityBehaviour* gravityBehaviour, MagnetismBehaviour* magnetismBehaviour, TimeBehaviour* timeBehaviour);
 
     virtual ~PhysicalProperties();
     
@@ -34,7 +34,8 @@ public:
     }
     
 private:
-
+    PhysicalProperties(const PhysicalProperties&);
+    const PhysicalProperties& operator=(const PhysicalProperties&);
 };
 
 #endif	/* PHYSICALPROPERTIES_H */

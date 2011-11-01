@@ -10,10 +10,6 @@
 Collision::Collision() {
 }
 
-// AutoCopy will do fine, LevelObjects must be the same!
-//Collision::Collision(const Collision& orig) {
-//}
-
 Collision::~Collision() {
 }
 

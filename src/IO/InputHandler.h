@@ -15,11 +15,13 @@ public:
     InputHandler();
     InputHandler(EventHandler* eventHandler);
     virtual bool* getInput() = 0;
-    InputHandler(const InputHandler& orig);
     virtual ~InputHandler();
 protected:
-    bool* keys;
     EventHandler* eventHandler;
+    bool* keys;
+private:
+    InputHandler(const InputHandler&);
+    const InputHandler& operator=(const InputHandler&);
 };
 
 #endif	/* INPUTHANDLER_H */

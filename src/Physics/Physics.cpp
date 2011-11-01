@@ -4,8 +4,8 @@
 
 using namespace boost::numeric::ublas;
 
-Physics::Physics(Level* level) {
-    currentLevel = level;
+Physics::Physics(Level* level) : currentLevel(level) {
+
 }
 
 Physics::~Physics() {}

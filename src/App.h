@@ -16,8 +16,8 @@
 class App {
     
 private:
-    Game *game;
     EventHandler *eventHandler;
+    Game *game;
     AppState *currentState;
     bool exit;
 

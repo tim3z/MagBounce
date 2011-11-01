@@ -14,19 +14,17 @@
 
 class Collision {
 private:
-    
     Vector2D collisionPoint;
     Vector2D collisionNormal;
     float movementFraction; // How much of the original move to move til the collision
     PhysicsApplyableObject* collisionObject1;
     LevelObject* collisionObject2;
     
+    Collision(const Collision&);
+    const Collision& operator=(const Collision&);
     
 public:
-    
     Collision();
-    // AutoCopy will do fine, LevelObjects must be the same!
-//    Collision(const Collision& orig);
     virtual ~Collision();
     
     void setCollisionObject2(LevelObject *collisionObject2);

@@ -19,8 +19,8 @@ private:
 	const AppState& operator=(const AppState&);
 
 protected:
-    StateRenderer* stateRenderer;
     App* app;
+    StateRenderer* stateRenderer;
     EventHandler* eventHandler;
     
 public:

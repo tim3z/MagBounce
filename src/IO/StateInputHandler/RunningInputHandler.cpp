@@ -8,8 +8,6 @@
 #include "RunningInputHandler.h"
 #include "../../Graphics/Graphics.h"
 
-RunningInputHandler::RunningInputHandler() {}
-
 RunningInputHandler::RunningInputHandler(EventHandler* eventHandler) : InputHandler (eventHandler) {
     this->keys = new bool[3];
 }
@@ -21,8 +19,6 @@ bool* RunningInputHandler::getInput() {
     
     return this->keys;
 }
-
-RunningInputHandler::RunningInputHandler(const RunningInputHandler& orig) {}
 
 RunningInputHandler::~RunningInputHandler() {}
 

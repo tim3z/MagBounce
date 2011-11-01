@@ -10,11 +10,10 @@ Graphics* Graphics::getInstance() {
     return graphicsInstance;
 }
 
-Graphics::Graphics () {
-
-    display = al_create_display(640, 480);
+Graphics::Graphics () : display(al_create_display(640, 480)) {
     if (!display) {
             fprintf(stderr, "failed to create display!\n");
+            // TODO: throw exception!
     } else {
         //al_set_new_display_option(ALLEGRO_VSYNC, 2, ALLEGRO_SUGGEST);
         al_set_new_display_flags(ALLEGRO_FULLSCREEN);

@@ -5,12 +5,12 @@
 
 using std::cerr;
 
-App::App() {
-    eventHandler = new EventHandler(Graphics::getInstance()->getDisplay());
-    GameStateRenderer* gameStateRenderer = new GameStateRenderer();
-    game = new Game(this, gameStateRenderer, eventHandler);
-    currentState = game;
-    this->setExit(false);
+App::App() :
+	eventHandler(new EventHandler(Graphics::getInstance()->getDisplay())),
+	game(new Game(this, new GameStateRenderer(), eventHandler)),
+	currentState(game),
+	exit(false) {
+
 }
 
 void App::fire() {
@@ -33,7 +33,7 @@ int main(int argc, char** argv) {
      * Initialization routines (drivers, allegro etc.)
      */
     if (!al_init()) {
-            cerr << "Failed to initialize allegro!";
+            cerr << "Failed to initialize allegro!\n";
             return -1;
     }
 

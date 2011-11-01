@@ -7,9 +7,10 @@
 // Constructors/Destructors
 //  
 
-Level::Level (int width, int height) : width(width), height(height) {
-    physics = new StandardPhysics();
-    ball = new PlayerObject();
+Level::Level (int width, int height) :
+		physics(new StandardPhysics()), ball(new PlayerObject()), levelObjects(std::vector<RectangularLevelObject*>()),
+		width(width), height(height) {
+
 }
 
 Level::~Level () {

@@ -17,11 +17,11 @@ class RunningInputHandler : virtual public InputHandler {
 public:
     RunningInputHandler();
     RunningInputHandler(EventHandler* eventHandler);
-    RunningInputHandler(const RunningInputHandler& orig);
     bool* getInput();
     virtual ~RunningInputHandler();
 private:
-
+    RunningInputHandler(const RunningInputHandler&);
+    const RunningInputHandler& operator=(const RunningInputHandler&);
 };
 
 #endif	/* RUNNINGINPUTHANDLER_H */

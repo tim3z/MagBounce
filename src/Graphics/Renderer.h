@@ -11,11 +11,15 @@
 #include <allegro5/allegro5.h>
 
 class Renderer {
+private:
+	Renderer(const Renderer&);
+	const Renderer& operator=(const Renderer&);
     
 protected:
     ALLEGRO_BITMAP *bitmap;
     
 public:
+    Renderer();
     
     virtual ALLEGRO_BITMAP* getBitmap();
 
