@@ -24,6 +24,9 @@ private:
     int width;
     int height;
     
+    Level(const Level&);
+    const Level& operator=(const Level&);
+
 public:
     
     /**

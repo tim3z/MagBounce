@@ -17,6 +17,9 @@ private:
     
     Level* currentLevel;
     
+    Physics(const Physics&);
+    const Physics& operator=(const Physics&);
+
 public:
     
     Physics(Level* level);

@@ -63,6 +63,8 @@ private:
     
     ALLEGRO_DISPLAY *display;
 
+    Graphics(const Graphics&);
+    const Graphics& operator=(const Graphics&);
 };
 
 #endif	/* GRAPHICS_H */

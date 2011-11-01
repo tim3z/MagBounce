@@ -19,7 +19,7 @@ class EventHandler;
   * 
   */
 
-class Game : virtual public AppState {
+class Game : public AppState {
 private:
     GameState *currentState;
     bool exit;
@@ -28,9 +28,10 @@ private:
     GameStateRenderer* gameStateRenderer;
     Physics* physics;
     
+    Game(const Game&);
+    const Game& operator=(const Game&);
     
 public:
-    
     /**
      * Empty Constructor
      */
@@ -48,7 +49,6 @@ public:
      * Empty Destructor
      */
     virtual ~Game ();
-
 };
 
 #endif // GAME_H

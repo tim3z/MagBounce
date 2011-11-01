@@ -1,5 +1,9 @@
 #include "Renderer.h"
 
+Renderer::Renderer() {
+
+}
+
 ALLEGRO_BITMAP* Renderer::getBitmap() {
     return bitmap;
 }

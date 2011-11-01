@@ -12,7 +12,10 @@ class EventHandler;
   */
 
 class GameState {
-    
+private:
+	GameState(const GameState&);
+	const GameState& operator=(const GameState&);
+
 protected:
     Game *game;
     EventHandler* eventHandler;

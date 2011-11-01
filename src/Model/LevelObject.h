@@ -12,6 +12,9 @@
   */
 
 class LevelObject {
+private:
+	LevelObject(const LevelObject&);
+	const LevelObject& operator=(const LevelObject&);
     
 protected:
     

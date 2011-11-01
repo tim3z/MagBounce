@@ -14,6 +14,10 @@ class EventHandler;
   */
 
 class AppState {
+private:
+	AppState(const AppState&);
+	const AppState& operator=(const AppState&);
+
 protected:
     StateRenderer* stateRenderer;
     App* app;

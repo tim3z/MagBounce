@@ -18,8 +18,6 @@ EventHandler::EventHandler(ALLEGRO_DISPLAY* display) {
     al_register_event_source(eventQueue, al_get_display_event_source(this->display));
 }
 
-EventHandler::EventHandler(const EventHandler& orig) {}
-
 ALLEGRO_EVENT* EventHandler::getEvent(){
     ALLEGRO_EVENT* event = 0;
     ALLEGRO_TIMEOUT timeout;

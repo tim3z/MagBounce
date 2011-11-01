@@ -15,12 +15,14 @@ class EventHandler {
 public:
     EventHandler();
     EventHandler(ALLEGRO_DISPLAY* display);
-    EventHandler(const EventHandler& orig);
     ALLEGRO_EVENT* getEvent();
     virtual ~EventHandler();
 private:
     ALLEGRO_DISPLAY* display;
     ALLEGRO_EVENT_QUEUE* eventQueue;
+
+    EventHandler(const EventHandler& orig);
+    const EventHandler& operator=(const EventHandler&);
 };
 
 #endif	/* EVENTHANDLER_H */

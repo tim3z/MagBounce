@@ -2,7 +2,6 @@
 #ifndef APP_H
 #define APP_H
 
-#include <string>
 #include "Graphics/Graphics.h"
 #include "AppStates/AppState.h"
 #include "AppStates/Game.h"
@@ -21,12 +20,12 @@ private:
     EventHandler *eventHandler;
     AppState *currentState;
     bool exit;
-    
+
     App(const App&);
     const App& operator=(const App&);
 
 public:
-    
+
     /**
      * Empty Constructor
      */
