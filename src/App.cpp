@@ -4,6 +4,8 @@
 #include "Graphics/GameStateRenderer.h"
 #include "IO/EventHandler.h"
 
+using std::cerr;
+
 App::App() {
     eventHandler = new EventHandler(Graphics::getInstance()->getDisplay());
     GameStateRenderer* gameStateRenderer = new GameStateRenderer();
@@ -21,4 +23,24 @@ void App::fire() {
 
 App::~App() {
     delete currentState;
+}
+
+/*
+ *
+ */
+int main(int argc, char** argv) {
+
+    /*
+     * Initialization routines (drivers, allegro etc.)
+     */
+    if (!al_init()) {
+            cerr << "Failed to initialize allegro!";
+            return -1;
+    }
+
+    App magBounceApp;
+
+    magBounceApp.fire();
+
+    return 0;
 }
