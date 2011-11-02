@@ -23,7 +23,7 @@ Level::~Level () {
     }
 }
 
-PhysicalProperties* Level::getLevelPhysics() {
+const PhysicalProperties* const Level::getLevelPhysics() const {
     return physics;
 }
 

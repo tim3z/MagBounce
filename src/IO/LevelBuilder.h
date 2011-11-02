@@ -23,6 +23,14 @@ private:
 
 	static void parseFileContents(const string& path, list<string>& result);
 public:
+	/**
+	 * Builds a new Level from a level file and returns it.
+	 *
+	 * The caller takes ownership of the returned level.
+	 *
+	 * @param levelFile Path to the level file to parse
+	 * @return Level built from the file or null pointer on error
+	 */
 	static Level* build(const std::string& levelFile);
 };
 

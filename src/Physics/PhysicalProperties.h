@@ -23,13 +23,13 @@ public:
 
     virtual ~PhysicalProperties();
     
-    GravityBehaviour* getGravityBehaviour() {
+    GravityBehaviour* const getGravityBehaviour() const {
         return gravityBehaviour;
     }
-    MagnetismBehaviour* getMagnetismBehaviour() {
+    MagnetismBehaviour* const getMagnetismBehaviour() const {
         return magnetismBehaviour;
     }
-    TimeBehaviour* getTimeBehaviour() {
+    TimeBehaviour* const getTimeBehaviour() const {
         return timeBehaviour;
     }
     

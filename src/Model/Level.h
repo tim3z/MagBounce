@@ -73,7 +73,7 @@ public:
      * Returns the Physics Object of this Level
      * @return a pointer to this Levels Physics Object
      */
-    PhysicalProperties* getLevelPhysics();
+    const PhysicalProperties* const getLevelPhysics() const;
   
 };
 
