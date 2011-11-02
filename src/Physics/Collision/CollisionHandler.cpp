@@ -1,5 +1,6 @@
 #include "CollisionHandler.h"
 #include "Collision.h"
+#include "../../Model/RectangularLevelObject.h"
 
 using namespace boost::numeric::ublas;
 

@@ -1,6 +1,8 @@
 #include "Game.h"
-#include "../Graphics/Graphics.h"
 #include <stdio.h>
+#include "../Graphics/Graphics.h"
+#include "../Model/PlayerObject.h"
+#include "../Model/RectangularLevelObject.h"
 
 // Constructors/Destructors
 //  
@@ -25,7 +27,7 @@ void Game::execute() {
 
 	while (!exit) {
 		currentTime = al_get_time();
-		passed = (currentTime - lastTime) * 1000; // miliseconds
+		passed = (currentTime - lastTime) * 1000; // milliseconds
 		lastTime = currentTime;
 
 		currentState->reactOnInput();

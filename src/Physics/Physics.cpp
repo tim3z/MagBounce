@@ -1,6 +1,7 @@
 #include "Physics.h"
-#include "Collision/CollisionHandler.h"
 #include <stdio.h>
+#include "Collision/CollisionHandler.h"
+#include "../Model/PlayerObject.h"
 
 using namespace boost::numeric::ublas;
 

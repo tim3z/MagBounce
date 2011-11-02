@@ -14,12 +14,14 @@
 #include <boost/filesystem/fstream.hpp>
 #include <boost/foreach.hpp>
 #include <boost/lexical_cast.hpp>
+#include "../Model/Level.h"
+#include "../Model/RectangularLevelObject.h"
 
+#define foreach BOOST_FOREACH
 namespace file = boost::filesystem;
 using boost::bad_lexical_cast; using boost::lexical_cast; using boost::split;
 using file::path; using file::ifstream;
-using std::auto_ptr; using std::cerr; using std::endl; using std::vector;
-#define foreach BOOST_FOREACH
+using std::auto_ptr; using std::cerr; using std::vector;
 
 void LevelBuilder::parseFileContents(const string& filePath, list<string>& result) {
 	path path(filePath);

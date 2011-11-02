@@ -3,12 +3,11 @@
 #define LEVEL_H
 
 #include <vector>
-#include "RectangularLevelObject.h"
-#include "PlayerObject.h"
 #include "../Physics/Vector2D.h"
-#include "../Physics/PhysicalProperties.h"
 #include "../Physics/PhysicsApplyableObject.h"
 #include "../Physics/Standard/StandardPhysics.h"
+
+class PhysicalProperties; class PlayerObject; class RectangularLevelObject;
 
 /**
   * class Level
@@ -73,7 +72,7 @@ public:
      * Returns the Physics Object of this Level
      * @return a pointer to this Levels Physics Object
      */
-    const PhysicalProperties* const getLevelPhysics() const;
+    PhysicalProperties* const getLevelPhysics();
   
 };
 

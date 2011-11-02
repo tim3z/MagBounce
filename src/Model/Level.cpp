@@ -1,6 +1,8 @@
 #include "Level.h"
-#include "PlayerObject.h"
 #include <boost/foreach.hpp>
+#include "PlayerObject.h"
+#include "RectangularLevelObject.h"
+//#include "../Physics/PhysicalProperties.h"
 
 #define foreach BOOST_FOREACH
 
@@ -21,7 +23,7 @@ Level::~Level() {
 	}
 }
 
-const PhysicalProperties* const Level::getLevelPhysics() const {
+PhysicalProperties* const Level::getLevelPhysics() {
 	return physics;
 }
 

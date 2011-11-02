@@ -10,9 +10,9 @@
 
 #include <list>
 #include <string>
-#include "../Model/Level.h"
 
 using std::list; using std::string;
+class Level;
 
 class LevelBuilder {
 private:
@@ -31,7 +31,7 @@ public:
 	 * @param levelFile Path to the level file to parse
 	 * @return Level built from the file or null pointer on error
 	 */
-	static Level* build(const std::string& levelFile);
+	static Level* build(const string& levelFile);
 };
 
 #endif /* LEVELBUILDER_H_ */

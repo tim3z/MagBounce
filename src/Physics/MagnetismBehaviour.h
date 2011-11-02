@@ -14,16 +14,16 @@
 
 class MagnetismBehaviour {
 public:
-    
-    virtual ~MagnetismBehaviour();
 
-    /**
-     * Calculate the acceleration represanted as an Vector for this force at the given position
-     * @param position a Vector2D represanting the position
-     * @param objects a vector containing all levelobjects to consider
-     * @return the calculated acceleration
-     */
-    virtual Vector2D getAccelerationAt(const Vector2D &position, const std::vector<LevelObject*> &objects) = 0;
+	virtual ~MagnetismBehaviour();
+
+	/**
+	 * Calculate the acceleration represanted as an Vector for this force at the given position
+	 * @param position a Vector2D represanting the position
+	 * @param objects a vector containing all levelobjects to consider
+	 * @return the calculated acceleration
+	 */
+	virtual Vector2D getAccelerationAt(const Vector2D &position, const std::vector<LevelObject*> &objects) = 0;
 
 };
 

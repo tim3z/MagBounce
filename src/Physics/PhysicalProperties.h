@@ -14,28 +14,29 @@
 
 class PhysicalProperties {
 protected:
-    GravityBehaviour* gravityBehaviour;
-    MagnetismBehaviour* magnetismBehaviour;
-    TimeBehaviour* timeBehaviour;
-    
-public:
-    PhysicalProperties(GravityBehaviour* gravityBehaviour, MagnetismBehaviour* magnetismBehaviour, TimeBehaviour* timeBehaviour);
+	GravityBehaviour* gravityBehaviour;
+	MagnetismBehaviour* magnetismBehaviour;
+	TimeBehaviour* timeBehaviour;
 
-    virtual ~PhysicalProperties();
-    
-    GravityBehaviour* const getGravityBehaviour() const {
-        return gravityBehaviour;
-    }
-    MagnetismBehaviour* const getMagnetismBehaviour() const {
-        return magnetismBehaviour;
-    }
-    TimeBehaviour* const getTimeBehaviour() const {
-        return timeBehaviour;
-    }
-    
+public:
+	PhysicalProperties(GravityBehaviour* gravityBehaviour, MagnetismBehaviour* magnetismBehaviour,
+			TimeBehaviour* timeBehaviour);
+
+	virtual ~PhysicalProperties();
+
+	GravityBehaviour* const getGravityBehaviour() {
+		return gravityBehaviour;
+	}
+	MagnetismBehaviour* const getMagnetismBehaviour() {
+		return magnetismBehaviour;
+	}
+	TimeBehaviour* const getTimeBehaviour() {
+		return timeBehaviour;
+	}
+
 private:
-    PhysicalProperties(const PhysicalProperties&);
-    const PhysicalProperties& operator=(const PhysicalProperties&);
+	PhysicalProperties(const PhysicalProperties&);
+	const PhysicalProperties& operator=(const PhysicalProperties&);
 };
 
 #endif	/* PHYSICALPROPERTIES_H */
