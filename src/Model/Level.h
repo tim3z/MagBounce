@@ -58,7 +58,7 @@ public:
      * Return all Objects, which movements should be handled by the physics
      * @param a pointer to a vector to fill in the objects
      */
-    void getPhysicsApplyableObjects(std::vector<PhysicsApplyableObject*>*);
+    void getMovableObjects(std::vector<PhysicsApplyableObject*>*);
 
 
     /**

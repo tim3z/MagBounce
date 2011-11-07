@@ -10,7 +10,7 @@
 
 RectangularLevelObject::RectangularLevelObject(float x1, float y1, float x2,
 		float y2) :
-		upperLeftCorner(Vector2D(2)) {
+		upperLeftCorner(Vector2D()) {
 	upperLeftCorner[0] = x1;
 	upperLeftCorner[1] = y1;
 	position[0] = x1 + (x2 - x1) / 2;

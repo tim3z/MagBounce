@@ -7,9 +7,9 @@
 #include "../Graphics/Renderer.h"
 
 /**
-  * class LevelObject
-  * 
-  */
+ * class LevelObject
+ *
+ */
 
 class LevelObject {
 private:
@@ -17,7 +17,6 @@ private:
 	const LevelObject& operator=(const LevelObject&);
     
 protected:
-    
     Renderer* renderer;
     Vector2D position;
     int magneticState;

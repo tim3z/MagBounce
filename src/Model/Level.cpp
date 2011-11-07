@@ -27,7 +27,7 @@ PhysicalProperties* const Level::getLevelPhysics() {
 	return physics;
 }
 
-void Level::getPhysicsApplyableObjects(std::vector<PhysicsApplyableObject*>* objects) {
+void Level::getMovableObjects(std::vector<PhysicsApplyableObject*>* objects) {
 	objects->push_back(ball);
 }
 

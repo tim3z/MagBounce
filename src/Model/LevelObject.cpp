@@ -4,7 +4,7 @@
 //  
 
 LevelObject::LevelObject() :
-		renderer(0), position(Vector2D(2)), magneticState(0) {
+		renderer(0), position(Vector2D()), magneticState(0) {
 }
 
 void LevelObject::setMagneticState(int magneticState) {
