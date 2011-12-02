@@ -8,9 +8,11 @@
 #ifndef GAMESTATERENDERER_H
 #define	GAMESTATERENDERER_H
 
-#include "../../Engine/Graphics/StateRenderer.h"
 #include <vector>
-#include "../../Engine/Model/Object.h"
+#include "Graphics/StateRenderer.h"
+
+using std::vector;
+class Object;
 
 class GameStateRenderer : public StateRenderer {
         
@@ -20,7 +22,7 @@ public:
      */
     GameStateRenderer ();
 
-    void renderObjects(std::vector<Object*>*);
+    void renderObjects(vector<Object*>*);
     
     /**
      * Empty Destructor

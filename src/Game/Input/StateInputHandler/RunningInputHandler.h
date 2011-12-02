@@ -13,7 +13,7 @@ enum RunningKeys {
     KEY_POSITIVE, KEY_NEGATIVE, EXIT
 };
 
-class RunningInputHandler : virtual public InputHandler {
+class RunningInputHandler : public InputHandler {
 public:
     RunningInputHandler();
     RunningInputHandler(EventHandler* eventHandler);

@@ -6,7 +6,10 @@
  */
 
 #include "RunningInputHandler.h"
+#include <allegro5/allegro.h>
+#include <allegro5/events.h>
 #include "Graphics/Graphics.h"
+#include "Input/EventHandler.h"
 
 RunningInputHandler::RunningInputHandler(EventHandler* eventHandler) : InputHandler (eventHandler) {
     this->keys = new bool[3];

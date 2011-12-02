@@ -8,11 +8,10 @@
 #ifndef BALLRENDERER_H
 #define	BALLRENDERER_H
 
-#include "../../Engine/Graphics/Renderer.h"
+#include "Graphics/Renderer.h"
 
-class BallRenderer : virtual public Renderer {
+class BallRenderer : public Renderer {
 public:
-    
     BallRenderer(float radius);
 };
 

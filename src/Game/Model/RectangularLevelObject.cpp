@@ -7,6 +7,7 @@
 
 #include "RectangularLevelObject.h"
 #include <stdlib.h>
+#include "Graphics/RectangularLevelObjectRenderer.h"
 
 RectangularLevelObject::RectangularLevelObject(float x1, float y1, float x2,
 		float y2) :

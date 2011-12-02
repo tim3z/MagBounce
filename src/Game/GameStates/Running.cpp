@@ -1,13 +1,15 @@
 #include "Running.h"
-#include <stdio.h>
-#include "../IO/StateInputHandler/RunningInputHandler.h"
+#include <iostream>
+#include "Input/StateInputHandler/RunningInputHandler.h"
+
+using std::cout;
 
 Running::Running (Game* game, EventHandler* eventHandler) : GameState (game, eventHandler) {}
 
 void Running::reactOnInput() {
 //    RunningInputHandler* input = new RunningInputHandler(eventHandler);
 //    input->getInput();
-    printf("It works!");
+    cout << "It works!";
 }
 
 Running::~Running () {}

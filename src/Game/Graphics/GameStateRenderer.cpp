@@ -1,6 +1,7 @@
 #include "GameStateRenderer.h"
 #include "Graphics/Graphics.h"
 #include "Graphics/Renderer.h"
+#include "Model/Object.h"
 
 GameStateRenderer::GameStateRenderer() {
     

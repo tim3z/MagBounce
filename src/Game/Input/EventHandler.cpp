@@ -6,6 +6,8 @@
  */
 
 #include "EventHandler.h"
+#include <allegro5/allegro5.h>
+#include <allegro5/events.h>
 
 EventHandler::EventHandler(ALLEGRO_DISPLAY* display) :
 		display(display), eventQueue(al_create_event_queue()) {

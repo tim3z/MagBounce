@@ -2,7 +2,6 @@
 #ifndef PHYSICSAPPLYABLEOBJECT_H
 #define PHYSICSAPPLYABLEOBJECT_H
 
-#include <string>
 #include "Physics/Vector2D.h"
 
 /**

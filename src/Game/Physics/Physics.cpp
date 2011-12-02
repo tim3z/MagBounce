@@ -1,11 +1,14 @@
 #include "Physics.h"
 #include <stdio.h>
+#include <boost/numeric/ublas/vector_expression.hpp>
 #include "Collision/CollisionHandler.h"
-#include "Model/PlayerObject.h"
+#include "Model/Level.h"
 #include "Model/Level/GravityBehaviour.h"
 #include "Model/Level/MagnetismBehaviour.h"
 #include "Model/Level/TimeBehaviour.h"
 #include "Model/Level/PhysicalProperties.h"
+#include "Model/PlayerObject.h"
+#include "Physics/PhysicsApplyableObject.h"
 
 using namespace boost::numeric::ublas;
 

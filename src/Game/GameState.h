@@ -1,10 +1,7 @@
 #ifndef GAMESTATE_H
 #define GAMESTATE_H
 
-#include <string>
-
-class Game;
-class EventHandler;
+class EventHandler; class Game;
 
 /**
   * interface GameState

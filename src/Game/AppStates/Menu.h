@@ -3,16 +3,12 @@
 #define MENU_H
 #include "AppState.h"
 
-#include <string>
-
 /**
   * class Menu
   * 
   */
 
-class EventHandler;
-
-class Menu : virtual public AppState {
+class Menu : public AppState {
 public:
 
     /**

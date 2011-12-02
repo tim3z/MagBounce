@@ -1,9 +1,7 @@
-
 #ifndef PAUSE_H
 #define PAUSE_H
-#include "GameState.h"
 
-#include <string>
+#include "GameState.h"
 
 /**
   * class Pause
@@ -12,7 +10,7 @@
 
 class EventHandler;
 
-class Pause : virtual public GameState {
+class Pause : public GameState {
 public:
     
     /**

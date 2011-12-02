@@ -2,10 +2,9 @@
 #ifndef PHYSICS_H
 #define PHYSICS_H
 
-#include <boost/numeric/ublas/vector_expression.hpp>
 #include "Physics/Vector2D.h"
-#include "Physics/PhysicsApplyableObject.h"
-#include "Model/Level.h"
+
+class Level; class PhysicsApplyableObject;
 
 /**
   * class Physics

@@ -8,8 +8,7 @@
 #ifndef EVENTHANDLER_H
 #define	EVENTHANDLER_H
 
-#include <allegro5/allegro5.h>
-#include <allegro5/events.h>
+struct ALLEGRO_DISPLAY; union ALLEGRO_EVENT; struct ALLEGRO_EVENT_QUEUE;
 
 class EventHandler {
 public:

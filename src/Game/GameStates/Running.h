@@ -3,16 +3,12 @@
 #define RUNNING_H
 #include "GameState.h"
 
-#include <string>
-
 /**
   * class Running
   * 
   */
 
-class EventHandler;
-
-class Running : virtual public GameState {
+class Running : public GameState {
     
 public:
 

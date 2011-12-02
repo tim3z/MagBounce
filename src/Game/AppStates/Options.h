@@ -3,16 +3,12 @@
 #define OPTIONS_H
 #include "AppState.h"
 
-#include <string>
-
 /**
   * class Options
   * 
   */
 
-class EventHandler;
-
-class Options : virtual public AppState {
+class Options : public AppState {
 public:
     
     /**

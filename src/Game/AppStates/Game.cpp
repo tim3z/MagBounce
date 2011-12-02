@@ -1,9 +1,13 @@
 #include "Game.h"
 #include <stdio.h>
 #include <allegro5/allegro5.h>
-#include "Graphics/Graphics.h"
+#include "GameState.h"
+#include "GameStates/Running.h"
+#include "Graphics/GameStateRenderer.h"
+#include "Model/Level.h"
 #include "Model/PlayerObject.h"
-#include "../Model/RectangularLevelObject.h"
+#include "Model/RectangularLevelObject.h"
+#include "Physics/Physics.h"
 
 // Constructors/Destructors
 //  

@@ -8,7 +8,7 @@
 #ifndef INPUTHANDLER_H
 #define	INPUTHANDLER_H
 
-#include "EventHandler.h"
+class EventHandler;
 
 class InputHandler {
 public:

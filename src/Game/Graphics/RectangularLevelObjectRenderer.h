@@ -10,7 +10,7 @@
 
 #include "Graphics/Renderer.h"
 
-class RectangularLevelObjectRenderer : virtual public Renderer {
+class RectangularLevelObjectRenderer : public Renderer {
 public:
     
     RectangularLevelObjectRenderer(float height, float width);

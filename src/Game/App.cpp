@@ -4,7 +4,7 @@
 #include "AppStates/Game.h"
 #include "Graphics/GameStateRenderer.h"
 #include "Graphics/Graphics.h"
-#include "IO/EventHandler.h"
+#include "Input/EventHandler.h"
 
 using std::cerr;
 
