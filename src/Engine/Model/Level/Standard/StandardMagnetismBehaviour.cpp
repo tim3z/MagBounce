@@ -1,4 +1,5 @@
 #include "StandardMagnetismBehaviour.h"
+#include "Model/Object.h"
 
 // Constructors/Destructors
 //  

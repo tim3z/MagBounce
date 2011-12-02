@@ -8,9 +8,11 @@
 #ifndef MAGNETISMBEHAVIOUR_H
 #define	MAGNETISMBEHAVIOUR_H
 
-#include "Physics/Vector2D.h"
-#include "Model/Object.h"
 #include <vector>
+#include "Physics/Vector2D.h"
+
+using std::vector;
+class Object;
 
 class MagnetismBehaviour {
 public:

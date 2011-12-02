@@ -1,4 +1,5 @@
 #include "BallRenderer.h"
+#include <allegro5/allegro5.h>
 
 BallRenderer::BallRenderer(float radius) {
     int size = radius * 2;

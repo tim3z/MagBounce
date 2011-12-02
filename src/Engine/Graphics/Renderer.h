@@ -8,7 +8,7 @@
 #ifndef TESTRENDERER_H
 #define	TESTRENDERER_H
 
-#include <allegro5/allegro5.h>
+struct ALLEGRO_BITMAP;
 
 class Renderer {
 private:

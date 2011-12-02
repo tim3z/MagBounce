@@ -1,6 +1,7 @@
 
 #ifndef STANDARDGRAVITYBEHAVIOUR_H
 #define STANDARDGRAVITYBEHAVIOUR_H
+
 #include "../GravityBehaviour.h"
 
 /**
@@ -8,7 +9,7 @@
   * 
   */
 
-class StandardGravityBehaviour : virtual public GravityBehaviour {
+class StandardGravityBehaviour : public GravityBehaviour {
 public:
 
     /**

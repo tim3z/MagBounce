@@ -4,7 +4,8 @@
 
 #include <string>
 #include "Physics/Vector2D.h"
-#include "Graphics/Renderer.h"
+
+class Renderer;
 
 /**
  * class LevelObject

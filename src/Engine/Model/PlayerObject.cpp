@@ -1,4 +1,5 @@
 #include "PlayerObject.h"
+#include "Graphics/BallRenderer.h" // TODO: keine Abhängigkeit von nicht-Engine-Klassen!
 
 // Constructors/Destructors
 //  

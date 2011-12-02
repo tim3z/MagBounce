@@ -8,9 +8,9 @@
 #ifndef GRAPHICS_H
 #define	GRAPHICS_H
 
-#include <allegro5/allegro5.h>
-#include <cstdio>
 #include "Physics/Vector2D.h"
+
+struct ALLEGRO_BITMAP; struct ALLEGRO_DISPLAY;
 
 /**
   * class Graphics

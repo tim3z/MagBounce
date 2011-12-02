@@ -1,4 +1,7 @@
 #include "StandardPhysics.h"
+#include "StandardGravityBehaviour.h"
+#include "StandardMagnetismBehaviour.h"
+#include "StandardTimeBehaviour.h"
 
 // Constructors/Destructors
 //  

@@ -2,7 +2,6 @@
 #ifndef STANDARDTIMEBEHAVIOUR_H
 #define STANDARDTIMEBEHAVIOUR_H
 
-#include <string>
 #include "../TimeBehaviour.h"
 
 /**
@@ -10,7 +9,7 @@
   * 
   */
 
-class StandardTimeBehaviour : virtual public TimeBehaviour {
+class StandardTimeBehaviour : public TimeBehaviour {
 public:
     
     StandardTimeBehaviour ();

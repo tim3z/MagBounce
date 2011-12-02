@@ -1,4 +1,8 @@
 #include "Graphics.h"
+#include <iostream>
+#include <allegro5/allegro5.h>
+
+using std::cerr;
 
 Graphics* Graphics::graphicsInstance = NULL;
 
@@ -12,7 +16,7 @@ Graphics* Graphics::getInstance() {
 
 Graphics::Graphics () : display(al_create_display(640, 480)) {
     if (!display) {
-            fprintf(stderr, "failed to create display!\n");
+            cerr << "Failed to create display.\n";
             // TODO: throw exception!
     } else {
         //al_set_new_display_option(ALLEGRO_VSYNC, 2, ALLEGRO_SUGGEST);

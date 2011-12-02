@@ -2,11 +2,7 @@
 #ifndef STATE_H
 #define STATE_H
 
-#include <string>
-#include "Graphics/StateRenderer.h"
-
-class App;
-class EventHandler;
+class App; class EventHandler; class StateRenderer;
 
 /**
   * interface State

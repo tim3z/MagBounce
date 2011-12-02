@@ -1,5 +1,6 @@
 #include "Game.h"
 #include <stdio.h>
+#include <allegro5/allegro5.h>
 #include "Graphics/Graphics.h"
 #include "Model/PlayerObject.h"
 #include "../Model/RectangularLevelObject.h"

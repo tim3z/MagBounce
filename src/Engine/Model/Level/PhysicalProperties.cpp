@@ -6,6 +6,9 @@
  */
 
 #include "PhysicalProperties.h"
+#include "MagnetismBehaviour.h"
+#include "GravityBehaviour.h"
+#include "TimeBehaviour.h"
 
 PhysicalProperties::PhysicalProperties(GravityBehaviour* gravityBehaviour,
 		MagnetismBehaviour* magnetismBehaviour, TimeBehaviour* timeBehaviour) :

@@ -1,9 +1,8 @@
-
 #ifndef PLAYEROBJECT_H
 #define PLAYEROBJECT_H
+
 #include "Model/Object.h"
 #include "Physics/PhysicsApplyableObject.h"
-#include "Graphics/BallRenderer.h"
 
 /**
   * class PlayerObject

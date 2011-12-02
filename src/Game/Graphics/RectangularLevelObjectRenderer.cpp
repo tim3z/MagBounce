@@ -6,6 +6,7 @@
  */
 
 #include "RectangularLevelObjectRenderer.h"
+#include <allegro5/allegro5.h>
 #include "Graphics/Graphics.h"
 
 RectangularLevelObjectRenderer::RectangularLevelObjectRenderer(float height, float width) {

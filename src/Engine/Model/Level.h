@@ -6,8 +6,7 @@
 #include "Physics/Vector2D.h"
 
 using std::vector;
-class Object; class PhysicalProperties; class PhysicsApplyableObject; class PlayerObject;
-class RectangularLevelObject;
+class Object; class PhysicsApplyableObject; class PhysicalProperties; class PlayerObject; class RectangularLevelObject;
 
 /**
   * class Level

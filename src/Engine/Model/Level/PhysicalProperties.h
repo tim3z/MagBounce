@@ -8,9 +8,7 @@
 #ifndef PHYSICALPROPERTIES_H
 #define	PHYSICALPROPERTIES_H
 
-#include "MagnetismBehaviour.h"
-#include "GravityBehaviour.h"
-#include "TimeBehaviour.h"
+class GravityBehaviour; class MagnetismBehaviour; class TimeBehaviour;
 
 class PhysicalProperties {
 protected:

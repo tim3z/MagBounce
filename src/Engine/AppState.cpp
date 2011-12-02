@@ -1,4 +1,6 @@
 #include "AppState.h"
+#include "Graphics/StateRenderer.h"
+
 
 AppState::AppState(App* app, StateRenderer* stateRenderer,
 		EventHandler* eventHandler) :

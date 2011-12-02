@@ -4,21 +4,16 @@
 
 #include <string>
 #include "../PhysicalProperties.h"
-#include "StandardGravityBehaviour.h"
-#include "StandardMagnetismBehaviour.h"
-#include "StandardTimeBehaviour.h"
 
 /**
   * class StandardPhysics
   * 
   */
 
-class StandardPhysics : virtual public PhysicalProperties {
+class StandardPhysics : public PhysicalProperties {
 public:
-    
     StandardPhysics ();
     virtual ~StandardPhysics ();
-
 };
 
 #endif // STANDARDPHYSICS_H

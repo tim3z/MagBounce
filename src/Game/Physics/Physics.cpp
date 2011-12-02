@@ -1,8 +1,11 @@
 #include "Physics.h"
 #include <stdio.h>
-#include "Model/Level/PhysicalProperties.h"
 #include "Collision/CollisionHandler.h"
 #include "Model/PlayerObject.h"
+#include "Model/Level/GravityBehaviour.h"
+#include "Model/Level/MagnetismBehaviour.h"
+#include "Model/Level/TimeBehaviour.h"
+#include "Model/Level/PhysicalProperties.h"
 
 using namespace boost::numeric::ublas;
 

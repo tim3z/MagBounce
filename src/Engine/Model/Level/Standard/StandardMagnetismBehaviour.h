@@ -3,14 +3,12 @@
 #define STANDARDMAGNETISMBEHAVIOUR_H
 #include "../MagnetismBehaviour.h"
 
-#include <string>
-
 /**
   * class StandardMagnetismBehaviour
   * 
   */
 
-class StandardMagnetismBehaviour : virtual public MagnetismBehaviour {
+class StandardMagnetismBehaviour : public MagnetismBehaviour {
   
 public:
 
