@@ -19,14 +19,14 @@ private:
     float movementFraction; // How much of the original move to move til the collision
     PhysicsApplyableObject* collisionObject1;
     Object* collisionObject2;
-    
+
     Collision(const Collision&);
     const Collision& operator=(const Collision&);
-    
+
 public:
     Collision();
     virtual ~Collision();
-    
+
     void setCollisionObject2(Object *collisionObject2);
     Object* getCollisionObject2() const;
     void setCollisionObject1(PhysicsApplyableObject *collisionObject1);

@@ -1,17 +1,18 @@
-
 #ifndef APP_H
 #define APP_H
 
-class AppState; class EventHandler; class Game; class Graphics;
-
+class AppState;
+class EventHandler;
+class Game;
+class Graphics;
 
 /**
-  * class App
-  * 
-  */
+ * class App
+ * 
+ */
 
 class App {
-    
+
 private:
     EventHandler *eventHandler;
     Game *game;
@@ -26,10 +27,10 @@ public:
     /**
      * Empty Constructor
      */
-    App ();
-    
+    App();
+
     void fire();
-    
+
     void setExit(bool flag) {
         exit = flag;
     }
@@ -37,8 +38,8 @@ public:
     /**
      * Empty Destructor
      */
-    virtual ~App ();
-    
+    virtual ~App();
+
 };
 
 #endif // APP_H

@@ -7,4 +7,5 @@
 
 #include "MagnetismBehaviour.h"
 
-MagnetismBehaviour::~MagnetismBehaviour() {}
+MagnetismBehaviour::~MagnetismBehaviour() {
+}

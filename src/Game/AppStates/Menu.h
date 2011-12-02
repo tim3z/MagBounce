@@ -1,12 +1,11 @@
-
 #ifndef MENU_H
 #define MENU_H
 #include "AppState.h"
 
 /**
-  * class Menu
-  * 
-  */
+ * class Menu
+ * 
+ */
 
 class Menu : public AppState {
 public:
@@ -14,17 +13,17 @@ public:
     /**
      * Empty Constructor
      */
-    Menu ();
-    
-    Menu (App*, StateRenderer*, EventHandler* eventHandler); //TODO MenuStateRenderer
-    
+    Menu();
+
+    Menu(App*, StateRenderer*, EventHandler* eventHandler); //TODO MenuStateRenderer
+
     void execute();
 
     /**
      * Empty Destructor
      */
-    virtual ~Menu ();
-    
+    virtual ~Menu();
+
 };
 
 #endif // MENU_H

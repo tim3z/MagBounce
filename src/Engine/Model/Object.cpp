@@ -4,34 +4,34 @@
 // Constructors/Destructors
 //  
 
-Object::Object() :
-		renderer(0), position(Vector2D()), magneticState(0) {
+Object::Object()
+        : renderer(0), position(Vector2D()), magneticState(0) {
 }
 
 void Object::setMagneticState(int magneticState) {
-	this->magneticState = magneticState;
+    this->magneticState = magneticState;
 }
 
 int Object::getMagneticState() const {
-	return magneticState;
+    return magneticState;
 }
 
 Object::~Object() {
-	if (renderer != NULL) {
-		delete renderer;
-		renderer = NULL;
-	}
+    if (renderer != NULL) {
+        delete renderer;
+        renderer = NULL;
+    }
 }
 
 void Object::setPosition(float x, float y) {
-	position(0) = x;
-	position(1) = y;
+    position(0) = x;
+    position(1) = y;
 }
 
 void Object::setPosition(const Vector2D &pos) {
-	position = pos;
+    position = pos;
 }
 
 void Object::setRenderer(Renderer* rend) {
-	renderer = rend;
+    renderer = rend;
 }

@@ -7,5 +7,6 @@
 
 #include "GravityBehaviour.h"
 
-GravityBehaviour::~GravityBehaviour() {}
+GravityBehaviour::~GravityBehaviour() {
+}
 

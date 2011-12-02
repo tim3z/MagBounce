@@ -12,12 +12,14 @@
 
 using namespace boost::numeric::ublas;
 
-Physics::Physics(Level* level) : currentLevel(level) {
+Physics::Physics(Level* level)
+        : currentLevel(level) {
 
 }
 
-Physics::~Physics() {}
-        
+Physics::~Physics() {
+}
+
 //void Physics::move(int time) {
 //    std::vector<PhysicsApplyableObject*> objects; // TODO warum macht objects(); es kaputt??
 //    std::vector<Vector2D> movements;
@@ -50,7 +52,7 @@ Physics::~Physics() {}
 
 void Physics::move(int time) {
     PhysicsApplyableObject* playerObject = currentLevel->getPlayerObject();
-    
+
     while (time > 0) {
         Vector2D move = calculateMoveFor(*playerObject, time);
 
@@ -60,38 +62,39 @@ void Physics::move(int time) {
 
         Collision* collision = CollisionHandler::checkForCollision(*playerObject, move, levelObjects);
         int movedTime = time;
-        
+
         if (collision != NULL) {
             move = move * collision->getMovementFraction();
             movedTime = time * collision->getMovementFraction();
-            
+
             Vector2D collisionNormal = collision->getCollisionNormal();
             collisionNormal = collisionNormal / norm_2(collisionNormal);
-            
+
             Vector2D reflected = move - 2 * inner_prod(collisionNormal, move) * collisionNormal;
             playerObject->setSpeed(reflected / movedTime);
-            
+
         } else {
             playerObject->setSpeed(move / movedTime);
         }
         playerObject->setPosition(playerObject->getPosition() + move);
-        
+
         time = time - movedTime;
     }
-    
+
 }
 
-Vector2D Physics::calculateMoveFor (const PhysicsApplyableObject &object, int time) {
+Vector2D Physics::calculateMoveFor(const PhysicsApplyableObject &object, int time) {
     std::vector<Object*> objects;
     currentLevel->getLevelObjects(&objects);
-    
+
     time = currentLevel->getLevelPhysics()->getTimeBehaviour()->manipulateTime(time);
-    
+
     Vector2D speed = zero_vector<float>(2);
     speed += object.getSpeed();
     std::cout << "speed: x: " << speed[0] << " y: " << speed[1] << std::endl;
     speed += currentLevel->getLevelPhysics()->getGravityBehaviour()->getAccelerationAt() * time;
-    speed += currentLevel->getLevelPhysics()->getMagnetismBehaviour()->getAccelerationAt(object.getPosition(), objects) * object.getMagneticState() * time;
-    
+    speed += currentLevel->getLevelPhysics()->getMagnetismBehaviour()->getAccelerationAt(object.getPosition(), objects)
+            * object.getMagneticState() * time;
+
     return speed * time;
 }

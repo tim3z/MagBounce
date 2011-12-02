@@ -3,8 +3,12 @@
 // Constructors/Destructors
 // 
 
-Options::Options (App* app, StateRenderer* stateRenderer, EventHandler* eventHandler) : AppState (app, stateRenderer, eventHandler) {}//TODO OptionsStateRenderer!!
+Options::Options(App* app, StateRenderer* stateRenderer, EventHandler* eventHandler)
+        : AppState(app, stateRenderer, eventHandler) {
+} //TODO OptionsStateRenderer!!
 
-void Options::execute() {}
+void Options::execute() {
+}
 
-Options::~Options () {}
+Options::~Options() {
+}

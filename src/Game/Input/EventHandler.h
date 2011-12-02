@@ -8,7 +8,9 @@
 #ifndef EVENTHANDLER_H
 #define	EVENTHANDLER_H
 
-struct ALLEGRO_DISPLAY; union ALLEGRO_EVENT; struct ALLEGRO_EVENT_QUEUE;
+struct ALLEGRO_DISPLAY;
+union ALLEGRO_EVENT;
+struct ALLEGRO_EVENT_QUEUE;
 
 class EventHandler {
 public:

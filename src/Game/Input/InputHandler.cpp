@@ -8,11 +8,11 @@
 #include "InputHandler.h"
 #include "EventHandler.h"
 
-InputHandler::InputHandler(EventHandler* eventHandler) :
-		eventHandler(eventHandler), keys(0) {
+InputHandler::InputHandler(EventHandler* eventHandler)
+        : eventHandler(eventHandler), keys(0) {
 }
 
 InputHandler::~InputHandler() {
-	delete eventHandler;
+    delete eventHandler;
 }
 

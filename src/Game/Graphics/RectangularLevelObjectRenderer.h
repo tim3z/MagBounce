@@ -12,11 +12,11 @@
 
 class RectangularLevelObjectRenderer : public Renderer {
 public:
-    
+
     RectangularLevelObjectRenderer(float height, float width);
     RectangularLevelObjectRenderer(const RectangularLevelObjectRenderer& orig);
     virtual ~RectangularLevelObjectRenderer();
-    
+
 private:
 
 };

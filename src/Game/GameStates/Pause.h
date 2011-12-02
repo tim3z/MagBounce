@@ -4,28 +4,28 @@
 #include "GameState.h"
 
 /**
-  * class Pause
-  * 
-  */
+ * class Pause
+ * 
+ */
 
 class EventHandler;
 
 class Pause : public GameState {
 public:
-    
+
     /**
      * Empty Constructor
      */
-    Pause ();
-    
-    Pause (Game*, EventHandler* eventHandler);
-    
+    Pause();
+
+    Pause(Game*, EventHandler* eventHandler);
+
     void reactOnInput();
 
     /**
      * Empty Destructor
      */
-    virtual ~Pause ();
+    virtual ~Pause();
 
 };
 

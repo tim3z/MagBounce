@@ -1,3 +1,4 @@
 #include "ForceBehaviour.h"
 
-ForceBehaviour::~ForceBehaviour() {}
+ForceBehaviour::~ForceBehaviour() {
+}

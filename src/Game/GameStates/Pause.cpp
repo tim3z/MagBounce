@@ -3,8 +3,12 @@
 // Constructors/Destructors
 //  
 
-Pause::Pause (Game* game, EventHandler* eventHandler) : GameState(game, eventHandler) {}
+Pause::Pause(Game* game, EventHandler* eventHandler)
+        : GameState(game, eventHandler) {
+}
 
-void Pause::reactOnInput() {}
+void Pause::reactOnInput() {
+}
 
-Pause::~Pause () {}
+Pause::~Pause() {
+}

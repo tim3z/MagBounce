@@ -1,4 +1,3 @@
-
 #ifndef STANDARDPHYSICS_H
 #define STANDARDPHYSICS_H
 
@@ -6,14 +5,14 @@
 #include "../PhysicalProperties.h"
 
 /**
-  * class StandardPhysics
-  * 
-  */
+ * class StandardPhysics
+ * 
+ */
 
 class StandardPhysics : public PhysicalProperties {
 public:
-    StandardPhysics ();
-    virtual ~StandardPhysics ();
+    StandardPhysics();
+    virtual ~StandardPhysics();
 };
 
 #endif // STANDARDPHYSICS_H

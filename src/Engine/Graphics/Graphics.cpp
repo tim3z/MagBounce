@@ -10,14 +10,15 @@ Graphics* Graphics::getInstance() {
     if (graphicsInstance == NULL) {
         graphicsInstance = new Graphics();
     }
-    
+
     return graphicsInstance;
 }
 
-Graphics::Graphics () : display(al_create_display(640, 480)) {
+Graphics::Graphics()
+        : display(al_create_display(640, 480)) {
     if (!display) {
-            cerr << "Failed to create display.\n";
-            // TODO: throw exception!
+        cerr << "Failed to create display.\n";
+        // TODO: throw exception!
     } else {
         //al_set_new_display_option(ALLEGRO_VSYNC, 2, ALLEGRO_SUGGEST);
         al_set_new_display_flags(ALLEGRO_FULLSCREEN);
@@ -44,6 +45,6 @@ void Graphics::destroyDisplay() {
     al_destroy_display(display);
 }
 
-Graphics::~Graphics () {
-	al_destroy_display(display);
+Graphics::~Graphics() {
+    al_destroy_display(display);
 }

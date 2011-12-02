@@ -8,26 +8,24 @@
 #ifndef STATERENDERER_H
 #define	STATERENDERER_H
 
-
 /**
-  * class StateRenderer
-  * 
-  */
-
+ * class StateRenderer
+ * 
+ */
 class StateRenderer {
-    
+
 public:
-    
+
     /**
      * Empty Constructor
      */
-    StateRenderer ();
+    StateRenderer();
 
     /**
      * Empty Destructor
      */
-    virtual ~StateRenderer ();
-    
+    virtual ~StateRenderer();
+
 };
 
 #endif	/* STATERENDERER_H */

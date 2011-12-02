@@ -1,3 +1,4 @@
 #include "TimeBehaviour.h"
 
-TimeBehaviour::~TimeBehaviour() {}
+TimeBehaviour::~TimeBehaviour() {
+}

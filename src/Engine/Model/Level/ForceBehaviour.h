@@ -1,17 +1,16 @@
-
 #ifndef FORCEBEHAVIOUR_H
 #define FORCEBEHAVIOUR_H
 
 #include "Physics/Vector2D.h"
 
 /**
-  * interface ForceBehaviour
-  * 
-  */
+ * interface ForceBehaviour
+ * 
+ */
 
 class ForceBehaviour {
 public:
-    
+
     virtual ~ForceBehaviour();
 
     /**
@@ -19,7 +18,7 @@ public:
      * @param position a Vector2D represanting the position
      * @return the calculated acceleration
      */
-    virtual Vector2D getAccelerationAt(const Vector2D &position) = 0;    
+    virtual Vector2D getAccelerationAt(const Vector2D &position) = 0;
 };
 
 #endif // FORCEBEHAVIOUR_H

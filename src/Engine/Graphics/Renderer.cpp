@@ -1,8 +1,8 @@
 #include "Renderer.h"
 #include <allegro5/allegro5.h>
 
-Renderer::Renderer() : bitmap(0) {
-
+Renderer::Renderer()
+        : bitmap(0) {
 }
 
 ALLEGRO_BITMAP* Renderer::getBitmap() {

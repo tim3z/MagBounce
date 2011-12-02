@@ -1,30 +1,29 @@
-
 #ifndef RUNNING_H
 #define RUNNING_H
 #include "GameState.h"
 
 /**
-  * class Running
-  * 
-  */
+ * class Running
+ * 
+ */
 
 class Running : public GameState {
-    
+
 public:
 
     /**
      * Empty Constructor
      */
-    Running ();
-    
-    Running (Game*, EventHandler* eventHandler);
+    Running();
+
+    Running(Game*, EventHandler* eventHandler);
 
     void reactOnInput();
-    
+
     /**
      * Empty Destructor
      */
-    virtual ~Running ();
+    virtual ~Running();
 
 };
 

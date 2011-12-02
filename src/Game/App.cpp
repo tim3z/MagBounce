@@ -8,11 +8,9 @@
 
 using std::cerr;
 
-App::App() :
-	eventHandler(new EventHandler(Graphics::getInstance()->getDisplay())),
-	game(new Game(this, new GameStateRenderer(), eventHandler)),
-	currentState(game),
-	exit(false) {
+App::App()
+        : eventHandler(new EventHandler(Graphics::getInstance()->getDisplay())),
+          game(new Game(this, new GameStateRenderer(), eventHandler)), currentState(game), exit(false) {
 
 }
 
@@ -36,8 +34,8 @@ int main(int argc, char** argv) {
      * Initialization routines (drivers, allegro etc.)
      */
     if (!al_init()) {
-            cerr << "Failed to initialize allegro!\n";
-            return -1;
+        cerr << "Failed to initialize allegro!\n";
+        return -1;
     }
 
     App magBounceApp;

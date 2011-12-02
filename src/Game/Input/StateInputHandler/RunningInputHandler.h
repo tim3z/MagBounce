@@ -10,7 +10,9 @@
 
 #include "../InputHandler.h"
 enum RunningKeys {
-    KEY_POSITIVE, KEY_NEGATIVE, EXIT
+    KEY_POSITIVE,
+    KEY_NEGATIVE,
+    EXIT
 };
 
 class RunningInputHandler : public InputHandler {

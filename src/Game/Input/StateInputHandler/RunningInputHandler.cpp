@@ -11,7 +11,8 @@
 #include "Graphics/Graphics.h"
 #include "Input/EventHandler.h"
 
-RunningInputHandler::RunningInputHandler(EventHandler* eventHandler) : InputHandler (eventHandler) {
+RunningInputHandler::RunningInputHandler(EventHandler* eventHandler)
+        : InputHandler(eventHandler) {
     this->keys = new bool[3];
 }
 
@@ -19,9 +20,10 @@ bool* RunningInputHandler::getInput() {
     if (this->eventHandler->getEvent()->type == ALLEGRO_EVENT_DISPLAY_CLOSE) {
         Graphics::getInstance()->destroyDisplay();
     }
-    
+
     return this->keys;
 }
 
-RunningInputHandler::~RunningInputHandler() {}
+RunningInputHandler::~RunningInputHandler() {
+}
 

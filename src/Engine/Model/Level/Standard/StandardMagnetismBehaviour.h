@@ -1,27 +1,26 @@
-
 #ifndef STANDARDMAGNETISMBEHAVIOUR_H
 #define STANDARDMAGNETISMBEHAVIOUR_H
 #include "../MagnetismBehaviour.h"
 
 /**
-  * class StandardMagnetismBehaviour
-  * 
-  */
+ * class StandardMagnetismBehaviour
+ * 
+ */
 
 class StandardMagnetismBehaviour : public MagnetismBehaviour {
-  
+
 public:
 
     /**
      * Empty Constructor
      */
-    StandardMagnetismBehaviour ();
+    StandardMagnetismBehaviour();
 
     /**
      * Empty Destructor
      */
-    virtual ~StandardMagnetismBehaviour ();
-    
+    virtual ~StandardMagnetismBehaviour();
+
     Vector2D getAccelerationAt(const Vector2D &position, const std::vector<Object*> &objects);
 };
 

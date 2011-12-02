@@ -8,7 +8,7 @@
 #ifndef _VECTOR_H_
 #define _VECTOR_H_
 
-template <class T>
+template<class T>
 struct Vector {
 private:
     T x, y;
@@ -16,11 +16,17 @@ private:
     bool length_dirty;
 
 public:
-    Vector() : x(0), y(0), cached_length(0), length_dirty(false) {}
+    Vector()
+            : x(0), y(0), cached_length(0), length_dirty(false) {
+    }
 
-    Vector(const Vector<T>& v) : x(v.x), y(v.y), cached_length(0), length_dirty(true) {}
+    Vector(const Vector<T>& v)
+            : x(v.x), y(v.y), cached_length(0), length_dirty(true) {
+    }
 
-    Vector(const T x, const T y) : x(x), y(y), cached_length(0), length_dirty(true) {}
+    Vector(const T x, const T y)
+            : x(x), y(y), cached_length(0), length_dirty(true) {
+    }
 
     const Vector<T>& operator=(const Vector<T>& v) {
         x = v.x;
@@ -30,8 +36,8 @@ public:
         return *this;
     }
 
-    ~Vector() {}
-
+    ~Vector() {
+    }
 
     bool operator==(const Vector<T>& v) const {
         return (x == v.x && y == v.y);
@@ -40,7 +46,6 @@ public:
     bool operator!=(const Vector<T>& v) const {
         return (x != v.x || y != v.y);
     }
-
 
     const Vector<T> operator-() const {
         return Vector<T>(-x, -y);
@@ -68,7 +73,6 @@ public:
         return *this;
     }
 
-
     const Vector<T> operator*(const T scalar) const {
         return Vector<T>(x * scalar, y * scalar);
     }
@@ -91,11 +95,9 @@ public:
         return *this;
     }
 
-
     T operator*(const Vector<T>& v) const {
         return x * v.x + y * v.y;
     }
-
 
     T getX() const {
         return x;

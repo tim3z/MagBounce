@@ -15,19 +15,19 @@ using std::vector;
 class Object;
 
 class GameStateRenderer : public StateRenderer {
-        
+
 public:
     /**
      * Empty Constructor
      */
-    GameStateRenderer ();
+    GameStateRenderer();
 
     void renderObjects(vector<Object*>*);
-    
+
     /**
      * Empty Destructor
      */
-    virtual ~GameStateRenderer ();
+    virtual ~GameStateRenderer();
 };
 
 #endif	/* GAMESTATERENDERER_H */

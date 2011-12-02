@@ -10,57 +10,58 @@
 
 #include "Physics/Vector2D.h"
 
-struct ALLEGRO_BITMAP; struct ALLEGRO_DISPLAY;
+struct ALLEGRO_BITMAP;
+struct ALLEGRO_DISPLAY;
 
 /**
-  * class Graphics
-  * Wraps Allegros graphic library for MagBounce usage.
-  */
+ * class Graphics
+ * Wraps Allegros graphic library for MagBounce usage.
+ */
 
 class Graphics {
 public:
-    
+
     /**
      * Singleton method
      * @return an instance of this Graphics
      */
     static Graphics* getInstance();
-    
+
     ALLEGRO_DISPLAY* getDisplay();
-    
+
     /**
      * Draws bitmaps at a given position on the screen (back buffer bitmap)
      * @param ALLEGRO_BITMAP that will be drawn to the back buffer bitmap.
      * @param Vector2D that contains the position of the drawn bitmap on the screen.
      */
     void render(ALLEGRO_BITMAP*, Vector2D);
-    
+
     /**
      * Implementation should call al_flip_display
      */
     void flipDisplay();
-    
+
     void destroyDisplay();
 
     /**
      * Should at least destroy the ALLEGRO_DISPLAY.
      */
-    virtual ~Graphics ();
-    
+    virtual ~Graphics();
+
 protected:
-    
+
     /**
      * Implementation should create ALLEGRO_DISPLAY and set possible flags and options.
      */
-    Graphics ();
-    
+    Graphics();
+
 private:
-    
+
     /**
      * Thie Singleton of this class.
      */
     static Graphics* graphicsInstance;
-    
+
     ALLEGRO_DISPLAY *display;
 
     Graphics(const Graphics&);

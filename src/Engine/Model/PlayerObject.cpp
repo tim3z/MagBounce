@@ -1,14 +1,14 @@
 #include "PlayerObject.h"
 #include "Graphics/BallRenderer.h" // TODO: keine Abhängigkeit von nicht-Engine-Klassen!
-
 // Constructors/Destructors
 //  
 
-PlayerObject::PlayerObject () {
+PlayerObject::PlayerObject() {
     renderer = new BallRenderer(25.0f);
 }
 
-PlayerObject::~PlayerObject () {}
+PlayerObject::~PlayerObject() {
+}
 
 int PlayerObject::getCollisionRadius() const {
     return 25;
