@@ -73,8 +73,13 @@ public:
         return *this;
     }
 
+//  Allow wrong order (vector * scalar), for correct order see friend function below
     const Vector<T> operator*(const T scalar) const {
         return Vector<T>(x * scalar, y * scalar);
+    }
+
+    friend const Vector<T> operator*(const T scalar, const Vector<T> vector) {
+        return Vector<T>(vector.x * scalar, vector.y * scalar);
     }
 
     const Vector<T> operator/(const T scalar) const {
@@ -125,6 +130,7 @@ public:
      * @return Length of this vector
      */
     T length() const;
+
     /**
      * Creates a normalized version of this vector.
      *
@@ -135,6 +141,7 @@ public:
      * @return Normalized vector
      */
     Vector<T> normalized() const;
+
     /**
      * Normalizes this vector.
      *

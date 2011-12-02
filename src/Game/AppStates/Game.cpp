@@ -1,5 +1,5 @@
 #include "Game.h"
-#include <stdio.h>
+#include <iostream>
 #include <allegro5/allegro5.h>
 #include "GameState.h"
 #include "GameStates/Running.h"
@@ -36,8 +36,8 @@ void Game::execute() {
 
         physics->move(passed);
 
-        std::cout << passed << "ms, x: " << currentLevel->getPlayerObject()->getPosition()[0] << " y: "
-                  << currentLevel->getPlayerObject()->getPosition()[1] << std::endl;
+        std::cout << passed << "ms, x: " << currentLevel->getPlayerObject()->getPosition().getX() << " y: "
+                  << currentLevel->getPlayerObject()->getPosition().getY() << std::endl;
 
         std::vector<Object*> objects;
         currentLevel->getLevelObjects(&objects);

@@ -1,6 +1,5 @@
 #include "Physics.h"
-#include <stdio.h>
-#include <boost/numeric/ublas/vector_expression.hpp>
+#include <iostream>
 #include "Collision/CollisionHandler.h"
 #include "Model/Level.h"
 #include "Model/Level/GravityBehaviour.h"
@@ -9,8 +8,6 @@
 #include "Model/Level/PhysicalProperties.h"
 #include "Model/PlayerObject.h"
 #include "Physics/PhysicsApplyableObject.h"
-
-using namespace boost::numeric::ublas;
 
 Physics::Physics(Level* level)
         : currentLevel(level) {
@@ -56,7 +53,7 @@ void Physics::move(int time) {
     while (time > 0) {
         Vector2D move = calculateMoveFor(*playerObject, time);
 
-        float radius = playerObject->getCollisionRadius() + norm_2(move);
+        float radius = playerObject->getCollisionRadius() + move.length();
         std::vector<RectangularLevelObject*> levelObjects;
         currentLevel->getLevelObjectsAround(playerObject->getPosition(), radius, &levelObjects);
 
@@ -68,9 +65,9 @@ void Physics::move(int time) {
             movedTime = time * collision->getMovementFraction();
 
             Vector2D collisionNormal = collision->getCollisionNormal();
-            collisionNormal = collisionNormal / norm_2(collisionNormal);
+            collisionNormal.normalize(); // TODO: check for zero length!
 
-            Vector2D reflected = move - 2 * inner_prod(collisionNormal, move) * collisionNormal;
+            Vector2D reflected = move - 2 * (collisionNormal * move) * collisionNormal;
             playerObject->setSpeed(reflected / movedTime);
 
         } else {
@@ -89,9 +86,9 @@ Vector2D Physics::calculateMoveFor(const PhysicsApplyableObject &object, int tim
 
     time = currentLevel->getLevelPhysics()->getTimeBehaviour()->manipulateTime(time);
 
-    Vector2D speed = zero_vector<float>(2);
+    Vector2D speed;
     speed += object.getSpeed();
-    std::cout << "speed: x: " << speed[0] << " y: " << speed[1] << std::endl;
+    std::cout << "speed: x: " << speed.getX() << " y: " << speed.getY() << std::endl;
     speed += currentLevel->getLevelPhysics()->getGravityBehaviour()->getAccelerationAt() * time;
     speed += currentLevel->getLevelPhysics()->getMagnetismBehaviour()->getAccelerationAt(object.getPosition(), objects)
             * object.getMagneticState() * time;

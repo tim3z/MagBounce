@@ -1,4 +1,5 @@
 #include "App.h"
+#include <iostream>
 #include <allegro5/allegro.h>
 #include "AppState.h"
 #include "AppStates/Game.h"

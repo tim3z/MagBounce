@@ -1,11 +1,15 @@
-#ifndef VECTOR2D_H
-#define VECTOR2D_H
+/*
+ * Vector2D.h
+ *
+ *  Created on: 03.12.2011
+ *      Author: moritz
+ */
 
-#include <boost/numeric/ublas/vector.hpp>
-#include <boost/numeric/ublas/vector_expression.hpp>
+#ifndef _VECTOR2D_H_
+#define _VECTOR2D_H_
 
-typedef boost::numeric::ublas::vector<float> Vector2D;
-// TODO: provide good macros or subclass which overloads all relevant operators
-#define Vector2D() Vector2D(2)
+#include "Vector.h"
 
-#endif // VECTOR2D_H
+typedef Vector<float> Vector2D;
+
+#endif /* _VECTOR2D_H_ */

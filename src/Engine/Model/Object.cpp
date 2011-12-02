@@ -24,8 +24,8 @@ Object::~Object() {
 }
 
 void Object::setPosition(float x, float y) {
-    position(0) = x;
-    position(1) = y;
+    position.setX(x);
+    position.setY(y);
 }
 
 void Object::setPosition(const Vector2D &pos) {

@@ -10,8 +10,8 @@ StandardGravityBehaviour::~StandardGravityBehaviour() {
 }
 
 Vector2D StandardGravityBehaviour::getAccelerationAt() {
-    Vector2D gravity(2);
-    gravity[0] = 0.0f;
-    gravity[1] = 0.0005f;
+    Vector2D gravity;
+    gravity.setX(0.0f);
+    gravity.setY(0.0005f);
     return gravity;
 }

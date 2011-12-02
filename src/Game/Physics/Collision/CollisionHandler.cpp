@@ -1,11 +1,8 @@
 #include "CollisionHandler.h"
 #include "Collision.h"
-#include "../../Model/RectangularLevelObject.h"
-
-using namespace boost::numeric::ublas;
+#include "Model/RectangularLevelObject.h"
 
 // Constructors/Destructors
-//  
 
 CollisionHandler::CollisionHandler() {
 }
@@ -26,44 +23,46 @@ Collision* CollisionHandler::checkForCollision(PhysicsApplyableObject &object, c
         Vector2D ul = objects[i]->getUpperLeftCorner() - offset;
         Vector2D lr = objects[i]->getLowerRightCorner() + offset;
 
-        if (!((begin[1] > lr[1] && end[1] > lr[1]) || (begin[1] < ul[1] && end[1] < ul[1]))) {
-            if (begin[0] < ul[0] && end[0] > ul[0]) {
-                float fraction = (ul[0] - begin[0]) / move[0];
+        if (!((begin.getY() > lr.getY() && end.getY() > lr.getY())
+                || (begin.getY() < ul.getY() && end.getY() < ul.getY()))) {
+            if (begin.getX() < ul.getX() && end.getX() > ul.getX()) {
+                float fraction = (ul.getX() - begin.getX()) / move.getX();
                 if (collision->getMovementFraction() > fraction) {
                     collision->setMovementFraction(fraction);
                     collision->setCollisionObject2(objects[i]);
                     collision->setCollisionPoint(begin + fraction * move);
-                    collision->setCollisionNormal(-unit_vector<float>(2, 0));
+                    collision->setCollisionNormal(-Vector2D(1, 0));
                 }
             }
-            if (begin[0] > lr[0] && end[0] < lr[0]) {
-                float fraction = (begin[0] - lr[0]) / move[0];
+            if (begin.getX() > lr.getX() && end.getX() < lr.getX()) {
+                float fraction = (begin.getX() - lr.getX()) / move.getX();
                 if (collision->getMovementFraction() > fraction) {
                     collision->setMovementFraction(fraction);
                     collision->setCollisionObject2(objects[i]);
                     collision->setCollisionPoint(begin + fraction * move);
-                    collision->setCollisionNormal(unit_vector<float>(2, 0));
+                    collision->setCollisionNormal(Vector2D(1, 0));
                 }
             }
         }
-        if (!((begin[0] > lr[0] && end[0] > lr[0]) || (begin[0] < ul[0] && end[0] < ul[0]))) {
+        if (!((begin.getX() > lr.getX() && end.getX() > lr.getX())
+                || (begin.getX() < ul.getX() && end.getX() < ul.getX()))) {
 
-            if (begin[1] < ul[1] && end[1] > ul[1]) {
-                float fraction = (ul[1] - begin[1]) / move[1];
+            if (begin.getY() < ul.getY() && end.getY() > ul.getY()) {
+                float fraction = (ul.getY() - begin.getY()) / move.getY();
                 if (collision->getMovementFraction() > fraction) {
                     collision->setMovementFraction(fraction);
                     collision->setCollisionObject2(objects[i]);
                     collision->setCollisionPoint(begin + fraction * move);
-                    collision->setCollisionNormal(-unit_vector<float>(2, 1));
+                    collision->setCollisionNormal(-Vector2D(0, 1));
                 }
             }
-            if (begin[1] > lr[1] && end[1] < lr[1]) {
-                float fraction = (begin[1] - lr[1]) / move[1];
+            if (begin.getY() > lr.getY() && end.getY() < lr.getY()) {
+                float fraction = (begin.getY() - lr.getY()) / move.getY();
                 if (collision->getMovementFraction() > fraction) {
                     collision->setMovementFraction(fraction);
                     collision->setCollisionObject2(objects[i]);
                     collision->setCollisionPoint(begin + fraction * move);
-                    collision->setCollisionNormal(unit_vector<float>(2, 1));
+                    collision->setCollisionNormal(Vector2D(0, 1));
                 }
             }
         }
@@ -77,5 +76,5 @@ Collision* CollisionHandler::checkForCollision(PhysicsApplyableObject &object, c
 }
 
 Vector2D CollisionHandler::getOffsetVector(int collisionRadius) {
-    return (unit_vector<float>(2, 0) + unit_vector<float>(2, 1)) * collisionRadius;
+    return (Vector2D(1, 1)) * collisionRadius;
 }

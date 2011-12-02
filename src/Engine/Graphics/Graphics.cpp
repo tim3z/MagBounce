@@ -33,7 +33,7 @@ ALLEGRO_DISPLAY* Graphics::getDisplay() {
 
 void Graphics::render(ALLEGRO_BITMAP* bitmap, Vector2D drawPosition) {
     al_set_target_bitmap(al_get_backbuffer(display));
-    al_draw_bitmap(bitmap, drawPosition[0], drawPosition[1], 0);
+    al_draw_bitmap(bitmap, drawPosition.getX(), drawPosition.getY(), 0);
 }
 
 void Graphics::flipDisplay() {
