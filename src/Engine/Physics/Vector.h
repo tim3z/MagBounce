@@ -12,8 +12,9 @@ template<class T>
 struct Vector {
 private:
     T x, y;
-    T cached_length;
-    bool length_dirty;
+    // cached_length and length_dirty may be modified in const methods.
+    mutable T cached_length;
+    mutable bool length_dirty;
 
 public:
     Vector()
@@ -151,5 +152,13 @@ public:
      */
     void normalize();
 };
+
+/* *** IMPORTANT! ***
+ * gcc needs all template function definitions in the header file or it will produce linker errors!
+ * http://stackoverflow.com/questions/648900/c-templates-undefined-reference
+ */
+#include "Vector.hpp"
+
+typedef Vector<float> Vector2D;
 
 #endif /* _VECTOR_H_ */

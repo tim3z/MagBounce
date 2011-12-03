@@ -2,7 +2,7 @@
 #define COLLISIONHANDLER_H
 
 #include <string>
-#include "Physics/Vector2D.h"
+#include "Physics/Vector.h"
 #include "Model/Level.h"
 #include "Collision.h"
 

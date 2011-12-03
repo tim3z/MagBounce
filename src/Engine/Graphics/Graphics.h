@@ -8,7 +8,7 @@
 #ifndef GRAPHICS_H
 #define	GRAPHICS_H
 
-#include "Physics/Vector2D.h"
+#include "Physics/Vector.h"
 
 struct ALLEGRO_BITMAP;
 struct ALLEGRO_DISPLAY;

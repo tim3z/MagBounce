@@ -1,4 +1,3 @@
-#include "Vector.h"
 #include <math.h>
 
 // FIXME: what happens for a Vector<int>?

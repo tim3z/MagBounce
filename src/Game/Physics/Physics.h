@@ -1,7 +1,7 @@
 #ifndef PHYSICS_H
 #define PHYSICS_H
 
-#include "Physics/Vector2D.h"
+#include "Physics/Vector.h"
 
 class Level;
 class PhysicsApplyableObject;

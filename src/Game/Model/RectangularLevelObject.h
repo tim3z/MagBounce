@@ -9,7 +9,7 @@
 #define	RECTANGULARLEVELOBJECT_H
 
 #include "Model/Object.h"
-#include "Physics/Vector2D.h"
+#include "Physics/Vector.h"
 
 class RectangularLevelObject : public Object {
 private:

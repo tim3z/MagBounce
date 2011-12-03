@@ -2,7 +2,7 @@
 #define LEVELOBJECT_H
 
 #include <string>
-#include "Physics/Vector2D.h"
+#include "Physics/Vector.h"
 
 class Renderer;
 

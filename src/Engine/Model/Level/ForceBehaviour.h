@@ -1,7 +1,7 @@
 #ifndef FORCEBEHAVIOUR_H
 #define FORCEBEHAVIOUR_H
 
-#include "Physics/Vector2D.h"
+#include "Physics/Vector.h"
 
 /**
  * interface ForceBehaviour

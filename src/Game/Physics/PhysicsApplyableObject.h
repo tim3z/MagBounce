@@ -1,7 +1,7 @@
 #ifndef PHYSICSAPPLYABLEOBJECT_H
 #define PHYSICSAPPLYABLEOBJECT_H
 
-#include "Physics/Vector2D.h"
+#include "Physics/Vector.h"
 
 /**
  * interface PhysicsApplyableObject

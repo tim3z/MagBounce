@@ -9,7 +9,7 @@
 #define	MAGNETISMBEHAVIOUR_H
 
 #include <vector>
-#include "Physics/Vector2D.h"
+#include "Physics/Vector.h"
 
 using std::vector;
 class Object;
