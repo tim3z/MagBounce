@@ -8,7 +8,7 @@
 #ifndef _VECTOR_H_
 #define _VECTOR_H_
 
-template<class T>
+template<typename T>
 struct Vector {
 private:
     T x, y;
