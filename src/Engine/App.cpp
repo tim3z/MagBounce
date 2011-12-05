@@ -8,7 +8,8 @@
 using std::cerr;
 
 App::App()
-        : display(new Display()), currentState(new Game(this, new EventHandler(display->getAllegroDisplay()))), exit(false) {
+        : display(new Display()), currentState(new Game(this, new EventHandler(display->getAllegroDisplay()))),
+          exit(false) {
 
 }
 

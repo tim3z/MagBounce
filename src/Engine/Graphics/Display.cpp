@@ -31,6 +31,6 @@ void Display::update() {
     al_clear_to_color(al_map_rgb(0, 0, 0));
 }
 
-ALLEGRO_DISPLAY* Display::getAllegroDisplay() {
+ALLEGRO_DISPLAY* const Display::getAllegroDisplay() const {
     return this->display;
 }

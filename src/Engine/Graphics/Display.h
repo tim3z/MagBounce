@@ -21,7 +21,7 @@ public:
     Display();
     ~Display();
 
-    ALLEGRO_DISPLAY* getAllegroDisplay();
+    ALLEGRO_DISPLAY* const getAllegroDisplay() const;
 
     /**
      * Draws bitmaps at a given position on the screen (back buffer bitmap)
