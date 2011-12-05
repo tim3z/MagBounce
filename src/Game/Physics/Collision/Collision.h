@@ -11,14 +11,14 @@
 #include "Physics/Vector.h"
 
 class Object;
-class PhysicsApplyableObject;
+class PhysicsAppliableObject;
 
 class Collision {
 private:
     Vector2D collisionPoint;
     Vector2D collisionNormal;
     float movementFraction; // How much of the original move to move til the collision
-    PhysicsApplyableObject* collisionObject1;
+    PhysicsAppliableObject* collisionObject1;
     Object* collisionObject2;
 
     Collision(const Collision&);
@@ -30,8 +30,8 @@ public:
 
     void setCollisionObject2(Object *collisionObject2);
     Object* getCollisionObject2() const;
-    void setCollisionObject1(PhysicsApplyableObject *collisionObject1);
-    PhysicsApplyableObject* getCollisionObject1() const;
+    void setCollisionObject1(PhysicsAppliableObject *collisionObject1);
+    PhysicsAppliableObject* getCollisionObject1() const;
     void setMovementFraction(float movementFraction);
     float getMovementFraction() const;
     void setCollisionNormal(Vector2D collisionNormal);

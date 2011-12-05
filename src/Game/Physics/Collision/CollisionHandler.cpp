@@ -1,7 +1,7 @@
 #include "CollisionHandler.h"
 #include "Collision.h"
 #include "Model/Level.h"
-#include "Physics/PhysicsApplyableObject.h"
+#include "Physics/PhysicsAppliableObject.h"
 #include "Model/RectangularLevelObject.h"
 
 // Constructors/Destructors
@@ -12,7 +12,7 @@ CollisionHandler::CollisionHandler() {
 CollisionHandler::~CollisionHandler() {
 }
 
-Collision* CollisionHandler::checkForCollision(PhysicsApplyableObject &object, const Vector2D &move,
+Collision* CollisionHandler::checkForCollision(PhysicsAppliableObject &object, const Vector2D &move,
         const std::vector<RectangularLevelObject*> &objects) {
     Collision* collision = new Collision();
     collision->setMovementFraction(2.0f);

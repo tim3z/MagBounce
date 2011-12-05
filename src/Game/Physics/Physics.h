@@ -4,7 +4,7 @@
 #include "Physics/Vector.h"
 
 class Level;
-class PhysicsApplyableObject;
+class PhysicsAppliableObject;
 
 /**
  * class Physics
@@ -39,7 +39,7 @@ private:
      * @param the duration of the move
      * @return Vector2D the calculated move
      */
-    Vector2D calculateMoveFor(const PhysicsApplyableObject &Object, int time);
+    Vector2D calculateMoveFor(const PhysicsAppliableObject &Object, int time);
 
 };
 

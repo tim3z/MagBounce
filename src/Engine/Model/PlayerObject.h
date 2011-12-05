@@ -2,14 +2,14 @@
 #define PLAYEROBJECT_H
 
 #include "Model/Object.h"
-#include "Physics/PhysicsApplyableObject.h"
+#include "Physics/PhysicsAppliableObject.h"
 
 /**
  * class PlayerObject
  * 
  */
 
-class PlayerObject : public PhysicsApplyableObject, public Object {
+class PlayerObject : public PhysicsAppliableObject, public Object {
 public:
 
     /**

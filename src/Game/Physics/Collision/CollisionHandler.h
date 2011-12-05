@@ -5,7 +5,7 @@
 #include "Physics/Vector.h"
 
 class Collision;
-class PhysicsApplyableObject;
+class PhysicsAppliableObject;
 class RectangularLevelObject;
 
 
@@ -34,7 +34,7 @@ public:
      * @param objects the surrounding objects
      * @return an pointer to an collision object containing all information about the collision
      */
-    static Collision* checkForCollision(PhysicsApplyableObject &object, const Vector2D &move,
+    static Collision* checkForCollision(PhysicsAppliableObject &object, const Vector2D &move,
             const std::vector<RectangularLevelObject*> &objects);
 
 private:

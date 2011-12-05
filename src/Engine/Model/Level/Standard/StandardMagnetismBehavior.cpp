@@ -1,15 +1,15 @@
-#include "StandardMagnetismBehaviour.h"
+#include "StandardMagnetismBehavior.h"
 #include "Model/Object.h"
 
 // Constructors/Destructors
 
-StandardMagnetismBehaviour::StandardMagnetismBehaviour() {
+StandardMagnetismBehavior::StandardMagnetismBehavior() {
 }
 
-StandardMagnetismBehaviour::~StandardMagnetismBehaviour() {
+StandardMagnetismBehavior::~StandardMagnetismBehavior() {
 }
 
-Vector2D StandardMagnetismBehaviour::getAccelerationAt(const Vector2D& position, const std::vector<Object*> &objects) {
+Vector2D StandardMagnetismBehavior::getAccelerationAt(const Vector2D& position, const std::vector<Object*> &objects) {
     Vector2D force;
 
     for (unsigned int i = 0; i < objects.size(); i++) {

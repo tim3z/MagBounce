@@ -7,9 +7,9 @@
 
 #include "Collision.h"
 #include "Model/Object.h"
-#include "Physics/PhysicsApplyableObject.h"
+#include "Physics/PhysicsAppliableObject.h"
 
-Collision::Collision() {
+Collision::Collision() { // TODO: initializer list
 }
 
 Collision::~Collision() {
@@ -23,11 +23,11 @@ Object* Collision::getCollisionObject2() const {
     return collisionObject2;
 }
 
-void Collision::setCollisionObject1(PhysicsApplyableObject* collisionObject1) {
+void Collision::setCollisionObject1(PhysicsAppliableObject* collisionObject1) {
     this->collisionObject1 = collisionObject1;
 }
 
-PhysicsApplyableObject* Collision::getCollisionObject1() const {
+PhysicsAppliableObject* Collision::getCollisionObject1() const {
     return collisionObject1;
 }
 

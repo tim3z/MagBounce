@@ -6,19 +6,19 @@
  */
 
 #include "PhysicalProperties.h"
-#include "MagnetismBehaviour.h"
-#include "GravityBehaviour.h"
-#include "TimeBehaviour.h"
+#include "MagnetismBehavior.h"
+#include "GravityBehavior.h"
+#include "TimeBehavior.h"
 
-PhysicalProperties::PhysicalProperties(GravityBehaviour* gravityBehaviour, MagnetismBehaviour* magnetismBehaviour,
-        TimeBehaviour* timeBehaviour)
-        : gravityBehaviour(gravityBehaviour), magnetismBehaviour(magnetismBehaviour), timeBehaviour(timeBehaviour) {
+PhysicalProperties::PhysicalProperties(GravityBehavior* gravityBehavior, MagnetismBehavior* magnetismBehavior,
+        TimeBehavior* timeBehavior)
+        : gravityBehavior(gravityBehavior), magnetismBehavior(magnetismBehavior), timeBehavior(timeBehavior) {
 
 }
 
 PhysicalProperties::~PhysicalProperties() {
-    delete gravityBehaviour;
-    delete magnetismBehaviour;
-    delete timeBehaviour;
+    delete gravityBehavior;
+    delete magnetismBehavior;
+    delete timeBehavior;
 }
 

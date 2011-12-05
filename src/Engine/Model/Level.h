@@ -6,7 +6,7 @@
 
 using std::vector;
 class Object;
-class PhysicsApplyableObject;
+class PhysicsAppliableObject;
 class PhysicalProperties;
 class PlayerObject;
 class RectangularLevelObject;
@@ -58,7 +58,7 @@ public:
      * Return all Objects, which movements should be handled by the physics
      * @param a pointer to a vector to fill in the objects
      */
-    void getMovableObjects(vector<PhysicsApplyableObject*>*);
+    void getMovableObjects(vector<PhysicsAppliableObject*>*);
 
     /**
      * @param  position

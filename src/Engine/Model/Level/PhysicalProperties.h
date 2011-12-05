@@ -8,30 +8,30 @@
 #ifndef PHYSICALPROPERTIES_H
 #define	PHYSICALPROPERTIES_H
 
-class GravityBehaviour;
-class MagnetismBehaviour;
-class TimeBehaviour;
+class GravityBehavior;
+class MagnetismBehavior;
+class TimeBehavior;
 
 class PhysicalProperties {
 protected:
-    GravityBehaviour* gravityBehaviour;
-    MagnetismBehaviour* magnetismBehaviour;
-    TimeBehaviour* timeBehaviour;
+    GravityBehavior* gravityBehavior;
+    MagnetismBehavior* magnetismBehavior;
+    TimeBehavior* timeBehavior;
 
 public:
-    PhysicalProperties(GravityBehaviour* gravityBehaviour, MagnetismBehaviour* magnetismBehaviour,
-            TimeBehaviour* timeBehaviour);
+    PhysicalProperties(GravityBehavior* gravityBehavior, MagnetismBehavior* magnetismBehavior,
+            TimeBehavior* timeBehavior);
 
     virtual ~PhysicalProperties();
 
-    GravityBehaviour* const getGravityBehaviour() {
-        return gravityBehaviour;
+    GravityBehavior* const getGravityBehavior() {
+        return gravityBehavior;
     }
-    MagnetismBehaviour* const getMagnetismBehaviour() {
-        return magnetismBehaviour;
+    MagnetismBehavior* const getMagnetismBehavior() {
+        return magnetismBehavior;
     }
-    TimeBehaviour* const getTimeBehaviour() {
-        return timeBehaviour;
+    TimeBehavior* const getTimeBehavior() {
+        return timeBehavior;
     }
 
 private:

@@ -1,15 +1,15 @@
-#ifndef TIMEBEHAVIOUR_H
-#define TIMEBEHAVIOUR_H
+#ifndef TIMEBEHAVIOR_H
+#define TIMEBEHAVIOR_H
 
 /**
- * interface TimeBehaviour
+ * interface TimeBehavior
  * 
  */
 
-class TimeBehaviour {
+class TimeBehavior {
 public:
 
-    virtual ~TimeBehaviour();
+    virtual ~TimeBehavior();
 
     /**
      * Returns a manipulated time value to calculate physics
@@ -20,4 +20,4 @@ public:
 
 };
 
-#endif // TIMEBEHAVIOUR_H
+#endif // TIMEBEHAVIOR_H

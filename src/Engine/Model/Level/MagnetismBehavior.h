@@ -1,12 +1,12 @@
 /* 
- * File:   MagnetismBehaviour.h
+ * File:   MagnetismBehavior.h
  * Author: eagle
  *
  * Created on 29. Oktober 2011, 21:00
  */
 
-#ifndef MAGNETISMBEHAVIOUR_H
-#define	MAGNETISMBEHAVIOUR_H
+#ifndef MAGNETISMBEHAVIOR_H
+#define	MAGNETISMBEHAVIOR_H
 
 #include <vector>
 #include "Physics/Vector.h"
@@ -14,10 +14,10 @@
 using std::vector;
 class Object;
 
-class MagnetismBehaviour {
+class MagnetismBehavior {
 public:
 
-    virtual ~MagnetismBehaviour();
+    virtual ~MagnetismBehavior();
 
     /**
      * Calculate the acceleration represanted as an Vector for this force at the given position
@@ -29,5 +29,5 @@ public:
 
 };
 
-#endif	/* MAGNETISMBEHAVIOUR_H */
+#endif	/* MAGNETISMBEHAVIOR_H */
 

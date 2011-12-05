@@ -1,23 +1,23 @@
-#ifndef PHYSICSAPPLYABLEOBJECT_H
-#define PHYSICSAPPLYABLEOBJECT_H
+#ifndef PHYSICSAPPLIABLEOBJECT_H
+#define PHYSICSAPPLIABLEOBJECT_H
 
 #include "Physics/Vector.h"
 
 /**
- * interface PhysicsApplyableObject
+ * interface PhysicsAppliableObject
  * 
  */
 
-class PhysicsApplyableObject {
+class PhysicsAppliableObject {
 private:
 
     Vector2D speed;
 
 public:
 
-    PhysicsApplyableObject();
+    PhysicsAppliableObject();
 
-    virtual ~PhysicsApplyableObject();
+    virtual ~PhysicsAppliableObject();
 
     /**
      * Return the momentum of this object
@@ -59,4 +59,4 @@ public:
 
 };
 
-#endif // PHYSICSAPPLYABLEOBJECT_H
+#endif // PHYSICSAPPLIABLEOBJECT_H

@@ -1,7 +1,7 @@
 #include "Level.h"
 #include <boost/foreach.hpp>
 #include "PlayerObject.h"
-#include "Physics/PhysicsApplyableObject.h"
+#include "Physics/PhysicsAppliableObject.h"
 #include "Model/RectangularLevelObject.h"
 #include "Model/Level/PhysicalProperties.h"
 #include "Model/Level/Standard/StandardPhysics.h"
@@ -30,7 +30,7 @@ PhysicalProperties* const Level::getLevelPhysics() {
     return physics;
 }
 
-void Level::getMovableObjects(vector<PhysicsApplyableObject*>* objects) {
+void Level::getMovableObjects(vector<PhysicsAppliableObject*>* objects) {
     objects->push_back(ball);
 }
 

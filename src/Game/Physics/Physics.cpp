@@ -3,12 +3,12 @@
 #include "Collision/Collision.h"
 #include "Collision/CollisionHandler.h"
 #include "Model/Level.h"
-#include "Model/Level/GravityBehaviour.h"
-#include "Model/Level/MagnetismBehaviour.h"
-#include "Model/Level/TimeBehaviour.h"
+#include "Model/Level/GravityBehavior.h"
+#include "Model/Level/MagnetismBehavior.h"
+#include "Model/Level/TimeBehavior.h"
 #include "Model/Level/PhysicalProperties.h"
 #include "Model/PlayerObject.h"
-#include "Physics/PhysicsApplyableObject.h"
+#include "Physics/PhysicsAppliableObject.h"
 
 Physics::Physics(Level* level)
         : currentLevel(level) {
@@ -19,9 +19,9 @@ Physics::~Physics() {
 }
 
 //void Physics::move(int time) {
-//    std::vector<PhysicsApplyableObject*> objects; // TODO warum macht objects(); es kaputt??
+//    std::vector<PhysicsAppliableObject*> objects; // TODO warum macht objects(); es kaputt??
 //    std::vector<Vector2D> movements;
-//    currentLevel->getPhysicsApplyableObjects(&objects);
+//    currentLevel->getPhysicsAppliableObjects(&objects);
 //    
 //    bool finished = false;
 //    
@@ -49,7 +49,7 @@ Physics::~Physics() {
 //}
 
 void Physics::move(int time) {
-    PhysicsApplyableObject* playerObject = currentLevel->getPlayerObject();
+    PhysicsAppliableObject* playerObject = currentLevel->getPlayerObject();
 
     while (time > 0) {
         Vector2D move = calculateMoveFor(*playerObject, time);
@@ -81,17 +81,17 @@ void Physics::move(int time) {
 
 }
 
-Vector2D Physics::calculateMoveFor(const PhysicsApplyableObject &object, int time) {
+Vector2D Physics::calculateMoveFor(const PhysicsAppliableObject &object, int time) {
     std::vector<Object*> objects;
     currentLevel->getLevelObjects(&objects);
 
-    time = currentLevel->getLevelPhysics()->getTimeBehaviour()->manipulateTime(time);
+    time = currentLevel->getLevelPhysics()->getTimeBehavior()->manipulateTime(time);
 
     Vector2D speed;
     speed += object.getSpeed();
     std::cout << "speed: x: " << speed.getX() << " y: " << speed.getY() << std::endl;
-    speed += currentLevel->getLevelPhysics()->getGravityBehaviour()->getAccelerationAt() * time;
-    speed += currentLevel->getLevelPhysics()->getMagnetismBehaviour()->getAccelerationAt(object.getPosition(), objects)
+    speed += currentLevel->getLevelPhysics()->getGravityBehavior()->getAccelerationAt() * time;
+    speed += currentLevel->getLevelPhysics()->getMagnetismBehavior()->getAccelerationAt(object.getPosition(), objects)
             * object.getMagneticState() * time;
 
     return speed * time;

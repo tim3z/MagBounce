@@ -1,19 +1,19 @@
 /* 
- * File:   GravityBehaviour.h
+ * File:   GravityBehavior.h
  * Author: eagle
  *
  * Created on 29. Oktober 2011, 20:55
  */
 
-#ifndef GRAVITYBEHAVIOUR_H
-#define	GRAVITYBEHAVIOUR_H
+#ifndef GRAVITYBEHAVIOR_H
+#define	GRAVITYBEHAVIOR_H
 
 #include "Physics/Vector.h"
 
-class GravityBehaviour {
+class GravityBehavior {
 public:
 
-    virtual ~GravityBehaviour();
+    virtual ~GravityBehavior();
 
     /**
      * Calculate the acceleration represanted as an Vector
@@ -23,5 +23,5 @@ public:
 
 };
 
-#endif	/* GRAVITYBEHAVIOUR_H */
+#endif	/* GRAVITYBEHAVIOR_H */
 

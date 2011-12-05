@@ -1,14 +1,14 @@
 #include "StandardPhysics.h"
-#include "StandardGravityBehaviour.h"
-#include "StandardMagnetismBehaviour.h"
-#include "StandardTimeBehaviour.h"
+#include "StandardGravityBehavior.h"
+#include "StandardMagnetismBehavior.h"
+#include "StandardTimeBehavior.h"
 
 // Constructors/Destructors
 //  
 
 StandardPhysics::StandardPhysics()
-        : PhysicalProperties(new StandardGravityBehaviour(), new StandardMagnetismBehaviour(),
-                new StandardTimeBehaviour()) {
+        : PhysicalProperties(new StandardGravityBehavior(), new StandardMagnetismBehavior(),
+                new StandardTimeBehavior()) {
 
 }
 
