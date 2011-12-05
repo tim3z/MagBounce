@@ -15,7 +15,7 @@ public:
      */
     Options();
 
-    Options(App*, StateRenderer*, EventHandler* eventHandler); //TODO OptionsStateRenderer
+    Options(App*, EventHandler* eventHandler);
 
     void execute();
 

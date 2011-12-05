@@ -15,7 +15,7 @@ public:
      */
     Menu();
 
-    Menu(App*, StateRenderer*, EventHandler* eventHandler); //TODO MenuStateRenderer
+    Menu(App*, EventHandler* eventHandler);
 
     void execute();
 

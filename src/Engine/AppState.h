@@ -3,7 +3,6 @@
 
 class App;
 class EventHandler;
-class StateRenderer;
 
 /**
  * interface State
@@ -17,13 +16,12 @@ private:
 
 protected:
     App* app;
-    StateRenderer* stateRenderer;
     EventHandler* eventHandler;
 
 public:
 
     AppState();
-    AppState(App* app, StateRenderer* stateRenderer, EventHandler* eventHandler);
+    AppState(App* app, EventHandler* eventHandler);
 
     virtual void execute() = 0;
 

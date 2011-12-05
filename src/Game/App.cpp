@@ -3,7 +3,6 @@
 #include <allegro5/allegro.h>
 #include "AppState.h"
 #include "AppStates/Game.h"
-#include "Graphics/GameStateRenderer.h"
 #include "Graphics/Graphics.h"
 #include "Input/EventHandler.h"
 
@@ -11,7 +10,7 @@ using std::cerr;
 
 App::App()
         : eventHandler(new EventHandler(Graphics::getInstance()->getDisplay())),
-          game(new Game(this, new GameStateRenderer(), eventHandler)), currentState(game), exit(false) {
+          game(new Game(this, eventHandler)), currentState(game), exit(false) {
 
 }
 

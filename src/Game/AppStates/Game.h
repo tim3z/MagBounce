@@ -2,12 +2,14 @@
 #define GAME_H
 
 #include "AppState.h"
+#include <vector>
 
+using std::vector;
 class App;
 class EventHandler;
 class GameState;
-class GameStateRenderer;
 class Level;
+class Object;
 class Physics;
 
 /**
@@ -21,8 +23,9 @@ private:
     bool exit;
 
     Level* currentLevel;
-    GameStateRenderer* gameStateRenderer;
     Physics* physics;
+
+    void renderObjects(vector<Object*>*);
 
     Game(const Game&);
     const Game& operator=(const Game&);
@@ -33,7 +36,7 @@ public:
      */
     Game();
 
-    Game(App* app, GameStateRenderer* gameStateRenderer, EventHandler* eventHandler);
+    Game(App* app, EventHandler* eventHandler);
 
     void execute();
 
