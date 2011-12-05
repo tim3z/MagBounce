@@ -5,8 +5,8 @@
  *      Author: moritz
  */
 
-#ifndef LEVELBUILDER_H_
-#define LEVELBUILDER_H_
+#ifndef LEVELBUILDER_H
+#define LEVELBUILDER_H
 
 #include <list>
 #include <string>
@@ -35,4 +35,4 @@ public:
     static Level* build(const string& levelFile);
 };
 
-#endif /* LEVELBUILDER_H_ */
+#endif /* LEVELBUILDER_H */

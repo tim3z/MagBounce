@@ -6,6 +6,8 @@
  */
 
 #include "Collision.h"
+#include "Model/Object.h"
+#include "Physics/PhysicsApplyableObject.h"
 
 Collision::Collision() {
 }

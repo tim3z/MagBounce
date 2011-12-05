@@ -1,5 +1,7 @@
 #include "CollisionHandler.h"
 #include "Collision.h"
+#include "Model/Level.h"
+#include "Physics/PhysicsApplyableObject.h"
 #include "Model/RectangularLevelObject.h"
 
 // Constructors/Destructors

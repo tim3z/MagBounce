@@ -5,8 +5,8 @@
  *      Author: moritz
  */
 
-#ifndef _VECTOR_H_
-#define _VECTOR_H_
+#ifndef VECTOR_H
+#define VECTOR_H
 
 template<typename T>
 struct Vector {
@@ -161,4 +161,4 @@ public:
 
 typedef Vector<float> Vector2D;
 
-#endif /* _VECTOR_H_ */
+#endif /* VECTOR_H */

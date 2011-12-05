@@ -1,5 +1,5 @@
-#ifndef STATE_H
-#define STATE_H
+#ifndef APPSTATE_H
+#define APPSTATE_H
 
 class App;
 class EventHandler;
@@ -30,4 +30,4 @@ public:
     virtual ~AppState();
 };
 
-#endif // STATE_H
+#endif // APPSTATE_H

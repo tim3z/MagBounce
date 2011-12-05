@@ -9,8 +9,9 @@
 #define	COLLISION_H
 
 #include "Physics/Vector.h"
-#include "Model/Object.h"
-#include "Physics/PhysicsApplyableObject.h"
+
+class Object;
+class PhysicsApplyableObject;
 
 class Collision {
 private:

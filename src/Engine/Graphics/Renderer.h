@@ -5,8 +5,8 @@
  * Created on 26. Oktober 2011, 17:54
  */
 
-#ifndef TESTRENDERER_H
-#define	TESTRENDERER_H
+#ifndef RENDERER_H
+#define	RENDERER_H
 
 struct ALLEGRO_BITMAP;
 
@@ -30,5 +30,5 @@ public:
 
 };
 
-#endif	/* TESTRENDERER_H */
+#endif	/* RENDERER_H */
 

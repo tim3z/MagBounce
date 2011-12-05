@@ -9,7 +9,7 @@
  * 
  */
 
-class PlayerObject : public virtual PhysicsApplyableObject, public Object {
+class PlayerObject : public PhysicsApplyableObject, public Object {
 public:
 
     /**

@@ -1,16 +1,18 @@
 #ifndef COLLISIONHANDLER_H
 #define COLLISIONHANDLER_H
 
-#include <string>
+#include <vector>
 #include "Physics/Vector.h"
-#include "Model/Level.h"
-#include "Collision.h"
+
+class Collision;
+class PhysicsApplyableObject;
+class RectangularLevelObject;
+
 
 /**
  * class CollisionHandler
  * 
  */
-
 class CollisionHandler {
 public:
 

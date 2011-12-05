@@ -1,5 +1,6 @@
 #include "Physics.h"
 #include <iostream>
+#include "Collision/Collision.h"
 #include "Collision/CollisionHandler.h"
 #include "Model/Level.h"
 #include "Model/Level/GravityBehaviour.h"

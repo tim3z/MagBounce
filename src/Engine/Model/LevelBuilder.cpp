@@ -15,7 +15,7 @@
 #include <boost/foreach.hpp>
 #include <boost/lexical_cast.hpp>
 #include "Level.h"
-#include "../../Game/Model/RectangularLevelObject.h"
+#include "Model/RectangularLevelObject.h"
 
 #define foreach BOOST_FOREACH
 namespace file = boost::filesystem;

@@ -1,5 +1,5 @@
-#ifndef LEVELOBJECT_H
-#define LEVELOBJECT_H
+#ifndef OBJECT_H
+#define OBJECT_H
 
 #include <string>
 #include "Physics/Vector.h"
@@ -12,17 +12,7 @@ class Renderer;
  */
 
 class Object {
-private:
-    Object(const Object&);
-    const Object& operator=(const Object&);
-
-protected:
-    Renderer* renderer;
-    Vector2D position;
-    int magneticState;
-
 public:
-
     /**
      * Empty Constructor
      */
@@ -70,6 +60,14 @@ public:
 
     virtual Vector2D getRenderingPosition() const = 0;
 
+protected:
+    Renderer* renderer;
+    Vector2D position;
+    int magneticState;
+
+private:
+    Object(const Object&);
+    const Object& operator=(const Object&);
 };
 
-#endif // LEVELOBJECT_H
+#endif // OBJECT_H
