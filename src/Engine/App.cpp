@@ -1,28 +1,30 @@
 #include "App.h"
 #include <iostream>
 #include <allegro5/allegro.h>
-#include "AppState.h"
 #include "AppStates/Game.h"
-#include "Graphics/Graphics.h"
+#include "Graphics/Display.h"
 #include "Input/EventHandler.h"
 
 using std::cerr;
 
 App::App()
-        : eventHandler(new EventHandler(Graphics::getInstance()->getDisplay())),
-          game(new Game(this, eventHandler)), currentState(game), exit(false) {
+        : display(new Display()), currentState(new Game(this, new EventHandler(display->getAllegroDisplay()))), exit(false) {
 
+}
+
+App::~App() {
+    delete currentState;
+    delete display;
 }
 
 void App::fire() {
     while (!exit) {
         currentState->execute();
     }
-    al_destroy_display(Graphics::getInstance()->getDisplay());
 }
 
-App::~App() {
-    delete currentState;
+Display* const App::getDisplay() const {
+    return display;
 }
 
 /*

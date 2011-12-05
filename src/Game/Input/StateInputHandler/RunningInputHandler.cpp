@@ -8,7 +8,6 @@
 #include "RunningInputHandler.h"
 #include <allegro5/allegro.h>
 #include <allegro5/events.h>
-#include "Graphics/Graphics.h"
 #include "Input/EventHandler.h"
 
 RunningInputHandler::RunningInputHandler(EventHandler* eventHandler)
@@ -18,7 +17,8 @@ RunningInputHandler::RunningInputHandler(EventHandler* eventHandler)
 
 bool* RunningInputHandler::getInput() {
     if (this->eventHandler->getEvent()->type == ALLEGRO_EVENT_DISPLAY_CLOSE) {
-        Graphics::getInstance()->destroyDisplay();
+        // TODO: …
+        exit(0);
     }
 
     return this->keys;

@@ -1,9 +1,10 @@
 #include "Game.h"
 #include <iostream>
 #include <allegro5/allegro5.h>
+#include "App.h"
 #include "GameState.h"
 #include "GameStates/Running.h"
-#include "Graphics/Graphics.h"
+#include "Graphics/Display.h"
 #include "Graphics/Renderer.h"
 #include "Model/Level.h"
 #include "Model/PlayerObject.h"
@@ -49,14 +50,13 @@ void Game::execute() {
 }
 
 void Game::renderObjects(vector<Object*>* levelObjects) {
-
-    Graphics* graphics = Graphics::getInstance();
+    Display* display = app->getDisplay();
 
     for (unsigned int i = 0; i < levelObjects->size(); i++) {
-        graphics->render((*levelObjects)[i]->getRenderer()->getBitmap(), (*levelObjects)[i]->getRenderingPosition());
+        display->render((*levelObjects)[i]->getRenderer()->getBitmap(), (*levelObjects)[i]->getRenderingPosition());
     }
 
-    graphics->flipDisplay();
+    display->update();
 }
 
 Game::~Game() {
