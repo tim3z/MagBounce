@@ -6,15 +6,14 @@
  * class Menu
  * 
  */
-
 class Menu : public AppState {
 public:
-    Menu(App*);
+    Menu();
     virtual ~Menu();
 
     void processInput(list<InputEvent*> events);
     void update(int dt);
-    void render();
+    void render(Display& display);
 };
 
 #endif // MENU_H
