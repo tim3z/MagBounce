@@ -10,21 +10,10 @@
 class Running : public GameState {
 
 public:
-
-    /**
-     * Empty Constructor
-     */
-    Running();
-
-    Running(Game*, EventHandler* eventHandler);
-
-    void reactOnInput();
-
-    /**
-     * Empty Destructor
-     */
+    Running(Game*);
     virtual ~Running();
 
+    void reactOnInput();
 };
 
 #endif // RUNNING_H

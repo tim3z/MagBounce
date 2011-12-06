@@ -25,9 +25,9 @@ private:
     AppState* currentState;
     bool exit;
 
-    //void processInput();
-    //void update(int dt);
-    //void draw();
+    void processInput();
+    void update(int dt);
+    void render();
 
     /* uncopyable */
     App(const App&);

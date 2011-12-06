@@ -1,31 +1,32 @@
 #ifndef APPSTATE_H
 #define APPSTATE_H
 
+#include <list>
+
+using std::list;
 class App;
 class EventHandler;
+class InputEvent;
 
 /**
  * interface State
  * 
  */
-
 class AppState {
-private:
-    AppState(const AppState&);
-    const AppState& operator=(const AppState&);
+public:
+    AppState(App* app);
+    virtual ~AppState();
+
+    virtual void processInput(list<InputEvent *> events) = 0;
+    virtual void update(int dt) = 0;
+    virtual void render() = 0;
 
 protected:
     App* app;
-    EventHandler* eventHandler;
 
-public:
-
-    AppState();
-    AppState(App* app, EventHandler* eventHandler);
-
-    virtual void execute() = 0;
-
-    virtual ~AppState();
+private:
+    AppState(const AppState&);
+    const AppState& operator=(const AppState&);
 };
 
 #endif // APPSTATE_H

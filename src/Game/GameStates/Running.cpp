@@ -4,8 +4,8 @@
 
 using std::cout;
 
-Running::Running(Game* game, EventHandler* eventHandler)
-        : GameState(game, eventHandler) {
+Running::Running(Game* game)
+        : GameState(game) {
 }
 
 void Running::reactOnInput() {

@@ -21,7 +21,7 @@ public:
     Display();
     ~Display();
 
-    ALLEGRO_DISPLAY* const getAllegroDisplay() const;
+    ALLEGRO_DISPLAY* const getAllegroDisplay() const; // TODO: other way to pass Display to EventHandler?
 
     /**
      * Draws bitmaps at a given position on the screen (back buffer bitmap)

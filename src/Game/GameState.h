@@ -16,13 +16,9 @@ private:
 
 protected:
     Game *game;
-    EventHandler* eventHandler;
 
 public:
-
-    GameState();
-    GameState(Game *game, EventHandler* eventHandler);
-
+    GameState(Game *game);
     virtual ~GameState();
 
     virtual void reactOnInput() = 0; //TODO bekommt boolean key array als parameter!

@@ -18,36 +18,21 @@ class Physics;
  */
 
 class Game : public AppState {
+public:
+    Game(App* app);
+    virtual ~Game();
+
+    void processInput(list<InputEvent*> events);
+    void update(int dt);
+    void render();
+
 private:
     GameState *currentState;
-    bool exit;
-
     Level* currentLevel;
     Physics* physics;
 
-    void renderObjects(vector<Object*>*);
-
     Game(const Game&);
     const Game& operator=(const Game&);
-
-public:
-    /**
-     * Empty Constructor
-     */
-    Game();
-
-    Game(App* app, EventHandler* eventHandler);
-
-    void execute();
-
-    void setExit(bool flag) {
-        exit = flag;
-    }
-
-    /**
-     * Empty Destructor
-     */
-    virtual ~Game();
 };
 
 #endif // GAME_H

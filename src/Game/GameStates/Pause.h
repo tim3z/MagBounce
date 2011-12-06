@@ -12,21 +12,10 @@ class EventHandler;
 
 class Pause : public GameState {
 public:
-
-    /**
-     * Empty Constructor
-     */
-    Pause();
-
-    Pause(Game*, EventHandler* eventHandler);
-
-    void reactOnInput();
-
-    /**
-     * Empty Destructor
-     */
+    Pause(Game*);
     virtual ~Pause();
 
+    void reactOnInput();
 };
 
 #endif // PAUSE_H

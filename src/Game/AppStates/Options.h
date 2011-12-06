@@ -6,24 +6,14 @@
  * class Options
  * 
  */
-
 class Options : public AppState {
 public:
-
-    /**
-     * Empty Constructor
-     */
-    Options();
-
-    Options(App*, EventHandler* eventHandler);
-
-    void execute();
-
-    /**
-     * Empty Destructor
-     */
+    Options(App*);
     virtual ~Options();
 
+    void processInput(list<InputEvent*> events);
+    void update(int dt);
+    void render();
 };
 
 #endif // OPTIONS_H

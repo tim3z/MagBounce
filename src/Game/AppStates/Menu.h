@@ -9,21 +9,12 @@
 
 class Menu : public AppState {
 public:
-
-    /**
-     * Empty Constructor
-     */
-    Menu();
-
-    Menu(App*, EventHandler* eventHandler);
-
-    void execute();
-
-    /**
-     * Empty Destructor
-     */
+    Menu(App*);
     virtual ~Menu();
 
+    void processInput(list<InputEvent*> events);
+    void update(int dt);
+    void render();
 };
 
 #endif // MENU_H
