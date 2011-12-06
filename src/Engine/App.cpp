@@ -12,7 +12,7 @@ using std::cerr; using std::list;
 App::App()
         : display(new Display()), currentState(new Game()),
           exit(false) {
-
+    // TODO: al_init and other initialization (if not yet done) here, throw exception on error
 }
 
 App::~App() {
@@ -48,24 +48,4 @@ void App::update(int dt) {
 
 void App::render() {
     currentState->render(*display);
-}
-
-/*
- *
- */
-int main(int argc, char** argv) {
-
-    /*
-     * Initialization routines (drivers, allegro etc.)
-     */
-    if (!al_init()) {
-        cerr << "Failed to initialize allegro!\n";
-        return -1;
-    }
-
-    App magBounceApp;
-
-    magBounceApp.fire();
-
-    return 0;
 }
