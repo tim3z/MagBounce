@@ -1,10 +1,7 @@
 #include "Menu.h"
 
-// Constructors/Destructors
-//  
-
-Menu::Menu(App* app)
-        : AppState(app) {
+Menu::Menu()
+        : AppState() {
 }
 
 Menu::~Menu() {
@@ -18,6 +15,6 @@ void Menu::update(int dt) {
     // TODO: stub
 }
 
-void Menu::render() {
+void Menu::render(Display& display) {
     // TODO: stub
 }

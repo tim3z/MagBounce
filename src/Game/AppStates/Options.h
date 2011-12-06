@@ -8,12 +8,12 @@
  */
 class Options : public AppState {
 public:
-    Options(App*);
+    Options();
     virtual ~Options();
 
     void processInput(list<InputEvent*> events);
     void update(int dt);
-    void render();
+    void render(Display& display);
 };
 
 #endif // OPTIONS_H

@@ -1,7 +1,7 @@
 #include "Options.h"
 
-Options::Options(App* app)
-        : AppState(app) {
+Options::Options()
+        : AppState() {
 }
 
 Options::~Options() {
@@ -15,6 +15,6 @@ void Options::update(int dt) {
     // TODO: stub
 }
 
-void Options::render() {
+void Options::render(Display& display) {
     // TODO: stub
 }

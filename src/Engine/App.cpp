@@ -10,7 +10,7 @@
 using std::cerr; using std::list;
 
 App::App()
-        : display(new Display()), currentState(new Game(this)),
+        : display(new Display()), currentState(new Game()),
           exit(false) {
 
 }
@@ -47,11 +47,7 @@ void App::update(int dt) {
 }
 
 void App::render() {
-    currentState->render();
-}
-
-Display* const App::getDisplay() const {
-    return display;
+    currentState->render(*display);
 }
 
 /*

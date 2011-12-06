@@ -15,7 +15,6 @@ public:
     virtual ~App();
 
     void fire();
-    Display* const getDisplay() const;
     void setExit(const bool flag) {
         exit = flag;
     }
@@ -25,9 +24,9 @@ private:
     AppState* currentState;
     bool exit;
 
-    void processInput();
-    void update(int dt);
-    void render();
+    inline void processInput();
+    inline void update(int dt);
+    inline void render();
 
     /* uncopyable */
     App(const App&);

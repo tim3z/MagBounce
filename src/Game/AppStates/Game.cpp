@@ -1,7 +1,6 @@
 #include "Game.h"
 #include <iostream>
 #include <allegro5/allegro5.h>
-#include "App.h"
 #include "GameState.h"
 #include "GameStates/Running.h"
 #include "Graphics/Display.h"
@@ -16,9 +15,8 @@ using std::cout;
 // Constructors/Destructors
 //  
 
-Game::Game(App* app)
-        : AppState(app), currentState(new Running(this)),
-          currentLevel(new Level(800, 600)),
+Game::Game()
+        : AppState(), currentState(new Running(this)), currentLevel(new Level(800, 600)),
           physics(new Physics(currentLevel)) {
     currentLevel->addLevelObject(new RectangularLevelObject(0, 380, 640, 400));
     currentLevel->addLevelObject(new RectangularLevelObject(0, 0, 20, 380));
@@ -38,16 +36,15 @@ void Game::update(int dt) {
          << currentLevel->getPlayerObject()->getPosition().getY() << std::endl;
 }
 
-void Game::render() {
-    Display* display = app->getDisplay();
+void Game::render(Display& display) {
     vector<Object*> levelObjects;
     currentLevel->getLevelObjects(&levelObjects);
 
     for (unsigned int i = 0; i < levelObjects.size(); i++) {
-        display->render(levelObjects[i]->getRenderer()->getBitmap(), levelObjects[i]->getRenderingPosition());
+        display.render(levelObjects[i]->getRenderer()->getBitmap(), levelObjects[i]->getRenderingPosition());
     }
 
-    display->update();
+    display.update();
 }
 
 Game::~Game() {

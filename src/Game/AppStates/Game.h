@@ -5,11 +5,8 @@
 #include <vector>
 
 using std::vector;
-class App;
-class EventHandler;
 class GameState;
 class Level;
-class Object;
 class Physics;
 
 /**
@@ -19,12 +16,12 @@ class Physics;
 
 class Game : public AppState {
 public:
-    Game(App* app);
+    Game();
     virtual ~Game();
 
     void processInput(list<InputEvent*> events);
     void update(int dt);
-    void render();
+    void render(Display& display);
 
 private:
     GameState *currentState;
