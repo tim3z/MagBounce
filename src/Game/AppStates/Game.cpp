@@ -24,15 +24,16 @@ Game::Game()
     currentLevel->getPlayerObject()->setPosition(100.0f, 200.0f);
 }
 
-void Game::processInput(list<InputEvent *> events) {
+AppState* Game::processInput(list<InputEvent *> events) {
     // TODO: stub
     currentState->reactOnInput(); // TODO: remove/edit signature
+    return this;
 }
 
-void Game::update(int dt) {
-    physics->move(dt);
+void Game::update(double dt) {
+    physics->move(dt * 1000); // physics takes milliseconds ATM, TODO: pass double
 
-    cout << dt << "ms, x: " << currentLevel->getPlayerObject()->getPosition().getX() << " y: "
+    cout << (dt * 1000) << "ms, x: " << currentLevel->getPlayerObject()->getPosition().getX() << " y: "
          << currentLevel->getPlayerObject()->getPosition().getY() << std::endl;
 }
 

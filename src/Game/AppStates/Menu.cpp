@@ -7,11 +7,12 @@ Menu::Menu()
 Menu::~Menu() {
 }
 
-void Menu::processInput(list<InputEvent*> events) {
+AppState* Menu::processInput(list<InputEvent*> events) {
     // TODO: stub
+    return this;
 }
 
-void Menu::update(int dt) {
+void Menu::update(double dt) {
     // TODO: stub
 }
 

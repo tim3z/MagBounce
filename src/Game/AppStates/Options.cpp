@@ -7,11 +7,12 @@ Options::Options()
 Options::~Options() {
 }
 
-void Options::processInput(list<InputEvent*> events) {
+AppState* Options::processInput(list<InputEvent*> events) {
     // TODO: stub
+    return this;
 }
 
-void Options::update(int dt) {
+void Options::update(double dt) {
     // TODO: stub
 }
 

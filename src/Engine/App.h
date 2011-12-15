@@ -3,7 +3,6 @@
 
 class AppState;
 class Display;
-struct ALLEGRO_DISPLAY;
 
 /**
  * class App
@@ -11,22 +10,14 @@ struct ALLEGRO_DISPLAY;
  */
 class App {
 public:
-    App();
+    App(); // TODO: pass flags (DEBUG etc.)
     virtual ~App();
 
-    void fire();
-    void setExit(const bool flag) {
-        exit = flag;
-    }
+    void run();
 
 private:
-    Display* display;
     AppState* currentState;
-    bool exit;
-
-    inline void processInput();
-    inline void update(int dt);
-    inline void render();
+    Display* display;
 
     /* uncopyable */
     App(const App&);

@@ -11,8 +11,8 @@ public:
     Menu();
     virtual ~Menu();
 
-    void processInput(list<InputEvent*> events);
-    void update(int dt);
+    AppState* processInput(list<InputEvent*> events);
+    void update(double dt);
     void render(Display& display);
 };
 

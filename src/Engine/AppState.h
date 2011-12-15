@@ -16,8 +16,14 @@ public:
     AppState();
     virtual ~AppState();
 
-    virtual void processInput(list<InputEvent *> events) = 0;
-    virtual void update(int dt) = 0;
+    /**
+     * Subclasses must implement input handling in this method.
+     *
+     * @param events List of InputEvents which have not yet been processed
+     * @return Next application state (return this if the state does not change, 0 to exit the application)
+     */
+    virtual AppState* processInput(list<InputEvent *> events) = 0;
+    virtual void update(double dt) = 0;
     virtual void render(Display& display) = 0;
 
 private:
