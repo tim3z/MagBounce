@@ -9,12 +9,12 @@
 #include <allegro5/allegro5.h>
 #include <allegro5/events.h>
 
-EventHandler::EventHandler(ALLEGRO_DISPLAY* display)
-        : display(display), eventQueue(al_create_event_queue()) {
+EventHandler::EventHandler(ALLEGRO_EVENT_SOURCE* displayEventSource)
+        : eventQueue(al_create_event_queue()) {
     if (al_install_keyboard()) {
         al_register_event_source(eventQueue, al_get_keyboard_event_source());
     }
-    al_register_event_source(eventQueue, al_get_display_event_source(this->display));
+    al_register_event_source(eventQueue, displayEventSource);
 }
 
 ALLEGRO_EVENT* EventHandler::getEvent() {

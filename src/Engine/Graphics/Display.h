@@ -12,6 +12,7 @@
 
 struct ALLEGRO_BITMAP;
 struct ALLEGRO_DISPLAY;
+struct ALLEGRO_EVENT_SOURCE;
 
 /**
  * This class is responsible for handling the display and wraps the interaction with allegro.
@@ -21,7 +22,7 @@ public:
     Display();
     ~Display();
 
-    ALLEGRO_DISPLAY* const getAllegroDisplay() const; // TODO: other way to pass Display to EventHandler?
+    inline ALLEGRO_EVENT_SOURCE* const getEventSource() const;
 
     /**
      * Draws bitmaps at a given position on the screen (back buffer bitmap)

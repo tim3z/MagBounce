@@ -31,6 +31,6 @@ void Display::update() {
     al_clear_to_color(al_map_rgb(0, 0, 0));
 }
 
-ALLEGRO_DISPLAY* const Display::getAllegroDisplay() const {
-    return this->display;
+ALLEGRO_EVENT_SOURCE* const Display::getEventSource() const {
+    return al_get_display_event_source(this->display);
 }

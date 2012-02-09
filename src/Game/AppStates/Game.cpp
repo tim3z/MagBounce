@@ -38,6 +38,7 @@ void Game::update(double dt) {
 }
 
 void Game::render(Display& display) {
+    // FIXME: thread safe!
     vector<Object*> levelObjects;
     currentLevel->getLevelObjects(&levelObjects);
 
