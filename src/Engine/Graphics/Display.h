@@ -6,20 +6,21 @@
  */
 
 #ifndef DISPLAY_H
-#define	DISPLAY_H
+#define DISPLAY_H
 
 #include "Physics/Vector.h"
 
 struct ALLEGRO_BITMAP;
 struct ALLEGRO_DISPLAY;
 struct ALLEGRO_EVENT_SOURCE;
+struct DisplayConfig;
 
 /**
  * This class is responsible for handling the display and wraps the interaction with allegro.
  */
 class Display {
 public:
-    Display();
+    Display(const DisplayConfig* const config);
     ~Display();
 
     inline ALLEGRO_EVENT_SOURCE* const getEventSource() const;
