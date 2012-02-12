@@ -12,12 +12,10 @@
 #include <boost/algorithm/string.hpp>
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/fstream.hpp>
-#include <boost/foreach.hpp>
 #include <boost/lexical_cast.hpp>
 #include "Level.h"
 #include "Model/RectangularLevelObject.h"
 
-#define foreach BOOST_FOREACH
 namespace file = boost::filesystem;
 using boost::bad_lexical_cast;
 using boost::lexical_cast;
@@ -77,7 +75,7 @@ Level* LevelBuilder::build(const string& levelFile) {
                     new Level(lexical_cast<int>(currentLineContents.at(0)),
                             lexical_cast<int>(currentLineContents.at(1))));
         } catch (const bad_lexical_cast& e) {
-            goto error;
+            goto error; // Just for fun
         }
     } else {
         error: cerr << "Error while trying to parse level properties. Width or height are not valid integer values.\n";
@@ -90,39 +88,38 @@ Level* LevelBuilder::build(const string& levelFile) {
     fileContents.pop_front();
 
     // Try to parse additional lines
-    foreach (string line, fileContents)
-            {
-                split(currentLineContents, fileContents.front(), boost::is_any_of(","));
-                int size = currentLineContents.size();
-                auto_ptr<RectangularLevelObject> levelObject;
-                try {
-                    switch (size) {
-                        case 5:
-                            levelObject.reset(
-                                    new RectangularLevelObject(lexical_cast<float>(currentLineContents.at(0)),
-                                            lexical_cast<float>(currentLineContents.at(1)),
-                                            lexical_cast<float>(currentLineContents.at(2)),
-                                            lexical_cast<float>(currentLineContents.at(3))));
-                            levelObject->setMagneticState(lexical_cast<int>(currentLineContents.at(4)));
-                            break;
-                        case 4:
-                            levelObject.reset(
-                                    new RectangularLevelObject(lexical_cast<float>(currentLineContents.at(0)),
-                                            lexical_cast<float>(currentLineContents.at(1)),
-                                            lexical_cast<float>(currentLineContents.at(2)),
-                                            lexical_cast<float>(currentLineContents.at(3))));
-                            break;
-                        default:
-                            cerr << "Error while trying to parse level object properties.\n";
-                            return nullptr;
-                    }
-                } catch (const bad_lexical_cast& e) {
+    for (string line : fileContents) {
+        split(currentLineContents, fileContents.front(), boost::is_any_of(","));
+        int size = currentLineContents.size();
+        auto_ptr<RectangularLevelObject> levelObject;
+        try {
+            switch (size) {
+                case 5:
+                    levelObject.reset(
+                            new RectangularLevelObject(lexical_cast<float>(currentLineContents.at(0)),
+                                    lexical_cast<float>(currentLineContents.at(1)),
+                                    lexical_cast<float>(currentLineContents.at(2)),
+                                    lexical_cast<float>(currentLineContents.at(3))));
+                    levelObject->setMagneticState(lexical_cast<int>(currentLineContents.at(4)));
+                    break;
+                case 4:
+                    levelObject.reset(
+                            new RectangularLevelObject(lexical_cast<float>(currentLineContents.at(0)),
+                                    lexical_cast<float>(currentLineContents.at(1)),
+                                    lexical_cast<float>(currentLineContents.at(2)),
+                                    lexical_cast<float>(currentLineContents.at(3))));
+                    break;
+                default:
                     cerr << "Error while trying to parse level object properties.\n";
                     return nullptr;
-                }
-                level->addLevelObject(levelObject.release());
-                fileContents.pop_front();
             }
+        } catch (const bad_lexical_cast& e) {
+            cerr << "Error while trying to parse level object properties.\n";
+            return nullptr;
+        }
+        level->addLevelObject(levelObject.release());
+        fileContents.pop_front();
+    }
 
     return level.release();
 }
