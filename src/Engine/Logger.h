@@ -8,15 +8,41 @@
 #ifndef LOGGER_H_
 #define LOGGER_H_
 
+#include <queue>
+#include <string>
+
+struct ALLEGRO_COND;
+struct ALLEGRO_MUTEX;
 struct ALLEGRO_THREAD;
+
+using std::queue;
+using std::string;
+
+enum LogPriority {
+    PROFILING,
+    DEBUG,
+    INFO,
+    WARNING,
+    ERROR
+};
 
 class Logger {
 public:
     Logger();
     virtual ~Logger();
 
+    void log(LogPriority priority, string&& text);
+
 private:
+    struct Message {
+        LogPriority priority;
+        string text;
+    };
+
+    ALLEGRO_COND* queueFull;
+    ALLEGRO_MUTEX* queueMutex;
     ALLEGRO_THREAD* thread;
+    queue<Message> messageQueue;
 
     /*
      * Member function pointers cannot be used like C function pointers, so these functions must be static.

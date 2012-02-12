@@ -11,9 +11,10 @@
 #include <list>
 #include <string>
 
+class Level;
+
 using std::list;
 using std::string;
-class Level;
 
 class LevelBuilder {
 private:

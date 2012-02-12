@@ -85,7 +85,7 @@ void App::run(AppState* firstState) {
                 dt -= config->physicsInterval;
             }
         } else {
-            // TODO: wait for threads to finish and lock them
+            // TODO: wait for threads accessing currentState to finish the current iteration and stop them temporarily
             delete currentState;
             currentState = nextState;
             dt = 0;
