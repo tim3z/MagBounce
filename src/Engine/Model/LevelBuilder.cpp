@@ -66,10 +66,10 @@ Level* LevelBuilder::build(const string& levelFile) {
 
     if (fileContents.empty()) {
         cerr << "Level file seems to be empty.";
-        return 0; // File could not be read or is empty
+        return nullptr; // File could not be read or is empty
     }
 
-    // Try to parse first line, return 0 on failure
+    // Try to parse first line, return nullptr on failure
     split(currentLineContents, fileContents.front(), boost::is_any_of(","));
     if (currentLineContents.size() == 2) {
         try {
@@ -81,7 +81,7 @@ Level* LevelBuilder::build(const string& levelFile) {
         }
     } else {
         error: cerr << "Error while trying to parse level properties. Width or height are not valid integer values.\n";
-        return 0;
+        return nullptr;
     }
     fileContents.pop_front();
 
@@ -114,11 +114,11 @@ Level* LevelBuilder::build(const string& levelFile) {
                             break;
                         default:
                             cerr << "Error while trying to parse level object properties.\n";
-                            return 0;
+                            return nullptr;
                     }
                 } catch (const bad_lexical_cast& e) {
                     cerr << "Error while trying to parse level object properties.\n";
-                    return 0;
+                    return nullptr;
                 }
                 level->addLevelObject(levelObject.release());
                 fileContents.pop_front();

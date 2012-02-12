@@ -11,8 +11,8 @@
 
 using std::runtime_error;
 
-SoundThread::SoundThread() : thread(0) {
-    if (!(thread = al_create_thread(threadFunction, this))) {
+SoundThread::SoundThread() : thread(nullptr) {
+    if (!(thread = al_create_thread(threadFunction, static_cast<void*>(this)))) {
         throw new runtime_error("Failed to create sound thread.");
     }
 
@@ -24,11 +24,11 @@ SoundThread::~SoundThread() {
 }
 
 void* SoundThread::threadFunction(ALLEGRO_THREAD* thread, void* instance) {
-    //SoundThread* self = reinterpret_cast<SoundThread*>(instance);
+    //SoundThread* self = static_cast<SoundThread*>(instance);
 
     while (!al_get_thread_should_stop(thread)) { // as long as al_join_thread is not called
         // TODO
     }
 
-    return 0;
+    return nullptr;
 }

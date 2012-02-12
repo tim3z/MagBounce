@@ -11,8 +11,8 @@
 
 using std::runtime_error;
 
-InputThread::InputThread() : thread(0) {
-    if (!(thread = al_create_thread(threadFunction, this))) {
+InputThread::InputThread() : thread(nullptr) {
+    if (!(thread = al_create_thread(threadFunction, static_cast<void*>(this)))) {
         throw new runtime_error("Failed to create input thread.");
     }
 
@@ -24,12 +24,12 @@ InputThread::~InputThread() {
 }
 
 void* InputThread::threadFunction(ALLEGRO_THREAD* thread, void* instance) {
-    //InputThread* self = reinterpret_cast<InputThread*>(instance);
+    //InputThread* self = static_cast<InputThread*>(instance);
 
     while (!al_get_thread_should_stop(thread)) { // as long as al_join_thread is not called
         // TODO
     }
 
-    return 0;
+    return nullptr;
 }
 

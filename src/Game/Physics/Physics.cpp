@@ -61,7 +61,7 @@ void Physics::move(int time) {
         Collision* collision = CollisionHandler::checkForCollision(*playerObject, move, levelObjects);
         int movedTime = time;
 
-        if (collision != NULL) {
+        if (collision != nullptr) {
             move = move * collision->getMovementFraction();
             movedTime = time * collision->getMovementFraction();
 

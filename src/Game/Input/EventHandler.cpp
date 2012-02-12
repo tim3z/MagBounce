@@ -18,7 +18,7 @@ EventHandler::EventHandler(ALLEGRO_EVENT_SOURCE* displayEventSource)
 }
 
 ALLEGRO_EVENT* EventHandler::getEvent() {
-    ALLEGRO_EVENT* event = 0;
+    ALLEGRO_EVENT* event = nullptr;
     ALLEGRO_TIMEOUT timeout;
     al_init_timeout(&timeout, 0.05);
     al_wait_for_event_until(this->eventQueue, event, &timeout);

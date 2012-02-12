@@ -51,7 +51,5 @@ void Game::render(Display& display) {
 
 Game::~Game() {
     delete currentLevel;
-    currentLevel = 0;
     delete physics;
-    physics = 0;
 }

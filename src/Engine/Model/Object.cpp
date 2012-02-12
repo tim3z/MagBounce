@@ -5,7 +5,7 @@
 //  
 
 Object::Object()
-        : renderer(0), position(Vector2D()), magneticState(0) {
+        : renderer(nullptr), position(Vector2D()), magneticState(0) {
 }
 
 void Object::setMagneticState(int magneticState) {
@@ -17,10 +17,7 @@ int Object::getMagneticState() const {
 }
 
 Object::~Object() {
-    if (renderer != NULL) {
-        delete renderer;
-        renderer = NULL;
-    }
+    delete renderer;
 }
 
 void Object::setPosition(float x, float y) {

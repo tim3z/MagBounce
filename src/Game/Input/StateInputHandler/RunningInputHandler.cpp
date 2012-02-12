@@ -17,7 +17,7 @@ RunningInputHandler::RunningInputHandler(EventHandler* eventHandler)
 
 bool* RunningInputHandler::getInput() {
     if (this->eventHandler->getEvent()->type == ALLEGRO_EVENT_DISPLAY_CLOSE) {
-        // TODO: …
+        // FIXME: …
         exit(0);
     }
 

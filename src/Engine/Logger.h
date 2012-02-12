@@ -18,7 +18,7 @@ struct ALLEGRO_THREAD;
 using std::queue;
 using std::string;
 
-enum LogPriority {
+enum class LogPriority {
     PROFILING,
     DEBUG,
     INFO,

@@ -31,7 +31,7 @@ public:
      * The caller takes ownership of the returned level.
      *
      * @param levelFile Path to the level file to parse
-     * @return Level built from the file or null pointer on error
+     * @return Level built from the file or nullptr on error
      */
     static Level* build(const string& levelFile);
 };

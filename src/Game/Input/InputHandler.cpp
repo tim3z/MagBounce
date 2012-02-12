@@ -9,7 +9,7 @@
 #include "EventHandler.h"
 
 InputHandler::InputHandler(EventHandler* eventHandler)
-        : eventHandler(eventHandler), keys(0) {
+        : eventHandler(eventHandler), keys(nullptr) {
 }
 
 InputHandler::~InputHandler() {

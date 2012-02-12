@@ -72,7 +72,7 @@ Collision* CollisionHandler::checkForCollision(PhysicsAppliableObject &object, c
     }
 
     if (collision->getMovementFraction() == 2.0f) {
-        collision = NULL;
+        collision = nullptr;
     }
     return collision;
 }

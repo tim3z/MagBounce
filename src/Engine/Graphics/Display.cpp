@@ -8,7 +8,7 @@ using std::cerr;
 using std::runtime_error;
 
 Display::Display(const DisplayConfig* const config)
-        : display(0) {
+        : display(nullptr) {
     if (config->fullscreen) al_set_new_display_flags(ALLEGRO_FULLSCREEN);
     //al_set_new_display_option(ALLEGRO_VSYNC, 2, ALLEGRO_SUGGEST);
 

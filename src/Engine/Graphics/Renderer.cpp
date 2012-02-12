@@ -2,7 +2,7 @@
 #include <allegro5/allegro5.h>
 
 Renderer::Renderer()
-        : bitmap(0) {
+        : bitmap(nullptr) {
 }
 
 ALLEGRO_BITMAP* Renderer::getBitmap() {

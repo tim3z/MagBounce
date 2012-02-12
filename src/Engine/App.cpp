@@ -12,7 +12,7 @@ using std::list;
 using std::runtime_error;
 
 App::App(const Config* const config) // Don't initialize members before initializing allegro
-        : currentState(0), config(config), display(0) {
+        : currentState(nullptr), config(config), display(nullptr) {
     if (!al_init()) {
         throw new runtime_error("Failed to initialize allegro5.");
     }
@@ -33,7 +33,7 @@ App::~App() {
  *                      After catching, the application has to be terminated (otherwise, there will be memory leaks).
  */
 void App::run(AppState* firstState) {
-    AppState* nextState = 0;
+    AppState* nextState = nullptr;
     currentState = firstState;
 
     // Threads with own main loop
@@ -46,7 +46,7 @@ void App::run(AppState* firstState) {
     double dt = 0.0;                  // dt which needs to be handled by the physics
     double lastTime = al_get_time();  // time the last game loop iteration started
 
-    if (!(graphicsThread = al_create_thread(graphicsThreadFunction, this))) {
+    if (!(graphicsThread = al_create_thread(graphicsThreadFunction, static_cast<void*>(this)))) {
         throw new runtime_error("Failed to create graphics thread.");
     }
 
@@ -98,7 +98,7 @@ void App::run(AppState* firstState) {
 }
 
 void* App::graphicsThreadFunction(ALLEGRO_THREAD* thread, void* instance) {
-    App* self = reinterpret_cast<App*>(instance);
+    App* self = static_cast<App*>(instance);
 
     /* CREATE TIMER */
     ALLEGRO_TIMER* timer;
@@ -122,5 +122,5 @@ void* App::graphicsThreadFunction(ALLEGRO_THREAD* thread, void* instance) {
     al_destroy_timer(timer);
     al_destroy_event_queue(timerEventQueue);
 
-    return 0;
+    return nullptr;
 }
