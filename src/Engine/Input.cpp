@@ -13,7 +13,7 @@ using std::runtime_error;
 
 InputThread::InputThread() : thread(nullptr) {
     if (!(thread = al_create_thread(threadFunction, static_cast<void*>(this)))) {
-        throw new runtime_error("Failed to create input thread.");
+        throw runtime_error("Failed to create input thread.");
     }
 
     al_start_thread(thread);

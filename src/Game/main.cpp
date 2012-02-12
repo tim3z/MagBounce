@@ -21,10 +21,12 @@ int main(int argc, char** argv) {
     Config config = {{640, 480, false}, 100, 0.01, 0.25};
 
     try {
-        App magBounceApp(&config);
-        magBounceApp.run(new Game());
+        { // make sure the destructor is called before the error message is written (→ log messages before error)
+            App magBounceApp(&config);
+            magBounceApp.run(new Game());
+        }
         return EXIT_SUCCESS;
-    } catch (runtime_error& e) {
+    } catch (const runtime_error& e) {
         cerr << e.what() << endl;
         return EXIT_FAILURE;
     }

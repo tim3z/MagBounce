@@ -11,10 +11,11 @@
 using std::list;
 using std::runtime_error;
 
+// FIXME: pass Config by value to prevent errors
 App::App(const Config* const config) // Don't initialize members before initializing allegro
         : currentState(nullptr), config(config), display(nullptr) {
     if (!al_init()) {
-        throw new runtime_error("Failed to initialize allegro5.");
+        throw runtime_error("Failed to initialize allegro5.");
     }
 
     display = new Display(&(config->displayConfig));
@@ -37,7 +38,7 @@ void App::run(AppState* firstState) {
     currentState = firstState;
 
     // Threads with own main loop
-    ALLEGRO_THREAD* graphicsThread;
+    GraphicsThread graphicsThread(this);
     InputThread inputThread;
     SoundThread soundThread;
 
@@ -46,15 +47,9 @@ void App::run(AppState* firstState) {
     double dt = 0.0;                  // dt which needs to be handled by the physics
     double lastTime = al_get_time();  // time the last game loop iteration started
 
-    if (!(graphicsThread = al_create_thread(graphicsThreadFunction, static_cast<void*>(this)))) {
-        throw new runtime_error("Failed to create graphics thread.");
-    }
-
-    al_start_thread(graphicsThread);
-
     /* CREATE MAIN LOOP TIMER */
     if (!(timer = al_create_timer(config->physicsInterval)) || !(timerEventQueue = al_create_event_queue())) {
-        throw new runtime_error("Failed to create main loop timer.");
+        throw runtime_error("Failed to create main loop timer.");
     }
 
     al_register_event_source(timerEventQueue, al_get_timer_event_source(timer));
@@ -94,18 +89,30 @@ void App::run(AppState* firstState) {
 
     al_destroy_timer(timer);
     al_destroy_event_queue(timerEventQueue);
-    al_destroy_thread(graphicsThread);
 }
 
-void* App::graphicsThreadFunction(ALLEGRO_THREAD* thread, void* instance) {
-    App* self = static_cast<App*>(instance);
+
+App::GraphicsThread::GraphicsThread(const App* const app) : thread(nullptr) {
+    if (!(thread = al_create_thread(threadFunction, static_cast<void*>(const_cast<App*>(app))))) {
+        throw runtime_error("Failed to create graphics thread.");
+    }
+
+    al_start_thread(thread);
+}
+
+App::GraphicsThread::~GraphicsThread() {
+    al_destroy_thread(thread);
+}
+
+void* App::GraphicsThread::threadFunction(ALLEGRO_THREAD* thread, void* appInstance) {
+    const App* const app = static_cast<const App* const>(appInstance);
 
     /* CREATE TIMER */
     ALLEGRO_TIMER* timer;
     ALLEGRO_EVENT_QUEUE* timerEventQueue;
 
-    if (!(timer = al_create_timer(1.0 / self->config->maxFPS)) || !(timerEventQueue = al_create_event_queue())) {
-        throw new runtime_error("Failed to create graphics loop timer.");
+    if (!(timer = al_create_timer(1.0 / app->config->maxFPS)) || !(timerEventQueue = al_create_event_queue())) {
+        throw runtime_error("Failed to create graphics loop timer.");
     }
 
     al_register_event_source(timerEventQueue, al_get_timer_event_source(timer));
@@ -115,7 +122,7 @@ void* App::graphicsThreadFunction(ALLEGRO_THREAD* thread, void* instance) {
         al_wait_for_event(timerEventQueue, 0);
         al_flush_event_queue(timerEventQueue);
         // FIXME: threadsicherheit!
-        self->currentState->render(*(self->display));
+        app->currentState->render(*(app->display));
         // TODO: interpolate?
     }
 

@@ -13,7 +13,7 @@ using std::runtime_error;
 
 SoundThread::SoundThread() : thread(nullptr) {
     if (!(thread = al_create_thread(threadFunction, static_cast<void*>(this)))) {
-        throw new runtime_error("Failed to create sound thread.");
+        throw runtime_error("Failed to create sound thread.");
     }
 
     al_start_thread(thread);

@@ -18,12 +18,14 @@ struct ALLEGRO_THREAD;
 using std::queue;
 using std::string;
 
-enum class LogPriority {
+enum class LogPriority : int8_t {
+    VERBOSE,
     PROFILING,
     DEBUG,
     INFO,
     WARNING,
-    ERROR
+    ERROR,
+    FATAL
 };
 
 class Logger {

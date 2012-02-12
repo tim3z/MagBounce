@@ -13,7 +13,7 @@ Display::Display(const DisplayConfig* const config)
     //al_set_new_display_option(ALLEGRO_VSYNC, 2, ALLEGRO_SUGGEST);
 
     if (!(display = al_create_display(config->width, config->height))) {
-        throw new runtime_error("Failed to initialize display.");
+        throw runtime_error("Failed to initialize display.");
     }
 
     al_set_target_bitmap(al_get_backbuffer(display));
