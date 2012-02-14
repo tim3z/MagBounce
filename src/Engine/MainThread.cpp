@@ -7,7 +7,7 @@
 
 #include "MainThread.h"
 #include <stdexcept>
-#include <allegro5/allegro5.h>
+#include <allegro5/allegro.h>
 
 MainThread::MainThread() : thread(nullptr), threadCtrlMutex(nullptr), threadRestarted(nullptr), paused(false) {
     if (!(thread = al_create_thread(threadFunction, static_cast<void*>(this)))) {

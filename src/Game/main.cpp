@@ -12,13 +12,14 @@
 #include "AppStates/Game.h"
 #include "Config.h"
 
-using std::cerr; using std::endl; using std::runtime_error;
+using std::cerr;
+using std::endl;
 
 /*
  *
  */
 int main(int argc, char** argv) {
-    Config config = {{640, 480, false}, 100, 0.01, 0.25};
+    Config config = {{640, 480, false}, 200, 0.005, 0.25};
 
     try {
         { // make sure the destructor is called before the error message is written (→ log messages before error)
@@ -26,7 +27,7 @@ int main(int argc, char** argv) {
             magBounceApp.run(new Game());
         }
         return EXIT_SUCCESS;
-    } catch (const runtime_error& e) {
+    } catch (const std::runtime_error& e) {
         cerr << e.what() << endl;
         return EXIT_FAILURE;
     }

@@ -82,7 +82,7 @@ private:
     /**
      * Override this function to perform some extra initialization within the new thread when it is actually started.
      */
-    virtual void init() {} // might be useful some time
+    virtual void init() {}
 
     /**
      * This function is repeatedly called inside the thread's main loop until the thread is destroyed. This is where
@@ -94,7 +94,7 @@ private:
      * Override this function to perform cleanup work within the thread immediately before it finishes execution
      * (provided that it is stopped normally). Counterpart of init().
      */
-    virtual void cleanup() {} // might be useful some time
+    virtual void cleanup() {}
 };
 
 #endif /* MAINTHREAD_H_ */

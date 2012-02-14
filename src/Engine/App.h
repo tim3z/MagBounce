@@ -6,6 +6,7 @@
 class AppState;
 class Display;
 class Logger;
+class Timer;
 struct ALLEGRO_EVENT_QUEUE;
 struct ALLEGRO_TIMER;
 struct Config;
@@ -38,8 +39,7 @@ private:
 
     private:
         const App& app;
-        ALLEGRO_TIMER* timer;
-        ALLEGRO_EVENT_QUEUE* timerEventQueue;
+        Timer* timer;
 
         void init();
         void main();

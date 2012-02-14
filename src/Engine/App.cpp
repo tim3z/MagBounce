@@ -8,6 +8,7 @@
 #include "Input.h"
 #include "Logger.h"
 #include "Sound.h"
+#include "Utilities/Timer.h"
 
 using std::list;
 using std::runtime_error;
@@ -48,24 +49,16 @@ void App::run(AppState* firstState) {
     GraphicsThread graphicsThread(*this);
     InputThread inputThread;
     SoundThread soundThread;
+    Timer physicsTimer(config->physicsInterval);
 
-    ALLEGRO_TIMER* timer;
-    ALLEGRO_EVENT_QUEUE* timerEventQueue;
     double dt = 0.0;                  // dt which needs to be handled by the physics
     double lastTime = al_get_time();  // time the last game loop iteration started
-
-    /* CREATE MAIN LOOP TIMER */
-    if (!(timer = al_create_timer(config->physicsInterval)) || !(timerEventQueue = al_create_event_queue())) {
-        throw runtime_error("Failed to create main loop timer.");
-    }
 
     /* START OTHER THREADS */
     graphicsThread.start();
     inputThread.start();
     soundThread.start();
-
-    al_register_event_source(timerEventQueue, al_get_timer_event_source(timer));
-    al_start_timer(timer);
+    physicsTimer.start();
 
     /* MAIN THREAD LOOP */
     while (true) {
@@ -73,12 +66,11 @@ void App::run(AppState* firstState) {
         dt += currentTime - lastTime;
         lastTime = currentTime;
 
+        // make sure we're not too fast
+        physicsTimer.consumeTicks();
+
         // restrict dt to avoid breaking physics and make sure the game doesn't get slower on every iteration
         if (dt > config->maxSimulationTime) dt = config->maxSimulationTime;
-
-        // wait if we're too fast
-        if (dt < config->physicsInterval) al_wait_for_event(timerEventQueue, 0);
-        al_flush_event_queue(timerEventQueue);
 
         /* PROCESS INPUT */
         list<InputEvent *> events; // TODO: actually get input events
@@ -99,45 +91,30 @@ void App::run(AppState* firstState) {
             dt = 0;
         }
     }
-
-    al_destroy_timer(timer);
-    al_destroy_event_queue(timerEventQueue);
 }
 
 
 App::GraphicsThread::GraphicsThread(const App& app)
-        : MainThread(), app(app), timer(nullptr), timerEventQueue(nullptr) {
-    if (!(timer = al_create_timer(1.0 / app.config->maxFPS))) {
-        throw runtime_error("Failed to create graphics loop timer.");
-    }
+        : MainThread(), app(app), timer(new Timer(1.0 / app.config->maxFPS)) {
 
-    if (!(timerEventQueue = al_create_event_queue())) {
-        al_destroy_timer(timer);
-        throw runtime_error("Failed to create graphics loop timer.");
-    }
-
-    al_register_event_source(timerEventQueue, al_get_timer_event_source(timer));
 }
 
 App::GraphicsThread::~GraphicsThread() {
     this->stop();
-    al_destroy_timer(timer);
-    al_destroy_event_queue(timerEventQueue);
+    delete timer;
 }
 
 void App::GraphicsThread::init() {
-    al_start_timer(timer);
+    timer->start();
 }
 
 void App::GraphicsThread::main() {
-    al_wait_for_event(timerEventQueue, 0);
-    al_flush_event_queue(timerEventQueue);
+    timer->consumeTicks();
     // FIXME: threadsicherheit!
     app.currentState->render(*(app.display));
     // TODO: interpolate?
 }
 
 void App::GraphicsThread::cleanup() {
-    al_stop_timer(timer);
-    al_flush_event_queue(timerEventQueue);
+    timer->stop();
 }
