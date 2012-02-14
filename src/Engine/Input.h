@@ -8,25 +8,15 @@
 #ifndef INPUTTHREAD_H_
 #define INPUTTHREAD_H_
 
-struct ALLEGRO_THREAD;
+#include "MainThread.h"
 
-class InputThread {
+class InputThread : public MainThread {
 public:
     InputThread();
     virtual ~InputThread();
 
 private:
-    ALLEGRO_THREAD* thread;
-
-    /*
-     * Member function pointers cannot be used like C function pointers, so these functions must be static.
-     * In case the instance has to be accessed, it is passed as an argument.
-     */
-    static void* threadFunction(ALLEGRO_THREAD* thread, void* instance);
-
-    /* uncopyable */
-    InputThread(const InputThread&);
-    const InputThread& operator=(const InputThread&);
+    void main();
 };
 
 #endif /* INPUTTHREAD_H_ */

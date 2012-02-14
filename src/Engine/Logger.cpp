@@ -14,47 +14,31 @@ using std::clog;
 using std::cout;
 using std::endl;
 using std::move;
-using std::runtime_error;
 
 Logger::Logger()
-        : queueFull(nullptr), queueMutex(nullptr), thread(nullptr), messageQueue() {
+        : MainThread(), queueFull(nullptr), queueMutex(nullptr), messageQueue() {
     if (!(queueFull = al_create_cond())) {
-        throw runtime_error("Failed to create condition variable.");
+        throw std::runtime_error("Failed to create condition variable.");
     }
 
     if (!(queueMutex = al_create_mutex())) {
         al_destroy_cond(queueFull);
-        throw runtime_error("Failed to create condition variable.");
+        throw std::runtime_error("Failed to create mutex.");
     }
 
-    if (!(thread = al_create_thread(threadFunction, static_cast<void*>(this)))) {
-        al_destroy_cond(queueFull);
-        al_destroy_mutex(queueMutex);
-        throw runtime_error("Failed to create logging thread.");
-    }
-
-    al_start_thread(thread);
+    this->start();
 }
 
 Logger::~Logger() {
-    al_destroy_thread(thread);
+    this->stop(); // make sure the thread stops before mutex and cond are destroyed
     al_destroy_mutex(queueMutex);
     al_destroy_cond(queueFull);
     // flush queue
-    while (!messageQueue.empty()) {
-        const Message& nextMessage = messageQueue.front();
-        
-        // TODO: see threadFunction
-        if (nextMessage.priority >= LogPriority::WARNING)
-            clog << nextMessage.text << endl;
-        else
-            cout << nextMessage.text << endl;
-
-        messageQueue.pop;
-    }
+    while (!messageQueue.empty())
+        processMessage();
 }
 
-void Logger::log(LogPriority priority, string&& text) {
+void Logger::log(Priority priority, string&& text) {
     al_lock_mutex(queueMutex);
     // every rvalue reference is a lvalue itself, that's why the move() is necessary
     // (see http://www.cprogramming.com/c++11/rvalue-references-and-move-semantics-in-c++11.html)
@@ -63,25 +47,25 @@ void Logger::log(LogPriority priority, string&& text) {
     al_signal_cond(queueFull);
 }
 
-void* Logger::threadFunction(ALLEGRO_THREAD* thread, void* instance) {
-    Logger* self = static_cast<Logger*>(instance);
+void Logger::processMessage() {
+    const Message& nextMessage = messageQueue.front();
 
-    while (!al_get_thread_should_stop(thread)) { // as long as al_join_thread is not called
-        al_lock_mutex(self->queueMutex);
-        while (self->messageQueue.empty())
-            al_wait_cond(self->queueFull, self->queueMutex);
-        const Message& nextMessage = self->messageQueue.front();
+    // TODO: only log to stdout if DEBUG flag is set, support logging errors to file in production environment
+    //       log errors to different locations and stream depending on type, log asynchronously, etc.
+    if (nextMessage.priority >= Priority::WARNING)
+        clog << nextMessage.text << endl;
+    else
+        cout << nextMessage.text << endl;
 
-        // TODO: only log to stdout if DEBUG flag is set, support logging errors to file in production environment
-        //       log errors to different locations and stream depending on type, log asynchronously, etc.
-        if (nextMessage.priority >= LogPriority::WARNING)
-            clog << nextMessage.text << endl;
-        else
-            cout << nextMessage.text << endl;
+    messageQueue.pop();
+}
 
-        self->messageQueue.pop();
-        al_unlock_mutex(self->queueMutex);
-    }
+void Logger::main() {
+    al_lock_mutex(queueMutex);
+    while (messageQueue.empty())
+        al_wait_cond(queueFull, queueMutex);
 
-    return nullptr;
+    processMessage();
+
+    al_unlock_mutex(queueMutex);
 }

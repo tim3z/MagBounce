@@ -1,9 +1,13 @@
 #ifndef APP_H
 #define APP_H
 
+#include "MainThread.h"
+
 class AppState;
 class Display;
-struct ALLEGRO_THREAD;
+class Logger;
+struct ALLEGRO_EVENT_QUEUE;
+struct ALLEGRO_TIMER;
 struct Config;
 
 /**
@@ -12,7 +16,9 @@ struct Config;
  */
 class App {
 public:
-    App(const Config* const config);
+    App(const Config* const config); // FIXME: pass by value or reference
+    App(const App&) = delete;
+    const App& operator=(const App&) = delete;
     virtual ~App();
 
     void run(AppState* firstState);
@@ -21,25 +27,24 @@ private:
     AppState* currentState;
     const Config* const config;
     Display* display;
+    Logger* logger;
 
-    class GraphicsThread {
+    class GraphicsThread : public MainThread {
     public:
-        GraphicsThread(const App* const app);
-        ~GraphicsThread();
+        GraphicsThread(const App& app); // TODO: only pass the display and manually set the current state?
+        GraphicsThread(const GraphicsThread&) = delete;
+        const GraphicsThread& operator=(const GraphicsThread&) = delete;
+        virtual ~GraphicsThread();
 
     private:
-        ALLEGRO_THREAD* thread;
+        const App& app;
+        ALLEGRO_TIMER* timer;
+        ALLEGRO_EVENT_QUEUE* timerEventQueue;
 
-        static void* threadFunction(ALLEGRO_THREAD* thread, void* appInstance);
-
-        /* uncopyable */
-        GraphicsThread(const GraphicsThread&);
-        const GraphicsThread& operator=(const GraphicsThread&);
+        void init();
+        void main();
+        void cleanup();
     };
-
-    /* uncopyable */
-    App(const App&);
-    const App& operator=(const App&);
 };
 
 #endif // APP_H

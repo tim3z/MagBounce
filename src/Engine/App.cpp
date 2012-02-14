@@ -6,6 +6,7 @@
 #include "Config.h"
 #include "Graphics/Display.h"
 #include "Input.h"
+#include "Logger.h"
 #include "Sound.h"
 
 using std::list;
@@ -13,32 +14,38 @@ using std::runtime_error;
 
 // FIXME: pass Config by value to prevent errors
 App::App(const Config* const config) // Don't initialize members before initializing allegro
-        : currentState(nullptr), config(config), display(nullptr) {
+        : currentState(nullptr), config(config), display(nullptr), logger(nullptr) {
     if (!al_init()) {
         throw runtime_error("Failed to initialize allegro5.");
     }
 
-    display = new Display(&(config->displayConfig));
+    logger = new Logger();
+
+    try {
+        display = new Display(&(config->displayConfig));
+    } catch (...) {
+        delete logger;
+        throw;
+    }
 }
 
 App::~App() {
-    delete display;
     delete currentState;
+    delete display;
+    delete logger;
 }
 
 /**
  * Starts all threads and the main loop of the application.
  *
  * @param firstState AppState to load as the first state
- * @throw runtime_error if a serious error has occurred.
- *                      After catching, the application has to be terminated (otherwise, there will be memory leaks).
+ * @throw std::runtime_error if a fatal error occurs.
  */
 void App::run(AppState* firstState) {
     AppState* nextState = nullptr;
     currentState = firstState;
 
-    // Threads with own main loop
-    GraphicsThread graphicsThread(this);
+    GraphicsThread graphicsThread(*this);
     InputThread inputThread;
     SoundThread soundThread;
 
@@ -51,6 +58,11 @@ void App::run(AppState* firstState) {
     if (!(timer = al_create_timer(config->physicsInterval)) || !(timerEventQueue = al_create_event_queue())) {
         throw runtime_error("Failed to create main loop timer.");
     }
+
+    /* START OTHER THREADS */
+    graphicsThread.start();
+    inputThread.start();
+    soundThread.start();
 
     al_register_event_source(timerEventQueue, al_get_timer_event_source(timer));
     al_start_timer(timer);
@@ -80,9 +92,10 @@ void App::run(AppState* firstState) {
                 dt -= config->physicsInterval;
             }
         } else {
-            // TODO: wait for threads accessing currentState to finish the current iteration and stop them temporarily
+            graphicsThread.pause(); // the graphics thread accesses currentState, so it needs to be paused temporarily
             delete currentState;
             currentState = nextState;
+            graphicsThread.resume();
             dt = 0;
         }
     }
@@ -92,42 +105,39 @@ void App::run(AppState* firstState) {
 }
 
 
-App::GraphicsThread::GraphicsThread(const App* const app) : thread(nullptr) {
-    if (!(thread = al_create_thread(threadFunction, static_cast<void*>(const_cast<App*>(app))))) {
-        throw runtime_error("Failed to create graphics thread.");
+App::GraphicsThread::GraphicsThread(const App& app)
+        : MainThread(), app(app), timer(nullptr), timerEventQueue(nullptr) {
+    if (!(timer = al_create_timer(1.0 / app.config->maxFPS))) {
+        throw runtime_error("Failed to create graphics loop timer.");
     }
 
-    al_start_thread(thread);
-}
-
-App::GraphicsThread::~GraphicsThread() {
-    al_destroy_thread(thread);
-}
-
-void* App::GraphicsThread::threadFunction(ALLEGRO_THREAD* thread, void* appInstance) {
-    const App* const app = static_cast<const App* const>(appInstance);
-
-    /* CREATE TIMER */
-    ALLEGRO_TIMER* timer;
-    ALLEGRO_EVENT_QUEUE* timerEventQueue;
-
-    if (!(timer = al_create_timer(1.0 / app->config->maxFPS)) || !(timerEventQueue = al_create_event_queue())) {
+    if (!(timerEventQueue = al_create_event_queue())) {
+        al_destroy_timer(timer);
         throw runtime_error("Failed to create graphics loop timer.");
     }
 
     al_register_event_source(timerEventQueue, al_get_timer_event_source(timer));
-    al_start_timer(timer);
+}
 
-    while (!al_get_thread_should_stop(thread)) {
-        al_wait_for_event(timerEventQueue, 0);
-        al_flush_event_queue(timerEventQueue);
-        // FIXME: threadsicherheit!
-        app->currentState->render(*(app->display));
-        // TODO: interpolate?
-    }
-
+App::GraphicsThread::~GraphicsThread() {
+    this->stop();
     al_destroy_timer(timer);
     al_destroy_event_queue(timerEventQueue);
+}
 
-    return nullptr;
+void App::GraphicsThread::init() {
+    al_start_timer(timer);
+}
+
+void App::GraphicsThread::main() {
+    al_wait_for_event(timerEventQueue, 0);
+    al_flush_event_queue(timerEventQueue);
+    // FIXME: threadsicherheit!
+    app.currentState->render(*(app.display));
+    // TODO: interpolate?
+}
+
+void App::GraphicsThread::cleanup() {
+    al_stop_timer(timer);
+    al_flush_event_queue(timerEventQueue);
 }

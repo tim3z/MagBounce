@@ -153,7 +153,7 @@ public:
     void normalize();
 };
 
-/* *** IMPORTANT! ***
+/*
  * gcc needs all template function definitions in the header file or it will produce linker errors!
  * http://stackoverflow.com/questions/648900/c-templates-undefined-reference
  */

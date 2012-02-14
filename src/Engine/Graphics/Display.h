@@ -23,7 +23,7 @@ public:
     Display(const DisplayConfig* const config);
     ~Display();
 
-    inline ALLEGRO_EVENT_SOURCE* const getEventSource() const;
+    ALLEGRO_EVENT_SOURCE* const getEventSource() const;
 
     /**
      * Draws bitmaps at a given position on the screen (back buffer bitmap)
