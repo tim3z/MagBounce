@@ -21,7 +21,7 @@ public:
 
     AppState* processInput(list<InputEvent*> events);
     void update(double dt);
-    void render(Display& display);
+    void render(Display& display) const;
 
 private:
     GameState *currentState;

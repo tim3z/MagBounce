@@ -32,7 +32,7 @@ private:
 
     class GraphicsThread : public MainThread {
     public:
-        GraphicsThread(const App& app); // TODO: only pass the display and manually set the current state?
+        GraphicsThread(const App& app); // FIXME: only pass the display and manually set the current state?
         GraphicsThread(const GraphicsThread&) = delete;
         const GraphicsThread& operator=(const GraphicsThread&) = delete;
         virtual ~GraphicsThread();

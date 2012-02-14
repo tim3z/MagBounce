@@ -37,7 +37,7 @@ void Game::update(double dt) {
          << currentLevel->getPlayerObject()->getPosition().getY() << std::endl;
 }
 
-void Game::render(Display& display) {
+void Game::render(Display& display) const {
     // FIXME: thread safe!
     vector<Object*> levelObjects;
     currentLevel->getLevelObjects(&levelObjects);

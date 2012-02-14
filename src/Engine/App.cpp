@@ -6,8 +6,8 @@
 #include "Config.h"
 #include "Graphics/Display.h"
 #include "Input.h"
-#include "Logger.h"
 #include "Sound.h"
+#include "Utilities/Logger.h"
 #include "Utilities/Timer.h"
 
 using std::list;

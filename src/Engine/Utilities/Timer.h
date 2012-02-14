@@ -42,14 +42,14 @@ public:
     void stop();
 
     /**
-     * Consume one timer tick.
+     * Consume exactly one timer tick.
      *
      * If no tick has occurred since the last call to start() or consumeTick(), this function waits for the next tick.
      */
     void consumeTick();
 
     /**
-     * Consumes all accumulated ticks.
+     * Consume all accumulated timer ticks.
      *
      * If no tick has occurred since the last call to start() or consumeTick(), this function waits for the next tick.
      */

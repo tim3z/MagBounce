@@ -40,9 +40,9 @@ public:
 
     /**
      * Get all LevelObjects which are in this Level
-     * @param a pointer to a vector to fill in the objects
+     * @param objects a pointer to a vector to fill in the objects
      */
-    void getLevelObjects(vector<Object*>*);
+    void getLevelObjects(vector<Object*>* objects);
 
     void addLevelObject(RectangularLevelObject*);
 
@@ -56,16 +56,16 @@ public:
 
     /**
      * Return all Objects, which movements should be handled by the physics
-     * @param a pointer to a vector to fill in the objects
+     * @param objects a pointer to a vector to fill in the objects
      */
-    void getMovableObjects(vector<PhysicsAppliableObject*>*);
+    void getMovableObjects(vector<PhysicsAppliableObject*>* objects);
 
     /**
      * @param  position
      * @param  radius
-     * @param a pointer to a vector to fill in the objects
+     * @param objects a pointer to a vector to fill in the objects
      */
-    void getLevelObjectsAround(const Vector2D &position, float radius, vector<RectangularLevelObject*>*);
+    void getLevelObjectsAround(const Vector2D &position, float radius, vector<RectangularLevelObject*>* objects);
 
     /**
      * Returns the Physics Object of this Level
