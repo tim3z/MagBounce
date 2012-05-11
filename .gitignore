@@ -11,3 +11,7 @@ Makefile
 /nbproject
 *.o
 .settings/
+*.kdev4
+
+#ignore symlink
+lib/r2d
