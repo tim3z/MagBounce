@@ -1,12 +1,9 @@
 #include "Level.h"
-#include <boost/foreach.hpp>
 #include "PlayerObject.h"
 #include "Physics/PhysicsAppliableObject.h"
 #include "Model/RectangularLevelObject.h"
 #include "Model/Level/PhysicalProperties.h"
 #include "Model/Level/Standard/StandardPhysics.h"
-
-#define foreach BOOST_FOREACH
 
 // Constructors/Destructors
 //  
@@ -20,7 +17,7 @@ Level::Level(int width, int height)
 Level::~Level() {
     delete physics;
     delete ball;
-    foreach (Object* levelObject, levelObjects)
+    for (Object* levelObject : levelObjects)
             {
                 delete levelObject;
             }
