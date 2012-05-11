@@ -19,7 +19,7 @@ class Object;
 class MagnetismBehavior {
 public:
 
-    virtual ~MagnetismBehavior();
+    virtual ~MagnetismBehavior() {};
 
     /**
      * Calculate the acceleration represanted as an Vector for this force at the given position

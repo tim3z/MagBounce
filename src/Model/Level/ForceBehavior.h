@@ -12,7 +12,7 @@ using namespace r2d;
 class ForceBehavior {
 public:
 
-    virtual ~ForceBehavior();
+    virtual ~ForceBehavior() {};
 
     /**
      * Calculate the acceleration represanted as an Vector for this force at the given position

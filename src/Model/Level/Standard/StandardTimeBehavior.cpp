@@ -9,6 +9,6 @@ StandardTimeBehavior::StandardTimeBehavior() {
 StandardTimeBehavior::~StandardTimeBehavior() {
 }
 
-int StandardTimeBehavior::manipulateTime(int time) {
+double StandardTimeBehavior::manipulateTime(double time) {
     return time;
 }

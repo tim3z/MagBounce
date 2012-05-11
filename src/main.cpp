@@ -21,7 +21,6 @@ using namespace r2d;
  */
 int main(int argc, char** argv) {
     Config config = {{640, 480, false}};
-    std::cout << "Started\n";
 
     try {
 	if (al_init()) {

@@ -31,7 +31,7 @@ public:
      * Calculate and execute movements for the current level and the passed time
      * @param time the time in ms for this frame
      */
-    void move(int time);
+    void move(double time);
 
 private:
 
@@ -41,7 +41,7 @@ private:
      * @param the duration of the move
      * @return Vector2D the calculated move
      */
-    Vector2D calculateMoveFor(const PhysicsAppliableObject &Object, int time);
+    Vector2D calculateMoveFor(const PhysicsAppliableObject &Object, double time);
 
 };
 

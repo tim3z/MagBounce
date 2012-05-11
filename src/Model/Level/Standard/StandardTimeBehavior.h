@@ -14,7 +14,7 @@ public:
     StandardTimeBehavior();
     virtual ~StandardTimeBehavior();
 
-    int manipulateTime(int time);
+    double manipulateTime(double time);
 };
 
 #endif // STANDARDTIMEBEHAVIOR_H

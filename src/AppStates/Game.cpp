@@ -24,7 +24,7 @@ Game::Game()
     currentLevel->addLevelObject(new RectangularLevelObject(620, 0, 640, 380));
     currentLevel->addLevelObject(new RectangularLevelObject(0, 0, 640, 30));
     currentLevel->getPlayerObject()->setPosition(100.0f, 200.0f);
-    currentLevel->getPlayerObject()->setSpeed(Vector2D(0.1f, 0.0f));
+    currentLevel->getPlayerObject()->setSpeed(Vector2D(-1.0f, 0.0f));
 }
 
 AppState* Game::handleEvent(ALLEGRO_EVENT* const event) {
@@ -32,15 +32,10 @@ AppState* Game::handleEvent(ALLEGRO_EVENT* const event) {
 	return nullptr;
     }
     return this;
-    // TODO: stub
-    //currentState->reactOnInput(); // TODO: remove/edit signature
 }
 
 void Game::update(double dt) {
-    physics->move(dt * 1000); // physics takes milliseconds ATM, TODO: pass double
-
-    cout << (dt * 1000) << "ms, x: " << currentLevel->getPlayerObject()->getPosition().getX() << " y: "
-         << currentLevel->getPlayerObject()->getPosition().getY() << std::endl;
+    physics->move(dt * 1000); // physics takes milliseconds ATM
 }
 
 void Game::render(Display& display) const {

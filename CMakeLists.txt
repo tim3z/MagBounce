@@ -34,11 +34,7 @@ add_executable(Magbounce src/Model/Level/Standard/StandardTimeBehavior.cpp
                          src/Model/Level/Standard/StandardPhysics.cpp
                          src/Model/Level/Standard/StandardMagnetismBehavior.cpp
                          src/Model/Level/Standard/StandardGravityBehavior.cpp
-                         src/Model/Level/MagnetismBehavior.cpp
-                         src/Model/Level/GravityBehavior.cpp
-                         src/Model/Level/ForceBehavior.cpp
                          src/Model/Level/PhysicalProperties.cpp
-                         src/Model/Level/TimeBehavior.cpp
                         # src/Model/LevelBuilder.cpp
                          src/Model/Object.cpp
                          src/Model/PlayerObject.cpp

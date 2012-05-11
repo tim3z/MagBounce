@@ -48,7 +48,7 @@ Physics::~Physics() {
 //    // collision detection
 //}
 
-void Physics::move(int time) {
+void Physics::move(double time) {
     PhysicsAppliableObject* playerObject = currentLevel->getPlayerObject();
 
     while (time > 0) {
@@ -59,9 +59,10 @@ void Physics::move(int time) {
         currentLevel->getLevelObjectsAround(playerObject->getPosition(), radius, &levelObjects);
 
         Collision* collision = CollisionHandler::checkForCollision(*playerObject, move, levelObjects);
-        int movedTime = time;
+        double movedTime = time;
 
         if (collision != nullptr) {
+	    std::cout << "Collision!\n";
             move = move * collision->getMovementFraction();
             movedTime = time * collision->getMovementFraction();
 
@@ -81,7 +82,7 @@ void Physics::move(int time) {
 
 }
 
-Vector2D Physics::calculateMoveFor(const PhysicsAppliableObject &object, int time) {
+Vector2D Physics::calculateMoveFor(const PhysicsAppliableObject &object, double time) {
     std::vector<Object*> objects;
     currentLevel->getLevelObjects(&objects);
 
@@ -89,7 +90,6 @@ Vector2D Physics::calculateMoveFor(const PhysicsAppliableObject &object, int tim
 
     Vector2D speed;
     speed += object.getSpeed();
-    std::cout << "speed: x: " << speed.getX() << " y: " << speed.getY() << std::endl;
     speed += currentLevel->getLevelPhysics()->getGravityBehavior()->getAccelerationAt() * time;
     speed += currentLevel->getLevelPhysics()->getMagnetismBehavior()->getAccelerationAt(object.getPosition(), objects)
             * object.getMagneticState() * time;

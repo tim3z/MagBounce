@@ -15,7 +15,7 @@ using namespace r2d;
 class GravityBehavior {
 public:
 
-    virtual ~GravityBehavior();
+    virtual ~GravityBehavior() {};
 
     /**
      * Calculate the acceleration represanted as an Vector
