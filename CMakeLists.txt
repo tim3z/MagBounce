@@ -60,9 +60,7 @@ add_executable(Magbounce src/Model/Level/Standard/StandardTimeBehavior.cpp
                          src/Input/StateInputHandler/RunningInputHandler.cpp
                          src/Input/InputHandler.cpp
                          src/Input/InputEvent.cpp
-                         src/AppState.cpp
                          src/MainThread.cpp
-                         src/App.cpp
                          src/GameStates/Pause.cpp
                          src/GameStates/Running.cpp
                          src/Graphics/BallRenderer.cpp

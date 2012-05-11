@@ -25,10 +25,13 @@ Game::Game()
     currentLevel->getPlayerObject()->setPosition(100.0f, 200.0f);
 }
 
-AppState* Game::processInput(list<InputEvent *> events) {
-    // TODO: stub
-    currentState->reactOnInput(); // TODO: remove/edit signature
+AppState* Game::handleEvent(ALLEGRO_EVENT* const event) {
+    if (event->type == ALLEGRO_EVENT_KEY_DOWN && event->keyboard.keycode == ALLEGRO_KEY_ESCAPE) {
+	return nullptr;
+    }
     return this;
+    // TODO: stub
+    //currentState->reactOnInput(); // TODO: remove/edit signature
 }
 
 void Game::update(double dt) {

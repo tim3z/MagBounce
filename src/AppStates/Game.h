@@ -5,6 +5,7 @@
 #include <vector>
 
 using std::vector;
+using namespace r2d;
 class GameState;
 class Level;
 class Physics;
@@ -19,14 +20,14 @@ public:
     Game();
     virtual ~Game();
 
-    AppState* processInput(list<InputEvent*> events);
+    AppState* handleEvent(ALLEGRO_EVENT* const event);
     void update(double dt);
     void render(Display& display) const;
 
 private:
     GameState *currentState;
     Level* currentLevel;
-    Physics* physics;
+    ::Physics* physics;
 
     Game(const Game&);
     const Game& operator=(const Game&);

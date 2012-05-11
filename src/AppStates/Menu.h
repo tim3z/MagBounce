@@ -2,6 +2,8 @@
 #define MENU_H
 #include "AppState.h"
 
+using namespace r2d;
+
 /**
  * class Menu
  * 
