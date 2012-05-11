@@ -22,7 +22,9 @@ Game::Game()
     currentLevel->addLevelObject(new RectangularLevelObject(0, 380, 640, 400));
     currentLevel->addLevelObject(new RectangularLevelObject(0, 0, 20, 380));
     currentLevel->addLevelObject(new RectangularLevelObject(620, 0, 640, 380));
+    currentLevel->addLevelObject(new RectangularLevelObject(0, 0, 640, 30));
     currentLevel->getPlayerObject()->setPosition(100.0f, 200.0f);
+    currentLevel->getPlayerObject()->setSpeed(Vector2D(0.1f, 0.0f));
 }
 
 AppState* Game::handleEvent(ALLEGRO_EVENT* const event) {
