@@ -21,7 +21,9 @@ find_library(ALLEGRO allegro PATHS lib)
 
 IF(EXISTS "lib/r2d")
     add_subdirectory("lib/r2d")
+    include_directories(AFTER "lib/r2d/src")
 endif()
+include_directories(AFTER "lib/r2d/src")
 
 find_library(R2D r2d PATHS lib "lib/r2d/build")
 if (R2D-NOTFOUND)

@@ -2,7 +2,9 @@
 #define OBJECT_H
 
 #include <string>
-#include "Physics/Vector.h"
+#include "Math/Vector.h"
+
+using namespace r2d;
 
 class Renderer;
 

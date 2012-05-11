@@ -1,7 +1,9 @@
 #ifndef PHYSICSAPPLIABLEOBJECT_H
 #define PHYSICSAPPLIABLEOBJECT_H
 
-#include "Physics/Vector.h"
+#include "Math/Vector.h"
+
+using namespace r2d;
 
 /**
  * interface PhysicsAppliableObject

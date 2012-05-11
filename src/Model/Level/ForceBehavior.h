@@ -1,13 +1,14 @@
 #ifndef FORCEBEHAVIOR_H
 #define FORCEBEHAVIOR_H
 
-#include "Physics/Vector.h"
+#include "Math/Vector.h"
+
+using namespace r2d;
 
 /**
  * interface ForceBehavior
  * 
  */
-
 class ForceBehavior {
 public:
 

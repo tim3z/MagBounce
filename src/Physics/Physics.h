@@ -1,10 +1,12 @@
 #ifndef PHYSICS_H
 #define PHYSICS_H
 
-#include "Physics/Vector.h"
+#include "Math/Vector.h"
 
 class Level;
 class PhysicsAppliableObject;
+
+using namespace r2d;
 
 /**
  * class Physics

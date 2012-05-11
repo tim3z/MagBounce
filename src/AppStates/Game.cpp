@@ -11,6 +11,7 @@
 #include "Physics/Physics.h"
 
 using std::cout;
+using namespace r2d;
 
 // Constructors/Destructors
 //  

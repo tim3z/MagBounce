@@ -2,6 +2,8 @@
 #define STANDARDMAGNETISMBEHAVIOR_H
 #include "../MagnetismBehavior.h"
 
+using namespace r2d;
+
 /**
  * class StandardMagnetismBehavior
  * 

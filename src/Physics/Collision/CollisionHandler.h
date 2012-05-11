@@ -2,12 +2,13 @@
 #define COLLISIONHANDLER_H
 
 #include <vector>
-#include "Physics/Vector.h"
+#include "Math/Vector.h"
 
 class Collision;
 class PhysicsAppliableObject;
 class RectangularLevelObject;
 
+using namespace r2d;
 
 /**
  * class CollisionHandler

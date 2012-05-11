@@ -12,6 +12,8 @@ Makefile
 *.o
 .settings/
 *.kdev4
+CMakeLists.txt~
+*~
 
 #ignore symlink
 lib/r2d

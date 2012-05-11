@@ -2,14 +2,15 @@
 #define APP_H
 
 #include "MainThread.h"
+#include "Graphics/Display.h"
+#include "Utilities/Logger.h"
+#include "Utilities/Timer.h"
 
 class AppState;
-class Display;
-class Logger;
-class Timer;
 struct ALLEGRO_EVENT_QUEUE;
 struct ALLEGRO_TIMER;
 struct Config;
+using namespace r2d;
 
 /**
  * class App

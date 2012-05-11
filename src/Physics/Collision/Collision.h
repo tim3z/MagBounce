@@ -8,7 +8,9 @@
 #ifndef COLLISION_H
 #define	COLLISION_H
 
-#include "Physics/Vector.h"
+#include "Math/Vector.h"
+
+using namespace r2d;
 
 class Object;
 class PhysicsAppliableObject;

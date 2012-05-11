@@ -2,9 +2,10 @@
 #define LEVEL_H
 
 #include <vector>
-#include "Physics/Vector.h"
+#include "Math/Vector.h"
 
 using std::vector;
+using namespace r2d;
 class Object;
 class PhysicsAppliableObject;
 class PhysicalProperties;

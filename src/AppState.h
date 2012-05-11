@@ -2,9 +2,10 @@
 #define APPSTATE_H
 
 #include <list>
+#include "Graphics/Display.h"
 
 using std::list;
-class Display;
+using namespace r2d;
 class InputEvent;
 
 /**

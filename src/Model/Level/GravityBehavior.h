@@ -8,7 +8,9 @@
 #ifndef GRAVITYBEHAVIOR_H
 #define	GRAVITYBEHAVIOR_H
 
-#include "Physics/Vector.h"
+#include "Math/Vector.h"
+
+using namespace r2d;
 
 class GravityBehavior {
 public:
