@@ -28,6 +28,46 @@ if (R2D-NOTFOUND)
     message(FATAL_ERROR "Aborting - R2D was not found.")
 endif()
 
-add_executable(Magbounce )
+add_executable(Magbounce src/Model/Level/Standard/StandardTimeBehavior.cpp
+                         src/Model/Level/Standard/StandardPhysics.cpp
+                         src/Model/Level/Standard/StandardMagnetismBehavior.cpp
+                         src/Model/Level/Standard/StandardGravityBehavior.cpp
+                         src/Model/Level/MagnetismBehavior.cpp
+                         src/Model/Level/GravityBehavior.cpp
+                         src/Model/Level/ForceBehavior.cpp
+                         src/Model/Level/PhysicalProperties.cpp
+                         src/Model/Level/TimeBehavior.cpp
+                        # src/Model/LevelBuilder.cpp
+                         src/Model/Object.cpp
+                         src/Model/PlayerObject.cpp
+                         src/Model/Level.cpp
+                         src/Model/RectangularLevelObject.cpp
+                         src/Input.cpp
+                         src/Sound.cpp
+                         src/AppStates/Options.cpp
+                         src/AppStates/Menu.cpp
+                         src/AppStates/Game.cpp
+                         src/GameState.cpp
+                         src/main.cpp
+                         src/Physics/Physics.cpp
+                         src/Physics/Collision/CollisionHandler.cpp
+                         src/Physics/Collision/Collision.cpp
+                         src/Physics/Collision/CollisionShape.cpp
+                         src/Physics/PhysicsAppliableObject.cpp
+                         src/Input/EventHandler.cpp
+                         src/Input/StateInputHandler/RunningInputHandler.cpp
+                         src/Input/InputHandler.cpp
+                         src/Input/InputEvent.cpp
+                         src/Utilities/Logger.cpp
+                         src/Utilities/Timer.cpp
+                         src/AppState.cpp
+                         src/MainThread.cpp
+                         src/App.cpp
+                         src/GameStates/Pause.cpp
+                         src/GameStates/Running.cpp
+                         src/Graphics/BallRenderer.cpp
+                         src/Graphics/RectangularLevelObjectRenderer.cpp
+                         src/Graphics/Renderer.cpp
+                         src/Graphics/Display.cpp)
 set_target_properties(Magbounce PROPERTIES LINKER_LANGUAGE CXX)
 target_link_libraries(Magbounce ${ALLEGRO} ${R2D})
