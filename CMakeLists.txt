@@ -44,8 +44,6 @@ add_executable(Magbounce src/Model/Level/Standard/StandardTimeBehavior.cpp
                          src/Model/PlayerObject.cpp
                          src/Model/Level.cpp
                          src/Model/RectangularLevelObject.cpp
-                         src/Input.cpp
-                         src/Sound.cpp
                          src/AppStates/Options.cpp
                          src/AppStates/Menu.cpp
                          src/AppStates/Game.cpp
@@ -60,7 +58,6 @@ add_executable(Magbounce src/Model/Level/Standard/StandardTimeBehavior.cpp
                          src/Input/StateInputHandler/RunningInputHandler.cpp
                          src/Input/InputHandler.cpp
                          src/Input/InputEvent.cpp
-                         src/MainThread.cpp
                          src/GameStates/Pause.cpp
                          src/GameStates/Running.cpp
                          src/Graphics/BallRenderer.cpp

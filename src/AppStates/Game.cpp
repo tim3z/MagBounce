@@ -43,14 +43,14 @@ void Game::update(double dt) {
 
 void Game::render(Display& display) const {
     // FIXME: thread safe!
-    vector<Object*> levelObjects;
-    currentLevel->getLevelObjects(&levelObjects);
-
-    for (unsigned int i = 0; i < levelObjects.size(); i++) {
-        display.render(levelObjects[i]->getRenderer()->getBitmap(), levelObjects[i]->getRenderingPosition());
-    }
-
-    display.update();
+     vector<Object*> levelObjects;
+     currentLevel->getLevelObjects(&levelObjects);
+ 
+     for (unsigned int i = 0; i < levelObjects.size(); i++) {
+         display.render(levelObjects[i]->getRenderer()->getBitmap(), levelObjects[i]->getRenderingPosition());
+     }
+ 
+     display.update();
 }
 
 Game::~Game() {
