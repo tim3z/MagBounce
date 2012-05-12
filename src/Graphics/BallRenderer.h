@@ -13,6 +13,7 @@
 class BallRenderer : public Renderer {
 public:
     BallRenderer(float radius);
+    void setColor(int r, int g, int b);
 };
 
 #endif	/* BALLRENDERER_H */

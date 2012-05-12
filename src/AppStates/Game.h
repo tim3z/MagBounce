@@ -28,6 +28,8 @@ private:
     GameState *currentState;
     Level* currentLevel;
     ::Physics* physics;
+    int positive;
+    int negative;
 
     Game(const Game&);
     const Game& operator=(const Game&);

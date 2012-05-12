@@ -17,7 +17,7 @@ using namespace r2d;
 //  
 
 Game::Game()
-        : AppState(), currentState(new Running(this)), currentLevel(new Level(800, 600)),
+        : AppState(), positive(0), negative(0), currentState(new Running(this)), currentLevel(new Level(800, 600)),
           physics(new Physics(currentLevel)) {
     currentLevel->addLevelObject(new RectangularLevelObject(0, 380, 640, 400));
     currentLevel->addLevelObject(new RectangularLevelObject(0, 0, 20, 380));
@@ -31,6 +31,33 @@ AppState* Game::handleEvent(ALLEGRO_EVENT* const event) {
     if (event->type == ALLEGRO_EVENT_KEY_DOWN && event->keyboard.keycode == ALLEGRO_KEY_ESCAPE) {
 	return nullptr;
     }
+    
+    if (event->type == ALLEGRO_EVENT_KEY_DOWN && event->keyboard.keycode == ALLEGRO_KEY_N) {
+	negative = 1;
+    }
+    
+    
+    if (event->type == ALLEGRO_EVENT_KEY_UP && event->keyboard.keycode == ALLEGRO_KEY_N) {
+	negative = 0;
+    }
+    
+    if (event->type == ALLEGRO_EVENT_KEY_DOWN && event->keyboard.keycode == ALLEGRO_KEY_P) {
+	positive = 1;
+    }
+    
+    
+    if (event->type == ALLEGRO_EVENT_KEY_UP && event->keyboard.keycode == ALLEGRO_KEY_P) {
+	positive = 0;
+    }
+    
+    if (negative == 0 && positive == 1) {
+	currentLevel->getPlayerObject()->setMagneticState(50);
+    } else if (negative == 1 && positive == 0) {
+	currentLevel->getPlayerObject()->setMagneticState(-50);
+    } else {
+	currentLevel->getPlayerObject()->setMagneticState(0);
+    }
+    
     return this;
 }
 

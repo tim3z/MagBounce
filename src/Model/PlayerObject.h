@@ -37,6 +37,7 @@ public:
 
     void setMagneticState(int magneticState) {
         Object::setMagneticState(magneticState);
+	setColor(magneticState);
     }
 
     int getMagneticState() const {
@@ -44,6 +45,8 @@ public:
     }
 
     Vector2D getRenderingPosition() const;
+    
+    void setColor(int magneticState);
 
 };
 
