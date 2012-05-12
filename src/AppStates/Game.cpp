@@ -17,8 +17,8 @@ using namespace r2d;
 //  
 
 Game::Game()
-        : AppState(), positive(0), negative(0), currentState(new Running(this)), currentLevel(new Level(800, 600)),
-          physics(new Physics(currentLevel)) {
+        : AppState(), currentState(new Running(this)), currentLevel(new Level(800, 600)),
+          physics(new Physics(currentLevel)), positive(0), negative(0) {
     currentLevel->addLevelObject(new RectangularLevelObject(0, 380, 640, 400));
     RectangularLevelObject* r = new RectangularLevelObject(0, 0, 20, 380);
     r->setMagneticState(-1);
