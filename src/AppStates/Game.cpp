@@ -20,11 +20,13 @@ Game::Game()
         : AppState(), positive(0), negative(0), currentState(new Running(this)), currentLevel(new Level(800, 600)),
           physics(new Physics(currentLevel)) {
     currentLevel->addLevelObject(new RectangularLevelObject(0, 380, 640, 400));
-    currentLevel->addLevelObject(new RectangularLevelObject(0, 0, 20, 380));
+    RectangularLevelObject* r = new RectangularLevelObject(0, 0, 20, 380);
+    r->setMagneticState(-1);
+    currentLevel->addLevelObject(r);
     currentLevel->addLevelObject(new RectangularLevelObject(620, 0, 640, 380));
     currentLevel->addLevelObject(new RectangularLevelObject(0, 0, 640, 30));
     currentLevel->getPlayerObject()->setPosition(100.0f, 200.0f);
-    currentLevel->getPlayerObject()->setSpeed(Vector2D(-1.0f, 0.0f));
+    currentLevel->getPlayerObject()->setSpeed(Vector2D(-0.5f, 0.0f));
 }
 
 AppState* Game::handleEvent(ALLEGRO_EVENT* const event) {
@@ -51,9 +53,9 @@ AppState* Game::handleEvent(ALLEGRO_EVENT* const event) {
     }
     
     if (negative == 0 && positive == 1) {
-	currentLevel->getPlayerObject()->setMagneticState(50);
+	currentLevel->getPlayerObject()->setMagneticState(1);
     } else if (negative == 1 && positive == 0) {
-	currentLevel->getPlayerObject()->setMagneticState(-50);
+	currentLevel->getPlayerObject()->setMagneticState(-1);
     } else {
 	currentLevel->getPlayerObject()->setMagneticState(0);
     }
