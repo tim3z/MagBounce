@@ -6,14 +6,19 @@
  */
 
 #ifndef BALLRENDERER_H
-#define	BALLRENDERER_H
+#define BALLRENDERER_H
 
 #include "Graphics/Renderer.h"
+#include "Model/PlayerObject.h"
 
 class BallRenderer : public Renderer {
 public:
-    BallRenderer(float radius);
-    void setColor(int r, int g, int b);
+    BallRenderer(PlayerObject& ball, float radius);
+    
+    ALLEGRO_BITMAP* getBitmap();
+    
+private:
+    PlayerObject& ball;
 };
 
 #endif	/* BALLRENDERER_H */

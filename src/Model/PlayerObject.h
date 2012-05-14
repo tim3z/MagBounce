@@ -11,7 +11,6 @@
 
 class PlayerObject : public PhysicsAppliableObject, public Object {
 public:
-
     /**
      * Empty Constructor
      */
@@ -37,7 +36,6 @@ public:
 
     void setMagneticState(int magneticState) {
         Object::setMagneticState(magneticState);
-	setColor(magneticState);
     }
 
     int getMagneticState() const {
@@ -45,9 +43,6 @@ public:
     }
 
     Vector2D getRenderingPosition() const;
-    
-    void setColor(int magneticState);
-
 };
 
 #endif // PLAYEROBJECT_H

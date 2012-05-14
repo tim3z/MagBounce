@@ -11,15 +11,10 @@
 struct ALLEGRO_BITMAP;
 
 class Renderer {
-private:
-    Renderer(const Renderer&);
-    const Renderer& operator=(const Renderer&);
-
-protected:
-    ALLEGRO_BITMAP *bitmap;
-
 public:
     Renderer();
+    Renderer(const Renderer&) = delete;
+    const Renderer& operator=(const Renderer&) = delete;
 
     virtual ALLEGRO_BITMAP* getBitmap();
 
@@ -28,6 +23,8 @@ public:
      */
     virtual ~Renderer();
 
+protected:
+    ALLEGRO_BITMAP *bitmap;
 };
 
 #endif	/* RENDERER_H */

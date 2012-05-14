@@ -4,7 +4,7 @@
 //  
 
 PlayerObject::PlayerObject() {
-    renderer = new BallRenderer(25.0f);
+    renderer = new BallRenderer(*this, 25.0f);
 }
 
 PlayerObject::~PlayerObject() {
@@ -19,15 +19,5 @@ Vector2D PlayerObject::getRenderingPosition() const {
     pos.setX(position.getX() - 25);
     pos.setY(position.getY() - 25);
     return pos;
-}
-
-void PlayerObject::setColor(int magneticState) {
-    if (magneticState < 0) {
-	static_cast<BallRenderer*>(renderer)->setColor(0, 0, 127);
-    } else if (magneticState > 0) {
-	static_cast<BallRenderer*>(renderer)->setColor(127, 0, 0);
-    } else {
-	static_cast<BallRenderer*>(renderer)->setColor(127, 127, 127);
-    }
 }
 

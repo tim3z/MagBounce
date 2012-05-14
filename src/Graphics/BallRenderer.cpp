@@ -1,14 +1,24 @@
 #include "BallRenderer.h"
 #include <allegro5/allegro5.h>
 
-BallRenderer::BallRenderer(float radius) {
+BallRenderer::BallRenderer(PlayerObject& ball, float radius)
+     : ball(ball) {
     int size = radius * 2;
     bitmap = al_create_bitmap(size, size);
-    setColor(127, 127, 127);
 }
 
-void BallRenderer::setColor(int r, int g, int b) {
+ALLEGRO_BITMAP* BallRenderer::getBitmap() {
+    int magneticState = ball.getMagneticState();
+    
     al_set_target_bitmap(bitmap);
-    al_clear_to_color(al_map_rgb(r, g, b));
+    
+    if (magneticState < 0) {
+        al_clear_to_color(al_map_rgb(0, 0, 127));
+    } else if (magneticState > 0) {
+        al_clear_to_color(al_map_rgb(127, 0, 0));
+    } else {
+        al_clear_to_color(al_map_rgb(127, 127, 127));
+    }
+    
+    return bitmap;
 }
-
