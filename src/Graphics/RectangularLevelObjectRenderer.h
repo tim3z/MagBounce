@@ -9,15 +9,19 @@
 #define	RECTANGULARLEVELOBJECTRENDERER_H
 
 #include "Graphics/Renderer.h"
+#include "Model/RectangularLevelObject.h"
 
 class RectangularLevelObjectRenderer : public Renderer {
 public:
 
-    RectangularLevelObjectRenderer(float height, float width);
+    RectangularLevelObjectRenderer(RectangularLevelObject& levelObject, float height, float width);
     RectangularLevelObjectRenderer(const RectangularLevelObjectRenderer& orig);
     virtual ~RectangularLevelObjectRenderer();
+    
+    ALLEGRO_BITMAP* getBitmap();
 
 private:
+    RectangularLevelObject& levelObject;
 
 };
 
