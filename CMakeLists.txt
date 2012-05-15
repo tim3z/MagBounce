@@ -15,20 +15,22 @@ if(CMAKE_COMPILER_IS_GNUCXX)
     endif()
 endif()
 
-include_directories(AFTER src)
-
 find_library(ALLEGRO allegro PATHS lib)
 
-IF(EXISTS "lib/r2d")
-    add_subdirectory("lib/r2d")
-    include_directories(AFTER "lib/r2d/src")
-endif()
-include_directories(AFTER "lib/r2d/src")
+# cmake and build subproject r2d at cmake time
+execute_process(COMMAND ${CMAKE_COMMAND} -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} .. 
+		WORKING_DIRECTORY ../lib/r2d/build)
+execute_process(COMMAND make
+		WORKING_DIRECTORY ../lib/r2d/build)
+# update subproject r2d at build time
+add_custom_target(r2d_subproject
+		  COMMAND make
+		  WORKING_DIRECTORY ../lib/r2d/build)
 
-find_library(R2D r2d PATHS lib "lib/r2d/build")
-if (R2D-NOTFOUND)
-    message(FATAL_ERROR "Aborting - R2D was not found.")
-endif()
+find_library(R2D r2d PATHS lib lib/r2d/build)
+
+include_directories(AFTER lib/r2d/src)
+include_directories(AFTER src)
 
 add_executable(Magbounce src/Model/Level/Standard/StandardTimeBehavior.cpp
                          src/Model/Level/Standard/StandardPhysics.cpp
@@ -61,3 +63,4 @@ add_executable(Magbounce src/Model/Level/Standard/StandardTimeBehavior.cpp
                          src/Graphics/Renderer.cpp)
 set_target_properties(Magbounce PROPERTIES LINKER_LANGUAGE CXX)
 target_link_libraries(Magbounce ${ALLEGRO} ${R2D})
+add_dependencies(Magbounce r2d_subproject)

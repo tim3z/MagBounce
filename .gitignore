@@ -15,6 +15,3 @@ Makefile
 CMakeLists.txt~
 *~
 *.kate-swp
-
-#ignore symlink
-lib/r2d

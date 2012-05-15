@@ -1,0 +1,3 @@
+[submodule "lib/r2d"]
+	path = lib/r2d
+	url = git://github.com/Landkeks/R2D.git
