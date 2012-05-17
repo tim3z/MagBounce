@@ -18,6 +18,7 @@ endif()
 find_library(ALLEGRO allegro PATHS lib)
 
 # cmake and build subproject r2d at cmake time
+execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory ../lib/r2d/build)
 execute_process(COMMAND ${CMAKE_COMMAND} -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} .. 
 		WORKING_DIRECTORY ../lib/r2d/build)
 execute_process(COMMAND make
