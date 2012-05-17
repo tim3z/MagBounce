@@ -32,7 +32,6 @@ void Physics::move(double time) {
         double movedTime = time;
 
         if (collision != nullptr) {
-	    std::cout << "Collision!\n";
             move = move * collision->getMovementFraction();
             movedTime = time * collision->getMovementFraction();
 
