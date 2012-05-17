@@ -18,36 +18,6 @@ Physics::Physics(Level* level)
 Physics::~Physics() {
 }
 
-//void Physics::move(int time) {
-//    std::vector<PhysicsAppliableObject*> objects; // TODO warum macht objects(); es kaputt??
-//    std::vector<Vector2D> movements;
-//    currentLevel->getPhysicsAppliableObjects(&objects);
-//    
-//    bool finished = false;
-//    
-//    while (!finished) {
-//        finished = true;
-//        for (int i = 0; i < objects.size(); i++) {
-//            movements[i] = calculateMoveFor(*objects[i], time);
-//
-//            float radius = objects[i]->getCollisionRadius() + norm_2(*objects[i]);
-//            std::vector<LevelObject*> levelObjects;
-//            currentLevel->getLevelObjectsAround(objects[i]->getPosition(), radius, levelObjects);
-//
-//            Collision* collision = CollisionHandler.checkForCollision(*objects[i], movements[i], levelObjects);
-//            if (collision != NULL) {
-//                finished = false;
-//                // TODO
-//            }
-//            
-//            
-//        }
-//    }
-//    
-//    
-//    // collision detection
-//}
-
 void Physics::move(double time) {
     PhysicsAppliableObject* playerObject = currentLevel->getPlayerObject();
 
@@ -91,8 +61,7 @@ Vector2D Physics::calculateMoveFor(const PhysicsAppliableObject &object, double 
     Vector2D speed;
     speed += object.getSpeed();
     speed += currentLevel->getLevelPhysics()->getGravityBehavior()->getAccelerationAt() * time;
-    speed += currentLevel->getLevelPhysics()->getMagnetismBehavior()->getAccelerationAt(object.getPosition(), objects)
-            * object.getMagneticState() * time;
+    speed += currentLevel->getLevelPhysics()->getMagnetismBehavior()->getAccelerationAt(object.getPosition(), objects) * object.getMagneticState() * time;
 
     return speed * time;
 }
