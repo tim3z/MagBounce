@@ -43,6 +43,7 @@ void Physics::move(double time) {
                 playerObject->setSpeed(reflected / movedTime);
             } else {
                 playerObject->setSpeed(Vector2D(.0f, .0f));
+                movedTime = time;
             }
             
             delete collision;
@@ -58,15 +59,19 @@ void Physics::move(double time) {
 }
 
 Vector2D Physics::calculateMoveFor(const PhysicsAppliableObject &object, double time) {
-    std::vector<Object*> objects;
-    currentLevel->getLevelObjects(&objects);
-
     time = currentLevel->getLevelPhysics()->getTimeBehavior()->manipulateTime(time);
 
     Vector2D speed;
     speed += object.getSpeed();
-    speed += currentLevel->getLevelPhysics()->getGravityBehavior()->getAccelerationAt() * time;
-    speed += currentLevel->getLevelPhysics()->getMagnetismBehavior()->getAccelerationAt(object.getPosition(), objects) * object.getMagneticState() * time;
+    speed += getAccelerationFor(object) * time;
 
     return speed * time;
+}
+
+Vector2D Physics::getAccelerationFor(const PhysicsAppliableObject& object) {
+    std::vector<Object*> objects;
+    currentLevel->getLevelObjects(&objects);
+    
+    return currentLevel->getLevelPhysics()->getGravityBehavior()->getAccelerationAt() +
+        currentLevel->getLevelPhysics()->getMagnetismBehavior()->getAccelerationAt(object.getPosition(), objects) * object.getMagneticState();    
 }
