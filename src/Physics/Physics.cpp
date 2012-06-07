@@ -44,7 +44,9 @@ void Physics::move(double time) {
             } else {
                 playerObject->setSpeed(Vector2D(.0f, .0f));
             }
-
+            
+            delete collision;
+            collision = nullptr;
         } else {
             playerObject->setSpeed(move / movedTime);
         }
