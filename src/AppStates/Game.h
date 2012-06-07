@@ -2,6 +2,7 @@
 #define GAME_H
 
 #include "AppState.h"
+#include "Math/Vector.h"
 #include <vector>
 
 using std::vector;
@@ -23,6 +24,7 @@ public:
     AppState* handleEvent(ALLEGRO_EVENT* const event);
     void update(double dt);
     void render(Display& display) const;
+    Vector2D getCameraPosition();
 
 private:
     GameState *currentState;
@@ -30,6 +32,8 @@ private:
     ::Physics* physics;
     int positive;
     int negative;
+    
+    Vector2D oldCameraPosition;
 
     Game(const Game&);
     const Game& operator=(const Game&);

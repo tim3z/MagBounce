@@ -27,6 +27,7 @@ Game::Game()
     currentLevel->addLevelObject(new RectangularLevelObject(0, 0, 640, 30));
     currentLevel->getPlayerObject()->setPosition(100.0f, 200.0f);
     currentLevel->getPlayerObject()->setSpeed(Vector2D(-0.5f, 0.0f));
+    oldCameraPosition = currentLevel->getPlayerObject()->getPosition();
 }
 
 AppState* Game::handleEvent(ALLEGRO_EVENT* const event) {
@@ -77,6 +78,18 @@ void Game::render(Display& display) const {
      }
  
      display.update();
+}
+
+Vector2D Game::getCameraPosition() {
+//    int width = 640;
+//    int height = 480;
+    Vector2D currentPosition = currentLevel->getPlayerObject()->getPosition();
+    Vector2D move = currentPosition - oldCameraPosition;
+    if (move.length() > 250) {
+        currentPosition = oldCameraPosition + move.normalized() * (move.length()-250);
+    }
+    oldCameraPosition = currentPosition;
+    return currentPosition;
 }
 
 Game::~Game() {
