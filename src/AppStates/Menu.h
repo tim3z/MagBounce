@@ -1,14 +1,17 @@
 #ifndef MENU_H
 #define MENU_H
 #include "AppState.h"
+#include <vector>
+#include "Math/Vector.h"
 
 using namespace r2d;
+using std::vector;
 
 /**
  * class Menu
  * 
  */
-class Menu : public AppState {
+class Menu : public virtual AppState {
 public:
     Menu();
     virtual ~Menu();
@@ -16,6 +19,8 @@ public:
     AppState* processInput(list<InputEvent*> events);
     void update(double dt);
     void render(Display& display);
+    vector<vector<RenderableObject&>*>* getRenderLayers();
+    Vector2D getCameraPosition();
 };
 
 #endif // MENU_H

@@ -2,11 +2,11 @@
 #define GAME_H
 
 #include "AppState.h"
-#include "Math/Vector.h"
 #include <vector>
+#include "Math/Vector.h"
 
-using std::vector;
 using namespace r2d;
+using std::vector;
 class GameState;
 class Level;
 class Physics;
@@ -16,7 +16,7 @@ class Physics;
  * 
  */
 
-class Game : public AppState {
+class Game : public virtual AppState {
 public:
     Game();
     virtual ~Game();
@@ -24,6 +24,7 @@ public:
     AppState* handleEvent(ALLEGRO_EVENT* const event);
     void update(double dt);
     void render(Display& display) const;
+    vector<vector<RenderableObject&>*>* getRenderLayers();
     Vector2D getCameraPosition();
 
 private:

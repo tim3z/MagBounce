@@ -19,3 +19,12 @@ void Menu::update(double dt) {
 void Menu::render(Display& display) {
     // TODO: stub
 }
+
+vector<vector<RenderableObject&>*>* Menu::getRenderLayers() {
+    return nullptr;
+}
+
+Vector2D Menu::getCameraPosition() {
+    return Vector2D();
+}
+

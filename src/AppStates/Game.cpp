@@ -92,6 +92,10 @@ Vector2D Game::getCameraPosition() {
     return currentPosition;
 }
 
+vector<vector<RenderableObject&>*>* Game::getRenderLayers() {
+    return nullptr;
+}
+
 Game::~Game() {
     delete currentLevel;
     delete physics;

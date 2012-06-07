@@ -19,3 +19,11 @@ void Options::update(double dt) {
 void Options::render(Display& display) {
     // TODO: stub
 }
+
+vector<vector<RenderableObject&>*>* Options::getRenderLayers() {
+    return nullptr;
+}
+
+Vector2D Options::getCameraPosition() {
+    return Vector2D();
+}
