@@ -39,7 +39,11 @@ void Physics::move(double time) {
             collisionNormal.normalize(); // TODO: check for zero length!
 
             Vector2D reflected = move - 2 * (collisionNormal * move) * collisionNormal;
-            playerObject->setSpeed(reflected / movedTime);
+            if (movedTime != 0.0f) {
+                playerObject->setSpeed(reflected / movedTime);
+            } else {
+                playerObject->setSpeed(Vector2D(.0f, .0f));
+            }
 
         } else {
             playerObject->setSpeed(move / movedTime);
