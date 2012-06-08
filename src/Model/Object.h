@@ -3,17 +3,17 @@
 
 #include <string>
 #include "Math/Vector.h"
+#include "Graphics/RenderableObject.h"
+#include "Graphics/Renderer.h"
 
 using namespace r2d;
-
-class Renderer;
 
 /**
  * class LevelObject
  *
  */
 
-class Object {
+class Object : public virtual RenderableObject {
 public:
     /**
      * Empty Constructor
@@ -61,6 +61,14 @@ public:
     int getMagneticState() const;
 
     virtual Vector2D getRenderingPosition() const = 0;
+    
+    Vector2D getPosition() {
+        return this->getRenderingPosition();
+    }
+    
+    ALLEGRO_BITMAP* getBitmap() {
+        renderer->getBitmap();
+    }
 
 protected:
     Renderer* renderer;
