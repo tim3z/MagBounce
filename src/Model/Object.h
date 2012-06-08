@@ -67,7 +67,7 @@ public:
     }
     
     ALLEGRO_BITMAP* getBitmap() {
-        renderer->getBitmap();
+        return renderer->getBitmap();
     }
 
 protected:

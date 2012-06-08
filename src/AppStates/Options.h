@@ -20,7 +20,7 @@ public:
     void update(double dt);
     void render(Display& display);
     virtual Vector2D getCameraPosition();
-    virtual vector<vector<RenderableObject&>*>* getRenderLayers();
+    virtual vector<vector<RenderableObject*>*>* getRenderLayers();
 };
 
 #endif // OPTIONS_H

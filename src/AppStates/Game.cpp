@@ -92,7 +92,7 @@ Vector2D Game::getCameraPosition() {
     return currentPosition;
 }
 
-vector<vector<RenderableObject&>*>* Game::getRenderLayers() {
+vector<vector<RenderableObject*>*>* Game::getRenderLayers() {
     return nullptr;
 }
 

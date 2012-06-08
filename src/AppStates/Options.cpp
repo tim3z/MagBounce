@@ -20,7 +20,7 @@ void Options::render(Display& display) {
     // TODO: stub
 }
 
-vector<vector<RenderableObject&>*>* Options::getRenderLayers() {
+vector<vector<RenderableObject*>*>* Options::getRenderLayers() {
     return nullptr;
 }
 

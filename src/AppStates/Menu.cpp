@@ -20,7 +20,7 @@ void Menu::render(Display& display) {
     // TODO: stub
 }
 
-vector<vector<RenderableObject&>*>* Menu::getRenderLayers() {
+vector<vector<RenderableObject*>*>* Menu::getRenderLayers() {
     return nullptr;
 }
 
