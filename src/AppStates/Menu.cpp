@@ -20,8 +20,8 @@ void Menu::render(Display& display) {
     // TODO: stub
 }
 
-vector<vector<RenderableObject*>*>* Menu::getRenderLayers() {
-    return nullptr;
+void Menu::getRenderLayers(vector<vector<RenderableObject*>*>* renderLayers) {
+    //TODO: Fill renderable list
 }
 
 Vector2D Menu::getCameraPosition() {

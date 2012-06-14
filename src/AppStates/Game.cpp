@@ -92,8 +92,8 @@ Vector2D Game::getCameraPosition() {
     return currentPosition;
 }
 
-vector<vector<RenderableObject*>*>* Game::getRenderLayers() {
-    return nullptr;
+void Game::getRenderLayers(vector<vector<RenderableObject*>*>* renderLayers) {
+    //TODO: Fill renderable list
 }
 
 Game::~Game() {

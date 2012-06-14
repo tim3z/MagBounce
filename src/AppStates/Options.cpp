@@ -20,8 +20,8 @@ void Options::render(Display& display) {
     // TODO: stub
 }
 
-vector<vector<RenderableObject*>*>* Options::getRenderLayers() {
-    return nullptr;
+void Options::getRenderLayers(vector<vector<RenderableObject*>*>* renderLayers) {
+    //TODO: Fill renderable list
 }
 
 Vector2D Options::getCameraPosition() {
