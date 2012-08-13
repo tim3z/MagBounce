@@ -62,10 +62,6 @@ public:
 
     virtual Vector2D getRenderingPosition() const = 0;
     
-    Vector2D getPosition() {
-        return this->getRenderingPosition();
-    }
-    
     ALLEGRO_BITMAP* getBitmap() {
         return renderer->getBitmap();
     }
