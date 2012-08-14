@@ -76,8 +76,6 @@ void Game::render(Display& display) const {
      for (unsigned int i = 0; i < levelObjects.size(); i++) {
          display.render(levelObjects[i]->getRenderer()->getBitmap(), levelObjects[i]->getRenderingPosition());
      }
- 
-     display.update();
 }
 
 Vector2D Game::getCameraPosition() {
