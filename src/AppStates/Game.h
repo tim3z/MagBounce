@@ -24,7 +24,7 @@ public:
     AppState* handleEvent(ALLEGRO_EVENT* const event);
     void update(double dt);
     void render(Display& display) const;
-    void getRenderLayers(vector<vector<RenderableObject*>*>* renderLayers);
+    void getRenderLayers(vector<vector<RenderableObject*>*> &renderLayers);
     Vector2D getCameraPosition();
 
 private:

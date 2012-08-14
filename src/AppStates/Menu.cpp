@@ -16,11 +16,7 @@ void Menu::update(double dt) {
     // TODO: stub
 }
 
-void Menu::render(Display& display) {
-    // TODO: stub
-}
-
-void Menu::getRenderLayers(vector<vector<RenderableObject*>*>* renderLayers) {
+void Menu::getRenderLayers(vector<vector<RenderableObject*>*> &renderLayers) {
     //TODO: Fill renderable list
 }
 

@@ -19,7 +19,7 @@ public:
     AppState* processInput(list<InputEvent*> events);
     void update(double dt);
     void render(Display& display);
-    void getRenderLayers(vector<vector<RenderableObject*>*>* renderLayers);
+    void getRenderLayers(vector<vector<RenderableObject*>*> &renderLayers);
     Vector2D getCameraPosition();
 };
 

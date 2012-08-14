@@ -16,11 +16,7 @@ void Options::update(double dt) {
     // TODO: stub
 }
 
-void Options::render(Display& display) {
-    // TODO: stub
-}
-
-void Options::getRenderLayers(vector<vector<RenderableObject*>*>* renderLayers) {
+void Options::getRenderLayers(vector<vector<RenderableObject*>*> &renderLayers) {
     //TODO: Fill renderable list
 }
 

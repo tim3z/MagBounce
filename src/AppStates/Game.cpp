@@ -68,16 +68,6 @@ void Game::update(double dt) {
     physics->move(dt * 1000); // physics takes milliseconds ATM
 }
 
-void Game::render(Display& display) const {
-    // FIXME: thread safe!
-     vector<Object*> levelObjects;
-     currentLevel->getLevelObjects(&levelObjects);
- 
-     for (unsigned int i = 0; i < levelObjects.size(); i++) {
-         display.render(levelObjects[i]->getRenderer()->getBitmap(), levelObjects[i]->getRenderingPosition());
-     }
-}
-
 Vector2D Game::getCameraPosition() {
 //    int width = 640;
 //    int height = 480;
@@ -90,8 +80,10 @@ Vector2D Game::getCameraPosition() {
     return currentPosition;
 }
 
-void Game::getRenderLayers(vector<vector<RenderableObject*>*>* renderLayers) {
-    //TODO: Fill renderable list
+void Game::getRenderLayers(vector<vector<RenderableObject*>*> &renderLayers) {
+    vector<RenderableObject*>* levelObjects = new vector<RenderableObject*>();
+    currentLevel->getLevelObjects((vector<Object*>*) levelObjects);
+    renderLayers.push_back(levelObjects);
 }
 
 Game::~Game() {
