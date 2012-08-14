@@ -73,11 +73,11 @@ Vector2D Game::getCameraPosition() {
 //    int height = 480;
     Vector2D currentPosition = currentLevel->getPlayerObject()->getPosition();
     Vector2D move = currentPosition - oldCameraPosition;
-    if (move.length() > 250) {
+    if (move.length() > 200) {
         currentPosition = oldCameraPosition + move.normalized() * (move.length()-250);
+        oldCameraPosition = currentPosition;
     }
-    oldCameraPosition = currentPosition;
-    return currentPosition;
+    return oldCameraPosition;
 }
 
 void Game::getRenderLayers(vector<vector<RenderableObject*>*> &renderLayers) {
