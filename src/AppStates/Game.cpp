@@ -17,7 +17,7 @@ using namespace r2d;
 //  
 
 Game::Game()
-        : AppState(), currentState(new Running(this)), currentLevel(new Level(800, 600)),
+        : AppState(), currentState(new Running(this)), currentLevel(new Level(640, 480)),
           physics(new Physics(currentLevel)), positive(0), negative(0) {
     currentLevel->addLevelObject(new RectangularLevelObject(0, 380, 640, 400));
     RectangularLevelObject* r = new RectangularLevelObject(0, 0, 20, 380);
@@ -28,6 +28,7 @@ Game::Game()
     currentLevel->getPlayerObject()->setPosition(100.0f, 200.0f);
     currentLevel->getPlayerObject()->setSpeed(Vector2D(-0.5f, 0.0f));
     oldCameraPosition = currentLevel->getPlayerObject()->getPosition();
+    cam_radius = currentLevel->getHeight() / 4;
 }
 
 AppState* Game::handleEvent(ALLEGRO_EVENT* const event) {
@@ -69,14 +70,25 @@ void Game::update(double dt) {
 }
 
 Vector2D Game::getCameraPosition() {
-//    int width = 640;
-//    int height = 480;
-    Vector2D currentPosition = currentLevel->getPlayerObject()->getPosition();
-    Vector2D move = currentPosition - oldCameraPosition;
-    if (move.length() > 200) {
-        currentPosition = oldCameraPosition + move.normalized() * (move.length()-250);
-        oldCameraPosition = currentPosition;
+    Vector2D move = currentLevel->getPlayerObject()->getPosition() - oldCameraPosition;
+    if (move.length() > cam_radius) {
+        oldCameraPosition += move.normalized() * (move.length()-cam_radius);
     }
+    
+    if (oldCameraPosition.getX() + 320 > currentLevel->getWidth()) {
+        oldCameraPosition.setX(currentLevel->getWidth() - 320);
+    }
+    if (oldCameraPosition.getX() < 320) {
+        oldCameraPosition.setX(320);
+    }
+    if (oldCameraPosition.getY() + 240 > currentLevel->getHeight()) {
+        oldCameraPosition.setY(currentLevel->getHeight() - 240);
+    }
+    if (oldCameraPosition.getY() < 240) {
+        oldCameraPosition.setY(240);
+    }
+    // TODO use Display size etc
+    
     return oldCameraPosition;
 }
 

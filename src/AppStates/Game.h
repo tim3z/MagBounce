@@ -35,6 +35,7 @@ private:
     int negative;
     
     Vector2D oldCameraPosition;
+    int cam_radius;
 
     Game(const Game&);
     const Game& operator=(const Game&);

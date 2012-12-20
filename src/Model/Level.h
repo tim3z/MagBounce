@@ -74,6 +74,13 @@ public:
      */
     PhysicalProperties* const getLevelPhysics();
 
+    
+    int getHeight() const {
+        return height;
+    }
+    int getWidth() const {
+        return width;
+    }
 };
 
 #endif // LEVEL_H
